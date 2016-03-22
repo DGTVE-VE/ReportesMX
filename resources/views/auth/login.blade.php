@@ -44,12 +44,12 @@
 
     <div class="form-group">
         <label for="exampleInputName2" class="col-sm-2 control-label">Correo: </label>
-        <input type="email" name="email" value="{{ old('email') }}" class="form">
+        <input type="email" name="email" value="{{ old('email') }}" class="form" required>
     </div>
 
     <div class="form-group">
         <label for="exampleInputName2" class="col-sm-2 control-label">Contraseña: </label>
-        <input type="password" name="password" id="password" class="form">
+        <input type="password" name="password" id="password" class="form" required>
     </div>
 
     <div class="form-group">
