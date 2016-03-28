@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Laravel</title>
+<title>Información de usuarios de MéxicoX</title>
 
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 
@@ -27,7 +27,7 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="/" class="bg-success">Iniciar Sesión</a></li>
+					<li><a href="{{url("/auth/login")}}" class="bg-success">Iniciar Sesión</a></li>
 					</ul>
 
 			</div>
@@ -37,7 +37,13 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <br>
+  <div style="margin-left: 10%; margin-right: 50%;">
+		<center>
+<h4 >Registrate con el mismo correo que utilizaste como instructor en la plataforma</h4>
+<h4 >Con este correo podras acceder al sistema de reportes</h4>
 <br>
+<h2 >MéxicoX</h2>
+<br><br>
 
 <form method="POST" action="/auth/register">
     {!! csrf_field() !!}
@@ -68,6 +74,8 @@
     </div>
     </div>
 </form>
+</center>
+</div>
 
 </body>
 </html>

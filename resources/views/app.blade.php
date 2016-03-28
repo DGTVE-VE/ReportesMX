@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Laravel</title>
+<title>Información de usuarios de MéxicoX</title>
 
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 
@@ -30,21 +30,20 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="http://mx.televisioneducativa.gob.mx/" target="_blank">México X</a>
+				<a class="navbar-brand" href="http://mx.televisioneducativa.gob.mx/" target="_blank">MéxicoX</a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="/" class="bg-danger">Inicio</a></li>
-                    <li><a href="home" class="bg-danger">Estadisticas Cursos</a></li>
-                    <li><a href="totales" class="bg-danger">Registrados en la plataforma</a></li>
-					<li><a href="edad" class="bg-danger">Por edades</a></li>
-					<li><a href="genero" class="bg-danger">Por genero</a></li>
-					<li><a href="nivel" class="bg-danger">Por Nivel de Estudios</a></li>
-					<li><a href="geo" class="bg-danger">Por Entidad Federativa</a></li>
-                    <li><a href="desercion" class="bg-danger">Deserción por curso</a></li>
-
-                    <li><a href="logout" class="bg-success">Cerrar Sesión</a></li>
+					<li><a href="{{url ('/')}}" class="bg-danger">Inicio</a></li>
+          <li><a href="{{url ('home')}}" class="bg-danger">Estadisticas Cursos</a></li>
+          <li><a href="{{url ('totales')}}" class="bg-danger">Registrados en la plataforma</a></li>
+					<li><a href="{{url ('edad')}}" class="bg-danger">Por edades</a></li>
+					<li><a href="{{url ('genero')}}" class="bg-danger">Por genero</a></li>
+					<li><a href="{{url ('nivel')}}" class="bg-danger">Por Nivel de Estudios</a></li>
+					<li><a href="{{url ('geo')}}" class="bg-danger">Por Entidad Federativa</a></li>
+          <li><a href="{{url ('desercion')}}" class="bg-danger">Deserción por curso</a></li>
+          <li><a href="{{url ('logout')}}" class="bg-success">Cerrar Sesión</a></li>
 
 				</ul>
 
