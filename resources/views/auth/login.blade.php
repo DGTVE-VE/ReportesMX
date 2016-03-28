@@ -32,7 +32,7 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="{{url("/")}}" class="bg-success">Iniciar Sesión</a></li>
+					<li><a href="{{url('/auth/login')}}" class="bg-success">Iniciar Sesión</a></li>
 					</ul>
 			</div>
 		</div>
@@ -42,7 +42,7 @@
 <br>
   <div style="margin-left: 10%; margin-right: 50%;">
 		<center>
-<h3 >Bienvenido al sistema de reportes de la plataforma</h3>
+<h3 >Bienvenido al sistema de Información de MéxicoX</h3>
 <br>
 <h2 >MéxicoX</h2>
 <br><br>

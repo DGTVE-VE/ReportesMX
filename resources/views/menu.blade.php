@@ -3,7 +3,7 @@
 <center> <h4>Hola, {{$name_user}}</h4></center>
 <br>
 <center>
-<h4 class="text-center">Sistema de reportes de la plataforma</h4> <img src="logo_large.png" border=0>
+<h4 class="text-center">Sistema de Información de usuarios de MéxicoX</h4> <img src="logo_large.png" border=0>
 </center>
 <br>
 <h4 class="text-center">Selecciona el curso para mostrarte las estadisticas del mismo.</h4>

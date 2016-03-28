@@ -40,7 +40,7 @@
   <div style="margin-left: 10%; margin-right: 50%;">
 		<center>
 <h4 >Registrate con el mismo correo que utilizaste como instructor en la plataforma</h4>
-<h4 >Con este correo podras acceder al sistema de reportes</h4>
+<h4 >Con este correo podras acceder al Sistema de Información de México X</h4>
 <br>
 <h2 >MéxicoX</h2>
 <br><br>
