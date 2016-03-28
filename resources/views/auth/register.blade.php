@@ -27,7 +27,7 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="{{url("/auth/login")}}" class="bg-success">Iniciar Sesión</a></li>
+					<li><a href="{{url('/auth/login')}}" class="bg-success">Iniciar Sesión</a></li>
 					</ul>
 
 			</div>
@@ -45,7 +45,7 @@
 <h2 >MéxicoX</h2>
 <br><br>
 
-<form method="POST" action="/auth/register">
+<form method="POST" action="{{url('/auth/register')}}">
     {!! csrf_field() !!}
 
     <div class="form-group">

@@ -10,7 +10,7 @@
 <br>
 <br>
 
-<form action="home" method="POST" class="text-center">
+<form action="{{url('home')}}" method="POST" class="text-center">
 {!! csrf_field() !!}
   <select id="select_curso" name="course_name">
         <option value="0">Seleccione un curso</option>
