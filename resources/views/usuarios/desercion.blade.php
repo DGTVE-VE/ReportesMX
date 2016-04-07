@@ -21,7 +21,7 @@
 
         var suma = 0;
 
-        for (var i = 0 ; i < datos.length; i++){
+        for (var i = 0 ; i <= datos.length; i++){
             suma = suma + datos[i].usuarios;
 
       data.addRows([
