@@ -474,7 +474,7 @@ class UseController extends Controller {
 
 			$videos = DB::table('courseware_studentmodule')->wherecourse_id($course_id)->wheremodule_type('video')->groupBy('module_id')->lists('module_id');
 			if( !$videos)
-				return view('accescourse');
+				return view('videos/accesvideos');
 
 			$a = 0;
 			foreach ($videos as $val) {
@@ -492,7 +492,7 @@ class UseController extends Controller {
 						$time = '00:00:00';
 
 					list($horas, $minutos, $segundos) = explode(':', $time);
-					$seg = ($horas * 3600 ) + $minutos + ($segundos/60);
+					$seg = ($horas * 60 ) + $minutos + ($segundos/60);
 					$suma_s = $suma_s + $seg;
 					$n++;
 				}
@@ -500,12 +500,8 @@ class UseController extends Controller {
 				$promedio[$a] = $suma_s/$n;
 				$a++;
 
-				#print_r($v);
 			}
-			// foreach ($promedio as $key) {
-			// 	$key = round($key, 2);
-			// 	print_r($key);
-			// }
+
 			return view('videos/videos') -> with('promedio', collect($promedio))->with('name_user', $username )-> with('course_name', $course_name);
 		}
 
