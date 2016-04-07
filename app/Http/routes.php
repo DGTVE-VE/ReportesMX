@@ -29,6 +29,8 @@ Route::get('geo', ['middleware' => 'auth', 'uses' => 'UseController@geo']);
 
 Route::get('desercion', ['middleware' => 'auth', 'uses' => 'UseController@desercion']);
 
+Route::get('videos', ['middleware' => 'auth', 'uses' => 'UseController@videos']);
+
 Route::get('logout', ['middleware' => 'auth', 'uses' => 'UseController@logout']);
 
 

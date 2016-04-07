@@ -22,7 +22,7 @@
 
                 function drawChart() {
                     var data = google.visualization.arrayToDataTable([
-          ['Usiarios', 'Número'],
+          ['Usuarios', 'Número'],
           ['Usuarios inscritos en curso', {{$info[2]}}],
           ['Usuarios no inscritos', {{$info[1]}}]
         ]);

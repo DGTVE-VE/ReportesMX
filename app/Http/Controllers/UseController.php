@@ -459,6 +459,58 @@ class UseController extends Controller {
 		}
 	}
 
+	public function videos(){
+
+		$super_user = session()->get('super_user');
+		$course_name = session()->get('course_name');
+		$course_id = session()->get('course_id');
+		$username = session()->get('nombre');
+
+		if( session()->get('course_name') == NULL){
+			return $this->correoacurso();
+
+		}
+		elseif((session()->get('accescourse') > 0) || ($super_user == "1")) {
+
+			$videos = DB::table('courseware_studentmodule')->wherecourse_id($course_id)->wheremodule_type('video')->groupBy('module_id')->lists('module_id');
+			if( !$videos)
+				return view('accescourse');
+
+			$a = 0;
+			foreach ($videos as $val) {
+				$v = DB::table('courseware_studentmodule')->wheremodule_id($val)->lists('state');
+				$n = 0;
+				$suma_s = 0;
+
+				foreach ($v as $value) {
+
+					$sub = "saved_video_position";
+					$pos = strpos($value, $sub);
+					$rest = substr ($value, ($pos+24));
+					$time = substr($rest, 0, -2);
+					if($time == NULL)
+						$time = '00:00:00';
+
+					list($horas, $minutos, $segundos) = explode(':', $time);
+					$seg = ($horas * 3600 ) + $minutos + ($segundos/60);
+					$suma_s = $suma_s + $seg;
+					$n++;
+				}
+
+				$promedio[$a] = $suma_s/$n;
+				$a++;
+
+				#print_r($v);
+			}
+			// foreach ($promedio as $key) {
+			// 	$key = round($key, 2);
+			// 	print_r($key);
+			// }
+			return view('videos/videos') -> with('promedio', collect($promedio))->with('name_user', $username )-> with('course_name', $course_name);
+		}
+
+	}
+
 	public function logout(){
 		session()->flush();
 

@@ -19,10 +19,9 @@
         data.addColumn('number', 'Por día');
         data1.addColumn('number', 'Acumulado');
 
-        var i = 1;
         var suma = 0;
 
-        for (i = 0 ; i< datos.length; i++){
+        for (var i = 0 ; i < datos.length; i++){
             suma = suma + datos[i].usuarios;
 
       data.addRows([
