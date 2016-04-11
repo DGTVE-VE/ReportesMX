@@ -41,7 +41,7 @@
 					<li><a href="{{url ('edad')}}" class="bg-danger">Por edades</a></li>
 					<li><a href="{{url ('genero')}}" class="bg-danger">Por genero</a></li>
 					<li><a href="{{url ('nivel')}}" class="bg-danger">Por Nivel de Estudios</a></li>
-					<li><a href="{{url ('geo')}}" class="bg-danger">Por Entidad Federativa</a></li>
+					<!--li><a href="{{url ('geo')}}" class="bg-danger">Por Entidad Federativa</a></li>-->
           <li><a href="{{url ('desercion')}}" class="bg-danger">Deserción por curso</a></li>
 					<li><a href="{{url ('videos')}}" class="bg-danger">Videos</a></li>
           <li><a href="{{url ('logout')}}" class="bg-success">Cerrar Sesión</a></li>
