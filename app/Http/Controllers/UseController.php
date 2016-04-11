@@ -171,12 +171,18 @@ class UseController extends Controller {
 
 			$n = DB::table('auth_user')->whereis_active('0')->count('id');
 			$a = DB::table('auth_user')->whereis_active('1')->count('id');
-
+		//
+		// $mes1 = DB::select(DB::raw('SELECT count(id) FROM edx_db.auth_user WHERE YEAR(date_joined) = 2015 GROUP BY MONTH(date_joined)'));
+		// $mes2 = DB::select(DB::raw('SELECT count(id) FROM edx_db.auth_user WHERE YEAR(date_joined) = 2016 GROUP BY MONTH(date_joined)'));
+		// $json1 = json_encode ($mes1);
+		// $json2 = json_encode ($mes2);
+		// print_r($json1);
+		// print_r($json2);
 			$info = array($t, $n, $a);
 
 			$cn = "Estadísticas todos los cursos:";
 
-			return view('usuarios/totales') -> with ('info', collect($info))-> with('name_user', $username )-> with('course_name', $cn);
+			return view('usuarios/totales')-> with ('info', collect($info))-> with('name_user', $username )-> with('course_name', $cn);
 
 		}elseif((session()->get('accescourse') > 0) || ($super_user == "1")) {
 
@@ -197,6 +203,52 @@ class UseController extends Controller {
 		else
 			return view('accescourse');
 	}
+
+	public function inscritost(){
+
+		$username = session()->get('nombre');
+		$super_user = session()->get('super_user');
+
+		if(($super_user == '1')){
+
+		$mes1 = DB::select(DB::raw('SELECT count(id) as cuenta FROM edx_db.auth_user WHERE YEAR(date_joined) = 2015 GROUP BY MONTH(date_joined)'));
+
+		$i = 0;
+		foreach ($mes1 as $m){
+			$mes[$i] = $m->cuenta;
+			$i++;
+		}
+		$mes2 = DB::select(DB::raw('SELECT count(id) as cuenta FROM edx_db.auth_user WHERE YEAR(date_joined) = 2016 GROUP BY MONTH(date_joined)'));
+
+		$i = sizeof($mes);
+		foreach ($mes2 as $m){
+			$mes[$i] = $m->cuenta;
+			$i++;
+		}
+
+		$cur1 = DB::select(DB::raw('SELECT count(id) as c FROM edx_db.student_courseenrollment where year(created) = 2015 group by month(created)'));
+		$i = 0;
+		foreach ($cur1 as $c1){
+			$cur[$i] = $c1->c;
+			$i++;
+		}
+		$cur2 = DB::select(DB::raw('SELECT count(id) as c FROM edx_db.student_courseenrollment where year(created) = 2016 group by month(created)'));
+		$i = sizeof($cur);
+		foreach ($cur2 as $c2){
+			$cur[$i] = $c2->c;
+			$i++;
+		}
+
+
+			$cn = "Estadísticas todos los cursos:";
+
+			return view('usuarios/inscritost')-> with('mes1', collect($mes))-> with('mes2', collect($cur))-> with('name_user', $username )-> with('course_name', $cn);
+
+		}
+		else
+			return view('private');
+	}
+
 
 	public function genero()
 	{
