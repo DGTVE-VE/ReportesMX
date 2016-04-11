@@ -17,6 +17,7 @@
                             @foreach ($inscritos as $i)
                                    <tbody>
                                 <tr>
+																<td aling="right">{{$i->id}}</td>
                                 <td aling="right">{{$i->course_id}}</td>
                                 <td aling="right">{{$i->course_name}}</td>
                                 <td align="right">{{ number_format($i->inscritos)}}</td>
