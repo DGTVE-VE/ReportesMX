@@ -211,14 +211,14 @@ class UseController extends Controller {
 
 		if(($super_user == '1')){
 
-		$mes1 = DB::select(DB::raw('SELECT count(id) as cuenta FROM edx_db.auth_user WHERE YEAR(date_joined) = 2015 GROUP BY MONTH(date_joined)'));
+		$mes1 = DB::select(DB::raw('SELECT count(id) as cuenta FROM auth_user WHERE YEAR(date_joined) = 2015 GROUP BY MONTH(date_joined)'));
 
 		$i = 0;
 		foreach ($mes1 as $m){
 			$mes[$i] = $m->cuenta;
 			$i++;
 		}
-		$mes2 = DB::select(DB::raw('SELECT count(id) as cuenta FROM edx_db.auth_user WHERE YEAR(date_joined) = 2016 GROUP BY MONTH(date_joined)'));
+		$mes2 = DB::select(DB::raw('SELECT count(id) as cuenta FROM auth_user WHERE YEAR(date_joined) = 2016 GROUP BY MONTH(date_joined)'));
 
 		$i = sizeof($mes);
 		foreach ($mes2 as $m){
@@ -226,13 +226,13 @@ class UseController extends Controller {
 			$i++;
 		}
 
-		$cur1 = DB::select(DB::raw('SELECT count(id) as c FROM edx_db.student_courseenrollment where year(created) = 2015 group by month(created)'));
+		$cur1 = DB::select(DB::raw('SELECT count(id) as c FROM student_courseenrollment where year(created) = 2015 group by month(created)'));
 		$i = 0;
 		foreach ($cur1 as $c1){
 			$cur[$i] = $c1->c;
 			$i++;
 		}
-		$cur2 = DB::select(DB::raw('SELECT count(id) as c FROM edx_db.student_courseenrollment where year(created) = 2016 group by month(created)'));
+		$cur2 = DB::select(DB::raw('SELECT count(id) as c FROM student_courseenrollment where year(created) = 2016 group by month(created)'));
 		$i = sizeof($cur);
 		foreach ($cur2 as $c2){
 			$cur[$i] = $c2->c;
