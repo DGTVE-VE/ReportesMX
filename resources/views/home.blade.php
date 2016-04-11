@@ -6,7 +6,7 @@
                         <table class="table table-hover">
                            <thead>
                            <tr>
-
+														 	 <td class="text-primary" style="font-size: medium"><strong>ID</strong></td>
                                <td class="text-primary" style="font-size: medium"><strong>ID del Curso</strong></td>
                                <td class="text-primary" aling="right" style="font-size: medium"><strong>Nombre del Curso</strong></td>
                                <td class="text-primary" aling="right" style="font-size: medium"><strong>Inscritos</strong></td>
