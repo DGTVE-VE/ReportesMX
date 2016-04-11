@@ -26,8 +26,8 @@
 
 </head>
 <body>
-  <td><a href="{{url('inscritosm')}}" class="btn btn-primary active" role="button">Registrados por mes en MéxicoX</a></td>
-  <td><a href="{{url('inscritosc')}}" class="btn btn-success active" role="button">Inscritos a algún curso por mes</a></td>
+
+  <center><td><a href="{{url('inscritost')}}" class="btn btn-success active" role="button">Inscritos a algún curso por mes</a></td></center>
 
 <div class="container">
     <div class="row">
