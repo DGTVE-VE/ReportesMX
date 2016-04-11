@@ -26,6 +26,7 @@
                             @endforeach
                             <tr>
                                 <td></td>
+																<td></td>
                                 <td class="text-primary" aling="right" style="font-size: medium"><strong>Total: </strong></td>
                                 <td class="text-primary" aling="right" style="font-size: medium"><strong>{{number_format($total)}}</strong></td>
                             </tr>
