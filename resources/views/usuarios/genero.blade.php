@@ -7,7 +7,7 @@
                 google.charts.setOnLoadCallback(drawChart);
 
                 function drawChart() {var data = google.visualization.arrayToDataTable([
-          ['', 'Hombres', 'Mujeres', 'Indefinido'],
+          ['', 'Hombres: {{$infot[0]}} ', 'Mujeres: {{$infot[1]}}', 'Indefinido: {{$infot[2]}}'],
           ['Genero', {{$infot[0]}}, {{$infot[1]}}, {{$infot[2]}}]]);
 
                     var options = {
@@ -25,7 +25,7 @@
                         vAxis: {
                             format: 'decimal'
                         },
-                        colors: ['#1b9e77', '#d95f02', '#7570b3'],
+                        colors: ['#1b9e77', '#7570b3', '#d95f02'],
 
 
                     };

@@ -352,9 +352,10 @@ class UseController extends Controller {
 			$ne = DB::table('auth_userprofile')->wherelevel_of_education('')->select('id')->count();
 			$dc = DB::table('auth_userprofile')->wherelevel_of_education('p_se')->select('id')->count();
 			$do = DB::table('auth_userprofile')->wherelevel_of_education('p_oth')->select('id')->count();
-			$na = DB::table('auth_userprofile')->wherelevel_of_education('NULL')->select('id')->count();
 
-			$estudio = array($d, $m, $t, $l, $p, $s, $pr, $n, $o, $ne, $dc, $do, $na);
+			$d = $d + $dc + $do;
+
+			$estudio = array($d, $m, $t, $l, $p, $s, $pr, $n, $o, $ne,);
 			$cn = "Estadísticas todos los cursos:";
 
 			return view('usuarios/nivel') -> with ('estudio', collect($estudio))-> with('name_user', $username )-> with('course_name', $cn);
@@ -373,9 +374,10 @@ class UseController extends Controller {
 			$ne = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('')->select('id')->count();
 			$dc = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('p_se')->select('id')->count();
 			$do = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('p_oth')->select('id')->count();
-			$na = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('NULL')->select('id')->count();
 
-			$estudio = array($d, $m, $t, $l, $p, $s, $pr, $n, $o, $ne, $dc, $do, $na);
+			$d = $d + $dc + $do;
+
+			$estudio = array($d, $m, $t, $l, $p, $s, $pr, $n, $o, $ne);
 
 			return view('usuarios/nivel') -> with ('estudio', collect($estudio))->with('name_user', $username )-> with('course_name', $course_name);
 
