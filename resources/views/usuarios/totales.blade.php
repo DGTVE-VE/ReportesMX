@@ -22,6 +22,7 @@
           var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
           chart.draw(data, options);
       }
+
   </script>
 
 </head>
@@ -33,7 +34,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <br>
-            <h4> <p style="text-align: center";>Total de usuarios registrados en la plataforma: </p> </h4>
+            <h4> <p style="text-align: center";>Total de usuarios registrados en MéxicoX: </p> </h4>
             <br>
             <h4 style="text-align: center" ;> <strong> {{$info[0]}} </strong></h4>
 
@@ -50,7 +51,6 @@
 
         <td><div id="line_top_y"></div></td>
   </table>
-
     </div>
     </div>
 </body>
