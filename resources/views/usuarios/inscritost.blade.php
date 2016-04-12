@@ -59,7 +59,7 @@ if(mes2[i]){
           0: {side: 'top'}
         }
       },
-        colors: ['red']
+        colors: ['blue']
     };
     var options2 = {
 
@@ -70,7 +70,7 @@ if(mes2[i]){
       },
       width: 900,
         height: 400,
-        colors: ['blue']
+        colors: ['green']
     };
 
     var chart = new google.charts.Line(document.getElementById('line_top_x'));
@@ -81,19 +81,52 @@ if(mes2[i]){
   }
   </script>
   </head>
-  <body>
-  <div class="container">
-      <div class="row">
+<body>
+<div class="container">
+    <div class="row">
 
-        <table class="table">
-          <tr>
-           <td><div id="line_top_x"></div></td>
-         </tr>
-           <tr>
-              <td><div id="line_top_y"></div></td>
-            </tr>
-        </table>
-      </div>
-      </div>
-  </body>
+      <h4>Grafica que muestra las estadísticas mes a mes desde febrero del 2015, de todos los usuarios que se registran en MéxicoX</h4>
+
+      <table class="table table-hover">
+         <td><div id="line_top_x"></div></td>
+
+            <td><div><table class="table table-hover">
+                  <tr class="info" style="font-size: medium">
+                    <td>Mes</td>
+                    <td>Registrados</td>
+                  </tr>
+                  <?php $i = 0; foreach ($mes1 as $m): ?>
+                    <tr>
+                      <td><?php print_r($i+1); ?></td>
+                      <td><?php print_r($m); $i++;?></td>
+                    </tr>
+                  <?php endforeach; ?>
+                  </table>
+            </div></td>
+      </table>
+      <br>
+      <h4>Grafica que muestra las estadísticas mes a mes desde marzo del 2015, de todos los usuarios que se registran en algún curso de MéxicoX</h4>
+      <table class="table table-hover">
+         <td><div id="line_top_y"></div></td>
+
+            <td><div><table class="table table-hover">
+                  <tr class="success" style="font-size: medium">
+                    <td>Mes</td>
+                    <td>Registrados</td>
+                  </tr>
+                  <?php $i = 0; foreach ($mes2 as $m): ?>
+                    <tr>
+                      <td><?php print_r($i+1); ?></td>
+                      <td><?php print_r($m); $i++;?></td>
+                    </tr>
+                  <?php endforeach; ?>
+                  </table>
+            </div></td>
+      </table>
+
+
+      </table>
+    </div>
+    </div>
+</body>
   @endsection

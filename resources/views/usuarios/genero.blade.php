@@ -34,6 +34,7 @@
 
                     chart.draw(data, options);
                 }
+
             </script>
 
 
@@ -47,9 +48,8 @@
 
             <br>
                 <div id="chart_div" style="width: 900px; height: 500px;"></div>
-            </body>
-
         </div>
     </div>
 </div>
+</body>
 @endsection
