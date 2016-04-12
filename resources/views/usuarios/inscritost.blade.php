@@ -25,7 +25,7 @@
       for (var i = 0 ; i <= mes1.length ; i++){
       if(mes1[i]){
     data.addRows([
-      [i,  mes1[i]],
+      [i,  parseInt(mes1[i])],
     ]);
   }else{
     data.addRows([
@@ -34,7 +34,7 @@
   }
 if(mes2[i]){
     data2.addRows([
-      [i,  mes2[i]],
+      [i,  parseInt(mes2[i])],
     ]);
   }else{
     data2.addRows([
