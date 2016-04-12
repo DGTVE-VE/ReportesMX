@@ -27,7 +27,7 @@
 
       data.addRows([
 
-        [i,  datos[i].usuarios],
+        [i,  parseInt(datos[i].usuarios)],
 
       ]);
             data1.addRows([
