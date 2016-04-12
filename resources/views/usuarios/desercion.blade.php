@@ -23,7 +23,7 @@
 
         for (var i = 1 ; i < datos.length; i++){
 
-            suma = suma + datos[i].usuarios;
+            suma = suma + parseInt(datos[i].usuarios);
 
       if(datos[i].usuarios){
       data.addRows([
