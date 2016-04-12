@@ -23,14 +23,24 @@
 
 
       for (var i = 0 ; i <= mes1.length ; i++){
-
+      if(mes1[i]){
     data.addRows([
       [i,  mes1[i]],
     ]);
-
+  }else{
+    data.addRows([
+      [i,  0],
+    ]);
+  }
+if(mes2[i]){
     data2.addRows([
       [i,  mes2[i]],
     ]);
+  }else{
+    data2.addRows([
+      [i,  0],
+    ]);
+  }
 
       }
 
