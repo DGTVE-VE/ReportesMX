@@ -239,7 +239,6 @@ class UseController extends Controller {
 			$i++;
 		}
 
-
 			$cn = "Estadísticas todos los cursos:";
 
 			return view('usuarios/inscritost')-> with('mes1', collect($mes))-> with('mes2', collect($cur))-> with('name_user', $username )-> with('course_name', $cn);

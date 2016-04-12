@@ -43,7 +43,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <br>
-            <h3> <p style="text-align: center";>Usuarios por genero: </p> </h3>
+            <h3> <p style="text-align: center";>Usuarios por género: </p> </h3>
 
             <br>
                 <div id="chart_div" style="width: 900px; height: 500px;"></div>
