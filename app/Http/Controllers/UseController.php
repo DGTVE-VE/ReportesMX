@@ -526,9 +526,13 @@ class UseController extends Controller {
 		elseif((session()->get('accescourse') > 0) || ($super_user == "1")) {
 
 			$videos = DB::table('courseware_studentmodule')->wherecourse_id($course_id)->wheremodule_type('video')->groupBy('module_id')->lists('module_id');
+
 			if( !$videos)
 				return view('videos/accesvideos');
 
+
+				for($w = 0 ; $w < sizeof($videos) ; $w++)
+						$segmax[$w] = 0;
 			$a = 0;
 			foreach ($videos as $val) {
 				$v = DB::table('courseware_studentmodule')->wheremodule_id($val)->lists('state');
@@ -546,6 +550,10 @@ class UseController extends Controller {
 
 					list($horas, $minutos, $segundos) = explode(':', $time);
 					$seg = ($horas * 60 ) + $minutos + ($segundos/60);
+
+					if($segmax[$a] < $seg){
+						$segmax[$a] = $seg;
+					}
 					$suma_s = $suma_s + $seg;
 					$n++;
 				}
@@ -555,7 +563,7 @@ class UseController extends Controller {
 
 			}
 
-			return view('videos/videos') -> with('promedio', collect($promedio))->with('name_user', $username )-> with('course_name', $course_name);
+			return view('videos/videos') -> with('promedio', collect($promedio))->with('name_user', $username )-> with('course_name', $course_name)->with('nvideo', collect($segmax));
 		}
 
 	}

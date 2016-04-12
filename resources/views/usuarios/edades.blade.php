@@ -31,21 +31,34 @@
 <center> <h4>Hola, {{$name_user}}, {{$course_name}}</h4></center>
 <div class="container">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <br>
-            <br>
-            <h3> <p style="text-align: center";>Usuarios totales por rangos de edades: </p> </h3>
-            <br>
-            <div id="top_x_div" style="width: 900px; height: 500px;"></div>
+
+      <h4>Usuarios totales por rangos de edades:</h4>
+
+      <table class="table table-hover">
+         <td><div id="top_x_div" style="width: 900px; height: 500px;"></div></td>
+
+            <td><div><table class="table table-hover">
+                  <tr class="info" style="font-size: medium">
+                  </tr>
+                      <tr><td class="info" style="font-size: medium">Rango edad</td><td class="info" style="font-size: medium">#</td></tr>
+                      <tr><td>Menores a 15</td><td>{{$edad[0]}}</td></tr>
+                      <tr><td>Entre 16 y 20</td><td>{{$edad[1]}}</td></tr>
+                      <tr><td>Entre 21 y 25</td><td>{{$edad[2]}}</td></tr>
+                      <tr><td>Entre 26 y 30</td><td>{{$edad[3]}}</td></tr>
+                      <tr><td>Entre 31 y 35</td><td>{{$edad[4]}}</td></tr>
+                      <tr><td>Entre 36 y 40</td><td>{{$edad[5]}}</td></tr>
+                      <tr><td>Entre 41 y 45</td><td>{{$edad[6]}}</td></tr>
+                      <tr><td>Entre 46 y 50</td><td>{{$edad[7]}}</td></tr>
+                      <tr><td>Más de 50</td><td>{{$edad[8]}}</td></tr>
+
+                  </table>
+            </div></td>
+      </table>
+      <br>
+
+      </table>
     </div>
-  </div>
-</div>
+    </div>
 </body>
-
-
-
-
-
-
 
 @endsection
