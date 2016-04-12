@@ -25,16 +25,33 @@
 
             suma = suma + datos[i].usuarios;
 
+      if(datos[i].usuarios){
       data.addRows([
 
         [i,  parseInt(datos[i].usuarios)],
 
-      ]);
+      ]);}else{
+        data.addRows([
+
+          [i,  0],
+
+        ]);
+
+      }
+      if(suma){
             data1.addRows([
 
-        [i, suma],
+        [i, parseInt(suma)],
 
       ]);
+    }else{
+      data1.addRows([
+
+  [i, 0],
+
+]);
+
+    }
         }
 
       var options = {
