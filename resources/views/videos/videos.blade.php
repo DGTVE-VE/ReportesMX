@@ -13,17 +13,17 @@ function drawStacked() {
       var data = new google.visualization.DataTable();
       data.addColumn('timeofday', 'Time of Day');
       data.addColumn('number', 'Minutos vistos del video en promedio');
-      data.addColumn('number', 'Estimado de minutos que dura el video');
+      data.addColumn('number', 'Estimado de minutos que no se miro el video');
 
       for(var i = 0; i < datos.length+1; i++){
           data.addRows([
-            [{v: [parseInt(i)+1, 0, 0], f: 'Tiempo en minutos '},  parseFloat(datos[i]), parseFloat(datos1[i])],
+            [{v: [parseInt(i)+1, 0, 0], f: 'Tiempo en minutos '},  parseFloat(datos[i]), parseFloat(datos1[i])-parseFloat(datos[i])],
           ]);
         }
 
 
       var options = {
-        title: 'La duración del video es estimada, puede diferir. El dato de video visto es un promedio de todos los estudiantes que comenzaron a ver el video, si contar los que no lo vieron.',
+        title: 'La duración del video es estimada, puede diferir. El dato de video visto es un promedio de todos los estudiantes que comenzaron a ver el video, si contar los que no lo vieron. El orden de los videos puede variar al orden en el que aparecen publicados en el curso.',
         isStacked: true,
         hAxis: {
           title: 'Videos del curso {{$course_name}}',
