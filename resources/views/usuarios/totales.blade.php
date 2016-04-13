@@ -39,19 +39,10 @@
             <h4 style="text-align: center" ;> <strong> {{$info[0]}} </strong></h4>
 
                 <div id="donutchart" style="width: 900px; height: 500px;"></div>
+                <a class="btn btn-default" href="{{url ('/download/totales.csv')}}" role="button">Descargar archivo csv</a>
                 <br><br>
         </div>
     </div>
 </div>
-<div class="container">
-    <div class="row">
-
-  <table class="table">
-     <td><div id="line_top_x"></div></td>
-
-        <td><div id="line_top_y"></div></td>
-  </table>
-    </div>
-    </div>
 </body>
 @endsection

@@ -36,6 +36,7 @@
 
       <table class="table table-hover">
          <td><div id="top_x_div" style="width: 900px; height: 500px;"></div></td>
+          <a class="btn btn-default" href="{{url ('/download/edades.csv')}}" role="button">Descargar archivo csv</a>
 
             <td><div><table class="table table-hover">
                   <tr class="info" style="font-size: medium">

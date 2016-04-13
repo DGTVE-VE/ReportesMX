@@ -10,9 +10,13 @@
         var data = google.visualization.arrayToDataTable([
 
 
-            ['', 'Doctorado = {{$estudio[0]}}', 'Maestria = {{$estudio[1]}}', 'Técnico Superior = {{$estudio[2]}}', 'Licenciatura = {{$estudio[3]}}', 'Bachillerato = {{$estudio[4]}}', 'Secundaria = {{$estudio[5]}}', 'Primaria = {{$estudio[6]}}', 'Ninguno = {{$estudio[7]}}', 'Otros = {{$estudio[8]}}', 'No especificado = {{$estudio[9]}}'],
-            ['Grado',{{$estudio[0]}}, {{$estudio[1]}}, {{$estudio[2]}}, {{$estudio[3]}}, {{$estudio[4]}}, {{$estudio[5]}}, {{$estudio[6]}}, {{$estudio[7]}},  {{$estudio[8]}}, {{$estudio[9]}}
-                                                         ]]);
+             ['', 'Doctorado = {{$estudio[0]}}', 'Maestria = {{$estudio[1]}}', 'Técnico Superior = {{$estudio[2]}}', 'Licenciatura = {{$estudio[3]}}', 'Bachillerato = {{$estudio[4]}}', 'Secundaria = {{$estudio[5]}}', 'Primaria = {{$estudio[6]}}', 'Ninguno = {{$estudio[7]}}', 'Otros = {{$estudio[8]}}', 'No especificado = {{$estudio[9]}}'],
+             ['Grado',{{$estudio[0]}}, {{$estudio[1]}}, {{$estudio[2]}}, {{$estudio[3]}}, {{$estudio[4]}}, {{$estudio[5]}}, {{$estudio[6]}}, {{$estudio[7]}},  {{$estudio[8]}}, {{$estudio[9]}}
+                                                           ]]);
+            //
+            // ['', 'Doctorado = 0', 'Maestria = ', 'Técnico Superior = 0', 'Licenciatura = 0', 'Bachillerato = 0', 'Secundaria = 0', 'Primaria = ', 'Ninguno = 0', 'Otros = 0', 'No especificado = 0'],
+            // ['Grado',0, 0, 0, 0, 0, 0, 0, 0,  0, 0
+            //                                               ]]);
 
         var options = {
           chart: {
@@ -37,6 +41,7 @@
             <br>
 <table class="table table-hover">
     <tr><div id="columnchart_material" style="width: 900px; height: 500px;"></div></tr>
+      <a class="btn btn-default" href="{{url ('/download/nivel.csv')}}" role="button">Descargar archivo csv</a>
   <br> <br>
     <tr><td class="danger" style="font-size: medium">Nivel de estudios</td><td class="danger" style="font-size: medium">Cantidad</td></tr>
     <tr><td>Doctorado</td><td>{{$estudio[0]}}</td></tr>
@@ -49,12 +54,12 @@
     <tr><td>Ninguno</td><td>{{$estudio[7]}}</td></tr>
     <tr><td>Otros</td><td>{{$estudio[8]}}</td></tr>
     <tr><td>No especificado</td><td>{{$estudio[9]}}</td></tr>
-
-
   </table>
      </div>
     </div>
+
 </div>
+
   </body>
 </html>
 @endsection

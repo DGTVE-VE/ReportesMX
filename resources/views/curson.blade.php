@@ -41,6 +41,7 @@
 
 
         </div>
+        <a class="btn btn-default" href="{{url ('/download/no_activos.csv')}}" role="button">Descargar archivo csv</a>
     </div>
 </div>
 @endsection

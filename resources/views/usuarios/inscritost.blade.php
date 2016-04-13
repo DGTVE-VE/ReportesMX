@@ -89,6 +89,7 @@ if(mes2[i]){
 
       <table class="table table-hover">
          <td><div id="line_top_x"></div></td>
+         <a class="btn btn-default" href="{{url ('/download/inscritos.csv')}}" role="button">Descargar archivo csv</a>
 
             <td><div><table class="table table-hover">
                   <tr class="info" style="font-size: medium">
@@ -105,9 +106,10 @@ if(mes2[i]){
             </div></td>
       </table>
       <br>
-      <h4>Grafica que muestra las estadísticas mes a mes desde marzo del 2015, de todos los usuarios que se registran en algún curso de MéxicoX</h4>
+      <h4>Grafica que muestra las estadísticas mes a mes desde marzo del 2015, de todos los usuarios que se inscriben en algún curso de MéxicoX</h4>
       <table class="table table-hover">
          <td><div id="line_top_y"></div></td>
+         <a class="btn btn-default" href="{{url ('/download/registrados.csv')}}" role="button">Descargar archivo csv</a>
 
             <td><div><table class="table table-hover">
                   <tr class="success" style="font-size: medium">
@@ -122,11 +124,14 @@ if(mes2[i]){
                   <?php endforeach; ?>
                   </table>
             </div></td>
-      </table>
-
 
       </table>
+
+      </table>
+
     </div>
     </div>
+
+
 </body>
   @endsection

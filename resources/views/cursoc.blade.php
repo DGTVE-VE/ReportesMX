@@ -39,6 +39,7 @@
            </tbody>
             </table>
         </div>
+        <a class="btn btn-default" href="{{url ('/download/cursoc.csv')}}" role="button">Descargar archivo csv</a>
     </div>
 </div>
 

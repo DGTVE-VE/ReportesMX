@@ -48,6 +48,7 @@
 
             <br>
                 <div id="chart_div" style="width: 900px; height: 500px;"></div>
+                <a class="btn btn-default" href="{{url ('/download/genero.csv')}}" role="button">Descargar archivo csv</a>
         </div>
     </div>
 </div>
