@@ -12,12 +12,12 @@ google.charts.setOnLoadCallback(drawStacked);
 function drawStacked() {
       var data = new google.visualization.DataTable();
       data.addColumn('timeofday', 'Time of Day');
-      data.addColumn('number', 'Video visto en promedio');
-      data.addColumn('number', 'Duración estimada del video');
+      data.addColumn('number', 'Minutos vistos del video en promedio');
+      data.addColumn('number', 'Minutos que faltarón por ver en promedio');
 
       for(var i = 0; i < datos.length+1; i++){
           data.addRows([
-            [{v: [parseInt(i)+1, 0, 0], f: 'Tiempo en minutos '},  parseFloat(datos[i]), parseFloat(datos1[i])],
+            [{v: [parseInt(i)+1, 0, 0], f: 'Tiempo en minutos '},  parseFloat(datos[i]), parseFloat(datos1[i])-parseFloat(datos[i])],
           ]);
         }
 
