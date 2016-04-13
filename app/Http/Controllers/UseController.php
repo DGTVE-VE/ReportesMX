@@ -541,13 +541,15 @@ class UseController extends Controller {
 
 				foreach ($v as $value) {
 
+
 					$sub = "saved_video_position";
 					$pos = strpos($value, $sub);
 					$rest = substr ($value, ($pos+24));
 					$time = substr($rest, 0, -2);
+
 					if($time == NULL)
 						$time = '00:00:00';
-
+						if($time != '00:00:00'){
 					list($horas, $minutos, $segundos) = explode(':', $time);
 					$seg = ($horas * 60 ) + $minutos + ($segundos/60);
 
@@ -556,6 +558,7 @@ class UseController extends Controller {
 					}
 					$suma_s = $suma_s + $seg;
 					$n++;
+				}
 				}
 
 				$promedio[$a] = $suma_s/$n;
