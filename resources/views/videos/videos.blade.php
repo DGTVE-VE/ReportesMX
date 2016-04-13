@@ -23,7 +23,7 @@ function drawStacked() {
 
 
       var options = {
-        title: 'La duración del video es estimada, puede diferir. El dato de video visto es un promedio de todos los estudiantes que comenzaron a ver el video.',
+        title: 'La duración del video es estimada, puede diferir. El dato de video visto es un promedio de todos los estudiantes que comenzaron a ver el video, si contar los que no lo vieron.',
         isStacked: true,
         hAxis: {
           title: 'Videos del curso {{$course_name}}',
