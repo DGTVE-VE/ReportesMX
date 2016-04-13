@@ -17,7 +17,7 @@ function drawStacked() {
 
       for(var i = 0; i < datos.length+1; i++){
           data.addRows([
-            [{v: [parseInt(i)+1, 0, 0], f: 'Tiempo en minutos '},  parseFloat(datos[i]), parseFloat(datos1[i]],
+            [{v: [parseInt(i)+1, 0, 0], f: 'Tiempo en minutos '},  parseFloat(datos[i]), parseFloat(datos1[i])],
           ]);
         }
 
