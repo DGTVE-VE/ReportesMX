@@ -13,11 +13,11 @@ function drawStacked() {
       var data = new google.visualization.DataTable();
       data.addColumn('timeofday', 'Time of Day');
       data.addColumn('number', 'Minutos vistos del video en promedio');
-      data.addColumn('number', 'Minutos que faltarón por ver en promedio');
+      data.addColumn('number', 'Estimado de minutos que dura el video');
 
       for(var i = 0; i < datos.length+1; i++){
           data.addRows([
-            [{v: [parseInt(i)+1, 0, 0], f: 'Tiempo en minutos '},  parseFloat(datos[i]), parseFloat(datos1[i])-parseFloat(datos[i])],
+            [{v: [parseInt(i)+1, 0, 0], f: 'Tiempo en minutos '},  parseFloat(datos[i]), parseFloat(datos1[i]],
           ]);
         }
 
