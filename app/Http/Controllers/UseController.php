@@ -756,8 +756,10 @@ class UseController extends Controller {
 				}
 				if($n != 0)
 					$promedio[$a] = $suma_s/$n;
+					else {
+						$promedio[$a] = 0;
+					}
 
-				$promedio[$a] = 0;
 
 				$a++;
 
