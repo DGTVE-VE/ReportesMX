@@ -119,7 +119,7 @@ class UseController extends Controller {
 			$activos = DB::select(DB::raw('SELECT * FROM course_name WHERE (CURDATE() <= fin AND CURDATE() >= inicio)'));
 			$cn = "Puedes ver estadísticas de los siguientes cursos:";
 
-			//$fp = fopen ('download/cursoa.csv', 'w');
+			$fp = fopen ('download/cursoa.csv', 'w');
 			$listaid = array();
 			$listaid[0][0] = 'id';
 			$listaid[0][1] = 'id curso';
@@ -141,11 +141,11 @@ class UseController extends Controller {
 				$i++;
 			}
 
-			// foreach ($listaid as $value) {
-			// 		fputcsv($fp, $value );
-			// }
-			//
-			// fclose($fp);
+			foreach ($listaid as $value) {
+					fputcsv($fp, $value );
+			}
+
+			fclose($fp);
 
 			return view('cursoa') -> with ('activos', collect($activos))-> with('name_user', $username )-> with('course_name', $cn);
 		}
@@ -164,7 +164,7 @@ class UseController extends Controller {
 
 			$cn = "Puedes ver estadísticas de los siguientes cursos:";
 
-			//$fp = fopen ('download/no_activos.csv', 'w');
+			$fp = fopen ('download/no_activos.csv', 'w');
 			$listaid = array();
 			$listaid[0][0] = 'id';
 			$listaid[0][1] = 'id curso';
@@ -186,11 +186,11 @@ class UseController extends Controller {
 				$i++;
 			}
 
-			// foreach ($listaid as $value) {
-			// 		fputcsv($fp, $value );
-			// }
-			//
-			// fclose($fp);
+			foreach ($listaid as $value) {
+					fputcsv($fp, $value );
+			}
+
+			fclose($fp);
 
 			return view('curson') -> with ('no_activos', collect($no_activos))-> with('name_user', $username )-> with('course_name', $cn);
 
@@ -209,7 +209,7 @@ class UseController extends Controller {
 			$concluido = DB::select(DB::raw('SELECT * FROM course_name WHERE CURDATE() > fin'));
 			$cn = "Puedes ver estadísticas de los siguientes cursos:";
 
-			//$fp = fopen ('download/cursoc.csv', 'w');
+			$fp = fopen ('download/cursoc.csv', 'w');
 			$listaid = array();
 			$listaid[0][0] = 'id';
 			$listaid[0][1] = 'id curso';
@@ -231,11 +231,11 @@ class UseController extends Controller {
 				$i++;
 			}
 
-			// foreach ($listaid as $value) {
-			// 		fputcsv($fp, $value );
-			// }
-			//
-			// fclose($fp);
+			foreach ($listaid as $value) {
+					fputcsv($fp, $value );
+			}
+
+			fclose($fp);
 
 			return view('cursoc') -> with ('concluido', collect($concluido))-> with('name_user', $username )-> with('course_name', $cn);
 
@@ -260,11 +260,11 @@ class UseController extends Controller {
 
 			$cn = "Estadísticas todos los cursos:";
 
-			// $fp = fopen ('download/totales.csv', 'w');
-			//
-			// fputcsv($fp, $info);
-			//
-			// fclose($fp);
+			$fp = fopen ('download/totales.csv', 'w');
+
+			fputcsv($fp, $info);
+
+			fclose($fp);
 
 			return view('usuarios/totales')-> with ('info', collect($info))-> with('name_user', $username )-> with('course_name', $cn);
 
@@ -281,11 +281,11 @@ class UseController extends Controller {
 			$info = array($t, $n, $inscritos);
 			$course_name = session()->get('course_name');
 
-			// $fp = fopen ('download/totales.csv', 'w');
-			//
-			// fputcsv($fp, $info);
-			//
-			// fclose($fp);
+			$fp = fopen ('download/totales.csv', 'w');
+
+			fputcsv($fp, $info);
+
+			fclose($fp);
 
 			return view('usuarios/totales') -> with ('info', collect($info))->with('name_user', $username )-> with('course_name', $course_name);
 
@@ -329,17 +329,17 @@ class UseController extends Controller {
 			$i++;
 		}
 
-		// $ins = fopen ('download/inscritos.csv', 'w');
-		//
-		// fputcsv($ins, $mes);
-		//
-		// fclose($ins);
-		//
-		// $reg = fopen ('download/registrados.csv', 'w');
-		//
-		// fputcsv($reg, $mes);
-		//
-		// fclose($reg);
+		$ins = fopen ('download/inscritos.csv', 'w');
+
+		fputcsv($ins, $mes);
+
+		fclose($ins);
+
+		$reg = fopen ('download/registrados.csv', 'w');
+
+		fputcsv($reg, $mes);
+
+		fclose($reg);
 
 			$cn = "Estadísticas todos los cursos:";
 
@@ -367,11 +367,11 @@ class UseController extends Controller {
 			$infot = array($f, $m, $n);
 			$cn = "Estadísticas todos los cursos:";
 
-			// $fp = fopen ('download/genero.csv', 'w');
-			//
-			// fputcsv($fp, $infot);
-			//
-			// fclose($fp);
+			$fp = fopen ('download/genero.csv', 'w');
+
+			fputcsv($fp, $infot);
+
+			fclose($fp);
 
 			return view('usuarios/genero') -> with ('infot', collect($infot))-> with('name_user', $username )-> with('course_name', $cn);
 
@@ -383,11 +383,11 @@ class UseController extends Controller {
 			$infot = array($f, $m, $n);
 			$course_name = session()->get('course_name');
 
-			// $fp = fopen ('download/genero.csv', 'w');
-			//
-			// fputcsv($fp, $infot);
-			//
-			// fclose($fp);
+			$fp = fopen ('download/genero.csv', 'w');
+
+			fputcsv($fp, $infot);
+
+			fclose($fp);
 
 			return view('usuarios/genero') -> with ('infot', collect($infot))->with('name_user', $username )-> with('course_name', $course_name);
 
@@ -419,11 +419,11 @@ class UseController extends Controller {
 			$edad = array($edad15,$edad15_20,$edad20_25,$edad25_30,$edad30_35,$edad35_40,$edad40_45,$edad45_50,$edad50);
 			$cn = "Estadísticas todos los cursos:";
 
-			// $fp = fopen ('download/edades.csv', 'w');
-			//
-			// fputcsv($fp, $edad);
-			//
-			// fclose($fp);
+			$fp = fopen ('download/edades.csv', 'w');
+
+			fputcsv($fp, $edad);
+
+			fclose($fp);
 
 			return view('usuarios/edades') -> with ('edad', collect($edad))-> with('name_user', $username )-> with('course_name', $cn);
 
@@ -442,11 +442,11 @@ class UseController extends Controller {
 
 			$edad = array($edad15,$edad15_20,$edad20_25,$edad25_30,$edad30_35,$edad35_40,$edad40_45,$edad45_50,$edad50);
 
-			// $fp = fopen ('download/edades.csv', 'w');
-			//
-			// fputcsv($fp, $edad);
-			//
-			// fclose($fp);
+			$fp = fopen ('download/edades.csv', 'w');
+
+			fputcsv($fp, $edad);
+
+			fclose($fp);
 
 			return view('usuarios/edades') -> with ('edad', collect($edad))->with('name_user', $username )-> with('course_name', $course_name);
 
@@ -486,12 +486,12 @@ class UseController extends Controller {
 
 			$cn = "Estadísticas todos los cursos";
 
-			// $fp = fopen ('download/nivel.csv', 'w');
-			//
-			// fputcsv($fp, $estudio1);
-			//
-			//
-			// fclose($fp);
+			$fp = fopen ('download/nivel.csv', 'w');
+
+			fputcsv($fp, $estudio1);
+
+
+			fclose($fp);
 
 			return view('usuarios/nivel') -> with ('estudio', collect($estudio))-> with('name_user', $username )-> with('course_name', $cn);
 
@@ -514,12 +514,12 @@ class UseController extends Controller {
 
 			$estudio1 = array('Doctorado' => $d, 'Maestria' => $m, 'Técnico Superior' => $t, 'Licenciatura' => $l, 'Bachillerato' => $p, 'Secundaria' => $s, 'Primaria' => $pr, 'Ninguno' => $n, 'Otros' =>  $o, 'No especificado' => $ne);
 			$estudio = array($d, $m, $t, $l, $p, $s, $pr, $n, $o, $ne);
-			//
-			// $fp = fopen ('download/nivel.csv', 'w');
-			//
-			// 	fputcsv($fp, $estudio1);
-			//
-			// fclose($fp);
+
+			$fp = fopen ('download/nivel.csv', 'w');
+
+				fputcsv($fp, $estudio1);
+
+			fclose($fp);
 
 
 			return view('usuarios/nivel') -> with ('estudio', collect($estudio))->with('name_user', $username )-> with('course_name', $course_name);
