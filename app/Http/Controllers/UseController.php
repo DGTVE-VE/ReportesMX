@@ -754,10 +754,11 @@ class UseController extends Controller {
 					$n++;
 				}
 				}
-				if($n == 0)
-					$n=0.0000000001
+				if($n != 0)
+					$promedio[$a] = $suma_s/$n;
 
-				$promedio[$a] = $suma_s/$n;
+				$promedio[$a] = 0;
+
 				$a++;
 
 			}
