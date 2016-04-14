@@ -33,6 +33,7 @@
                             </tbody>
                         </table>
 		</div>
+		<a class="btn btn-default" href="{{url ('/download/totales.csv')}}" role="button">Descargar archivo csv</a>
 	</div>
 </div>
 @endsection

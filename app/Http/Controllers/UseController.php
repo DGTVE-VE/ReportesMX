@@ -85,6 +85,32 @@ class UseController extends Controller {
 			$inscritos = DB::table('vm_inscritos_x_curso')->get();
 			$cn = "Puedes ver estadísticas de los siguientes cursos:";
 
+			$fp = fopen ('download/totales.csv', 'w');
+			$listaid = array();
+			$listaid[0][0] = 'id';
+			$listaid[0][1] = 'id curso';
+			$listaid[0][2] = 'nombre del curso';
+			$listaid[0][3] = 'inscritos';
+
+			$i = 1;
+
+			foreach ($inscritos as $key => $value) {
+
+				$listaid[$i][0] = ($value->id);
+				$listaid[$i][1] = ($value->course_id);
+				$listaid[$i][2] = ($value->course_name);
+				$listaid[$i][3] = ($value->inscritos);
+
+				$i++;
+			}
+
+			foreach ($listaid as $value) {
+					fputcsv($fp, $value );
+			}
+
+			fclose($fp);
+
+
 			return view('home')->with ('inscritos', collect($inscritos)) -> with('name_user', $username )-> with('course_name', $cn);
 
 		}
@@ -93,6 +119,31 @@ class UseController extends Controller {
 			$course_name = session()->get('course_name');
 
 			$inscritos = DB::table('vm_inscritos_x_curso')->wherecourse_id($course_id)->get();
+
+			$fp = fopen ('download/totales.csv', 'w');
+			$listaid = array();
+			$listaid[0][0] = 'id';
+			$listaid[0][1] = 'id curso';
+			$listaid[0][2] = 'nombre del curso';
+			$listaid[0][3] = 'inscritos';
+
+			$i = 1;
+
+			foreach ($inscritos as $key => $value) {
+
+				$listaid[$i][0] = ($value->id);
+				$listaid[$i][1] = ($value->course_id);
+				$listaid[$i][2] = ($value->course_name);
+				$listaid[$i][3] = ($value->inscritos);
+
+				$i++;
+			}
+
+			foreach ($listaid as $value) {
+					fputcsv($fp, $value );
+			}
+
+			fclose($fp);
 
 			return view('home')->with ('inscritos', collect($inscritos))-> with('name_user', $username )-> with('course_name', $course_name);
 		}
