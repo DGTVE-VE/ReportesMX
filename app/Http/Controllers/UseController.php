@@ -388,7 +388,7 @@ class UseController extends Controller {
 
 		$reg = fopen ('download/registrados.csv', 'w');
 
-		fputcsv($reg, $mes);
+		fputcsv($reg, $cur);
 
 		fclose($reg);
 
@@ -754,6 +754,8 @@ class UseController extends Controller {
 					$n++;
 				}
 				}
+				if($n == 0)
+					$n=0.0000000001
 
 				$promedio[$a] = $suma_s/$n;
 				$a++;
