@@ -373,11 +373,13 @@ class UseController extends Controller {
 					$k++;
 					$l++;
 
+
 				}
 				else {
 					$sem[$i] = $k;
 					$i++;
 					$k=1;
+
 
 				}
 
