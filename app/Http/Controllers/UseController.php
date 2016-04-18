@@ -327,7 +327,8 @@ class UseController extends Controller {
 			{
 				return $this->correoacurso();
 			}
-			$inscritos = DB::table('vm_inscritos_x_curso')->wherecourse_id($course_id)->get()[0]->inscritos;
+			$inscritos = DB::table('student_courseenrollment')->wherecourse_id($course_id)->count('id');
+
 			$n = $t-$inscritos;
 			$info = array($t, $n, $inscritos);
 			$course_name = session()->get('course_name');
@@ -372,17 +373,14 @@ class UseController extends Controller {
 				if($w == (int)date("Weeknumber: W", strtotime($value))){
 					$k++;
 
-
 				}
 				else {
 					$sem[$i] = $k;
 					$i++;
 					$k=1;
 
-
 				}
 				$l++;
-
 
 					$w = (int)date("Weeknumber: W", strtotime($value));
 					$f = $value;
