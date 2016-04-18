@@ -40,7 +40,7 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="{{url ('/')}}" class="bg-danger">
+					<li><a href="{{url ('/')}}" class="bg-danger" title="Selección de un curso">
 						 <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
 					 </a></li>
           <li><a href="{{url ('home')}}" class="bg-danger">Todos los Cursos</a></li>
@@ -52,8 +52,8 @@
 					<li><a href="{{url ('semanal')}}" class="bg-danger">Inscripción Semanal por Curso</a></li>
 					<li><a href="{{url ('desercion')}}" class="bg-danger">Deserción por curso</a></li>
 					<li><a href="{{url ('videos')}}" class="bg-danger">Videos</a></li>
-					<li><a href="{{url ('logout')}}" class="bg-close">
-						<span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+					<li><a href="{{url ('logout')}}" class="bg-close" title="Salir">
+						<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
 					</a></li>
 
 				</ul>
