@@ -30,12 +30,16 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="http://mx.televisioneducativa.gob.mx/" target="_blank">MéxicoX</a>
+				<a class="navbar-brand" href="http://mx.televisioneducativa.gob.mx/" target="Ir a MéxicoX">
+					 <img src="logo_large.png" alt="imagen" width= "85px">
+					 </a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="{{url ('/')}}" class="bg-danger">Inicio</a></li>
+					<li><a href="{{url ('/')}}" class="bg-danger">
+						 <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					 </a></li>
           <li><a href="{{url ('home')}}" class="bg-danger">Estadísticas Cursos</a></li>
           <li><a href="{{url ('totales')}}" class="bg-danger">Registrados en MéxicoX</a></li>
 					<li><a href="{{url ('edad')}}" class="bg-danger">Por edades</a></li>
@@ -45,7 +49,9 @@
 					<li><a href="{{url ('semanal')}}" class="bg-danger">Inscripción Semanal por Curso</a></li>
 					<li><a href="{{url ('desercion')}}" class="bg-danger">Deserción por curso</a></li>
 					<li><a href="{{url ('videos')}}" class="bg-danger">Videos</a></li>
-          <li><a href="{{url ('logout')}}" class="bg-success">Cerrar Sesión</a></li>
+					<li><a href="{{url ('logout')}}" class="bg-success close">
+						<span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+					</a></li>
 
 				</ul>
 
