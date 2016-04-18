@@ -61,7 +61,7 @@ function drawChart() {
 <div class="container">
   <div class="row">
 
-    <h4>Grafica que muestra el número de inscritos semana a semana.</h4>
+    <h4>Grafica que muestra el número de inscritos semana a semana desde que se abrieron inscripciones.</h4>
 
     <table class="table table-hover">
        <td><div id="line_top_x"></div></td>
@@ -70,7 +70,7 @@ function drawChart() {
 
           <td><div><table class="table table-hover">
                 <tr class="info" style="font-size: medium">
-                  <td>Mes</td>
+                  <td>Semana #</td>
                   <td>Registrados</td>
                 </tr>
                 <?php
