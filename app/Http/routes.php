@@ -23,6 +23,7 @@ Route::get('cursoc', ['middleware' => 'auth', 'uses' => 'UseController@cursoc'])
 
 Route::get('totales', ['middleware' => 'auth', 'uses' => 'UseController@totales']);
 Route::get('inscritost', ['middleware' => 'auth', 'uses' => 'UseController@inscritost']);
+Route::get('semanal', ['middleware' => 'auth', 'uses' => 'UseController@semanal']);
 
 Route::get('genero', ['middleware' => 'auth', 'uses' => 'UseController@genero']);
 Route::get('edad', ['middleware' => 'auth', 'uses' => 'UseController@edad']);

@@ -345,6 +345,63 @@ class UseController extends Controller {
 			return view('accescourse');
 	}
 
+	public function semanal(){
+
+		$super_user = session()->get('super_user');
+		$course_name = session()->get('course_name');
+		$course_id = session()->get('course_id');
+		$username = session()->get('nombre');
+
+		if( session()->get('course_name') == NULL){
+			return $this->correoacurso();
+
+		}
+		elseif((session()->get('accescourse') > 0) || ($super_user == "1")) {
+
+			$semanal = DB::table('student_courseenrollment')->wherecourse_id($course_id)->orderBy('created', 'asc')->lists('created');
+
+			$w = (int)date("Weeknumber: W", strtotime($semanal[0]));
+			$s = date($semanal[0]);
+
+			$i = 0;
+			$k=0;
+			$l=0;
+
+			foreach ($semanal as $value) {
+
+				if($w == (int)date("Weeknumber: W", strtotime($value))){
+					$k++;
+					$l++;
+
+				}
+				else {
+					$sem[$i] = $k;
+					$i++;
+					$k=1;
+
+				}
+
+					$w = (int)date("Weeknumber: W", strtotime($value));
+					$f = $value;
+
+			 }
+
+			$fp = fopen ('download/semanal.csv', 'w');
+
+ 			fputcsv($fp, $sem);
+
+ 			fclose($fp);
+
+			return view('usuarios/semanal') ->with('name_user', $username )->with('course_name', $course_name)->with('semanal', collect($sem))->with('s', $s)->with('f', $f)->with('l', $l);
+		}
+		else{
+
+			$username = session()->get('nombre');
+			return view('accescourse');
+		}
+
+	}
+
 	public function inscritost(){
 
 		$username = session()->get('nombre');
