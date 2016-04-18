@@ -6,9 +6,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Información de usuarios de MéxicoX</title>
 
+	<link rel="icon" href="{{ URL::asset('favicon.ico') }}" type="image/x-icon">
+
 	<!-- <link href="{{ asset('/css/app.css') }}" rel="stylesheet"> -->
 
 	<!-- Fonts -->
+
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -40,7 +43,7 @@
 					<li><a href="{{url ('/')}}" class="bg-danger">
 						 <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
 					 </a></li>
-          <li><a href="{{url ('home')}}" class="bg-danger">Estadísticas Cursos</a></li>
+          <li><a href="{{url ('home')}}" class="bg-danger">Todos los Cursos</a></li>
           <li><a href="{{url ('totales')}}" class="bg-danger">Registrados en MéxicoX</a></li>
 					<li><a href="{{url ('edad')}}" class="bg-danger">Por edades</a></li>
 					<li><a href="{{url ('genero')}}" class="bg-danger">Por género</a></li>
@@ -49,7 +52,7 @@
 					<li><a href="{{url ('semanal')}}" class="bg-danger">Inscripción Semanal por Curso</a></li>
 					<li><a href="{{url ('desercion')}}" class="bg-danger">Deserción por curso</a></li>
 					<li><a href="{{url ('videos')}}" class="bg-danger">Videos</a></li>
-					<li><a href="{{url ('logout')}}" class="bg-success close">
+					<li><a href="{{url ('logout')}}" class="bg-close">
 						<span class="glyphicon glyphicon-off" aria-hidden="true"></span>
 					</a></li>
 
