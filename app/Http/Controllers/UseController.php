@@ -359,7 +359,6 @@ class UseController extends Controller {
 		elseif((session()->get('accescourse') > 0) || ($super_user == "1")) {
 
 			$semanal = DB::table('student_courseenrollment')->wherecourse_id($course_id)->orderBy('created', 'asc')->lists('created');
-			print_r($semanal);
 
 			$w = (int)date("Weeknumber: W", strtotime($semanal[0]));
 			$s = date($semanal[0]);
