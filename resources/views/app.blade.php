@@ -25,6 +25,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-default">
+
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -40,21 +41,18 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="{{url ('/')}}" class="bg-danger" title="Selección de un curso">
+					<li><a href="{{url ('/')}}" class="bg-active" title="Selección de un curso">
 						 <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
 					 </a></li>
-          <li><a href="{{url ('home')}}" class="bg-danger">Todos los Cursos</a></li>
-          <li><a href="{{url ('totales')}}" class="bg-danger">Registrados en MéxicoX</a></li>
-					<li><a href="{{url ('edad')}}" class="bg-danger">Por edades</a></li>
-					<li><a href="{{url ('genero')}}" class="bg-danger">Por género</a></li>
-					<li><a href="{{url ('nivel')}}" class="bg-danger">Por Nivel de Estudios</a></li>
-					<!--li><a href="{{url ('geo')}}" class="bg-danger">Por Entidad Federativa</a></li>-->
-					<li><a href="{{url ('semanal')}}" class="bg-danger">Inscripción Semanal por Curso</a></li>
-					<li><a href="{{url ('desercion')}}" class="bg-danger">Deserción por curso</a></li>
-					<li><a href="{{url ('videos')}}" class="bg-danger">Videos</a></li>
+          <li><a href="{{url ('home')}}" class="bg-active">Listado Cursos</a></li>
+          <li><a href="{{url ('totales')}}" class="bg-active">Información usuarios</a></li>
+					<li><a href="{{url ('infocurso')}}" class="bg-active">Estadísticas curso</a></li>
+					<li><a href="{{url('inscritost')}}" class="bgactive">Inscritos a cursos por mes</a><li>
+					<li><a href="{{url ('videos')}}" class="bg-active">Videos</a></li>
 					<li><a href="{{url ('logout')}}" class="bg-close" title="Salir">
 						<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
 					</a></li>
+					<li><a href="">Hola {{$name_user}}</a></li>
 
 				</ul>
 

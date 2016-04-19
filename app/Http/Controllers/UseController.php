@@ -47,7 +47,7 @@ class UseController extends Controller {
 				$course_name[$j] = DB::table('course_name')->wherecourse_id($cursoid[$j])->get()[0]->course_name;
 			}
 			if($n < 1){
-				return view('accescourse');
+				return view('accescourse')-> with('name_user', $username);
 
 			}
 			else{
@@ -105,7 +105,7 @@ class UseController extends Controller {
 			}
 
 			foreach ($listaid as $value) {
-					fputcsv($fp, $value );
+				fputcsv($fp, $value );
 			}
 
 			fclose($fp);
@@ -140,7 +140,7 @@ class UseController extends Controller {
 			}
 
 			foreach ($listaid as $value) {
-					fputcsv($fp, $value );
+				fputcsv($fp, $value );
 			}
 
 			fclose($fp);
@@ -148,7 +148,7 @@ class UseController extends Controller {
 			return view('home')->with ('inscritos', collect($inscritos))-> with('name_user', $username )-> with('course_name', $course_name);
 		}
 		else
-		return view('accescourse');
+		return view('accescourse')-> with('name_user', $username);
 
 	}
 
@@ -193,7 +193,7 @@ class UseController extends Controller {
 			}
 
 			foreach ($listaid as $value) {
-					fputcsv($fp, $value );
+				fputcsv($fp, $value );
 			}
 
 			fclose($fp);
@@ -201,7 +201,7 @@ class UseController extends Controller {
 			return view('cursoa') -> with ('activos', collect($activos))-> with('name_user', $username )-> with('course_name', $cn);
 		}
 		else
-		return view('private');
+		return view('private')-> with('name_user', $username);
 	}
 
 	public function curson(){
@@ -238,7 +238,7 @@ class UseController extends Controller {
 			}
 
 			foreach ($listaid as $value) {
-					fputcsv($fp, $value );
+				fputcsv($fp, $value );
 			}
 
 			fclose($fp);
@@ -247,7 +247,7 @@ class UseController extends Controller {
 
 		}
 		else
-			return view('private');
+		return view('private')-> with('name_user', $username);
 	}
 
 	public function cursoc(){
@@ -283,7 +283,7 @@ class UseController extends Controller {
 			}
 
 			foreach ($listaid as $value) {
-					fputcsv($fp, $value );
+				fputcsv($fp, $value );
 			}
 
 			fclose($fp);
@@ -292,7 +292,7 @@ class UseController extends Controller {
 
 		}
 		else
-			return view('private');
+		return view('private')-> with('name_user', $username);
 	}
 
 	public function totales(){
@@ -300,26 +300,79 @@ class UseController extends Controller {
 		$username = session()->get('nombre');
 		$super_user = session()->get('super_user');
 
-		$t = DB::table('auth_user')->count('id');
-
 		if(($super_user == '1') && (session()->get('course_id') == null)){
 
+			//////////////////////////////////////////////////////////////
+			$date = date("Y");
+			$edad15 = DB::table('auth_userprofile')->where('year_of_birth', '>=', $date - '15')->count('id');
+			$edad15_20 = DB::table('auth_userprofile')->where('year_of_birth', '<', $date - '15')->where('year_of_birth', '>=', $date - '20')->count('id');
+			$edad20_25 = DB::table('auth_userprofile')->where('year_of_birth', '<', $date - '20')->where('year_of_birth', '>=', $date - '25')->count('id');
+			$edad25_30 = DB::table('auth_userprofile')->where('year_of_birth', '<', $date - '25')->where('year_of_birth', '>=', $date - '30')->count('id');
+			$edad30_35 = DB::table('auth_userprofile')->where('year_of_birth', '<', $date - '30')->where('year_of_birth', '>=', $date - '35')->count('id');
+			$edad35_40 = DB::table('auth_userprofile')->where('year_of_birth', '<', $date - '35')->where('year_of_birth', '>=', $date - '40')->count('id');
+			$edad40_45 = DB::table('auth_userprofile')->where('year_of_birth', '<', $date - '40')->where('year_of_birth', '>=', $date - '45')->count('id');
+			$edad45_50 = DB::table('auth_userprofile')->where('year_of_birth', '<', $date - '45')->where('year_of_birth', '>=', $date - '50')->count('id');
+			$edad50 = DB::table('auth_userprofile')->where('year_of_birth', '<', $date - '50')->count('id');
+
+			$edad = array($edad15,$edad15_20,$edad20_25,$edad25_30,$edad30_35,$edad35_40,$edad40_45,$edad45_50,$edad50);
+
+			$fp = fopen ('download/edades.csv', 'w');
+			fputcsv($fp, $edad);
+			fclose($fp);
+			//////////////////////////////////////////////////////////////
+
+			$f = DB::table('auth_userprofile')->wheregender("f")->count();
+			$m = DB::table('auth_userprofile')->wheregender("m")->count();
+			$n = DB::table('auth_userprofile')->wheregender("")->count();
+			$infot = array($f, $m, $n);
+
+			$fp = fopen ('download/genero.csv', 'w');
+			fputcsv($fp, $infot);
+			fclose($fp);
+
+			//////////////////////////////////////////////////////////////////////////
+
+			$d = DB::table('auth_userprofile')->wherelevel_of_education('p')->select('id')->count();
+			$m = DB::table('auth_userprofile')->wherelevel_of_education('m')->select('id')->count();
+			$t = DB::table('auth_userprofile')->wherelevel_of_education('a')->select('id')->count();
+			$l = DB::table('auth_userprofile')->wherelevel_of_education('b')->select('id')->count();
+			$p = DB::table('auth_userprofile')->wherelevel_of_education('hs')->select('id')->count();
+			$s = DB::table('auth_userprofile')->wherelevel_of_education('jhs')->select('id')->count();
+			$pr = DB::table('auth_userprofile')->wherelevel_of_education('el')->select('id')->count();
+			$n = DB::table('auth_userprofile')->wherelevel_of_education('none')->select('id')->count();
+			$o = DB::table('auth_userprofile')->wherelevel_of_education('other')->select('id')->count();
+			$ne = DB::table('auth_userprofile')->wherelevel_of_education('')->select('id')->count();
+			$dc = DB::table('auth_userprofile')->wherelevel_of_education('p_se')->select('id')->count();
+			$do = DB::table('auth_userprofile')->wherelevel_of_education('p_oth')->select('id')->count();
+
+			$d = $d + $dc + $do;
+
+			$estudio1 = array('Doctorado' => $d, 'Maestria' => $m, 'Técnico Superior' => $t, 'Licenciatura' => $l, 'Bachillerato' => $p, 'Secundaria' => $s, 'Primaria' => $pr, 'Ninguno' => $n, 'Otros' =>  $o, 'No especificado' => $ne);
+			$estudio = array($d, $m, $t, $l, $p, $s, $pr, $n, $o, $ne);
+
+			$fp = fopen ('download/nivel.csv', 'w');
+			fputcsv($fp, $estudio1);
+			fclose($fp);
+
+			//////////////////////////////////////////////////////////////////////////
+
+			$t = DB::table('auth_user')->count('id');
 			$n = DB::table('auth_user')->whereis_active('0')->count('id');
 			$a = DB::table('auth_user')->whereis_active('1')->count('id');
 
 			$info = array($t, $n, $a);
 
-			$cn = "Estadísticas todos los cursos:";
-
 			$fp = fopen ('download/totales.csv', 'w');
-
 			fputcsv($fp, $info);
-
 			fclose($fp);
 
-			return view('usuarios/totales')-> with ('info', collect($info))-> with('name_user', $username )-> with('course_name', $cn);
+			$cn = "algún curso";
 
-		}elseif((session()->get('accescourse') > 0) || ($super_user == "1")) {
+			return view('usuarios/totales')-> with ('info', collect($info)) -> with ('edad', collect($edad))->with('infot', collect($infot))->with ('estudio', collect($estudio))->with('name_user', $username )-> with('course_name', $cn);
+
+		}
+
+		elseif((session()->get('accescourse') > 0) || ($super_user == "1")) {
 
 			$course_id = session()->get('course_id');
 
@@ -327,6 +380,66 @@ class UseController extends Controller {
 			{
 				return $this->correoacurso();
 			}
+
+			////////////////////////////////////////////////////////////////////////////////////////////////
+			$date = date("Y");
+			$edad15 = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '>=', $date - '15')->select('id')->count();
+			$edad15_20 = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '15')->where('year_of_birth', '>=', $date - '20')->select('id')->count();
+			$edad20_25 = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '20')->where('year_of_birth', '>=', $date - '25')->select('id')->count();
+			$edad25_30 = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '25')->where('year_of_birth', '>=', $date - '30')->select('id')->count();
+			$edad30_35 = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '30')->where('year_of_birth', '>=', $date - '35')->select('id')->count();
+			$edad35_40 = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '35')->where('year_of_birth', '>=', $date - '40')->select('id')->count();
+			$edad40_45 = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '40')->where('year_of_birth', '>=', $date - '45')->select('id')->count();
+			$edad45_50 = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '45')->where('year_of_birth', '>=', $date - '50')->select('id')->count();
+			$edad50 = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '50')->select('id')->count();
+
+			$edad = array($edad15,$edad15_20,$edad20_25,$edad25_30,$edad30_35,$edad35_40,$edad40_45,$edad45_50,$edad50);
+
+			$fp = fopen ('download/edades.csv', 'w');
+
+			fputcsv($fp, $edad);
+
+			fclose($fp);
+			///////////////////////////////////////////////////////////////////////////////////////////
+
+			$m = DB::table('student_courseenrollment')->join('auth_userprofile', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wheregender('m')->count();
+			$f = DB::table('student_courseenrollment')->join('auth_userprofile', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wheregender('f')->count();
+			$n = DB::table('student_courseenrollment')->join('auth_userprofile', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wheregender('')->count();
+
+			$infot = array($f, $m, $n);
+
+			$fp = fopen ('download/genero.csv', 'w');
+			fputcsv($fp, $infot);
+			fclose($fp);
+
+			//////////////////////////////////////////////////////////////////////////
+
+			$d = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('p')->select('id')->count();
+			$m = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('m')->select('id')->count();
+			$t = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('a')->select('id')->count();
+			$l = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('b')->select('id')->count();
+			$p = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('hs')->select('id')->count();
+			$s = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('jhs')->select('id')->count();
+			$pr = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('el')->select('id')->count();
+			$n = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('none')->select('id')->count();
+			$o = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('other')->select('id')->count();
+			$ne = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('')->select('id')->count();
+			$dc = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('p_se')->select('id')->count();
+			$do = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('p_oth')->select('id')->count();
+
+			$d = $d + $dc + $do;
+
+			$estudio1 = array('Doctorado' => $d, 'Maestria' => $m, 'Técnico Superior' => $t, 'Licenciatura' => $l, 'Bachillerato' => $p, 'Secundaria' => $s, 'Primaria' => $pr, 'Ninguno' => $n, 'Otros' =>  $o, 'No especificado' => $ne);
+			$estudio = array($d, $m, $t, $l, $p, $s, $pr, $n, $o, $ne);
+
+			$fp = fopen ('download/nivel.csv', 'w');
+			fputcsv($fp, $estudio1);
+			fclose($fp);
+
+
+			/////////////////////////////////////////////////////////////////////////////
+
+			$t = DB::table('auth_user')->count('id');
 			$inscritos = DB::table('student_courseenrollment')->wherecourse_id($course_id)->count('id');
 
 			$n = $t-$inscritos;
@@ -334,17 +447,73 @@ class UseController extends Controller {
 			$course_name = session()->get('course_name');
 
 			$fp = fopen ('download/totales.csv', 'w');
-
 			fputcsv($fp, $info);
-
 			fclose($fp);
 
-			return view('usuarios/totales') -> with ('info', collect($info))->with('name_user', $username )-> with('course_name', $course_name);
+			return view('usuarios/totales') -> with ('info', collect($info)) -> with ('edad', collect($edad))->with ('infot', collect($infot))->with ('estudio', collect($estudio))->with('name_user', $username )-> with('course_name', $course_name);
 
 		}
 		else
-			return view('accescourse');
+		return view('accescourse')-> with('name_user', $username);
 	}
+
+	public function infocurso(){
+
+		$super_user = session()->get('super_user');
+		$course_name = session()->get('course_name');
+		$course_id = session()->get('course_id');
+		$username = session()->get('nombre');
+
+		if( session()->get('course_name') == NULL){
+			return $this->correoacurso();
+
+		}
+		elseif((session()->get('accescourse') > 0) || ($super_user == "1")) {
+
+			$semanal = DB::table('student_courseenrollment')->wherecourse_id($course_id)->orderBy('created', 'asc')->lists('created');
+
+			$w = (int)date("Weeknumber: W", strtotime($semanal[0]));
+			$s = date($semanal[0]);
+
+			$i = 0;
+			$k=0;
+			$l=0;
+
+			foreach ($semanal as $value) {
+
+				if($w == (int)date("Weeknumber: W", strtotime($value))){
+					$k++;
+
+				}
+				else {
+					$sem[$i] = $k;
+					$i++;
+					$k=1;
+
+				}
+				$l++;
+
+				$w = (int)date("Weeknumber: W", strtotime($value));
+				$f = $value;
+
+			}
+
+			$fp = fopen ('download/semanal.csv', 'w');
+			fputcsv($fp, $sem);
+			fclose($fp);
+
+			$desercion = DB::table('vm_desercion')->wherecourse_name($course_name)->get();
+			$json = json_encode ($desercion);
+
+			return view('usuarios/infocurso') -> with('desercion', $json)->with('name_user', $username )-> with('course_name', $course_name)->with('semanal', collect($sem))->with('s', $s)->with('f', $f)->with('l', $l);
+		}
+		else{
+
+			$username = session()->get('nombre');
+			return view('accescourse')-> with('name_user', $username);
+		}
+	}
+
 
 	public function semanal(){
 
@@ -382,23 +551,23 @@ class UseController extends Controller {
 				}
 				$l++;
 
-					$w = (int)date("Weeknumber: W", strtotime($value));
-					$f = $value;
+				$w = (int)date("Weeknumber: W", strtotime($value));
+				$f = $value;
 
-			 }
+			}
 
 			$fp = fopen ('download/semanal.csv', 'w');
 
- 			fputcsv($fp, $sem);
+			fputcsv($fp, $sem);
 
- 			fclose($fp);
+			fclose($fp);
 
 			return view('usuarios/semanal') ->with('name_user', $username )->with('course_name', $course_name)->with('semanal', collect($sem))->with('s', $s)->with('f', $f)->with('l', $l);
 		}
 		else{
 
 			$username = session()->get('nombre');
-			return view('accescourse');
+			return view('accescourse')-> with('name_user', $username);
 		}
 
 	}
@@ -410,234 +579,56 @@ class UseController extends Controller {
 
 		if(($super_user == '1')){
 
-		$mes1 = DB::select(DB::raw('SELECT count(id) as cuenta FROM auth_user WHERE YEAR(date_joined) = 2015 GROUP BY MONTH(date_joined)'));
+			$mes1 = DB::select(DB::raw('SELECT count(id) as cuenta FROM auth_user WHERE YEAR(date_joined) = 2015 GROUP BY MONTH(date_joined)'));
 
-		$i = 0;
-		foreach ($mes1 as $m){
-			$mes[$i] = $m->cuenta;
-			$i++;
-		}
-		$mes2 = DB::select(DB::raw('SELECT count(id) as cuenta FROM auth_user WHERE YEAR(date_joined) = 2016 GROUP BY MONTH(date_joined)'));
+			$i = 0;
+			foreach ($mes1 as $m){
+				$mes[$i] = $m->cuenta;
+				$i++;
+			}
+			$mes2 = DB::select(DB::raw('SELECT count(id) as cuenta FROM auth_user WHERE YEAR(date_joined) = 2016 GROUP BY MONTH(date_joined)'));
 
-		$i = sizeof($mes);
-		foreach ($mes2 as $m){
-			$mes[$i] = $m->cuenta;
-			$i++;
-		}
+			$i = sizeof($mes);
+			foreach ($mes2 as $m){
+				$mes[$i] = $m->cuenta;
+				$i++;
+			}
 
-		$cur1 = DB::select(DB::raw('SELECT count(id) as c FROM student_courseenrollment where year(created) = 2015 group by month(created)'));
-		$i = 0;
-		foreach ($cur1 as $c1){
-			$cur[$i] = $c1->c;
-			$i++;
-		}
-		$cur2 = DB::select(DB::raw('SELECT count(id) as c FROM student_courseenrollment where year(created) = 2016 group by month(created)'));
-		$i = sizeof($cur);
-		foreach ($cur2 as $c2){
-			$cur[$i] = $c2->c;
-			$i++;
-		}
+			$cur1 = DB::select(DB::raw('SELECT count(id) as c FROM student_courseenrollment where year(created) = 2015 group by month(created)'));
+			$i = 0;
+			foreach ($cur1 as $c1){
+				$cur[$i] = $c1->c;
+				$i++;
+			}
+			$cur2 = DB::select(DB::raw('SELECT count(id) as c FROM student_courseenrollment where year(created) = 2016 group by month(created)'));
+			$i = sizeof($cur);
+			foreach ($cur2 as $c2){
+				$cur[$i] = $c2->c;
+				$i++;
+			}
 
-		$ins = fopen ('download/inscritos.csv', 'w');
+			$ins = fopen ('download/inscritos.csv', 'w');
 
-		fputcsv($ins, $mes);
+			fputcsv($ins, $mes);
 
-		fclose($ins);
+			fclose($ins);
 
-		$reg = fopen ('download/registrados.csv', 'w');
+			$reg = fopen ('download/registrados.csv', 'w');
 
-		fputcsv($reg, $cur);
+			fputcsv($reg, $cur);
 
-		fclose($reg);
+			fclose($reg);
 
 			$cn = "Estadísticas todos los cursos:";
 
-			return view('usuarios/inscritost')-> with('mes1', collect($mes))-> with('mes2', collect($cur))-> with('name_user', $username )-> with('course_name', $cn);
+			return view('usuarios/inscritost')-> with('mes1', collect($mes))-> with('mes2', collect($cur))-> with('name_user', $username)-> with('course_name', $cn);
 
 		}
 		else
-			return view('private');
+		return view('private')-> with('name_user', $username);
 	}
 
 
-	public function genero()
-	{
-		$username = session()->get('nombre');
-		$super_user = session()->get('super_user');
-		$course_name = session()->get('course_name');
-		$course_id = session()->get('course_id');
-
-		if(($super_user == '1') && (session()->get('course_name') == null))
-		{
-
-			$f = DB::table('auth_userprofile')->wheregender("f")->count();
-			$m = DB::table('auth_userprofile')->wheregender("m")->count();
-			$n = DB::table('auth_userprofile')->wheregender("")->count();
-			$infot = array($f, $m, $n);
-			$cn = "Estadísticas todos los cursos:";
-
-			$fp = fopen ('download/genero.csv', 'w');
-
-			fputcsv($fp, $infot);
-
-			fclose($fp);
-
-			return view('usuarios/genero') -> with ('infot', collect($infot))-> with('name_user', $username )-> with('course_name', $cn);
-
-		}elseif((session()->get('accescourse') > 0) || ($super_user == "1")) {
-
-			$m = DB::table('student_courseenrollment')->join('auth_userprofile', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wheregender('m')->count();
-			$f = DB::table('student_courseenrollment')->join('auth_userprofile', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wheregender('f')->count();
-			$n = DB::table('student_courseenrollment')->join('auth_userprofile', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wheregender('')->count();
-			$infot = array($f, $m, $n);
-			$course_name = session()->get('course_name');
-
-			$fp = fopen ('download/genero.csv', 'w');
-
-			fputcsv($fp, $infot);
-
-			fclose($fp);
-
-			return view('usuarios/genero') -> with ('infot', collect($infot))->with('name_user', $username )-> with('course_name', $course_name);
-
-		}
-		else
-			return view('accescourse');
-	}
-
-	public function edad(){
-
-		$super_user = session()->get('super_user');
-		$course_name = session()->get('course_name');
-		$course_id = session()->get('course_id');
-		$username = session()->get('nombre');
-
-		if(($super_user == '1') && (session()->get('course_name') == null))
-		{
-			$date = date("Y");
-			$edad15 = DB::table('auth_userprofile')->where('year_of_birth', '>=', $date - '15')->count('id');
-			$edad15_20 = DB::table('auth_userprofile')->where('year_of_birth', '<', $date - '15')->where('year_of_birth', '>=', $date - '20')->count('id');
-			$edad20_25 = DB::table('auth_userprofile')->where('year_of_birth', '<', $date - '20')->where('year_of_birth', '>=', $date - '25')->count('id');
-			$edad25_30 = DB::table('auth_userprofile')->where('year_of_birth', '<', $date - '25')->where('year_of_birth', '>=', $date - '30')->count('id');
-			$edad30_35 = DB::table('auth_userprofile')->where('year_of_birth', '<', $date - '30')->where('year_of_birth', '>=', $date - '35')->count('id');
-			$edad35_40 = DB::table('auth_userprofile')->where('year_of_birth', '<', $date - '35')->where('year_of_birth', '>=', $date - '40')->count('id');
-			$edad40_45 = DB::table('auth_userprofile')->where('year_of_birth', '<', $date - '40')->where('year_of_birth', '>=', $date - '45')->count('id');
-			$edad45_50 = DB::table('auth_userprofile')->where('year_of_birth', '<', $date - '45')->where('year_of_birth', '>=', $date - '50')->count('id');
-			$edad50 = DB::table('auth_userprofile')->where('year_of_birth', '<', $date - '50')->count('id');
-
-			$edad = array($edad15,$edad15_20,$edad20_25,$edad25_30,$edad30_35,$edad35_40,$edad40_45,$edad45_50,$edad50);
-			$cn = "Estadísticas todos los cursos:";
-
-			$fp = fopen ('download/edades.csv', 'w');
-
-			fputcsv($fp, $edad);
-
-			fclose($fp);
-
-			return view('usuarios/edades') -> with ('edad', collect($edad))-> with('name_user', $username )-> with('course_name', $cn);
-
-		}elseif((session()->get('accescourse') > 0) || ($super_user == "1")) {
-
-			$date = date("Y");
-			$edad15 = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '>=', $date - '15')->select('id')->count();
-			$edad15_20 = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '15')->where('year_of_birth', '>=', $date - '20')->select('id')->count();
-			$edad20_25 = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '20')->where('year_of_birth', '>=', $date - '25')->select('id')->count();
-			$edad25_30 = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '25')->where('year_of_birth', '>=', $date - '30')->select('id')->count();
-			$edad30_35 = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '30')->where('year_of_birth', '>=', $date - '35')->select('id')->count();
-			$edad35_40 = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '35')->where('year_of_birth', '>=', $date - '40')->select('id')->count();
-			$edad40_45 = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '40')->where('year_of_birth', '>=', $date - '45')->select('id')->count();
-			$edad45_50 = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '45')->where('year_of_birth', '>=', $date - '50')->select('id')->count();
-			$edad50 = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '50')->select('id')->count();
-
-			$edad = array($edad15,$edad15_20,$edad20_25,$edad25_30,$edad30_35,$edad35_40,$edad40_45,$edad45_50,$edad50);
-
-			$fp = fopen ('download/edades.csv', 'w');
-
-			fputcsv($fp, $edad);
-
-			fclose($fp);
-
-			return view('usuarios/edades') -> with ('edad', collect($edad))->with('name_user', $username )-> with('course_name', $course_name);
-
-		}
-		else
-			return view('accescourse');
-
-	}
-
-	public function nivel(){
-
-		$super_user = session()->get('super_user');
-		$course_name = session()->get('course_name');
-		$course_id = session()->get('course_id');
-		$username = session()->get('nombre');
-
-		if(($super_user == '1') && (session()->get('course_name') == null))
-		{
-
-			$d = DB::table('auth_userprofile')->wherelevel_of_education('p')->select('id')->count();
-			$m = DB::table('auth_userprofile')->wherelevel_of_education('m')->select('id')->count();
-			$t = DB::table('auth_userprofile')->wherelevel_of_education('a')->select('id')->count();
-			$l = DB::table('auth_userprofile')->wherelevel_of_education('b')->select('id')->count();
-			$p = DB::table('auth_userprofile')->wherelevel_of_education('hs')->select('id')->count();
-			$s = DB::table('auth_userprofile')->wherelevel_of_education('jhs')->select('id')->count();
-			$pr = DB::table('auth_userprofile')->wherelevel_of_education('el')->select('id')->count();
-			$n = DB::table('auth_userprofile')->wherelevel_of_education('none')->select('id')->count();
-			$o = DB::table('auth_userprofile')->wherelevel_of_education('other')->select('id')->count();
-			$ne = DB::table('auth_userprofile')->wherelevel_of_education('')->select('id')->count();
-			$dc = DB::table('auth_userprofile')->wherelevel_of_education('p_se')->select('id')->count();
-			$do = DB::table('auth_userprofile')->wherelevel_of_education('p_oth')->select('id')->count();
-
-			$d = $d + $dc + $do;
-
-			$estudio1 = array('Doctorado' => $d, 'Maestria' => $m, 'Técnico Superior' => $t, 'Licenciatura' => $l, 'Bachillerato' => $p, 'Secundaria' => $s, 'Primaria' => $pr, 'Ninguno' => $n, 'Otros' =>  $o, 'No especificado' => $ne);
-			$estudio = array($d, $m, $t, $l, $p, $s, $pr, $n, $o, $ne);
-
-			$cn = "Estadísticas todos los cursos";
-
-			$fp = fopen ('download/nivel.csv', 'w');
-
-			fputcsv($fp, $estudio1);
-
-
-			fclose($fp);
-
-			return view('usuarios/nivel') -> with ('estudio', collect($estudio))-> with('name_user', $username )-> with('course_name', $cn);
-
-		}elseif((session()->get('accescourse') > 0) || ($super_user == "1")) {
-
-			$d = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('p')->select('id')->count();
-			$m = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('m')->select('id')->count();
-			$t = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('a')->select('id')->count();
-			$l = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('b')->select('id')->count();
-			$p = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('hs')->select('id')->count();
-			$s = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('jhs')->select('id')->count();
-			$pr = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('el')->select('id')->count();
-			$n = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('none')->select('id')->count();
-			$o = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('other')->select('id')->count();
-			$ne = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('')->select('id')->count();
-			$dc = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('p_se')->select('id')->count();
-			$do = DB::table('auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('p_oth')->select('id')->count();
-
-			$d = $d + $dc + $do;
-
-			$estudio1 = array('Doctorado' => $d, 'Maestria' => $m, 'Técnico Superior' => $t, 'Licenciatura' => $l, 'Bachillerato' => $p, 'Secundaria' => $s, 'Primaria' => $pr, 'Ninguno' => $n, 'Otros' =>  $o, 'No especificado' => $ne);
-			$estudio = array($d, $m, $t, $l, $p, $s, $pr, $n, $o, $ne);
-
-			$fp = fopen ('download/nivel.csv', 'w');
-
-				fputcsv($fp, $estudio1);
-
-			fclose($fp);
-
-
-			return view('usuarios/nivel') -> with ('estudio', collect($estudio))->with('name_user', $username )-> with('course_name', $course_name);
-
-		}else
-
-		return view('accescourse');
-
-	}
 
 	public function geo(){
 
@@ -734,34 +725,8 @@ class UseController extends Controller {
 
 		}
 		else
-				return view('accescourse');
+		return view('accescourse')-> with('name_user', $username);
 
-	}
-
-	public function desercion(){
-
-		$super_user = session()->get('super_user');
-		$course_name = session()->get('course_name');
-		$course_id = session()->get('course_id');
-		$username = session()->get('nombre');
-
-		if( session()->get('course_name') == NULL){
-			return $this->correoacurso();
-
-		}
-		elseif((session()->get('accescourse') > 0) || ($super_user == "1")) {
-
-			$desercion = DB::table('vm_desercion')->wherecourse_name($course_name)->get();
-
-			$json = json_encode ($desercion);
-
-			return view('usuarios/desercion') -> with('desercion', $json)->with('name_user', $username )-> with('course_name', $course_name);
-		}
-		else{
-
-			$username = session()->get('nombre');
-			return view('accescourse');
-		}
 	}
 
 	public function videos(){
@@ -780,11 +745,11 @@ class UseController extends Controller {
 			$videos = DB::table('courseware_studentmodule')->wherecourse_id($course_id)->wheremodule_type('video')->groupBy('module_id')->lists('module_id');
 
 			if( !$videos)
-				return view('videos/accesvideos');
+			return view('videos/accesvideos')-> with('name_user', $username);
 
 
-				for($w = 0 ; $w < sizeof($videos) ; $w++)
-						$segmax[$w] = 0;
+			for($w = 0 ; $w < sizeof($videos) ; $w++)
+			$segmax[$w] = 0;
 			$a = 0;
 			foreach ($videos as $val) {
 				$v = DB::table('courseware_studentmodule')->wheremodule_id($val)->lists('state');
@@ -800,23 +765,23 @@ class UseController extends Controller {
 					$time = substr($rest, 0, -2);
 
 					if($time == NULL)
-						$time = '00:00:00';
-						if($time != '00:00:00'){
-					list($horas, $minutos, $segundos) = explode(':', $time);
-					$seg = ($horas * 60 ) + $minutos + ($segundos/60);
+					$time = '00:00:00';
+					if($time != '00:00:00'){
+						list($horas, $minutos, $segundos) = explode(':', $time);
+						$seg = ($horas * 60 ) + $minutos + ($segundos/60);
 
-					if($segmax[$a] < $seg){
-						$segmax[$a] = $seg;
+						if($segmax[$a] < $seg){
+							$segmax[$a] = $seg;
+						}
+						$suma_s = $suma_s + $seg;
+						$n++;
 					}
-					$suma_s = $suma_s + $seg;
-					$n++;
-				}
 				}
 				if($n != 0)
-					$promedio[$a] = $suma_s/$n;
-					else {
-						$promedio[$a] = 0;
-					}
+				$promedio[$a] = $suma_s/$n;
+				else {
+					$promedio[$a] = 0;
+				}
 
 
 				$a++;

@@ -1,5 +1,3 @@
-  @extends('app') @section('content')
-  <center> <h4>Hola, {{$name_user}}, {{$course_name}}</h4></center>
   <head>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
@@ -82,16 +80,18 @@ if(mes2[i]){
   </script>
   </head>
 <body>
+  @extends('app') @section('content')
+<center> <h4>Información de todos los cursos de MéxicoX</h4></center>
+<br>
 <div class="container">
     <div class="row">
 
       <h4>Grafica que muestra las estadísticas mes a mes desde febrero del 2015, de todos los usuarios que se registran en MéxicoX</h4>
 
-      <table class="table table-hover">
+      <table class="table table-hover table-bordered">
          <td><div id="line_top_x"></div></td>
-         <a class="btn btn-default" href="{{url ('/download/inscritos.csv')}}" role="button">Descargar archivo csv</a>
 
-            <td><div><table class="table table-hover">
+            <td><div><table class="table table-hover table-bordered">
                   <tr class="info" style="font-size: medium">
                     <td>Mes</td>
                     <td>Registrados</td>
@@ -103,15 +103,15 @@ if(mes2[i]){
                     </tr>
                   <?php endforeach; ?>
                   </table>
+                  <a class="btn btn-default" href="{{url ('/download/inscritos.csv')}}" role="button">Descargar archivo inscritos.csv</a>
             </div></td>
       </table>
       <br>
       <h4>Grafica que muestra las estadísticas mes a mes desde marzo del 2015, de todos los usuarios que se inscriben en algún curso de MéxicoX</h4>
-      <table class="table table-hover">
+      <table class="table table-hover table-bordered">
          <td><div id="line_top_y"></div></td>
-         <a class="btn btn-default" href="{{url ('/download/registrados.csv')}}" role="button">Descargar archivo csv</a>
 
-            <td><div><table class="table table-hover">
+            <td><div><table class="table table-hover table-bordered">
                   <tr class="success" style="font-size: medium">
                     <td>Mes</td>
                     <td>Registrados</td>
@@ -123,6 +123,7 @@ if(mes2[i]){
                     </tr>
                   <?php endforeach; ?>
                   </table>
+                  <a class="btn btn-default" href="{{url ('/download/registrados.csv')}}" role="button">Descargar archivo registrados.csv</a>
             </div></td>
 
       </table>
