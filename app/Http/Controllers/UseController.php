@@ -621,10 +621,19 @@ class UseController extends Controller {
 
 			$users_course = DB::select(DB::raw('SELECT count(n) as users, n FROM vm_count_user_course group by n'));
 
-			#print_r($users_course);
+			$us = fopen ('download/usuarios_curso.csv', 'w');
 
+			$i = 0;
+			foreach ($users_course as $u){
+				$uc[$i] = $u->users;
+				$i++;
+			}
 
-			return view('usuarios/inscritost')-> with('mes1', collect($mes))-> with('mes2', collect($cur))-> with('name_user', $username)->with('users_course', $users_course);
+				fputcsv($us, $uc);
+
+			fclose($us);
+
+			return view('usuarios/inscritost')-> with('mes1', collect($mes))-> with('mes2', collect($cur))-> with('name_user', $username)->with('users_course', collect($users_course));
 
 		}
 		else
