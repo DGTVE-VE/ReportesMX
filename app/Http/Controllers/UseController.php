@@ -470,7 +470,14 @@ class UseController extends Controller {
 		}
 		elseif((session()->get('accescourse') > 0) || ($super_user == "1")) {
 
-			$semanal = DB::table('student_courseenrollment')->wherecourse_id($course_id)->orderBy('created', 'asc')->lists('created');
+			if(DB::table('student_courseenrollment')->wherecourse_id($course_id)->orderBy('created', 'asc')->lists('created'))
+			{
+				$semanal = DB::table('student_courseenrollment')->wherecourse_id($course_id)->orderBy('created', 'asc')->lists('created');
+			}
+			else {
+				return view('accescourse');
+			}
+
 
 			$w = (int)date("Weeknumber: W", strtotime($semanal[0]));
 			$s = date($semanal[0]);
@@ -606,30 +613,55 @@ class UseController extends Controller {
 				$cur[$i] = $c2->c;
 				$i++;
 			}
+/////////////////////////////////////////////////
 
 			$ins = fopen ('download/inscritos.csv', 'w');
 
-			fputcsv($ins, $mes);
+			$j=1;
+
+			$registros1 = array ('Mes', 'Registrados');
+			fputcsv($ins, $registros1);
+
+			foreach ($mes as $u){
+
+				$registros1 = array ($j, $u);
+				fputcsv($ins, $registros1);
+				$j++;
+			}
 
 			fclose($ins);
 
+/////////////////////////////////////7
 			$reg = fopen ('download/registrados.csv', 'w');
 
-			fputcsv($reg, $cur);
+			$j=1;
+
+			$registros2 = array ('Mes', 'Registrados');
+			fputcsv($reg, $registros2);
+
+			foreach ($cur as $u){
+
+				$registros2 = array ($j, $u);
+				fputcsv($reg, $registros2);
+				$j++;
+			}
+
 
 			fclose($reg);
+
+//////////////////////////////////////////////////////
 
 			$users_course = DB::select(DB::raw('SELECT count(n) as users, n FROM vm_count_user_course group by n'));
 
 			$us = fopen ('download/usuarios_curso.csv', 'w');
 
 			$i = 0;
-			foreach ($users_course as $u){
-				$uc[$i] = $u->users;
-				$i++;
-			}
+			$registros = array ();
 
-				fputcsv($us, $uc);
+			foreach ($users_course as $u){
+				$registro = array ($u->n, $u->users);
+				fputcsv($us, $registro);
+			}
 
 			fclose($us);
 
