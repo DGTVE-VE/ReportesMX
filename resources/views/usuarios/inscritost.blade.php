@@ -83,8 +83,30 @@ if(mes2[i]){
   @extends('app') @section('content')
 <center> <h4>Información de todos los cursos de MéxicoX</h4></center>
 <br>
+
+
+
 <div class="container">
     <div class="row">
+
+
+      <table class="table table-hover table-bordered" style="font-size: small">
+            <tr class="info" style="font-size: small">
+              <td>Número de cursos</td>
+              <td>Alumnos registrados</td>
+            </tr>
+            <?php $i = 0; foreach ($users_course as $m): ?>
+              <tr>
+                <td><?php print_r($m->n); ?></td>
+                <td><?php print_r($m->users); $i = $i + $m->users;?></td>
+              </tr>
+            <?php endforeach; ?>
+              <tr>
+                <td>Total</td>
+                <td>{{$i}}</td>
+              </tr>
+            </table>
+
 
       <h4>Grafica que muestra las estadísticas mes a mes desde febrero del 2015, de todos los usuarios que se registran en MéxicoX</h4>
 

@@ -366,7 +366,7 @@ class UseController extends Controller {
 			fputcsv($fp, $info);
 			fclose($fp);
 
-			$cn = "algún curso";
+			$cn = "México X";
 
 			return view('usuarios/totales')-> with ('info', collect($info)) -> with ('edad', collect($edad))->with('infot', collect($infot))->with ('estudio', collect($estudio))->with('name_user', $username )-> with('course_name', $cn);
 
@@ -619,9 +619,12 @@ class UseController extends Controller {
 
 			fclose($reg);
 
-			$cn = "Estadísticas todos los cursos:";
+			$users_course = DB::select(DB::raw('SELECT count(n) as users, n FROM vm_count_user_course group by n'));
 
-			return view('usuarios/inscritost')-> with('mes1', collect($mes))-> with('mes2', collect($cur))-> with('name_user', $username)-> with('course_name', $cn);
+			#print_r($users_course);
+
+
+			return view('usuarios/inscritost')-> with('mes1', collect($mes))-> with('mes2', collect($cur))-> with('name_user', $username)->with('users_course', $users_course);
 
 		}
 		else

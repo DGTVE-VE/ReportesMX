@@ -84,7 +84,7 @@
 </head>
 <body>
   @extends('app') @section('content')
-  <center> <h4>Información de usuarios inscritos al curso de "{{$course_name}}"</h4></center>
+  <center> <h4>Información de usuarios inscritos a "{{$course_name}}"</h4></center>
 
   <div class="container">
     <div class="row">
@@ -104,11 +104,11 @@
               <td>{{$info[0]}}</td>
             </tr>
             <tr class="info">
-              <td>Inscritos a {{$course_name}}</td>
+              <td>Activos en {{$course_name}}</td>
               <td>{{$info[2]}}</td>
             </tr>
             <tr class="danger">
-              <td>No registrados en {{$course_name}}</td>
+              <td>No activos en {{$course_name}}</td>
               <td>{{$info[1]}}</td>
             </tr>
           </tbody>

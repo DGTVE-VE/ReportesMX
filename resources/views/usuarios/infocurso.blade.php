@@ -141,7 +141,7 @@ function drawChart() {
 </head>
 <body>
 @extends('app') @section('content')
-<center> <h4>Información del curso de "{{$course_name}}"</h4></center>
+<center> <h4>Información de "{{$course_name}}"</h4></center>
 <br><br>
 
 <div class="container">

@@ -1,5 +1,5 @@
 @extends('cursos') @section('contentd')
-<center> <h4>Información de "{{$course_name}}"</h4></center>
+<center> <h4>Cursos activos</h4></center>
 <div class="container">
     <div class="row">
         <div>

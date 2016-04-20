@@ -47,7 +47,7 @@
           <li><a href="{{url ('home')}}" class="bg-active">Listado Cursos</a></li>
           <li><a href="{{url ('totales')}}" class="bg-active">Información usuarios</a></li>
 					<li><a href="{{url ('infocurso')}}" class="bg-active">Estadísticas curso</a></li>
-					<li><a href="{{url('inscritost')}}" class="bgactive">Inscritos a cursos por mes</a><li>
+					<li><a href="{{url('inscritost')}}" class="bgactive">Inscritos a cursos</a><li>
 					<li><a href="{{url ('videos')}}" class="bg-active">Videos</a></li>
 					<li><a href="{{url ('logout')}}" class="bg-close" title="Salir">
 						<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
