@@ -506,6 +506,10 @@ class UseController extends Controller {
 				$f = $value;
 
 			}
+			if(!$sem)
+			{
+				$sem = array();
+			}
 
 			$fp = fopen ('download/semanal.csv', 'w');
 			fputcsv($fp, $sem);
