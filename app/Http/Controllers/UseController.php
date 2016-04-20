@@ -487,6 +487,8 @@ class UseController extends Controller {
 			$i = 0;
 			$k=0;
 			$l=0;
+			$sem[0]=0;
+
 
 			foreach ($semanal as $value) {
 
@@ -506,10 +508,7 @@ class UseController extends Controller {
 				$f = $value;
 
 			}
-			if(!$sem)
-			{
-				$sem = array();
-			}
+
 
 			$fp = fopen ('download/semanal.csv', 'w');
 			fputcsv($fp, $sem);
