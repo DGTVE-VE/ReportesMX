@@ -89,7 +89,7 @@ if(mes2[i]){
 <div class="container">
     <div class="row">
 
-
+  <h4>Tabla que muestra los cuantos usuarios se registran a N cursos.</h4>
       <table class="table table-hover table-bordered" style="font-size: small">
             <tr class="info" style="font-size: small">
               <td>Número de cursos</td>
