@@ -475,7 +475,7 @@ class UseController extends Controller {
 				$semanal = DB::table('student_courseenrollment')->wherecourse_id($course_id)->orderBy('created', 'asc')->lists('created');
 			}
 			else {
-				return view('accescourse');
+				return view('accescourse')-> with('name_user', $username);
 			}
 
 
