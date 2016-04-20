@@ -16,6 +16,7 @@ function drawChart() {
 
 
     for (var i = 0 ; i <= sem.length ; i++){
+
     if(sem[i]){
       data0.addRows([
         [i,  parseInt(sem[i])],
@@ -25,8 +26,6 @@ function drawChart() {
         [i,  0],
       ]);
     }
-
-
 
     }
 
@@ -143,7 +142,6 @@ function drawChart() {
 @extends('app') @section('content')
 <center> <h4>Información de "{{$course_name}}"</h4></center>
 <br><br>
-
 <div class="container">
   <div class="row">
     <h4>Inscritos semana a semana desde que se abrieron inscripciones en el curso.</h4>
@@ -159,7 +157,7 @@ function drawChart() {
                 <?php
                 for($i = 0; $i < sizeof($semanal); $i++ ){?>
                   <tr>
-                  <td>{{$i}}</td>
+                  <td>{{$i+1}}</td>
                   <td>{{$semanal[$i]}}</td>
                   </tr>
 

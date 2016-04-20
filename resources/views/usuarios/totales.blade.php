@@ -32,7 +32,7 @@
 
     var data1 = google.visualization.arrayToDataTable([
     ['', 'Hombres', 'Mujeres', 'No especificado'],
-    ['Genero', {{$infot[0]}}, {{$infot[1]}}, {{$infot[2]}}]]);
+    ['Genero', {{$infot[1]}}, {{$infot[0]}}, {{$infot[2]}}]]);
 
     var options1 = {
       chart: {
@@ -156,8 +156,8 @@
       <td><div>
         <table class="table table-hover table-bordered">
         <tr><td class="danger" style="font-size: medium">Genero</td><td class="danger" style="font-size: medium">Cantidad</td></tr>
-        <tr><td class="warning">Mujeres</td><td class="warning">{{$infot[1]}}</td></tr>
-        <tr><td class="warning">Hombres</td><td class="warning">{{$infot[0]}}</td></tr>
+        <tr><td class="warning">Mujeres</td><td class="warning">{{$infot[0]}}</td></tr>
+        <tr><td class="warning">Hombres</td><td class="warning">{{$infot[1]}}</td></tr>
         <tr><td class="warning">No especificado</td><td class="warning">{{$infot[2]}}</td></tr>
       </table>
     <a class="btn btn-default" href="{{url ('/download/genero.csv')}}" role="button">Descargar archivo genero.csv</a>

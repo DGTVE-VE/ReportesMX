@@ -317,7 +317,16 @@ class UseController extends Controller {
 			$edad = array($edad15,$edad15_20,$edad20_25,$edad25_30,$edad30_35,$edad35_40,$edad40_45,$edad45_50,$edad50);
 
 			$fp = fopen ('download/edades.csv', 'w');
-			fputcsv($fp, $edad);
+			$edad00 = array('Menores a 15', 'Entre 16 y 20', 'Entre 21 y 25', 'Entre 26 y 30', 'Entre 31 y 35', 'Entre 36 y 40', 'Entre 41 y 45', 'Entre 46 y 50', 'Más de 50');
+			$z = 0;
+			$e  = array('Rango edad', 'Cantidad');
+			fputcsv($fp, $e);
+			foreach ($edad as $key) {
+				$e  = array($edad00[$z], $key);
+				fputcsv($fp, $e);
+				$z++;
+			}
+
 			fclose($fp);
 			//////////////////////////////////////////////////////////////
 
@@ -327,7 +336,19 @@ class UseController extends Controller {
 			$infot = array($f, $m, $n);
 
 			$fp = fopen ('download/genero.csv', 'w');
-			fputcsv($fp, $infot);
+
+			$var = array('Genero', 'Cantidad');
+			fputcsv($fp, $var);
+
+			$mujeres = array('Mujeres', $f);
+			fputcsv($fp, $mujeres);
+
+			$hombres = array('Hombres', $m);
+			fputcsv($fp, $hombres);
+
+			$no_definidos = array('No definidos', $n);
+			fputcsv($fp, $no_definidos);
+
 			fclose($fp);
 
 			//////////////////////////////////////////////////////////////////////////
@@ -347,11 +368,20 @@ class UseController extends Controller {
 
 			$d = $d + $dc + $do;
 
-			$estudio1 = array('Doctorado' => $d, 'Maestria' => $m, 'Técnico Superior' => $t, 'Licenciatura' => $l, 'Bachillerato' => $p, 'Secundaria' => $s, 'Primaria' => $pr, 'Ninguno' => $n, 'Otros' =>  $o, 'No especificado' => $ne);
 			$estudio = array($d, $m, $t, $l, $p, $s, $pr, $n, $o, $ne);
 
 			$fp = fopen ('download/nivel.csv', 'w');
-			fputcsv($fp, $estudio1);
+			$estudios = array('Doctorado', 'Maestria', 'Técnico Superior', 'Licenciatura', 'Bachillerato', 'Secundaria', 'Primaria', 'Ninguno', 'Otros', 'No especificado');
+			$w = 0;
+			$es  = array('Grado de estudio', 'Cantidad');
+			fputcsv($fp, $es);
+
+			foreach ($estudio as $key) {
+				$es  = array($estudios[$w], $key);
+				fputcsv($fp, $es);
+				$w++;
+			}
+
 			fclose($fp);
 
 			//////////////////////////////////////////////////////////////////////////
@@ -363,8 +393,21 @@ class UseController extends Controller {
 			$info = array($t, $n, $a);
 
 			$fp = fopen ('download/totales.csv', 'w');
-			fputcsv($fp, $info);
+
+			$info1 = array('Usuarios', 'Cantidad');
+			fputcsv($fp, $info1);
+
+			$info1 = array('Registrados en MéxicoX' ,$info[0]);
+			fputcsv($fp, $info1);
+
+			$info1 = array('Activos en MéxicoX' ,$info[1] );
+			fputcsv($fp, $info1);
+
+			$info1 = array('No activos en MéxicoX', $info[2]);
+			fputcsv($fp, $info1);
 			fclose($fp);
+
+
 
 			$cn = "México X";
 
@@ -396,8 +439,15 @@ class UseController extends Controller {
 			$edad = array($edad15,$edad15_20,$edad20_25,$edad25_30,$edad30_35,$edad35_40,$edad40_45,$edad45_50,$edad50);
 
 			$fp = fopen ('download/edades.csv', 'w');
-
-			fputcsv($fp, $edad);
+			$edad00 = array('Menores a 15', 'Entre 16 y 20', 'Entre 21 y 25', 'Entre 26 y 30', 'Entre 31 y 35', 'Entre 36 y 40', 'Entre 41 y 45', 'Entre 46 y 50', 'Más de 50');
+			$z = 0;
+			$e  = array('Rango edad', 'Cantidad');
+			fputcsv($fp, $e);
+			foreach ($edad as $key) {
+				$e  = array($edad00[$z], $key);
+				fputcsv($fp, $e);
+				$z++;
+			}
 
 			fclose($fp);
 			///////////////////////////////////////////////////////////////////////////////////////////
@@ -409,7 +459,19 @@ class UseController extends Controller {
 			$infot = array($f, $m, $n);
 
 			$fp = fopen ('download/genero.csv', 'w');
-			fputcsv($fp, $infot);
+
+			$var = array('Genero', 'Cantidad');
+			fputcsv($fp, $var);
+
+			$mujeres = array('Mujeres', $f);
+			fputcsv($fp, $mujeres);
+
+			$hombres = array('Hombres', $m);
+			fputcsv($fp, $hombres);
+
+			$no_definidos = array('No definidos', $n);
+			fputcsv($fp, $no_definidos);
+
 			fclose($fp);
 
 			//////////////////////////////////////////////////////////////////////////
@@ -433,7 +495,17 @@ class UseController extends Controller {
 			$estudio = array($d, $m, $t, $l, $p, $s, $pr, $n, $o, $ne);
 
 			$fp = fopen ('download/nivel.csv', 'w');
-			fputcsv($fp, $estudio1);
+			$estudios = array('Doctorado', 'Maestria', 'Técnico Superior', 'Licenciatura', 'Bachillerato', 'Secundaria', 'Primaria', 'Ninguno', 'Otros', 'No especificado');
+			$w = 0;
+			$es  = array('Grado de estudio', 'Cantidad');
+			fputcsv($fp, $es);
+
+			foreach ($estudio as $key) {
+				$es  = array($estudios[$w], $key);
+				fputcsv($fp, $es);
+				$w++;
+			}
+
 			fclose($fp);
 
 
@@ -447,7 +519,18 @@ class UseController extends Controller {
 			$course_name = session()->get('course_name');
 
 			$fp = fopen ('download/totales.csv', 'w');
-			fputcsv($fp, $info);
+
+			$info1 = array('Usuarios', 'Cantidad');
+			fputcsv($fp, $info1);
+
+			$info1 = array('Activos en MéxicoX' ,$info[0]);
+			fputcsv($fp, $info1);
+
+			$info1 = array('Activos en '. $course_name ,$info[1] );
+			fputcsv($fp, $info1);
+
+			$info1 = array('No activos en '. $course_name, $info[2]);
+			fputcsv($fp, $info1);
 			fclose($fp);
 
 			return view('usuarios/totales') -> with ('info', collect($info)) -> with ('edad', collect($edad))->with ('infot', collect($infot))->with ('estudio', collect($estudio))->with('name_user', $username )-> with('course_name', $course_name);
@@ -473,7 +556,7 @@ class UseController extends Controller {
 			if(DB::table('student_courseenrollment')->wherecourse_id($course_id)->orderBy('created', 'asc')->lists('created'))
 			{
 				$semanal = DB::table('student_courseenrollment')->wherecourse_id($course_id)->orderBy('created', 'asc')->lists('created');
-				print_r($semanal[0]);
+
 			}
 			else {
 				$semanal = array();
@@ -487,8 +570,11 @@ class UseController extends Controller {
 			$i = 0;
 			$k=0;
 			$l=0;
-			$sem[0]=0;
+			$sem = array('Semana', 'Registrados');
+			$sem1 = array();
 
+				$fp = fopen ('download/semanal.csv', 'w');
+				fputcsv($fp, $sem);
 
 			foreach ($semanal as $value) {
 
@@ -497,8 +583,10 @@ class UseController extends Controller {
 
 				}
 				else {
-					$sem[$i] = $k;
+					$sem1[$i]= $k;
 					$i++;
+					$sem = array($i ,$k);
+					fputcsv($fp, $sem);
 					$k=1;
 
 				}
@@ -510,78 +598,18 @@ class UseController extends Controller {
 			}
 
 
-			$fp = fopen ('download/semanal.csv', 'w');
-			fputcsv($fp, $sem);
 			fclose($fp);
 
 			$desercion = DB::table('vm_desercion')->wherecourse_name($course_name)->get();
 			$json = json_encode ($desercion);
 
-			return view('usuarios/infocurso') -> with('desercion', $json)->with('name_user', $username )-> with('course_name', $course_name)->with('semanal', collect($sem))->with('s', $s)->with('f', $f)->with('l', $l);
+			return view('usuarios/infocurso') -> with('desercion', $json)->with('name_user', $username )-> with('course_name', $course_name)->with('semanal', collect($sem1))->with('s', $s)->with('f', $f)->with('l', $l);
 		}
 		else{
 
 			$username = session()->get('nombre');
 			return view('accescourse')-> with('name_user', $username);
 		}
-	}
-
-
-	public function semanal(){
-
-		$super_user = session()->get('super_user');
-		$course_name = session()->get('course_name');
-		$course_id = session()->get('course_id');
-		$username = session()->get('nombre');
-
-		if( session()->get('course_name') == NULL){
-			return $this->correoacurso();
-
-		}
-		elseif((session()->get('accescourse') > 0) || ($super_user == "1")) {
-
-			$semanal = DB::table('student_courseenrollment')->wherecourse_id($course_id)->orderBy('created', 'asc')->lists('created');
-
-			$w = (int)date("Weeknumber: W", strtotime($semanal[0]));
-			$s = date($semanal[0]);
-
-			$i = 0;
-			$k=0;
-			$l=0;
-
-			foreach ($semanal as $value) {
-
-				if($w == (int)date("Weeknumber: W", strtotime($value))){
-					$k++;
-
-				}
-				else {
-					$sem[$i] = $k;
-					$i++;
-					$k=1;
-
-				}
-				$l++;
-
-				$w = (int)date("Weeknumber: W", strtotime($value));
-				$f = $value;
-
-			}
-
-			$fp = fopen ('download/semanal.csv', 'w');
-
-			fputcsv($fp, $sem);
-
-			fclose($fp);
-
-			return view('usuarios/semanal') ->with('name_user', $username )->with('course_name', $course_name)->with('semanal', collect($sem))->with('s', $s)->with('f', $f)->with('l', $l);
-		}
-		else{
-
-			$username = session()->get('nombre');
-			return view('accescourse')-> with('name_user', $username);
-		}
-
 	}
 
 	public function inscritost(){
