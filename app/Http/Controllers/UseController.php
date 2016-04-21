@@ -698,10 +698,10 @@ class UseController extends Controller {
 
 			fclose($us);
 
-			$aprovados = DB::table('edxapp.constancias')->count('id');
-			print_r($aprovados);
+			$constancias = DB::table('edxapp.constancias')->count('id');
+			print_r($constancias);
 
-			return view('usuarios/inscritost')-> with('mes1', collect($mes))-> with('mes2', collect($cur))-> with('name_user', $username)->with('users_course', collect($users_course));
+			return view('usuarios/inscritost')-> with('mes1', collect($mes))-> with('mes2', collect($cur))-> with('name_user', $username)->with('users_course', collect($users_course))->with('constancias', $constancias);
 
 		}
 		else

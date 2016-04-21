@@ -109,6 +109,7 @@
   <div class="container">
     <div class="row">
 
+      <h4>Constancias emitidas en la plataforma:  {{$constancias}}</h4>
 
       <h4>Usuarios que se registran a N cursos.</h4>
       <table class="table table-hover table-bordered">
