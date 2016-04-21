@@ -819,7 +819,8 @@ class UseController extends Controller {
 		}
 		elseif((session()->get('accescourse') > 0) || ($super_user == "1")) {
 
-			$videos = DB::table('courseware_studentmodule')->wherecourse_id($course_id)->wheremodule_type('video')->groupBy('module_id')->lists('module_id');
+			$videos = DB::table('vm_videos')->wherecourse_id($course_id)->wheremodule_type('video')->groupBy('module_id')->lists('module_id');
+			#$videos = DB::table('courseware_studentmodule')->wherecourse_id($course_id)->wheremodule_type('video')->groupBy('module_id')->lists('module_id');
 
 			if( !$videos)
 			return view('videos/accesvideos')-> with('name_user', $username);
@@ -829,22 +830,22 @@ class UseController extends Controller {
 			$segmax[$w] = 0;
 			$a = 0;
 			foreach ($videos as $val) {
-				$v = DB::table('courseware_studentmodule')->wheremodule_id($val)->lists('state');
+				$v = DB::table('vm_videos')->wheremodule_id($val)->lists('state');
 				$n = 0;
 				$suma_s = 0;
 
 				foreach ($v as $value) {
 
+					//
+					// $sub = "saved_video_position";
+					// $pos = strpos($value, $sub);
+					// $rest = substr ($value, ($pos+24));
+					// $time = substr($rest, 0, -2);
 
-					$sub = "saved_video_position";
-					$pos = strpos($value, $sub);
-					$rest = substr ($value, ($pos+24));
-					$time = substr($rest, 0, -2);
-
-					if($time == NULL)
-					$time = '00:00:00';
-					if($time != '00:00:00'){
-						list($horas, $minutos, $segundos) = explode(':', $time);
+					if($value == NULL)
+					$value = '00:00:00';
+					if($value != '00:00:00'){
+						list($horas, $minutos, $segundos) = explode(':', $value);
 						$seg = ($horas * 60 ) + $minutos + ($segundos/60);
 
 						if($segmax[$a] < $seg){
