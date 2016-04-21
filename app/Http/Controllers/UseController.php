@@ -698,6 +698,9 @@ class UseController extends Controller {
 
 			fclose($us);
 
+			$aprovados = DB::table('edxapp.constancias')->groupBy('course_id')->orderBy('course_id', 'asc')->count();
+			print_r($aprovados);
+
 			return view('usuarios/inscritost')-> with('mes1', collect($mes))-> with('mes2', collect($cur))-> with('name_user', $username)->with('users_course', collect($users_course));
 
 		}

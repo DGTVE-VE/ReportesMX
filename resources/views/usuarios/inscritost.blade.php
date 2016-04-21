@@ -144,9 +144,9 @@
             <td>Mes</td>
             <td>Registrados</td>
           </tr>
-          <?php $i = 0; foreach ($mes1 as $m): ?>
+          <?php $i = 1; foreach ($mes1 as $m): ?>
             <tr>
-              <td><?php print_r($i+1); ?></td>
+              <td><?php print_r($i); ?></td>
               <td><?php print_r($m); $i++;?></td>
             </tr>
           <?php endforeach; ?>
@@ -164,9 +164,9 @@
           <td>Mes</td>
           <td>Registrados</td>
         </tr>
-        <?php $i = 0; foreach ($mes2 as $m): ?>
+        <?php $i = 1; foreach ($mes2 as $m): ?>
           <tr>
-            <td><?php print_r($i+1); ?></td>
+            <td><?php print_r($i); ?></td>
             <td><?php print_r($m); $i++;?></td>
           </tr>
         <?php endforeach; ?>
