@@ -699,7 +699,9 @@ class UseController extends Controller {
 			fclose($us);
 
 			$constancias = DB::table('edxapp.constancias')->count('id');
-			print_r($constancias);
+			$lista_constancias = DB::table('edxapp.constancias')->groupBy('course_id')->count('id');
+			#$videos = DB::table('vm_videos')->wherecourse_id($course_id)->wheremodule_type('video')->groupBy('module_id')->lists('module_id');
+			print_r($lista_constancias);
 
 			return view('usuarios/inscritost')-> with('mes1', collect($mes))-> with('mes2', collect($cur))-> with('name_user', $username)->with('users_course', collect($users_course))->with('constancias', $constancias);
 
