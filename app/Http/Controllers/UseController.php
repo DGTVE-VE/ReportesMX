@@ -699,7 +699,7 @@ class UseController extends Controller {
 			fclose($us);
 
 			$constancias = DB::table('edxapp.constancias')->count('id');
-			$lista_constancias = DB::table('edxapp.constancias')->wherecourse_id($course_id)->groupBy('course_id')->count('id');
+			$lista_constancias = DB::table('edxapp.constancias')->groupBy('course_id')->lists('course_id');
 			#$videos = DB::table('vm_videos')->wherecourse_id($course_id)->wheremodule_type('video')->groupBy('module_id')->lists('module_id');
 			print_r($lista_constancias);
 
