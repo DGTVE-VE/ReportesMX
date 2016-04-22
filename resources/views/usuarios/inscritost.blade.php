@@ -117,16 +117,7 @@
           <td>Constancias emitidas</td>
           <td>Inscritos en curso</td>
         </tr>
-        <?php foreach ($lista_constancias as $m): ?>
-          <tr>
-            <td><?php print_r($m->nombre_curso); ?></td>
-            <td><?php print_r($m->constancias); ?></td>
-          </tr>
-        <?php endforeach; ?>
-        <tr>
-          <td>Total</td>
-          <td>{{$i}}</td>
-        </tr>
+{{$lista_constancias}}
       </table></div>
 
 
