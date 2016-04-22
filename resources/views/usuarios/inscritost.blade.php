@@ -112,7 +112,7 @@
       <center><h4>Constancias emitidas en la plataforma:  {{$constancias}}</h4></center>
       <br>
       <div><table class="table table-hover table-bordered" style="font-size: small">
-        <tr class="active" style="font-size: small">
+        <tr class="danger" style="font-size: small">
           <td>ID Curso</td>
           <td>Constancias emitidas</td>
           <td>Inscritos en curso</td>
