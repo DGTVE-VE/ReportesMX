@@ -120,7 +120,7 @@
         <?php for( $k = 0 ; $k <= sizeof($lista_constancias)-2 ; $k++){ ?>
           <tr>
             <td><?php print_r($lista_constancias[$k]->nombre_curso); ?></td>
-            <td><?php print_r($lista_constancias[$k]->constancia); ?></td>
+            <td><?php print_r($lista_constancias[$k]->constancias); ?></td>
           </tr>
         <?php } ?>
       </table></div>
