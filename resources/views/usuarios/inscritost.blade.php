@@ -116,6 +116,7 @@
           <td>ID Curso</td>
           <td>Constancias emitidas</td>
           <td>Inscritos en curso</td>
+          <td>Eficiencia en porcentaje</td>
         </tr>
         <?php for( $k = 0 ; $k < sizeof($lista_constancias) ; $k++){ ?>
           <tr>
@@ -130,6 +131,8 @@
                         else {
                           print_r($inscrito_curso[$k][0]->inscritos);
                         }?></td>
+            <td><?php if($inscrito_curso[$k] != NULL)
+                          print_r(($lista_constancias[$k]->constancias/($inscrito_curso[$k][0]->inscritos))*100);?></td>
           </tr>
         <?php } ?>
       </table></div>
