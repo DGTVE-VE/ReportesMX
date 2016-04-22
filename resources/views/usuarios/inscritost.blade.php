@@ -132,7 +132,7 @@
                           print_r($inscrito_curso[$k][0]->inscritos);
                         }?></td>
             <td><?php if($inscrito_curso[$k] != NULL)
-                          print_r(($lista_constancias[$k]->constancias/($inscrito_curso[$k][0]->inscritos))*100);?></td>
+                          print_r(round(($lista_constancias[$k]->constancias/($inscrito_curso[$k][0]->inscritos)*100),2) '%');?></td>
           </tr>
         <?php } ?>
       </table></div>
