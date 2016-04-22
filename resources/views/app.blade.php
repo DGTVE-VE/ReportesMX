@@ -52,7 +52,7 @@
 					<li><a href="{{url ('logout')}}" class="bg-close" title="Salir">
 						<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
 					</a></li>
-					<li><a href="">Hola {{$name_user}}</a></li>
+					<li><a>Hola {{$name_user}}</a></li>
 
 				</ul>
 
