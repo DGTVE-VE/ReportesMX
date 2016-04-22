@@ -701,13 +701,14 @@ class UseController extends Controller {
 			$constancias = DB::table('edxapp.constancias')->count('id');
 			$lista_constancias = array();
 			$lista_constancias = DB::select(DB::raw('select count(curso) as constancias , curso as nombre_curso from edxapp.constancias group by curso'));
-			$r = 0;
-			foreach ($lista_constancias as $key){
-
-			$inscrito_curso[$r] = DB::table('vm_inscritos_x_curso')->wherecourse_id($lista_constancias->nombre_curso)->get();
-			$r++;
-			}
-			print_r($inscrito_curso);
+			// $r = 0;
+			// foreach ($lista_constancias as $key){
+			//
+			// $inscrito_curso[$r] = DB::table('vm_inscritos_x_curso')->wherecourse_id($lista_constancias->nombre_curso)->get();
+			// $r++;
+			// }
+			// print_r($inscrito_curso);
+			print_r($lista_constancias);
 			return view('usuarios/inscritost')-> with('mes1', collect($mes))-> with('mes2', collect($cur))-> with('name_user', $username)->with('users_course', collect($users_course))->with('constancias', $constancias)->with('lista_constancias', $lista_constancias);
 
 		}
