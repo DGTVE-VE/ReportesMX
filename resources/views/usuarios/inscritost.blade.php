@@ -119,7 +119,7 @@
         </tr>
         <?php for( $k = 0 ; $k < sizeof($lista_constancias) ; $k++){ ?>
           <tr>
-            <td><?php if($inscrito_curso[$k]==NULL){
+            <td><?php if($inscrito_curso[$k]==NULL || $inscrito_curso[$k][0]->course_name == ""){
                         print_r($lista_constancias[$k]->nombre_curso);
                       }else {
                         print_r($inscrito_curso[$k][0]->course_name);
