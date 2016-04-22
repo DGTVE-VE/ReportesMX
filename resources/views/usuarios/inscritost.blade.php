@@ -111,6 +111,24 @@
       <br>
       <center><h4>Constancias emitidas en la plataforma:  {{$constancias}}</h4></center>
       <br>
+      <div><table class="table table-hover table-bordered" style="font-size: small">
+        <tr class="active" style="font-size: small">
+          <td>ID Curso</td>
+          <td>Constancias emitidas</td>
+          <td>Inscritos en curso</td>
+        </tr>
+        <?php foreach ($lista_constancias as $m): ?>
+          <tr>
+            <td><?php print_r($m->nombre_curso); ?></td>
+            <td><?php print_r($m->constancias); ?></td>
+          </tr>
+        <?php endforeach; ?>
+        <tr>
+          <td>Total</td>
+          <td>{{$i}}</td>
+        </tr>
+      </table></div>
+
 
       <h4>Usuarios que se registran a N cursos.</h4>
       <table class="table table-hover table-bordered">
