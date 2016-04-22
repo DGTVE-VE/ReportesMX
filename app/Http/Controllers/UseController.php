@@ -707,7 +707,7 @@ class UseController extends Controller {
 			$inscrito_curso[$r] = DB::table('vm_inscritos_x_curso')->wherecourse_id($key->nombre_curso)->get();
 			$r++;
 			}
-			print_r($inscrito_curso);
+			#print_r($inscrito_curso);
 			// print_r($lista_constancias);
 			return view('usuarios/inscritost')-> with('mes1', collect($mes))-> with('mes2', collect($cur))-> with('name_user', $username)->with('users_course', collect($users_course))->with('constancias', $constancias)->with('lista_constancias', $lista_constancias)->with('inscrito_curso', $inscrito_curso);
 
