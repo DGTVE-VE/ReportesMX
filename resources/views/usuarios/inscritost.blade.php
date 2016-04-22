@@ -121,7 +121,11 @@
           <tr>
             <td><?php print_r($lista_constancias[$k]->nombre_curso); ?></td>
             <td><?php print_r($lista_constancias[$k]->constancias); ?></td>
-            <td><?php print_r($inscrito_curso[$k][0]->inscritos); ?></td>
+            <td><?php if(!$inscrito_curso[$k][0]->inscritos)
+                         print_r('0000');
+                        else {
+                          print_r($inscrito_curso[$k][0]->inscritos);
+                        }?></td>
           </tr>
         <?php } ?>
       </table></div>
