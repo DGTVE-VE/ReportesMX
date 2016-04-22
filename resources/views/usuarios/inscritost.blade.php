@@ -117,9 +117,10 @@
           <td>Constancias emitidas</td>
           <td>Inscritos en curso</td>
         </tr>
-        <?php for( $k = 0 ; $k <= sizeof($lista_constancias)-2 ; $k++){ ?>
+        <?php for( $k = 0 ; $k <= sizeof($lista_constancias) ; $k++){ ?>
           <tr>
             <td><?php print_r($lista_constancias[$k]->nombre_curso); ?></td>
+            <td><?php print_r($lista_constancias[$k]->constancias); ?></td>
             <td><?php print_r($lista_constancias[$k]->constancias); ?></td>
           </tr>
         <?php } ?>
