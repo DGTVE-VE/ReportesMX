@@ -117,7 +117,12 @@
           <td>Constancias emitidas</td>
           <td>Inscritos en curso</td>
         </tr>
-{{$lista_constancias}}
+        <?php for( $k = 0 ; $k <= sizeof($lista_constancias) ; $k= $k+2){ ?>
+          <tr>
+            <td><?php print_r($lista_constancias[$k]); ?></td>
+            <td><?php print_r($lista_constancias[$k+1]); ?></td>
+          </tr>
+        <?php } ?>
       </table></div>
 
 
