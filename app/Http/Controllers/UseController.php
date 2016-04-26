@@ -400,10 +400,10 @@ class UseController extends Controller {
 			$info1 = array('Registrados en MéxicoX' ,$info[0]);
 			fputcsv($fp, $info1);
 
-			$info1 = array('Activos en MéxicoX' ,$info[1] );
+			$info1 = array('Usuarios con cuenta activada en MéxicoX' ,$info[1] );
 			fputcsv($fp, $info1);
 
-			$info1 = array('No activos en MéxicoX', $info[2]);
+			$info1 = array('Usuarios que no tienen su cuenta activada en MéxicoX', $info[2]);
 			fputcsv($fp, $info1);
 			fclose($fp);
 
