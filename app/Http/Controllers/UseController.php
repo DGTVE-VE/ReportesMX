@@ -700,7 +700,7 @@ class UseController extends Controller {
 
 			$constancias = DB::table('edxapp.constancias')->count('id');
 			$lista_constancias = array();
-			$lista_constancias = DB::select(DB::raw('select count(curso) as constancias , curso as nombre_curso from edxapp.constancias group by curso'));
+			$lista_constancias = DB::select(DB::raw('select count(curso) as constancias , course_id as nombre_curso from edxapp.constancias group by course_id'));
 			$r = 0;
 			foreach ($lista_constancias as $key){
 
