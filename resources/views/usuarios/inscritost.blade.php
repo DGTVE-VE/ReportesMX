@@ -19,14 +19,25 @@
     data1.addColumn('number', 'Por mes en plataforma');
     data2.addColumn('number', 'Por mes en plataforma');
 
-    data0.addColumn('number', 'Mes (Desde Febrero del 2015)' );
-    data0.addColumn('number', 'Por mes en plataforma');
+    data0.addColumn('number', 'Número de cursos' );
+    data0.addColumn('number', 'Alumnos registrados');
+
+    data3.addColumn('number', 'Número de cursos' );
+    data3.addColumn('number', 'Alumnos registrados');
 
     <?php foreach ($users_course as $key): ?>
     data0.addRows([
       [{{$key->n}},  {{$key->users}}],
     ]);
     <?php endforeach; ?>
+
+    <?php for($k = 1; $k <= sizeof($inscritos_nc) ; $k++){ ?>
+    if($inscritos_nc[$k] != 0){
+    data3.addRows([
+      [{{$k}},  {{$inscritos_nc[$k]}}],
+    ]);
+    }
+    <?php } ?>
 
 
     for (var i = 0 ; i <= mes1.length ; i++){
@@ -90,13 +101,26 @@
       colors: ['orange']
     };
 
+    var options3 = {
+
+      chart: {
+
+        title: 'Alumnos inscritos en N cursos y que se les ha otorgado constancia en estos',
+      },
+      width: 900,
+      height: 400,
+      colors: ['red']
+    };
+
     var chart1 = new google.charts.Line(document.getElementById('line_top_x'));
     var chart2 = new google.charts.Line(document.getElementById('line_top_y'));
     var chart0 = new google.charts.Line(document.getElementById('line_top'));
+    var chart3 = new google.charts.Line(document.getElementById('line_top_z'));
 
     chart1.draw(data1, options1);
     chart2.draw(data2, options2);
     chart0.draw(data0, options0);
+    chart3.draw(data3, options3);
 
   }
   </script>
@@ -160,6 +184,33 @@
       <a class="btn btn-default" href="{{url ('/download/usuarios_curso.csv')}}" role="button">Descargar archivo usuarios_curso.csv</a>
     </div></td>
   </table>
+
+  <h4>Usuarios que se registran a N cursos y que obtubieron constancia.</h4>
+  <table class="table table-hover table-bordered">
+    <td><div id="line_top_z"></div></td>
+  <td><div><table class="table table-hover table-bordered" style="font-size: small">
+    <tr class="active" style="font-size: small">
+      <td>Número de cursos</td>
+      <td>Alumnos registrados</td>
+    </tr>
+
+    <?php for($k = 1; $k <= sizeof($inscritos_nc) ; $k++){
+      if($inscritos_nc[$k] != 0){?>
+      <tr>
+        <td>
+          {{$k}}
+        </td>
+        <td>
+          {{$inscritos_nc[$k]}}
+        </td>
+      </tr>
+      <?php } ?>
+    <?php } ?>
+
+  </table>
+  <!-- <a class="btn btn-default" href="{{url ('/download/usuarios_curso.csv')}}" role="button">Descargar archivo usuarios_curso.csv</a> -->
+</div></td>
+</table>
 
 
       <h4>Grafica que muestra las estadísticas mes a mes desde febrero del 2015, de todos los usuarios que se registran en MéxicoX</h4>
