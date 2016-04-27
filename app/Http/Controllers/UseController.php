@@ -718,19 +718,20 @@ class UseController extends Controller {
 
 			$b = 1;
 			$inscritos_nc[0] = 0;
+			$inscritos_nc[1] = 0;
 
-			// foreach($ncursos_constancia as $n){
-			// 	#print_r($n->n);
-			// 	 if($n->n == $b){
-			// 	 	$inscritos_nc[$b]++;
-			// 	 }
-			// 	 else {
-			// 	 	$b++;
-			// 		$inscritos_nc[$b] = 0;
-			// 	 }
-			// }
+			foreach($ncursos_constancia as $n){
+				#print_r($n->n);
+				 if($n->n == $b){
+				 	$inscritos_nc[$b]++;
+				 }
+				 else {
+				 	$b++;
+					$inscritos_nc[$b] = 0;
+				 }
+			}
 
-			#print_r($ncursos_constancia);
+			print_r($inscritos_nc);
 
 			return view('usuarios/inscritost')-> with('mes1', collect($mes))-> with('mes2', collect($cur))-> with('name_user', $username)->with('users_course', collect($users_course))->with('constancias', $constancias)->with('lista_constancias', $lista_constancias)->with('inscrito_curso', $inscrito_curso);
 
