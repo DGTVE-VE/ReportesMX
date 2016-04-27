@@ -718,7 +718,7 @@ class UseController extends Controller {
 
 			$b = 1;
 			$inscritos_nc[0] = 0;
-			$inscritos_nc[1] = 0;
+			$inscritos_nc[1] = 1;
 
 			foreach($ncursos_constancia as $n){
 				#print_r($n->n);
@@ -727,7 +727,7 @@ class UseController extends Controller {
 				 }
 				 else {
 				 	$b = $n->n;
-					$inscritos_nc[$b] = 0;
+					$inscritos_nc[$b] = 1;
 
 				 }
 			}
