@@ -727,7 +727,7 @@ class UseController extends Controller {
 				}
 			}
 
-			print_r($);
+			print_r($inscritos_nc);
 
 			return view('usuarios/inscritost')-> with('mes1', collect($mes))-> with('mes2', collect($cur))-> with('name_user', $username)->with('users_course', collect($users_course))->with('constancias', $constancias)->with('lista_constancias', $lista_constancias)->with('inscrito_curso', $inscrito_curso);
 
