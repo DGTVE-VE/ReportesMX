@@ -13,11 +13,14 @@
     var data1 = new google.visualization.DataTable();
     var data2 = new google.visualization.DataTable();
     var data0 = new google.visualization.DataTable();
+    var data3 = new google.visualization.DataTable();
 
     data1.addColumn('number', 'Mes (Desde Febrero del 2015)' );
     data2.addColumn('number', 'Mes (Desde Febrero del 2015)' );
     data1.addColumn('number', 'Por mes en plataforma');
     data2.addColumn('number', 'Por mes en plataforma');
+    data3.addColumn('number', 'Número de cursos' );
+    data3.addColumn('number', 'Alumnos registrados');
 
     data0.addColumn('number', 'Número de cursos' );
     data0.addColumn('number', 'Alumnos registrados');
@@ -29,6 +32,16 @@
       [{{$key->n}},  {{$key->users}}],
     ]);
     <?php endforeach; ?>
+
+
+    <?php for($k = 0; $k < sizeof($nn) ; $k++){?>
+
+        data3.addRows([
+          [{{$nn[$k-1]}}, {{$inscritos_nc[$nn[$k-1]]}}],
+          ]);
+
+    <?php } ?>
+
 
     for (var i = 0 ; i <= mes1.length ; i++){
       if(mes1[i]){
@@ -91,14 +104,27 @@
       colors: ['orange']
     };
 
+    var options3 = {
+
+      chart: {
+
+        title: 'Alumnos inscritos en N cursos y que obtubieron constancia',
+      },
+      width: 900,
+      height: 400,
+      colors: ['red']
+    };
+
     var chart1 = new google.charts.Line(document.getElementById('line_top_x'));
     var chart2 = new google.charts.Line(document.getElementById('line_top_y'));
     var chart0 = new google.charts.Line(document.getElementById('line_top'));
+    var chart3 = new google.charts.Line(document.getElementById('line_top_z'));
 
 
     chart1.draw(data1, options1);
     chart2.draw(data2, options2);
     chart0.draw(data0, options0);
+    chart3.draw(data3, options3);
 
 
   }
@@ -166,7 +192,7 @@
 
   <h4>Usuarios que se registran a N cursos y que obtubieron constancia.</h4>
   <table class="table table-hover table-bordered">
-    <td><div id="line_top_y"></div></td>
+    <td><div id="line_top_z"></div></td>
   <td><div><table class="table table-hover table-bordered" style="font-size: small">
     <tr class="active" style="font-size: small">
       <td>Número de cursos</td>
@@ -176,10 +202,10 @@
     <?php for($k = 0; $k < sizeof($nn) ; $k++){?>
       <tr>
         <td>
-          {{$nn[$k]}}
+          {{$nn[$k-1]}}
         </td>
         <td>
-          {{$inscritos_nc[$nn[$k]]}}
+          {{$inscritos_nc[$nn[$k-1]]}}
         </td>
       </tr>
     <?php } ?>
