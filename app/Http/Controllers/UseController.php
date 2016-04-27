@@ -714,7 +714,7 @@ class UseController extends Controller {
 			#print_r($inscrito_curso);
 			// print_r($lista_constancias);
 
-			$ncursos_constancia = DB::select(DB::raw('SELECT count(correo) as n FROM constancias group by correo order by n asc'));
+			$ncursos_constancia = DB::select(DB::raw('SELECT count(correo) as n FROM edxapp.constancias group by correo order by n asc'));
 			$b = 1;
 			$inscritos_nc = array();
 
