@@ -71,6 +71,9 @@ class UseController extends Controller {
 		$username = session()->get('nombre');
 		$course_name = filter_input (INPUT_POST, 'course_name');
 
+		if($username == NULL)
+			return $this->correoacurso();
+
 		if($course_name){
 
 			$course_id = DB::table('course_name')->wherecourse_name($course_name)->get()[0]->course_id;
@@ -165,6 +168,9 @@ class UseController extends Controller {
 		$super_user = session()->get('super_user');
 		$username = session()->get('nombre');
 
+		if($username == NULL)
+			return $this->correoacurso();
+
 		if($super_user == '1'){
 
 			$activos = DB::select(DB::raw('SELECT * FROM course_name WHERE (CURDATE() <= fin AND CURDATE() >= inicio)'));
@@ -208,6 +214,9 @@ class UseController extends Controller {
 
 		$super_user = session()->get('super_user');
 		$username = session()->get('nombre');
+
+		if($username == NULL)
+			return $this->correoacurso();
 
 		if($super_user == '1'){
 
@@ -255,6 +264,9 @@ class UseController extends Controller {
 		$super_user = session()->get('super_user');
 		$username = session()->get('nombre');
 
+		if($username == NULL)
+			return $this->correoacurso();
+
 		if($super_user == '1'){
 
 			$concluido = DB::select(DB::raw('SELECT * FROM course_name WHERE CURDATE() > fin'));
@@ -299,6 +311,9 @@ class UseController extends Controller {
 
 		$username = session()->get('nombre');
 		$super_user = session()->get('super_user');
+
+		if($username == NULL)
+			return $this->correoacurso();
 
 		if(($super_user == '1') && (session()->get('course_id') == null)){
 
@@ -551,6 +566,9 @@ class UseController extends Controller {
 		$course_id = session()->get('course_id');
 		$username = session()->get('nombre');
 
+		if($username == NULL)
+			return $this->correoacurso();
+
 		if( session()->get('course_name') == NULL){
 			return $this->correoacurso();
 
@@ -620,6 +638,9 @@ class UseController extends Controller {
 
 		$username = session()->get('nombre');
 		$super_user = session()->get('super_user');
+
+		if($username == NULL)
+			return $this->correoacurso();
 
 		if(($super_user == '1')){
 
@@ -855,6 +876,9 @@ class UseController extends Controller {
 		$course_name = session()->get('course_name');
 		$course_id = session()->get('course_id');
 		$username = session()->get('nombre');
+
+		if($username == NULL)
+			return $this->correoacurso();
 
 		if( session()->get('course_name') == NULL){
 			return $this->correoacurso();
