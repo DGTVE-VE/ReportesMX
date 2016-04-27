@@ -716,7 +716,7 @@ class UseController extends Controller {
 
 			$ncursos_constancia = DB::select(DB::raw('SELECT count(correo) as n FROM edxapp.constancias group by correo order by n asc'));
 			$b = 1;
-			#$inscritos_nc = array();
+			$inscritos_nc[0] = 0;
 
 			foreach($ncursos_constancia as $n){
 				if($n->n == $b){
