@@ -185,7 +185,7 @@
     </div></td>
   </table>
 
-  <h4>Usuarios que se registran a N cursos y que obtubieron constancia.</h4>
+  <!-- <h4>Usuarios que se registran a N cursos y que obtubieron constancia.</h4>
   <table class="table table-hover table-bordered">
     <td><div id="line_top_z"></div></td>
   <td><div><table class="table table-hover table-bordered" style="font-size: small">
@@ -208,9 +208,9 @@
     <?php } ?>
 
   </table>
-  <!-- <a class="btn btn-default" href="{{url ('/download/usuarios_curso.csv')}}" role="button">Descargar archivo usuarios_curso.csv</a> -->
+   <a class="btn btn-default" href="{{url ('/download/usuarios_curso.csv')}}" role="button">Descargar archivo usuarios_curso.csv</a>
 </div></td>
-</table>
+</table> -->
 
 
       <h4>Grafica que muestra las estadísticas mes a mes desde febrero del 2015, de todos los usuarios que se registran en MéxicoX</h4>
