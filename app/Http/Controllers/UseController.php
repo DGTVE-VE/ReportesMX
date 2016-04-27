@@ -726,8 +726,9 @@ class UseController extends Controller {
 				 	$inscritos_nc[$b]++;
 				 }
 				 else {
-				 	$b++;
+				 	$b = $n->n;
 					$inscritos_nc[$b] = 0;
+
 				 }
 			}
 
