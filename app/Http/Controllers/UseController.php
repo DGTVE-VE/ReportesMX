@@ -729,7 +729,7 @@ class UseController extends Controller {
 				 	$inscritos_nc[$b]++;
 				 }
 				 else {
-					$registroc = array ($b ,$inscritos_nc[$b]);
+					$registroc = array ($n->n ,$inscritos_nc[$n->n]);
 					fputcsv($usc, $registroc);
 				 	$b = $n->n;
 					$nn[$j] = $n->n;
