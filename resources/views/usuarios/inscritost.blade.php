@@ -194,7 +194,7 @@
   <table class="table table-hover table-bordered">
     <td><div id="line_top_z"></div></td>
   <td><div><table class="table table-hover table-bordered" style="font-size: small">
-    <tr class="active" style="font-size: small">
+    <tr class="danger" style="font-size: small">
       <td>Número de cursos</td>
       <td>Alumnos registrados</td>
     </tr>
@@ -211,7 +211,7 @@
     <?php } ?>
 
   </table>
-   <a class="btn btn-default" href="{{url ('/download/usuarios_curso.csv')}}" role="button">Descargar archivo usuarios_curso.csv</a>
+   <a class="btn btn-default" href="{{url ('/download/usuarios_curso_constancia.csv')}}" role="button">Descargar archivo usuarios_curso.csv</a>
   </div></td>
   </table>
 

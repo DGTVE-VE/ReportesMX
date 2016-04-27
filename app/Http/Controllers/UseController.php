@@ -711,22 +711,26 @@ class UseController extends Controller {
 			$inscrito_curso[$r] = DB::table('vm_inscritos_x_curso')->wherecourse_id($key->nombre_curso)->get();
 			$r++;
 			}
-			#print_r($inscrito_curso);
-			// print_r($lista_constancias);
 
 			$ncursos_constancia = DB::select(DB::raw('SELECT count(correo) as n FROM edxapp.constancias group by correo order by n asc'));
+
+			$usc = fopen ('download/usuarios_curso_constancia.csv', 'w');
 
 			$b = 1;
 			$inscritos_nc[0] = 0;
 			$inscritos_nc[1] = 1;
 			$nn[0] = $ncursos_constancia[0]->n;
 			$j = 1;
+
+
 			foreach($ncursos_constancia as $n){
 				#print_r($n->n);
 				 if($n->n == $b){
 				 	$inscritos_nc[$b]++;
 				 }
 				 else {
+					$registroc = array ($b ,$nn[b]);
+					fputcsv($usc, $registroc);
 				 	$b = $n->n;
 					$nn[$j] = $n->n;
 					$inscritos_nc[$b] = 1;
@@ -734,6 +738,8 @@ class UseController extends Controller {
 
 				 }
 			}
+
+			fclose($us);
 
 			return view('usuarios/inscritost')-> with('mes1', collect($mes))-> with('mes2', collect($cur))-> with('name_user', $username)->with('users_course', collect($users_course))->with('constancias', $constancias)->with('lista_constancias', $lista_constancias)->with('inscrito_curso', $inscrito_curso)->with('inscritos_nc', $inscritos_nc)->with('nn', $nn);
 
