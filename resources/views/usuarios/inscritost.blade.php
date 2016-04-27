@@ -164,6 +164,31 @@
     </div></td>
   </table>
 
+  <h4>Usuarios que se registran a N cursos y que obtubieron constancia.</h4>
+  <table class="table table-hover table-bordered">
+    <td><div id="line_top_y"></div></td>
+  <td><div><table class="table table-hover table-bordered" style="font-size: small">
+    <tr class="active" style="font-size: small">
+      <td>Número de cursos</td>
+      <td>Alumnos registrados</td>
+    </tr>
+
+    <?php for($k = 0; $k <= sizeof($nn) ; $k++){?>
+      <tr>
+        <td>
+          {{$nn[$k]}}
+        </td>
+        <td>
+          {{$inscritos_nc[$nn[$k]]}}
+        </td>
+      </tr>
+    <?php } ?>
+
+  </table>
+   <a class="btn btn-default" href="{{url ('/download/usuarios_curso.csv')}}" role="button">Descargar archivo usuarios_curso.csv</a>
+  </div></td>
+  </table>
+
       <h4>Grafica que muestra las estadísticas mes a mes desde febrero del 2015, de todos los usuarios que se registran en MéxicoX</h4>
 
       <table class="table table-hover table-bordered">
