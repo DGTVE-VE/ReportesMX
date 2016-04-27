@@ -713,6 +713,22 @@ class UseController extends Controller {
 			}
 			#print_r($inscrito_curso);
 			// print_r($lista_constancias);
+
+			$ncursos_constancia = DB::select(DB::raw('SELECT count(correo) as n FROM constancias group by correo order by n asc'));
+			$b = 1;
+			$inscritos_nc = array();
+
+			foreach($ncursos_constancia as $n){
+				if($n == $b){
+					$inscritos_nc[$b]++;
+				}
+				else {
+					$b++;
+				}
+			}
+
+			print_r($);
+
 			return view('usuarios/inscritost')-> with('mes1', collect($mes))-> with('mes2', collect($cur))-> with('name_user', $username)->with('users_course', collect($users_course))->with('constancias', $constancias)->with('lista_constancias', $lista_constancias)->with('inscrito_curso', $inscrito_curso);
 
 		}
