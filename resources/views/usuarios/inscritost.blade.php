@@ -13,6 +13,7 @@
     var data1 = new google.visualization.DataTable();
     var data2 = new google.visualization.DataTable();
     var data0 = new google.visualization.DataTable();
+    // var data3 = new google.visualization.DataTable();
 
     data1.addColumn('number', 'Mes (Desde Febrero del 2015)' );
     data2.addColumn('number', 'Mes (Desde Febrero del 2015)' );
@@ -22,8 +23,8 @@
     data0.addColumn('number', 'Número de cursos' );
     data0.addColumn('number', 'Alumnos registrados');
 
-    data3.addColumn('number', 'Número de cursos' );
-    data3.addColumn('number', 'Alumnos registrados');
+    // data3.addColumn('number', 'Número de cursos' );
+    // data3.addColumn('number', 'Alumnos registrados');
 
     <?php foreach ($users_course as $key): ?>
     data0.addRows([
@@ -31,13 +32,13 @@
     ]);
     <?php endforeach; ?>
 
-    <?php for($k = 1; $k <= sizeof($inscritos_nc) ; $k++){
-              if($inscritos_nc[$k] != 0){ ?>
-                data3.addRows([
-                  [{{$k}},  {{$inscritos_nc[$k]}}],
-                ]);
-
-    <?php } } ?>
+    // <?php for($k = 1; $k <= sizeof($inscritos_nc) ; $k++){
+    //           if($inscritos_nc[$k] != 0){ ?>
+    //             data3.addRows([
+    //               [{{$k}},  {{$inscritos_nc[$k]}}],
+    //             ]);
+    //
+    // <?php } } ?>
 
 
     for (var i = 0 ; i <= mes1.length ; i++){
@@ -101,26 +102,26 @@
       colors: ['orange']
     };
 
-    var options3 = {
-
-      chart: {
-
-        title: 'Alumnos inscritos en N cursos y que se les ha otorgado constancia en estos',
-      },
-      width: 900,
-      height: 400,
-      colors: ['red']
-    };
+    // var options3 = {
+    //
+    //   chart: {
+    //
+    //     title: 'Alumnos inscritos en N cursos y que se les ha otorgado constancia en estos',
+    //   },
+    //   width: 900,
+    //   height: 400,
+    //   colors: ['red']
+    // };
 
     var chart1 = new google.charts.Line(document.getElementById('line_top_x'));
     var chart2 = new google.charts.Line(document.getElementById('line_top_y'));
     var chart0 = new google.charts.Line(document.getElementById('line_top'));
-    var chart3 = new google.charts.Line(document.getElementById('line_top_z'));
+    // var chart3 = new google.charts.Line(document.getElementById('line_top_z'));
 
     chart1.draw(data1, options1);
     chart2.draw(data2, options2);
     chart0.draw(data0, options0);
-    chart3.draw(data3, options3);
+    // chart3.draw(data3, options3);
 
   }
   </script>
@@ -130,6 +131,7 @@
 
   <center> <h4>Información de todos los cursos de MéxicoX</h4></center>
   <br>
+  {{$inscritos_nc}}
   <div class="container">
     <div class="row">
       <br>
