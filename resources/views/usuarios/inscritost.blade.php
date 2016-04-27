@@ -37,7 +37,7 @@
     <?php for($k = 0; $k < sizeof($nn) ; $k++){?>
 
         data3.addRows([
-          [{{$nn[$k-1]}}, {{$inscritos_nc[$nn[$k-1]]}}],
+          [{{$nn[$k]}}, {{$inscritos_nc[$nn[$k]]}}],
           ]);
 
     <?php } ?>
@@ -202,10 +202,10 @@
     <?php for($k = 0; $k < sizeof($nn) ; $k++){?>
       <tr>
         <td>
-          {{$nn[$k-1]}}
+          {{$nn[$k]}}
         </td>
         <td>
-          {{$inscritos_nc[$nn[$k-1]]}}
+          {{$inscritos_nc[$nn[$k]]}}
         </td>
       </tr>
     <?php } ?>
