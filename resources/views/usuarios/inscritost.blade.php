@@ -173,7 +173,7 @@
       <td>Alumnos registrados</td>
     </tr>
 
-    <?php for($k = 0; $k <= sizeof($nn) ; $k++){?>
+    <?php for($k = 0; $k < sizeof($nn) ; $k++){?>
       <tr>
         <td>
           {{$nn[$k]}}
