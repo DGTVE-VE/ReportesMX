@@ -715,17 +715,19 @@ class UseController extends Controller {
 			// print_r($lista_constancias);
 
 			$ncursos_constancia = DB::select(DB::raw('SELECT count(correo) as n FROM edxapp.constancias group by correo order by n asc'));
-			// $b = 1;
-			// $inscritos_nc[0] = 0;
-			//
-			// foreach($ncursos_constancia as $n){
-			// 	if($n->n == $b){
-			// 		$inscritos_nc[$b]++;
-			// 	}
-			// 	else {
-			// 		$b++;
-			// 	}
-			// }
+
+			$b = 1;
+			$inscritos_nc[0] = 0;
+
+			foreach($ncursos_constancia as $n){
+				print_r($n);
+				// if($n->n == $b){
+				// 	$inscritos_nc[$b]++;
+				// }
+				// else {
+				// 	$b++;
+				// }
+			}
 
 			#print_r($ncursos_constancia);
 
