@@ -525,7 +525,7 @@ class UseController extends Controller {
 			fputcsv($fp, $info1);
 
 			$info1 = array('Activos en MéxicoX' ,$info[0]);
-			$c_name0 = "Activos en MéxicoX"
+			$c_name0 = "Activos en MéxicoX";
 			fputcsv($fp, $info1);
 
 			$info1 = array('Activos en '. $course_name ,$info[1] );
