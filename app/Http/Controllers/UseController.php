@@ -408,10 +408,11 @@ class UseController extends Controller {
 			fclose($fp);
 
 
+			$cn0 = "Registrados en MéxicoX";
+			$cn1 = "Usuarios con cuenta activada en MéxicoX";
+			$cn2 = "Usuarios que no tienen su cuenta activada en MéxicoX";
 
-			$cn = "México X";
-
-			return view('usuarios/totales')-> with ('info', collect($info)) -> with ('edad', collect($edad))->with('infot', collect($infot))->with ('estudio', collect($estudio))->with('name_user', $username )-> with('course_name', $cn);
+			return view('usuarios/totales')-> with ('info', collect($info)) -> with ('edad', collect($edad))->with('infot', collect($infot))->with ('estudio', collect($estudio))->with('name_user', $username )-> with('course_name0', $cn0)-> with('course_name1', $cn1)-> with('course_name2', $cn2);
 
 		}
 
@@ -524,16 +525,19 @@ class UseController extends Controller {
 			fputcsv($fp, $info1);
 
 			$info1 = array('Activos en MéxicoX' ,$info[0]);
+			$c_name0 = "Activos en MéxicoX"
 			fputcsv($fp, $info1);
 
 			$info1 = array('Activos en '. $course_name ,$info[1] );
+			$c_name1 = "Inscritos en ".$course_name;
 			fputcsv($fp, $info1);
 
 			$info1 = array('No activos en '. $course_name, $info[2]);
+			$c_name2 = "No inscritos en ".$course_name;
 			fputcsv($fp, $info1);
 			fclose($fp);
 
-			return view('usuarios/totales') -> with ('info', collect($info)) -> with ('edad', collect($edad))->with ('infot', collect($infot))->with ('estudio', collect($estudio))->with('name_user', $username )-> with('course_name', $course_name);
+			return view('usuarios/totales') -> with ('info', collect($info)) -> with ('edad', collect($edad))->with ('infot', collect($infot))->with ('estudio', collect($estudio))->with('name_user', $username )-> with('course_name', $course_name)-> with('course_name0', $c_name0)-> with('course_name1', $c_name1)-> with('course_name2', $c_name2);
 
 		}
 		else

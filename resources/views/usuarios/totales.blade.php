@@ -100,15 +100,15 @@
           </thead>
           <tbody>
             <tr class="success">
-              <td>Registrados en MéxicoX</td>
+              <td>{{$course_name0}}</td>
               <td>{{$info[0]}}</td>
             </tr>
             <tr class="info">
-              <td>Activos en {{$course_name}}</td>
+              <td>{{$course_name1}}</td>
               <td>{{$info[2]}}</td>
             </tr>
             <tr class="danger">
-              <td>No activos en {{$course_name}}</td>
+              <td>{{$course_name2}}</td>
               <td>{{$info[1]}}</td>
             </tr>
           </tbody>
