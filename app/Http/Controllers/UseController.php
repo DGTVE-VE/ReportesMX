@@ -407,12 +407,12 @@ class UseController extends Controller {
 			fputcsv($fp, $info1);
 			fclose($fp);
 
-
+			$cn ="MéxicoX";
 			$cn0 = "Registrados en MéxicoX";
 			$cn1 = "Usuarios con cuenta activada en MéxicoX";
 			$cn2 = "Usuarios que no tienen su cuenta activada en MéxicoX";
 
-			return view('usuarios/totales')-> with ('info', collect($info)) -> with ('edad', collect($edad))->with('infot', collect($infot))->with ('estudio', collect($estudio))->with('name_user', $username )-> with('course_name0', $cn0)-> with('course_name1', $cn1)-> with('course_name2', $cn2)-> with('course_name', $course_name);
+			return view('usuarios/totales')-> with ('info', collect($info)) -> with ('edad', collect($edad))->with('infot', collect($infot))->with ('estudio', collect($estudio))->with('name_user', $username )-> with('course_name0', $cn0)-> with('course_name1', $cn1)-> with('course_name2', $cn2)-> with('course_name', $cn);
 
 		}
 
