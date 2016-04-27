@@ -759,6 +759,8 @@ class UseController extends Controller {
 
 				 }
 			}
+			$registroc = array ($b ,$inscritos_nc[$b]);
+			fputcsv($usc, $registroc);
 
 			fclose($usc);
 
@@ -778,6 +780,8 @@ class UseController extends Controller {
 		$course_id = session()->get('course_id');
 		$username = session()->get('nombre');
 
+		if($username == NULL)
+			return $this->correoacurso();
 
 		if(($super_user == '1') && (session()->get('course_name') == null))
 		{
