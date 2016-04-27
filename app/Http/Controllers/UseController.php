@@ -719,7 +719,7 @@ class UseController extends Controller {
 			$inscritos_nc = array();
 
 			foreach($ncursos_constancia as $n){
-				if($n == $b){
+				if($n->n == $b){
 					$inscritos_nc[$b]++;
 				}
 				else {
