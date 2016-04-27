@@ -31,13 +31,13 @@
     ]);
     <?php endforeach; ?>
 
-    <?php for($k = 1; $k <= sizeof($inscritos_nc) ; $k++){ ?>
-    if($inscritos_nc[$k] != 0){
-    data3.addRows([
-      [{{$k}},  {{$inscritos_nc[$k]}}],
-    ]);
-    }
-    <?php } ?>
+    <?php for($k = 1; $k <= sizeof($inscritos_nc) ; $k++){
+              if($inscritos_nc[$k] != 0){ ?>
+                data3.addRows([
+                  [{{$k}},  {{$inscritos_nc[$k]}}],
+                ]);
+
+    <?php } } ?>
 
 
     for (var i = 0 ; i <= mes1.length ; i++){
