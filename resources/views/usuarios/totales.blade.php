@@ -1,40 +1,45 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
 <head>
 
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-  <script type="text/javascript" src="{{url ('usuarios/totales.js')}}"></script>
+<script type="text/javascript" src="{{url ('usuarios/totales.js')}}"></script>
 
-  <script type="text/javascript">
+<script type="text/javascript">
 
-  google.charts.load('current', {'packages': ['bar']});
-  google.charts.setOnLoadCallback(drawChart);
+google.charts.load('current', {'packages': ['bar']});
+google.charts.setOnLoadCallback(drawChart);
 
-  function drawChart() {
+function drawChart() {
 
-    var data0 = new google.visualization.arrayToDataTable([
-      ['Rango edad', 'Menores a 15','Entre 16 y 20', 'Entre 21 y 25', 'Entre 26 y 30', 'Entre 31 y 35', 'Entre 36 y 40', 'Entre 41 y 45', 'Entre 46 y 50', 'Más de 50'],
-      [ ' ', {{$edad[0]}}, {{$edad[1]}}, {{$edad[2]}}, {{$edad[3]}}, {{$edad[4]}}, {{$edad[5]}}, {{$edad[6]}}, {{$edad[7]}}, {{$edad[8]}}
-    ]]);
+  var data0 = new google.visualization.arrayToDataTable([
+    ['Rango edad', 'Menores a 15','Entre 16 y 20', 'Entre 21 y 25', 'Entre 26 y 30', 'Entre 31 y 35', 'Entre 36 y 40', 'Entre 41 y 45', 'Entre 46 y 50', 'Más de 50'],
+    [ ' ', {{$edad[0]}}, {{$edad[1]}}, {{$edad[2]}}, {{$edad[3]}}, {{$edad[4]}}, {{$edad[5]}}, {{$edad[6]}}, {{$edad[7]}}, {{$edad[8]}}
+  ]]);
 
-    var options0 = {
-      title: 'Por rango de edades',
-      width: 900,
+  var options0 = {
+    legend: { position: 'left' },
+    title: 'Por rango de edades',
 
-      chart: { title:'Rangos'},
+    width: 900,
+    chart: { title:'Rangos'},
 
-      bar: { groupWidth: "90%" }
-    };
+    bar: { groupWidth: "90%" }
+  };
 
-    var chart0 = new google.charts.Bar(document.getElementById('top_x_div'));
-    chart0.draw(data0, google.charts.Bar.convertOptions(options0));
+  var chart0 = new google.charts.Bar(document.getElementById('top_x_div'));
+  chart0.draw(data0, google.charts.Bar.convertOptions(options0));
 
-    ////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////
 
-    var data1 = google.visualization.arrayToDataTable([
+  var data1 = google.visualization.arrayToDataTable([
     ['', 'Hombres', 'Mujeres', 'No especificado'],
     ['Genero', {{$infot[1]}}, {{$infot[0]}}, {{$infot[2]}}]]);
 
     var options1 = {
+      legend: { position: 'left' },
       chart: {
         title: 'Por género de usuarios',
         subtitle: '',
@@ -59,11 +64,12 @@
 
     var data2 = google.visualization.arrayToDataTable([
 
-         ['', 'Doctorado', 'Maestria', 'Técnico Superior', 'Licenciatura', 'Bachillerato', 'Secundaria', 'Primaria', 'Ninguno', 'Otros', 'No especificado'],
-         ['Grado',{{$estudio[0]}}, {{$estudio[1]}}, {{$estudio[2]}}, {{$estudio[3]}}, {{$estudio[4]}}, {{$estudio[5]}}, {{$estudio[6]}}, {{$estudio[7]}},  {{$estudio[8]}}, {{$estudio[9]}}
-                                                       ]]);
+      ['', 'Doctorado', 'Maestria', 'Técnico Superior', 'Licenciatura', 'Bachillerato', 'Secundaria', 'Primaria', 'Ninguno', 'Otros', 'No especificado'],
+      ['Grado',{{$estudio[0]}}, {{$estudio[1]}}, {{$estudio[2]}}, {{$estudio[3]}}, {{$estudio[4]}}, {{$estudio[5]}}, {{$estudio[6]}}, {{$estudio[7]}},  {{$estudio[8]}}, {{$estudio[9]}}
+    ]]);
 
     var options2 = {
+      legend: { position: 'left' },
       chart: {
         title: 'Nivel de estudios usuarios',
         subtitle: '',
@@ -91,7 +97,7 @@
       <div class="col-md-10 col-md-offset-1">
         <br><br>
 
-        <table class="table active table-bordered">
+        <table class="table table-hover table-bordered">
           <thead>
             <tr>
               <th>Usuarios</th>
@@ -155,17 +161,17 @@
       <td><div id="chart_div" style="width: 850px; height: 400px;"></div></td>
       <td><div>
         <table class="table table-hover table-bordered">
-        <tr><td class="danger" style="font-size: medium">Genero</td><td class="danger" style="font-size: medium">Cantidad</td></tr>
-        <tr><td class="warning">Mujeres</td><td class="warning">{{$infot[0]}}</td></tr>
-        <tr><td class="warning">Hombres</td><td class="warning">{{$infot[1]}}</td></tr>
-        <tr><td class="warning">No especificado</td><td class="warning">{{$infot[2]}}</td></tr>
-      </table>
-    <a class="btn btn-default" href="{{url ('/download/genero.csv')}}" role="button">Descargar archivo genero.csv</a>
-    </div></td>
-  </table>
-  <br>
+          <tr><td class="danger" style="font-size: medium">Genero</td><td class="danger" style="font-size: medium">Cantidad</td></tr>
+          <tr><td class="warning">Mujeres</td><td class="warning">{{$infot[0]}}</td></tr>
+          <tr><td class="warning">Hombres</td><td class="warning">{{$infot[1]}}</td></tr>
+          <tr><td class="warning">No especificado</td><td class="warning">{{$infot[2]}}</td></tr>
+        </table>
+        <a class="btn btn-default" href="{{url ('/download/genero.csv')}}" role="button">Descargar archivo genero.csv</a>
+      </div></td>
+    </table>
+    <br>
 
-</table>
+  </table>
 </div>
 </div>
 
@@ -187,7 +193,7 @@
         <tr><td class="warning">Otros</td><td class="warning">{{$estudio[8]}}</td></tr>
         <tr><td class="warning">No especificado</td><td class="warning">{{$estudio[9]}}</td></tr>
       </table>
-    <a class="btn btn-default" href="{{url ('/download/nivel.csv')}}" role="button">Descargar archivo nivel.csv</a>
+      <a class="btn btn-default" href="{{url ('/download/nivel.csv')}}" role="button">Descargar archivo nivel.csv</a>
     </div></td>
   </table>
   <br>
@@ -197,4 +203,5 @@
 </div>
 
 </body>
+</html>
 @endsection
