@@ -764,7 +764,7 @@ class UseController extends Controller {
 
 			fclose($usc);
 
-			$n_instructores = DB::select(DB::raw('SELECT count(*) as n FROM edx_db.student_courseaccessrole where role = "instructor"'))->n;
+			$n_instructores = DB::select(DB::raw('SELECT count(*) as n FROM student_courseaccessrole where role = "instructor"'))->n;
 
 			return view('usuarios/inscritost')-> with('mes1', collect($mes))-> with('mes2', collect($cur))-> with('name_user', $username)->with('users_course', collect($users_course))->with('constancias', $constancias)->with('lista_constancias', $lista_constancias)->with('inscrito_curso', $inscrito_curso)->with('inscritos_nc', $inscritos_nc)->with('nn', $nn)->with('n_instructores', $n_instructores);
 
