@@ -135,23 +135,20 @@
 
   <center> <h4>Información de todos los cursos de MéxicoX</h4></center>
   <br>
+
   <div class="container">
     <div class="row">
-  <div><table class="table table-hover table-bordered" style="font-size: small">
-    <tr class="info">
-      <td>
-        Número de instructores en la plataforma
-      </td>
-      <td>
-        {{$n_instructores}}
-      </td>
-    </tr>
-  </table></div>
-</div>
-</div>
-  <br>
-  <div class="container">
-    <div class="row">
+      <br>
+      <div><table class="table table-hover table-bordered" style="font-size: small">
+        <tr class="info">
+          <td>
+            Número de instructores en la plataforma
+          </td>
+          <td>
+            {{$n_instructores}}
+          </td>
+        </tr>
+      </table></div>
       <br>
       <center><h4>Constancias emitidas en la plataforma:  {{$constancias}}</h4></center>
       <br>
