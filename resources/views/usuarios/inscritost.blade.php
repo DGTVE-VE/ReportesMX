@@ -135,6 +135,8 @@
 
   <center> <h4>Información de todos los cursos de MéxicoX</h4></center>
   <br>
+  <div class="container">
+    <div class="row">
   <div><table class="table table-hover table-bordered" style="font-size: small">
     <tr class="info">
       <td>
@@ -145,6 +147,8 @@
       </td>
     </tr>
   </table></div>
+</div>
+</div>
   <br>
   <div class="container">
     <div class="row">
