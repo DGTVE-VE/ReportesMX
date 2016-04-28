@@ -30,6 +30,7 @@ function drawChart() {
     }
 
   var options0 = {
+    legend: { position: 'left' },
 
     chart: {
 
@@ -98,6 +99,7 @@ function drawChart() {
     }
 
     var options = {
+      legend: { position: 'left' },
 
       chart: {
 
@@ -115,6 +117,7 @@ function drawChart() {
       colors: ['red']
     };
     var options1 = {
+      legend: { position: 'left' },
       chart: {
         title: 'Acumulado de alumnos que registraron actividad',
         subtitle: 'A lo largo del curso.'

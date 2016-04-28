@@ -135,6 +135,17 @@
 
   <center> <h4>Información de todos los cursos de MéxicoX</h4></center>
   <br>
+  <center><div><table class="table table-hover table-bordered" style="font-size: small">
+    <tr>
+      <td>
+        Número de instructores en la plataforma
+      </td>
+      <td>
+        {{$n_instructores}}
+      </td>
+    </tr>
+  </table></div></center>
+  <br>
   <div class="container">
     <div class="row">
       <br>
