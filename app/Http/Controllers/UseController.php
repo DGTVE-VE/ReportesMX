@@ -723,15 +723,32 @@ class UseController extends Controller {
 
 			fclose($us);
 
+			////////////////////////////////////////////////////////////////////////////
+
+			$efi = fopen ('download/eficiencia_cursos.csv', 'w');
+
 			$constancias = DB::table('edxapp.constancias')->count('id');
 			$lista_constancias = array();
 			$lista_constancias = DB::select(DB::raw('select count(curso) as constancias , course_id as nombre_curso from edxapp.constancias group by course_id'));
 			$r = 0;
+
+			$eficiencia = array('Id del curso', 'Constancias emitidas', 'Inscritos', 'Eficiencia en porcentaje');
+			fputcsv($efi, $eficiencia);
+
 			foreach ($lista_constancias as $key){
 
 			$inscrito_curso[$r] = DB::table('vm_inscritos_x_curso')->wherecourse_id($key->nombre_curso)->get();
+
+			$eficiencia = array ($key->nombre_curso , $key->constancias, $inscrito_curso[$r][0]->inscritos, round(($key->constancias/($inscrito_curso[$k][0]->inscritos)*100),2));
+			
+			fputcsv($efi, $eficiencia);
+
 			$r++;
 			}
+
+			fclose($efi);
+
+			///////////////////////////////////////////////////////////////////////////
 
 			$ncursos_constancia = DB::select(DB::raw('SELECT count(correo) as n FROM edxapp.constancias group by correo order by n asc'));
 
@@ -765,7 +782,7 @@ class UseController extends Controller {
 			fclose($usc);
 
 			$n_instructores = DB::select(DB::raw('SELECT count(*) as n FROM student_courseaccessrole where role = "instructor"'))[0]->n;
-			
+
 
 			return view('usuarios/inscritost')-> with('mes1', collect($mes))-> with('mes2', collect($cur))-> with('name_user', $username)->with('users_course', collect($users_course))->with('constancias', $constancias)->with('lista_constancias', $lista_constancias)->with('inscrito_curso', $inscrito_curso)->with('inscritos_nc', $inscritos_nc)->with('nn', $nn)->with('n_instructores', $n_instructores);
 

@@ -176,7 +176,9 @@
                           print_r(round(($lista_constancias[$k]->constancias/($inscrito_curso[$k][0]->inscritos)*100),2));?></td>
           </tr>
         <?php } ?>
-      </table></div>
+      </table>
+      <a class="btn btn-default" href="{{url ('/download/eficiencia_cursos.csv')}}" role="button">Descargar archivo eficiencia_cursos.csv</a>
+    </div>
 
 
       <h4>Usuarios que se registran a N cursos.</h4>
