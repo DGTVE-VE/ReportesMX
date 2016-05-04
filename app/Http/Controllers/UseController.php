@@ -738,19 +738,12 @@ class UseController extends Controller {
 			foreach ($lista_constancias as $key){
 
 			$inscrito_curso[$r] = DB::table('vm_inscritos_x_curso')->wherecourse_id($key->nombre_curso)->get();
-			#print_r($key->nombre_curso);
-			#echo("<br>");
-			print_r($key->constancias);
-			echo("<br>");
 
 			if($inscrito_curso[$r] == NULL){
-						$eficiencia = array ($lista_constancias[$r]->nombre_curso, $key->constancias, '000', 'Porcentaje');
+						$eficiencia = array ($lista_constancias[$r]->nombre_curso, $key->constancias, '0000', '0' );
 			}
-			// else if ($inscrito_curso[$r]==NULL || $inscrito_curso[$r][0]->inscritos == "") {
-			// 			$eficiencia = array ($inscrito_curso[$r][0]->course_name , $key->constancia, '0000', 'Porcentaje');
-			// }
 			else if($inscrito_curso[$r][0]->course_name){
-						$eficiencia = array ($inscrito_curso[$r][0]->course_name , $key->constancias, $inscrito_curso[$r][0]->inscritos, 'Porcentaje');
+						$eficiencia = array ($inscrito_curso[$r][0]->course_name , $key->constancias, $inscrito_curso[$r][0]->inscritos, round(($key->constancias/($inscrito_curso[$k][0]->inscritos)*100),2));
 			}
 
 			fputcsv($efi, $eficiencia);
