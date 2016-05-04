@@ -739,8 +739,8 @@ class UseController extends Controller {
 
 			$inscrito_curso[$r] = DB::table('vm_inscritos_x_curso')->wherecourse_id($key->nombre_curso)->get();
 
-			$eficiencia = array ($key->nombre_curso , $key->constancias, $inscrito_curso[$r][0]->inscritos, round(($key->constancias/($inscrito_curso[$k][0]->inscritos)*100),2));
-			
+			$eficiencia = array ($key->nombre_curso , $key->constancias, $inscrito_curso[$r], round(($key->constancias/($inscrito_curso[$k])*100),2));
+
 			fputcsv($efi, $eficiencia);
 
 			$r++;
