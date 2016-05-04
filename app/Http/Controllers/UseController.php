@@ -738,11 +738,12 @@ class UseController extends Controller {
 			foreach ($lista_constancias as $key){
 
 			$inscrito_curso[$r] = DB::table('vm_inscritos_x_curso')->wherecourse_id($key->nombre_curso)->get();
-			print_r($key->nombre_curso);
-			echo("<br>");
-			print_r($key->constancias);
-			echo("<br>");
+			#print_r($key->nombre_curso);
+			#echo("<br>");
+			#print_r($key->constancias);
+			#echo("<br>");
 			print_r($inscrito_curso[$r]);
+			echo("<br>");
 
 			#$eficiencia = array ($key->nombre_curso , $key->constancias, $inscrito_curso[$r], 'Porcentaje');
 
