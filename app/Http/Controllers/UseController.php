@@ -746,6 +746,9 @@ class UseController extends Controller {
 			if($inscrito_curso[$r]==NULL || $inscrito_curso[$r][0]->course_name == ""){
 						$eficiencia = array ($lista_constancias[$r]->nombre_curso, $key->constancias, $inscrito_curso[$r][0]->inscritos, 'Porcentaje');
 			}
+			else if ($inscrito_curso[$r]==NULL || $inscrito_curso[$r][0]->inscritos == "") {
+						$eficiencia = array ($inscrito_curso[$r][0]->course_name , $key->constancia, '0000', 'Porcentaje');
+			}
 			else if($inscrito_curso[$r][0]->course_name){
 						$eficiencia = array ($inscrito_curso[$r][0]->course_name , $key->constancia, $inscrito_curso[$r][0]->inscritos, 'Porcentaje');
 			}
