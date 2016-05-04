@@ -740,14 +740,12 @@ class UseController extends Controller {
 			$inscrito_curso[$r] = DB::table('vm_inscritos_x_curso')->wherecourse_id($key->nombre_curso)->get();
 			#print_r($key->nombre_curso);
 			#echo("<br>");
-			#print_r($key->constancias);
-			#echo("<br>");
-			print_r($inscrito_curso[$r]);
+			print_r($key->constancias);
 			echo("<br>");
 
-			#$eficiencia = array ($key->nombre_curso , $key->constancias, $inscrito_curso[$r], 'Porcentaje');
+			$eficiencia = array ($inscrito_curso[$r][0]->course_name , "$key->constancia", $inscrito_curso[$r][0]->inscritos, 'Porcentaje');
 
-			#fputcsv($efi, $eficiencia);
+			fputcsv($efi, $eficiencia);
 
 			$r++;
 			}
