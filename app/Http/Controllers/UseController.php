@@ -743,7 +743,7 @@ class UseController extends Controller {
 						$eficiencia = array ($lista_constancias[$r]->nombre_curso, $key->constancias, '0000', '0' );
 			}
 			else if($inscrito_curso[$r][0]->course_name){
-						$eficiencia = array ($inscrito_curso[$r][0]->course_name , $key->constancias, $inscrito_curso[$r][0]->inscritos, round(($key->constancias/($inscrito_curso[$k][0]->inscritos)*100),2));
+						$eficiencia = array ($inscrito_curso[$r][0]->course_name , $key->constancias, $inscrito_curso[$r][0]->inscritos, round(($key->constancias/($inscrito_curso[$r][0]->inscritos)*100),2));
 			}
 
 			fputcsv($efi, $eficiencia);
