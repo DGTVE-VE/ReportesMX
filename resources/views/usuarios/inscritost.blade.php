@@ -182,7 +182,7 @@
         <tr>
           <td></td>
           <td></td>
-          <td>Promedio eficiencia total {{$var}}</td>
+          <td>Promedio eficiencia total</td>
           <td>{{$var/sizeof($lista_constancias)}}</td>
         </tr>
       </table>
