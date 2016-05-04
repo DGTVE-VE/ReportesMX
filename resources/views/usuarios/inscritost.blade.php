@@ -159,7 +159,7 @@
           <td>Inscritos en curso</td>
           <td>Eficiencia en porcentaje</td>
         </tr>
-        <?php for( $k = 0 ; $k < sizeof($lista_constancias) ; $k++){ ?>
+        <?php $var = 0; for( $k = 0 ; $k < sizeof($lista_constancias) ; $k++){ ?>
           <tr>
             <td><?php if($inscrito_curso[$k]==NULL || $inscrito_curso[$k][0]->course_name == ""){
                         print_r($lista_constancias[$k]->nombre_curso);
@@ -172,10 +172,19 @@
                         else {
                           print_r($inscrito_curso[$k][0]->inscritos);
                         }?></td>
-            <td><?php if($inscrito_curso[$k] != NULL)
-                          print_r(round(($lista_constancias[$k]->constancias/($inscrito_curso[$k][0]->inscritos)*100),2));?></td>
+            <td><?php if($inscrito_curso[$k] != NULL){
+                          $var = $var + ($lista_constancias[$k]->constancias/($inscrito_curso[$k][0]->inscritos)*100);
+                          print_r(round(($lista_constancias[$k]->constancias/($inscrito_curso[$k][0]->inscritos)*100),2));
+
+                        }?></td>
           </tr>
         <?php } ?>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>Promedio eficiencia total</td>
+          <td>{{$var/sizeof($lista_constancias)}}</td>
+        </tr>
       </table>
       <a class="btn btn-default" href="{{url ('/download/eficiencia_cursos.csv')}}" role="button">Descargar archivo eficiencia_cursos.csv</a>
     </div>
