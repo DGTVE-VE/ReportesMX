@@ -11,9 +11,9 @@
                 <tr>
 
                     <td><a href="{{url('home')}}" class="btn btn-primary active" role="button">Todos los cursos</a></td>
-                    <td><a href="{{url('cursoa')}}" class="btn btn-success active" role="button">Cursos activos</a></td>
-                    <td><a href="{{url('cursoc')}}" class="btn btn-danger active" role="button">Cursos concluidos</a></td>
-                    <td><a href="{{url('curson')}}" class="btn btn-warning active" role="button">Cursos por iniciar</a></td>
+                    <td><a href="{{url('cursoa')}}" class="btn btn-danger active" role="button">Inicio</a></td>
+                    <td><a href="{{url('cursoc')}}" class="btn btn-success active" role="button">Término</a></td>
+                    <td><a href="{{url('curson')}}" class="btn btn-warning active" role="button">Inscripción</a></td>
 
                 </tr>
 
