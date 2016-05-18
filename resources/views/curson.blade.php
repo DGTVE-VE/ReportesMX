@@ -1,5 +1,5 @@
 @extends('cursos') @section('contentd')
-<center> <h4>Hola, {{$name_user}}, {{$course_name}}</h4></center>
+<center> <h4>Inscripción</h4></center>
 <div class="container">
     <div class="row">
         <div>
@@ -41,6 +41,7 @@
 
 
         </div>
+        <a class="btn btn-default" href="{{url ('/download/no_activos.csv')}}" role="button">Descargar archivo csv</a>
     </div>
 </div>
 @endsection

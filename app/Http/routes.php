@@ -22,12 +22,12 @@ Route::get('curson', ['middleware' => 'auth', 'uses' => 'UseController@curson'])
 Route::get('cursoc', ['middleware' => 'auth', 'uses' => 'UseController@cursoc']);
 
 Route::get('totales', ['middleware' => 'auth', 'uses' => 'UseController@totales']);
-Route::get('genero', ['middleware' => 'auth', 'uses' => 'UseController@genero']);
-Route::get('edad', ['middleware' => 'auth', 'uses' => 'UseController@edad']);
-Route::get('nivel', ['middleware' => 'auth', 'uses' => 'UseController@nivel']);
+Route::get('inscritost', ['middleware' => 'auth', 'uses' => 'UseController@inscritost']);
+Route::get('infocurso', ['middleware' => 'auth', 'uses' => 'UseController@infocurso']);
+
 Route::get('geo', ['middleware' => 'auth', 'uses' => 'UseController@geo']);
 
-Route::get('desercion', ['middleware' => 'auth', 'uses' => 'UseController@desercion']);
+Route::get('videos', ['middleware' => 'auth', 'uses' => 'UseController@videos']);
 
 Route::get('logout', ['middleware' => 'auth', 'uses' => 'UseController@logout']);
 

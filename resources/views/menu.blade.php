@@ -1,12 +1,12 @@
 @extends('app') @section('content')
 <br>
-<center> <h4>Hola, {{$name_user}}</h4></center>
+<center> <h4>Bienvenido {{$name_user}}</h4></center>
 <br>
 <center>
-<h4 class="text-center">Sistema de Información de usuarios de MéxicoX</h4> <img src="logo_large.png" border=0>
+<h4 class="text-center">Sistema de Información de usuarios</h4> <img src="logo_large.png" border=0>
 </center>
 <br>
-<h4 class="text-center">Selecciona el curso para mostrarte las estadisticas del mismo.</h4>
+<h4 class="text-center">Selecciona un curso para mostrarte estadisticas del mismo.</h4>
 <br>
 <br>
 

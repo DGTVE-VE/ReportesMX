@@ -1,5 +1,5 @@
 @extends('cursos') @section('contentd')
-<center> <h4>Hola, {{$name_user}}, {{$course_name}}</h4></center>
+<center> <h4>Inicio</h4></center>
 <div class="container">
     <div class="row">
         <div>
@@ -9,13 +9,13 @@
                <thead>
                 <tr>
 
-                    <td class="success" style="font-size: medium">ID</td>
-                    <td class="success" aling="right" style="font-size: medium">ID Curso</td>
-                    <td class="success" aling="right" style="font-size: medium">Nombre</td>
-                    <td class="success" aling="right" style="font-size: medium">Fecha Inicio Curso</td>
-                    <td class="success" aling="right" style="font-size: medium">Fecha Fin Curso</td>
-                    <td class="success" aling="right" style="font-size: medium">Fecha Inicio Inscripción</td>
-                    <td class="success" aling="right" style="font-size: medium">Fecha Fin Inscripción</td>
+                    <td class="danger" style="font-size: medium">ID</td>
+                    <td class="danger" aling="right" style="font-size: medium">ID Curso</td>
+                    <td class="danger" aling="right" style="font-size: medium">Nombre</td>
+                    <td class="danger" aling="right" style="font-size: medium">Fecha Inicio Curso</td>
+                    <td class="danger" aling="right" style="font-size: medium">Fecha Fin Curso</td>
+                    <td class="danger" aling="right" style="font-size: medium">Fecha Inicio Inscripción</td>
+                    <td class="danger" aling="right" style="font-size: medium">Fecha Fin Inscripción</td>
 
 
                 </tr>
@@ -40,6 +40,7 @@
             </table>
 
         </div>
+        <a class="btn btn-default" href="{{url ('/download/cursoa.csv')}}" role="button">Descargar archivo csv</a>
     </div>
 </div>
 

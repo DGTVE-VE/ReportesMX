@@ -6,9 +6,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Información de usuarios de MéxicoX</title>
 
-	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+	<link rel="icon" href="{{ URL::asset('favicon.ico') }}" type="image/x-icon">
+
+	<!-- <link href="{{ asset('/css/app.css') }}" rel="stylesheet"> -->
 
 	<!-- Fonts -->
+
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -22,6 +25,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-default">
+
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -30,20 +34,25 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="http://mx.televisioneducativa.gob.mx/" target="_blank">MéxicoX</a>
+				<a class="navbar-brand" href="http://mx.televisioneducativa.gob.mx/" target="Ir a MéxicoX">
+					 <img src="logo_large.png" alt="imagen" width= "85px">
+					 </a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="{{url ('/')}}" class="bg-danger">Inicio</a></li>
-          <li><a href="{{url ('home')}}" class="bg-danger">Estadisticas Cursos</a></li>
-          <li><a href="{{url ('totales')}}" class="bg-danger">Registrados en la plataforma</a></li>
-					<li><a href="{{url ('edad')}}" class="bg-danger">Por edades</a></li>
-					<li><a href="{{url ('genero')}}" class="bg-danger">Por genero</a></li>
-					<li><a href="{{url ('nivel')}}" class="bg-danger">Por Nivel de Estudios</a></li>
-					<li><a href="{{url ('geo')}}" class="bg-danger">Por Entidad Federativa</a></li>
-          <li><a href="{{url ('desercion')}}" class="bg-danger">Deserción por curso</a></li>
-          <li><a href="{{url ('logout')}}" class="bg-success">Cerrar Sesión</a></li>
+					<li><a href="{{url ('/')}}" class="bg-active" title="Selección de un curso">
+						 <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					 </a></li>
+          <li><a href="{{url ('home')}}" class="bg-active">Listado Cursos</a></li>
+          <li><a href="{{url ('totales')}}" class="bg-active">Información usuarios</a></li>
+					<li><a href="{{url ('infocurso')}}" class="bg-active">Estadísticas curso</a></li>
+					<li><a href="{{url('inscritost')}}" class="bgactive">Inscritos a cursos</a><li>
+					<li><a href="{{url ('videos')}}" class="bg-active">Videos</a></li>
+					<li><a href="{{url ('logout')}}" class="bg-close" title="Salir">
+						<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+					</a></li>
+					<li><a>Hola {{$name_user}}</a></li>
 
 				</ul>
 
