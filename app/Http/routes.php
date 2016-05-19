@@ -41,7 +41,11 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
-Route::get ('sendmail', 'MailController@sendmail');
-Route::get ('mailTemplate', function (){
-    return view ('emails.masivo');
-});
+//Route::group(['middleware' => 'auth'], function () {
+    Route::post ('mail/show', 'MailController@show');
+    Route::get ('mail/send', 'MailController@sendmail');
+    Route::get ('mail/compose', 'MailController@index');
+    Route::get ('mailTemplate', function (){
+        return view ('emails.masivo');
+    });
+//});

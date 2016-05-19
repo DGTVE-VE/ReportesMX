@@ -6,17 +6,30 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Mail;
+use Illuminate\Support\Facades\Input;
 
 class MailController extends Controller {
 
+//    public function __construct() {
+//        
+//        $this->middleware('auth', 
+//            ['only' => ['index']]);
+//    }
+    
     public function sendmail() {
+        $asunto = Input::get( 'asunto' );
+        $mensaje = Input::get( 'mensaje' );
+        $course_id = Input::get( 'course_id' );
+        
+        //TODO obtener los correos con base al course_id 
+        // Si el course_id es TODOS entonces recupera TODOS los correos.
         Mail::send(
                 'emails.masivo', 
                 array('firstName' => 'Israel'), 
-                function( $message ) {
+                function( $message ) use ($asunto) {
                     $message->from('mexicox@televisioneducativa.gob.mx', 'México X');
                     $message->to('j.israel.toledo@gmail.com')
-                            ->subject('Información México X');
+                            ->subject($asunto);
                 }
         );
     }
@@ -27,7 +40,7 @@ class MailController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        //
+        return view ('mail.index');
     }
 
     /**
@@ -55,8 +68,14 @@ class MailController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id) {
-        //
+    public function show() {
+        
+        $asunto = Input::get( 'asunto' );
+        $mensaje = Input::get ('mensaje');
+        
+        return view ('emails.masivo')
+                ->with ('asunto',$asunto)
+                ->with ('mensaje', $mensaje);
     }
 
     /**
