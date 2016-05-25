@@ -971,6 +971,12 @@ class UseController extends Controller {
 
 	}
 
+	public function mongo(){
+
+		print_r("Hola MongoDB");
+		#return view('mongo');
+	}
+
 	public function logout(){
 		session()->flush();
 
