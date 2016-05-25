@@ -12,11 +12,9 @@
 */
 
 Route::get('/', ['middleware' => 'auth', 'uses' => 'UseController@correoacurso']);
-
 Route::any('home', ['middleware' => 'auth', 'uses' => 'UseController@inscritos']);
 
 Route::get('cursos', ['middleware' => 'auth', 'uses' => 'UseController@cursos']);
-
 Route::get('cursoa', ['middleware' => 'auth', 'uses' => 'UseController@cursoa']);
 Route::get('curson', ['middleware' => 'auth', 'uses' => 'UseController@curson']);
 Route::get('cursoc', ['middleware' => 'auth', 'uses' => 'UseController@cursoc']);
@@ -26,11 +24,11 @@ Route::get('inscritost', ['middleware' => 'auth', 'uses' => 'UseController@inscr
 Route::get('infocurso', ['middleware' => 'auth', 'uses' => 'UseController@infocurso']);
 
 Route::get('geo', ['middleware' => 'auth', 'uses' => 'UseController@geo']);
-
 Route::get('videos', ['middleware' => 'auth', 'uses' => 'UseController@videos']);
 
-Route::get('logout', ['middleware' => 'auth', 'uses' => 'UseController@logout']);
+Route::get('mongo', ['middleware' => 'auth', 'uses' => 'UseController@mongo']);
 
+Route::get('logout', ['middleware' => 'auth', 'uses' => 'UseController@logout']);
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');

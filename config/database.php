@@ -64,6 +64,18 @@ return [
             'strict'    => false,
         ],
 
+        'mongodb' => [
+          'driver'   => 'mongodb',
+          'host'     => env('DB_HOST', 'localhost'),
+          'port'     => env('DB_PORT', 27018),
+          'database' => env('bitnami_edx'),
+          'username' => env('root'),
+          'password' => env('97090771'),
+          'options' => [
+            'database' => 'admin' // sets the authentication database required by mongo 3
+          ]
+        ],
+
         'pgsql' => [
             'driver'   => 'pgsql',
             'host'     => env('DB_HOST', 'localhost'),
