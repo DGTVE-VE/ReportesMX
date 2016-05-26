@@ -975,10 +975,10 @@ class UseController extends Controller {
 
 			print_r("Hola MongoDB");
 
-			$user = DB::connection('mongodb')->get();
+			$prueba = DB::connection('mongodb')->collection('assetstore')->get();
 
-			print_r($user);
-			
+			print_r($prueba);
+
 	}
 
 	public function logout(){

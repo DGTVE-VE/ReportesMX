@@ -163,7 +163,7 @@
         <?php $var = 0; ?>
         <?php for( $k = 0 ; $k < sizeof($lista_constancias) ; $k++){ ?>
           <tr>
-            <td><?php print_r($k); ?></td>
+            <td><?php print_r($k+1); ?></td>
             <td><?php if($inscrito_curso[$k]==NULL || $inscrito_curso[$k][0]->course_name == ""){
                         print_r($lista_constancias[$k]->nombre_curso);
                       }else {
@@ -183,6 +183,7 @@
           </tr>
         <?php } ?>
         <tr>
+          <td></td>
           <td></td>
           <td></td>
           <td>Promedio eficiencia total</td>
