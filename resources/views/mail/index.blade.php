@@ -69,21 +69,30 @@
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="email">Asunto: </label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="asunto" name='asunto' 
+                                <input type="text" class="form-control" id="asunto" name='asunto'
                                        placeholder="Asunto del correo">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="pwd">Correos: </label>
-                            <div class="col-sm-10"> 
-                                <select class='form-control'>
-                                    <option value='course_id'> Curso </option>
+                            <div class="col-sm-10">
+
+                                <select class='form-control' id="select_curso" name="course_name">
+                                    <option value='0'> Seleccione un curso </option>
+                                    <option value="{{$courses_names}}"> Todos mis cursos </option>
+
+                                    @foreach($courses_names as $i){
+                                        <option value="{{$i}}">{{$i}}</option>
+                                    }
+                                     @endforeach
+
                                 </select>
+
                             </div>
-                        </div>  
+                        </div>
                         <textarea name='mensaje' rows="8">Mensaje...</textarea>
                         <br>
-                        <div class="form-group"> 
+                        <div class="form-group">
                             <div class="col-sm-offset-10 col-sm-2">
                                 <button type="submit" class="btn btn-default">
                                     <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
@@ -98,12 +107,10 @@
 
 
         <!-- Scripts -->
-        
+
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
         <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
         <script>tinymce.init({ selector:'textarea' });</script>
     </body>
 </html>
-
-

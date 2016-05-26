@@ -51,6 +51,7 @@ class UseController extends Controller {
 
 			}
 			else{
+				session()->put('courses_names', $course_name);
 				return $this->index($course_name);
 			}
 		}
