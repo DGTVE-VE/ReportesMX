@@ -45,7 +45,7 @@ class MailController extends Controller {
         //
         // print_r($courses_names);
 
-        return view ('mail.index');//->with('courses_names', $courses_names);
+        return view ('mail.index');
     }
 
     /**
