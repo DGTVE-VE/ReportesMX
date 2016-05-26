@@ -975,8 +975,8 @@ class UseController extends Controller {
 
 			print_r("Hola MongoDB");
 
-			$prueba = DB::connection('mongodb')->collection('assetstore')->get();
-
+			#$prueba = DB::connection('mongodb')->collection('assetstore')->get();
+			$prueba = MongoTest::all();
 			print_r($prueba);
 
 	}
