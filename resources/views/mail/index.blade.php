@@ -77,7 +77,7 @@
                             <label class="control-label col-sm-2" for="pwd">Correos: </label>
                             <div class="col-sm-10">
 
-                                <select class='form-control' id="select_curso" name="course_name">
+                                <select class='form-control'> <!--//id="select_curso" name="course_name">-->
                                     <option value='0'> Seleccione un curso </option>
                                     <!-- <option value="{{$courses_names}}"> Todos mis cursos </option> -->
 
