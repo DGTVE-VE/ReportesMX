@@ -79,12 +79,12 @@
 
                                 <select class='form-control' id="select_curso" name="course_name">
                                     <option value='0'> Seleccione un curso </option>
-                                    <option value="{{$courses_names}}"> Todos mis cursos </option>
+                                    <!-- <option value="{{$courses_names}}"> Todos mis cursos </option> -->
 
-                                    @foreach($courses_names as $i){
+                                    <!-- @foreach($courses_names as $i){
                                         <option value="{{$i}}">{{$i}}</option>
                                     }
-                                     @endforeach
+                                     @endforeach -->
 
                                 </select>
 
