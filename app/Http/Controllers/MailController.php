@@ -43,6 +43,8 @@ class MailController extends Controller {
 
         $courses_names = session()->get('courses_names');
 
+        print_r($courses_names);
+
         return view ('mail.index')->with('courses_names', $courses_names);
     }
 
