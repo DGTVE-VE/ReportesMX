@@ -973,8 +973,12 @@ class UseController extends Controller {
 
 	public function mongo(){
 
-		print_r("Hola MongoDB");
-		#return view('mongo');
+			print_r("Hola MongoDB");
+
+			$user = DB::connection('mongodb')->get();
+
+			print_r($user);
+			
 	}
 
 	public function logout(){
