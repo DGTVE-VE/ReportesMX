@@ -26,7 +26,7 @@ class UseController extends Controller {
 			session()->put('super_user', '1');
 			$id = DB::table('auth_user')->whereemail($correo)->whereis_superuser('1')->get()[0]->id;
 
-			$course_name = DB::table('course_name')->whereBetween('fin',array(20160000, 20990000))->whereBetween('inicio_inscripcion',array(20160000, date("Ymd")))->lists('course_id');
+			$course_name = DB::table('course_name')->whereBetween('fin',array(20160000, 20990000))->whereBetween('inicio_inscripcion',array(20160000, date("Ymd")))->lists('course_name');
 			return $this->index($course_name);
 		}
 
