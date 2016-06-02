@@ -632,16 +632,17 @@ class UseController extends Controller {
 		fputcsv($fdesercion, $dese);
 
 		$desercion = DB::table('vm_desercion')->wherecourse_name($course_name)->get();
-		// $i = 1;
-		// foreach ($desercion as $value) {
-		// 	$fila = array($i , $value);
+		$i = 1;
+		foreach ($desercion as $value) {
 
-		fputcsv($fdesercion, $desercion);
-		// $i++;
-		// }
+			#$fila = array($i , $value);
+			print_r($value);
+		#fputcsv($fdesercion, $desercion);
+		$i++;
+		}
 
 
-		fclose($fp);
+		fclose($fdesercion);
 /////////////////////////////////////////////////////////////////////
 
 
