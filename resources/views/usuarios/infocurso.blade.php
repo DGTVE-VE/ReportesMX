@@ -195,6 +195,7 @@ function drawChart() {
       <table class="table table-hover table-bordered">
         <td><div id="line_top_y"></div></td>
           <br>
+          <td><a class="btn btn-default" href="{{url ('/download/historico.csv')}}" role="button">Descargar archivo historico.csv</a></td>
       </table>
 
     </div>
