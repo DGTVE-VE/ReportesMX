@@ -623,7 +623,31 @@ class UseController extends Controller {
 
 			fclose($fp);
 
-			$desercion = DB::table('vm_desercion')->wherecourse_name($course_name)->get();
+///////////////////////////////////////////////////////////////////////
+
+		$fdesercion = fopen ('download/desercion.csv', 'w');
+
+		$dese = array('Día', 'Alumnos con actividad');
+
+		fputcsv($fdesercion, $dese);
+
+		$desercion = DB::table('vm_desercion')->wherecourse_name($course_name)->get();
+		$i = 1;
+		foreach ($desercion as $value) {
+			$fila = array($i , $value);
+
+		fputcsv($fdesercion, $fila);
+		$i++;
+		}
+
+
+		fclose($fp);
+/////////////////////////////////////////////////////////////////////
+
+
+
+
+
 			$json = json_encode ($desercion);
 
 			return view('usuarios/infocurso') -> with('desercion', $json)->with('name_user', $username )-> with('course_name', $course_name)->with('semanal', collect($sem1))->with('s', $s)->with('f', $f)->with('l', $l);
