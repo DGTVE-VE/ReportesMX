@@ -65,7 +65,7 @@ function drawChart() {
 
   var suma = 0;
 
-  for (var i = 1 ; i < datos.length; i++){
+  for (var i = 0 ; i < datos.length; i++){
 
     suma = suma + parseInt(datos[i].usuarios);
 

@@ -642,7 +642,7 @@ class UseController extends Controller {
 
 			$fila = array($i , $value->usuarios);
 
-			$histo = $value->usuarios + $histo;
+			$histo = $histo + $value->usuarios;
 			$history = array($i , $histo);
 
 		fputcsv($fdesercion, $fila);
