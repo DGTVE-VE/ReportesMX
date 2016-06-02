@@ -635,9 +635,9 @@ class UseController extends Controller {
 		$i = 1;
 		foreach ($desercion as $value) {
 
-			#$fila = array($i , $value);
-			print_r($value);
-		#fputcsv($fdesercion, $desercion);
+			$fila = array($i , $value->usuarios);
+			// print_r($value);
+		fputcsv($fdesercion, $desercion);
 		$i++;
 		}
 
