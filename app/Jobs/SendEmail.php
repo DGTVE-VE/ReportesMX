@@ -40,7 +40,7 @@ class SendEmail extends Job implements SelfHandling, ShouldQueue
         {
             // Correr como daemon a ver si ya no se alenta el front en respoder.
             foreach ($users as $user){        
-                $mailer->queue('emails.masivo', ['mensaje' => $this->mensaje], 
+                $mailer->send('emails.masivo', ['mensaje' => $this->mensaje], 
                     function( $message ) use ($user){
                         $message->from('mexicox@televisioneducativa.gob.mx', 'México X');
                         $message->to($user->email)
