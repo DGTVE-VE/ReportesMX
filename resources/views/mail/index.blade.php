@@ -64,7 +64,7 @@
             <div class='row'>
                 <div class='col-md-2'></div>
                 <div class='col-md-7'>
-                    <form class="form-horizontal" role="form" method="POST" action='{{url('mail/show')}}'>
+                    <form id="target" class="form-horizontal" role="form" method="POST" action='{{url('mail/send')}}'>
                         {{csrf_field ()}}
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="email">Asunto: </label>
@@ -84,17 +84,36 @@
 
                             </div>
                         </div>
-                        <textarea name='mensaje' rows="8">Mensaje...</textarea>
+                        <textarea name='mensaje' rows="8" placeholder="Escribe aquí tu mensaje..."></textarea>
                         <br>
                         <div class="form-group">
                             <div class="col-sm-offset-10 col-sm-2">
-                                <button type="submit" class="btn btn-default">
+                                <button type='submit' class="btn btn-default" id="btnSubmit">
                                     <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
                                     Enviar
                                 </button>
-                            </div>
+
+                              </div>        
                         </div>
                     </form>
+                    
+                    </div>
+                
+                    <div id="progress_bar_div" class="col-md-offset-2 col-md-7" style='display: none'>
+                        Enviando correos...
+                        <hr>
+                        <div class="progress">
+                            <div id='progress_bar' class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="1"
+                            aria-valuemin="0" aria-valuemax="100" style="width:40%">
+                              40%
+                        </div>
+                    </div>
+                    @if (isset ($info))
+                    <div class="alert alert-success fade in" style="margin-top:18px;">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">&times;</a>
+                        <span>{{$info}}</span>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -108,3 +127,50 @@
         <script>tinymce.init({ selector:'textarea' });</script>
     </body>
 </html>
+
+<script>
+//$( "#btnSubmit" ).click(function() {      
+//    $.ajax({
+//        url: "{{url ('mail/count')}}",    
+//    }).done(function(msg) {
+//        console.log (msg);
+//        $('#progress_bar_div').fadeIn('slow');
+//        $('#progress_bar').width('1');
+//        $('#progress_bar').html('1%');
+//        enviaCorreos (msg);
+//    });
+//});
+//
+//function enviaCorreos (maxId){
+//    var progression;
+//    var i;
+////    progress = setInterval(function() 
+////    {
+////        $('#progress_bar').width(progression+'%');
+////        $('#progress_bar').html(progression+'%');       
+////        $('#progress_bar').attr  ('aria-valuenow',progression);
+//////        console.log (i + '->' + progression);
+////    }, 10);
+//    for (i = 0; i<=maxId; i++){
+////        progression = i*100 / maxId;
+////        console.log (i + '->' + progression);
+//        
+//        var _url = "{{url('mail/eco')}}"+'/'+i;
+//        $.ajax({
+//            url: _url,                         
+//        }).done(function(msg) {
+//            console.log (msg);
+////            updateProgress(i, maxId);            
+//        });
+//    }
+//    
+//}
+//
+//function updateProgress (i, maxId){
+//    var porcentaje = i*100 / maxId;
+//    
+//    console.log (i + '->'+ porcentaje);
+//
+//}
+
+</script>

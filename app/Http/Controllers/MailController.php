@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Mail;
 use Illuminate\Support\Facades\Input;
+use DB;
 
 class MailController extends Controller {
 
@@ -16,22 +17,35 @@ class MailController extends Controller {
 //            ['only' => ['index']]);
 //    }
 
+    public function eco ($id){
+        print $id;
+    }
+    public function getTotalRecords (){
+        $count = DB::table('auth_user')->count();
+//        $count = \App\Model\Auth_user::all ()->count ();
+        print json_encode($count);
+    }        
+    
+    public function test (){
+        $user = \App\Model\Auth_user::find(6);
+        var_dump ($user);
+//        $this->dispatch(new \App\Jobs\SendEmail($user));
+    }
+    
     public function sendmail() {
         $asunto = Input::get( 'asunto' );
         $mensaje = Input::get( 'mensaje' );
-        $course_id = Input::get( 'course_id' );
-
-        //TODO obtener los correos con base al course_id
-        // Si el course_id es TODOS entonces recupera TODOS los correos.
-        Mail::send(
-                'emails.masivo',
-                array('firstName' => 'Israel'),
-                function( $message ) use ($asunto) {
-                    $message->from('mexicox@televisioneducativa.gob.mx', 'México X');
-                    $message->to('j.israel.toledo@gmail.com')
-                            ->subject($asunto);
-                }
-        );
+        $id = Input::get( 'id' );
+//        $user = \App\Model\Auth_user::find($id);
+        $this->dispatch(new \App\Jobs\SendEmail($asunto, $mensaje));
+        $count = DB::table('auth_user')->count();
+//        $users = \App\Model\Auth_user::all();        
+//        $i = 0;
+//        foreach ($users as $user){
+//            $this->dispatch(new \App\Jobs\SendEmail($user, $asunto, $mensaje));
+//            $i++;
+//        }
+        return view ('mail.index')->with('info', "Serán enviados ". number_format($count). " correos.");
     }
 
     /**
@@ -45,7 +59,7 @@ class MailController extends Controller {
         //
         // print_r($courses_names);
 
-        return view ('mail.index');
+        print 'index Mail';
     }
 
     /**
@@ -54,7 +68,7 @@ class MailController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        //
+        return view ('mail.index');
     }
 
     /**

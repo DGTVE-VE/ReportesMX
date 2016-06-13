@@ -40,9 +40,12 @@ Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 //Route::group(['middleware' => 'auth'], function () {
+    Route::get ('mail/eco/{id}', 'MailController@eco');
+    Route::get ('mail/count', 'MailController@getTotalRecords');
     Route::post ('mail/show', 'MailController@show');
-    Route::get ('mail/send', 'MailController@sendmail');
-    Route::get ('mail/compose', 'MailController@index');
+    Route::post ('mail/send', 'MailController@sendmail');
+    Route::get ('mail/compose', 'MailController@create');
+    Route::get ('mail/test', 'MailController@test');
     Route::get ('mailTemplate', function (){
         return view ('emails.masivo');
     });

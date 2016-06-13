@@ -12,8 +12,9 @@
              width: 600px; 
              margin: auto;">
             <div style='padding-top: 50px'>
-                <h1>{{$asunto}}</h1>
-                {!!$mensaje!!}
+                
+                {!! $mensaje !!}
+                
             </div>            
             <img src='{{asset('imagenes/email/linea.jpg')}}'
         </div>
