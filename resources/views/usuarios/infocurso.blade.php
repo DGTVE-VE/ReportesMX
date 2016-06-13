@@ -65,7 +65,7 @@ function drawChart() {
 
   var suma = 0;
 
-  for (var i = 1 ; i < datos.length; i++){
+  for (var i = 0 ; i < datos.length; i++){
 
     suma = suma + parseInt(datos[i].usuarios);
 
@@ -182,6 +182,7 @@ function drawChart() {
   <table class="table table-hover table-bordered">
     <td><div id="line_top_x"></div></td>
       <br>
+      <td><a class="btn btn-default" href="{{url ('/download/desercion.csv')}}" role="button">Descargar archivo desercion.csv</a></td>
   </table>
 
 </div>
@@ -194,6 +195,7 @@ function drawChart() {
       <table class="table table-hover table-bordered">
         <td><div id="line_top_y"></div></td>
           <br>
+          <td><a class="btn btn-default" href="{{url ('/download/historico.csv')}}" role="button">Descargar archivo historico.csv</a></td>
       </table>
 
     </div>
