@@ -11,11 +11,6 @@ use DB;
 
 class MailController extends Controller {
 
-//    public function __construct() {
-//
-//        $this->middleware('auth',
-//            ['only' => ['index']]);
-//    }
 
     public function eco ($id){
         print $id;
@@ -27,9 +22,13 @@ class MailController extends Controller {
     }        
     
     public function test (){
-        $user = \App\Model\Auth_user::find(6);
-        var_dump ($user);
-//        $this->dispatch(new \App\Jobs\SendEmail($user));
+        $mensaje = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nisi eget libero placerat sodales a at arcu. Etiam vulputate consequat dignissim. Ut vel dictum sem. Proin magna purus, tincidunt accumsan augue sollicitudin, varius condimentum nulla. Sed et malesuada nisi. In hac habitasse platea dictumst. Suspendisse potenti. Morbi sit amet consectetur odio, at aliquam nulla. Integer imperdiet pharetra metus, sed luctus arcu facilisis vel. Vivamus volutpat diam in diam sodales, et semper elit lacinia. Proin elementum metus turpis, nec facilisis mauris lacinia in. Vivamus auctor arcu vel nulla semper sodales. Nullam non hendrerit eros. Vestibulum et turpis facilisis, mollis justo quis, convallis ipsum.';
+        Mail::send('emails.masivo', ['mensaje' => $mensaje], 
+                    function( $message ){
+                        $message->from('mexicox@televisioneducativa.gob.mx', 'México X');
+                        $message->to('info.taj@televisioneducativa.gob.mx')
+                                ->subject('Asunto prueba');
+        });
     }
     
     public function sendmail() {
