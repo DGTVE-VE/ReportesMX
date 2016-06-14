@@ -26,7 +26,7 @@ class MailController extends Controller {
         $sent = Mail::send('emails.masivo', ['mensaje' => $mensaje], 
                     function( $message ){
                         $message->from('mexicox@televisioneducativa.gob.mx', 'México X');
-                        $message->to('info.taj@televisioneducativa.gob.mx')
+                        $message->to('j.israel.toledo@gmail.com')
                                 ->subject('Asunto prueba');
         });
         if( ! $sent) dd("something wrong");
