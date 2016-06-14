@@ -61,9 +61,8 @@
         </nav>
 
         <div class="container">
-            <div class='row'>
-                <div class='col-md-2'></div>
-                <div class='col-md-7'>
+            <div class='row'>                
+                <div class='col-md-offset-2 col-md-7'>
                     <form id="target" class="form-horizontal" role="form" method="POST" action='{{url('mail/send')}}'>
                         {{csrf_field ()}}
                         <div class="form-group">
@@ -99,24 +98,17 @@
                     
                     </div>
                 
-                    <div id="progress_bar_div" class="col-md-offset-2 col-md-7" style='display: none'>
-                        Enviando correos...
-                        <hr>
-                        <div class="progress">
-                            <div id='progress_bar' class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="1"
-                            aria-valuemin="0" aria-valuemax="100" style="width:40%">
-                              40%
-                        </div>
-                    </div>
+                    
+                        
                     @if (isset ($info))
-                    <div class="alert alert-success fade in" style="margin-top:18px;">
+                    <div class="col-md-offset-2 col-md-7 alert alert-success fade in" style="margin-top:18px;">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">&times;</a>
                         <span>{{$info}}</span>
                     </div>
                     @endif
                 </div>
             </div>
-        </div>
+        
 
 
         <!-- Scripts -->
