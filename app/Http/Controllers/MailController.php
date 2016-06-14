@@ -40,13 +40,14 @@ class MailController extends Controller {
 //        $user = \App\Model\Auth_user::find($id);
         $this->dispatch(new \App\Jobs\SendEmail($asunto, $mensaje));
         $count = DB::table('auth_user')->count();
+        print 'enviados: '.$count;
 //        $users = \App\Model\Auth_user::all();        
 //        $i = 0;
 //        foreach ($users as $user){
 //            $this->dispatch(new \App\Jobs\SendEmail($user, $asunto, $mensaje));
 //            $i++;
 //        }
-        return view ('mail.index')->with('info', "Serán enviados ". number_format($count). " correos.");
+//        return view ('mail.index')->with('info', "Serán enviados ". number_format($count). " correos.");
     }
 
     /**
