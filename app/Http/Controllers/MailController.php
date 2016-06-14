@@ -30,7 +30,7 @@ class MailController extends Controller {
                                 ->subject('Asunto prueba');
         });
         if( ! $sent) dd("something wrong");
-        dd($send);
+        dd($sent);
     }
     
     public function sendmail() {
