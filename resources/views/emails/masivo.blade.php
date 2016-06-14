@@ -11,7 +11,7 @@
              background-repeat: no-repeat; 
              width: 600px; 
              margin: auto;">
-            <div style='padding-top: 50px'>
+            <div style='padding-top: 75px'>
                 
                 {!! $mensaje !!}
                 
