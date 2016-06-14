@@ -38,12 +38,16 @@ class MailController extends Controller {
 //    }
     
     public function sendmail() {
+        $user = \Illuminate\Support\Facades\Auth::user ();        
+        $auth_user = \App\Model\Auth_user::where('email', $user->email)->first();
         $asunto = Input::get( 'asunto' );
         $mensaje = Input::get( 'mensaje' );
         $id = Input::get( 'id' );
         $this->dispatch(new \App\Jobs\SendEmail($asunto, $mensaje));
         $count = DB::table('auth_user')->count();
-        return view ('mail.index')->with('info', "Serán enviados ". number_format($count). " correos.");
+        return view ('mail.index')
+                ->with ('name_user', $auth_user->username)
+                ->with('info', "Serán enviados ". number_format($count). " correos.");
     }
 
 
