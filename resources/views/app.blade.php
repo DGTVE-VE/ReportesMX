@@ -35,7 +35,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="http://mx.televisioneducativa.gob.mx/" target="Ir a MéxicoX">
-                        <img src="logo_large.png" alt="imagen" width= "85px">
+                        <img src="{{asset('logo_large.png')}}" alt="imagen" width= "85px">
                     </a>
                 </div>
 
@@ -53,12 +53,13 @@
                         $user = \Illuminate\Support\Facades\Auth::user ();        
                         $auth_user = \App\Model\Auth_user::where('email', $user->email)->first();
 
+                        if (isset ($auth_user->is_superuser)){
                         if ($auth_user->is_superuser == 1){
                         ?>
                         <li><a href="{{url ('mail/compose')}}" class="bg-close" title="Envío de correos">
                                 <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
                             </a></li>
-                        <?php }?>
+                        <?php }}?>
                         <li><a href="{{url ('logout')}}" class="bg-close" title="Salir">
                                 <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
                             </a></li>
