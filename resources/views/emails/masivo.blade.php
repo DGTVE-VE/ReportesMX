@@ -7,7 +7,7 @@
         <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
     </head>
     <body>
-        <div style="background-image: url('{{url('imagenes/email/header.jpg')}}'); 
+        <div style="background-image: url('http://mexicox.gob.mx:81/reportesmx/public/imagenes/email/header.jpg'); 
              background-repeat: no-repeat; 
              width: 600px; 
              margin: auto;">
@@ -16,10 +16,10 @@
                 {!! $mensaje !!}
                 
             </div>            
-            <img src='{{url('imagenes/email/linea.jpg')}}'
+            <img src='http://mexicox.gob.mx:81/reportesmx/public/imagenes/email/linea.jpg'>
         </div>
         
-        <div style="background-image: url('{{url('imagenes/email/footer.jpg')}}'); 
+        <div style="background-image: url('http://mexicox.gob.mx:81/reportesmx/public/imagenes/email/footer.jpg'); 
              background-repeat: no-repeat; 
              width: 600px; 
              height: 225px;
@@ -27,10 +27,10 @@
              padding-top: 25px" 
              align='right'>
             <a href='http://www.facebook.com/TvEducativaMx'>
-            <img src='{{url('imagenes/fb.png')}}' class='img-rounded'>
+            <img src='http://mexicox.gob.mx:81/reportesmx/public/imagenes/fb.png' class='img-rounded'>
             </a>
             <a href='https://twitter.com/tveducativamx'>
-            <img src='{{url('imagenes/twitter.png')}}' class='img-rounded'>
+            <img src='http://mexicox.gob.mx:81/reportesmx/public/imagenes/twitter.png' class='img-rounded'>
             </a>
             
         </div>
