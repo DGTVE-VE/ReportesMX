@@ -11,8 +11,10 @@ class MXController extends Controller {
 	}
 
 	public function verifica(){
+		print_r("Hola");
+		$id_usuario = filter_input(INPUT_GET, 'id');
 
-		$id_usuario = filter_input(INPUT_POST, 'id');
+		print_r($id_usuario);
 		var_dump($id_usuario);
 		//$auth_userprofile = DB::table('auth_userprofile')->whereuser_id($id_usuario)->get();
 		return $id_usuario;
