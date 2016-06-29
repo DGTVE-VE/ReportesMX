@@ -12,19 +12,18 @@ class MXController extends Controller {
 
 	public function verifica(){
 
-print 'hola';
-		//$id_usuario = filter_input(INPUT_POST, 'id');
-		// $auth_userprofile = DB::table('auth_userprofile')->whereuser_id($id_usuario)->get();
-	//	return $id_usuario;
-		// if($auth_userprofile[0]->country == ""){
-		// 	return 0;
-		// }else {
-		// 	if($auth_userprofile[0]->city == ""){
-		// 		return 1;
-		// 	}else {
-		// 		return 2;
-		// 	}
-		// }
+		$id_usuario = filter_input(INPUT_POST, 'id');
+		$auth_userprofile = DB::table('auth_userprofile')->whereuser_id($id_usuario)->get();
+		return $id_usuario;
+		if($auth_userprofile[0]->country == ""){
+			return 0;
+		}else {
+			if($auth_userprofile[0]->city == ""){
+				return 1;
+			}else {
+				return 2;
+			}
+		}
 	}
 // 	public function addstate(){
 //
