@@ -11,10 +11,10 @@ class MXController extends Controller {
 	}
 
 	public function verifica(){
+
 		$id_usuario = filter_input(INPUT_GET, 'id');
-		//$id_u = json_encode($id_usuario);
-		//$auth_userprofile = DB::table('auth_userprofile')->whereuser_id($id_usuario)->get();
-		echo $_GET['callback']."(".json_encode($id_usuario).")";
+		$auth_userprofile = DB::table('auth_userprofile')->whereuser_id($id_usuario)->get();
+		echo $_GET['callback']."(".json_encode($auth_userprofile).")";
 		//return $id_usuario;
 		// if($auth_userprofile[0]->country == ""){
 		// 	return 0;
