@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
 
-class UseController extends Controller {
+class MXController extends Controller {
 
 	public function __construct()
 	{
