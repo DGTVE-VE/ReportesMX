@@ -31,62 +31,63 @@ class MXController extends Controller {
 		}
 
 	}
-// 	public function addstate(){
-//
-// 		$id_usuario = filter_input (INPUT_POST, 'id');
-// 		$estado = filter_input (INPUT_POST, 'state');
-//
-// 		$existe = DB::table('users_info')->whereuser_id($id_usuario)->get();
-//
-// 		if($existe == ""){
-//
-// 			$exito = DB::table('users_info')->insert(
-// 			['users_id' => $id_usuario, 'state' => $estado]
-// 		);
-//
-// 		if($exito = 1){
-// 			return "Éxito";
-// 		}else {
-// 			return "Ocurrio un error";
-// 		}
-// 	}else {
-// 		$exito = DB::table('users_info')->whereuser_id($id_usuario)
-// 		->update(['state' => $estado]);
-//
-// 		if($exito = 1){
-// 			return "Éxito";
-// 		}else {
-// 			return "Ocurrio un error";
-// 		}
-// 	}
-// }
-// public function addcountry(){
-//
-// 	$id_usuario = filter_input (INPUT_POST, 'id');
-// 	$pais = filter_input (INPUT_POST, 'country');
-//
-// 	$existe = DB::table('users_info')->whereuser_id($id_usuario)->get();
-//
-// 	if($existe == ""){
-//
-// 		$exito = DB::table('users_info')->insert(
-// 		['users_id' => $id_usuario, 'country' => $pais]
-// 	);
-//
-// 	if($exito = 1){
-// 		return "Éxito";
-// 	}else {
-// 		return "Ocurrio un error";
-// 	}
-// 	}else {
-// 	$exito = DB::table('users_info')->whereuser_id($id_usuario)
-// 	->update(['country' => $pais]);
-//
-// 	if($exito = 1){
-// 		return "Éxito";
-// 	}else {
-// 		return "Ocurrio un error";
-// 		}
-// 	}
-// }
+	public function addstate(){
+
+		$id_usuario = filter_input (INPUT_POST, 'id');
+		$estado = filter_input (INPUT_POST, 'state');
+
+		$existe = DB::table('users_info')->whereuser_id($id_usuario)->get();
+
+		if($existe == ""){
+
+			$exito = DB::table('users_info')->insert(
+			['users_id' => $id_usuario, 'state' => $estado]
+		);
+
+		if($exito = 1){
+			echo $_GET['callback']."(".json_encode('1').")";
+		}else {
+			echo $_GET['callback']."(".json_encode('0').")";
+		}
+	}else {
+		$exito = DB::table('users_info')->whereuser_id($id_usuario)
+		->update(['state' => $estado]);
+
+		if($exito = 1){
+			echo $_GET['callback']."(".json_encode('1').")";
+		}else {
+			echo $_GET['callback']."(".json_encode('0').")";
+		}
+	}
+}
+
+public function addcountry(){
+
+	$id_usuario = filter_input (INPUT_POST, 'id');
+	$pais = filter_input (INPUT_POST, 'country');
+
+	$existe = DB::table('users_info')->whereuser_id($id_usuario)->get();
+
+	if($existe == ""){
+
+		$exito = DB::table('users_info')->insert(
+		['users_id' => $id_usuario, 'country' => $pais]
+	);
+
+	if($exito = 1){
+		echo $_GET['callback']."(".json_encode('1').")";
+	}else {
+		echo $_GET['callback']."(".json_encode('0').")";
+	}
+	}else {
+	$exito = DB::table('users_info')->whereuser_id($id_usuario)
+	->update(['country' => $pais]);
+
+	if($exito = 1){
+			echo $_GET['callback']."(".json_encode('1').")";
+	}else {
+			echo $_GET['callback']."(".json_encode('0').")";
+		}
+	}
+}
 }
