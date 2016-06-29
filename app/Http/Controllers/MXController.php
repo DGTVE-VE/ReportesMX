@@ -13,7 +13,7 @@ class MXController extends Controller {
 	public function verifica(){
 
 		$id_usuario = filter_input(INPUT_GET, 'id');
-		$auth_userprofile = DB::table('auth_userprofile')->whereuser_id($id_usuario)->get();
+		$auth_userprofile = DB::table('auth_userprofile')->whereuser_id($id_usuario)->get()[0]->city;
 		echo $_GET['callback']."(".json_encode($auth_userprofile).")";
 		//return $id_usuario;
 		// if($auth_userprofile[0]->country == ""){
