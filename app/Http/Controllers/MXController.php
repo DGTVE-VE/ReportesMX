@@ -12,9 +12,10 @@ class UseController extends Controller {
 
 	public function verifica(){
 
-		$id_usuario = filter_input(INPUT_POST, 'id');
+print 'hola';
+		//$id_usuario = filter_input(INPUT_POST, 'id');
 		// $auth_userprofile = DB::table('auth_userprofile')->whereuser_id($id_usuario)->get();
-		return $id_usuario;
+	//	return $id_usuario;
 		// if($auth_userprofile[0]->country == ""){
 		// 	return 0;
 		// }else {
