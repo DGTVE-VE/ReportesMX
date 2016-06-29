@@ -14,6 +14,7 @@ class MXController extends Controller {
 		$id_usuario = filter_input(INPUT_GET, 'id');
 		//$id_u = json_encode($id_usuario);
 		//$auth_userprofile = DB::table('auth_userprofile')->whereuser_id($id_usuario)->get();
+		 echo $_GET['callback']."(".json_encode($id_usuario).")";
 		return $id_usuario;
 		// if($auth_userprofile[0]->country == ""){
 		// 	return 0;
