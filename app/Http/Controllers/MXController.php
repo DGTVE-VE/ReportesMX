@@ -36,6 +36,8 @@ class MXController extends Controller {
 		$id_usuario = filter_input (INPUT_POST, 'id');
 		$estado = filter_input (INPUT_POST, 'state');
 
+		echo $_GET['callback']."(".json_encode($estado).")";
+
 		$existe = DB::table('users_info')->whereuser_id($id_usuario)->get();
 
 		if($existe == ""){
@@ -66,6 +68,7 @@ public function addcountry(){
 	$id_usuario = filter_input (INPUT_POST, 'id');
 	$pais = filter_input (INPUT_POST, 'country');
 
+		echo $_GET['callback']."(".json_encode($pais).")";
 	$existe = DB::table('users_info')->whereuser_id($id_usuario)->get();
 
 	if($existe == ""){
