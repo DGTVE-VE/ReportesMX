@@ -40,7 +40,7 @@ public function addcountry(){
 	$existe = DB::table('users_info')->whereusers_id($id_usuario)->get();
 	print_r($existe);
 
-	if($existe == ""){
+	if(empty($existe)){
 		print_r("Entre a existe =");
 
 		$exito = DB::table('users_info')->insert(
