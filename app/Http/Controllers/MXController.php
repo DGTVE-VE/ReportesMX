@@ -37,7 +37,9 @@ public function addcountry(){
 	$id_usuario = filter_input (INPUT_GET, 'id');
 	$pais = filter_input (INPUT_GET, 'country');
 
-	$existe = DB::table('users_info')->whereuser_id($id_usuario)->get();
+	$existe = DB::table('users_info')->whereusers_id($id_usuario)->get();
+
+		echo $_GET['callback']."(".json_encode('Hi my friend').")";
 
 	if($existe == ""){
 
@@ -56,7 +58,7 @@ public function addcountry(){
 	}
 
 }else {
-	$exito = DB::table('users_info')->whereuser_id($id_usuario)->update(['country' => $pais]);
+	$exito = DB::table('users_info')->whereusers_id($id_usuario)->update(['country' => $pais]);
 
 	if($exito = 1){
 		echo $_GET['callback']."(".json_encode('1').")";
