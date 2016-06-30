@@ -41,23 +41,33 @@ public function addcountry(){
 	print_r($existe);
 
 	if($existe == ""){
+		print_r("Entre a existe =");
 
 		$exito = DB::table('users_info')->insert(
 		['users_id' => $id_usuario, 'country' => $pais]
 	);
 
+	print_r("Entre a insert");
+
 	if($exito == 1){
+		print_r("Exito insert");
 		echo $_GET['callback']."(".json_encode('Exito insert').")";
 	}else {
+		print_r("Error insert");
 		echo $_GET['callback']."(".json_encode('Error insert').")";
 	}
 
 }else {
+	print_r("Entre a update1");
 	$exito = DB::table('users_info')->whereusers_id($id_usuario)->update(['country' => $pais]);
+print_r("Entre a update2");
+
 
 	if($exito == 1){
+		print_r("Exito Update");
 		echo $_GET['callback']."(".json_encode('Exito Update').")";
 	}else {
+		print_r("Error Update");
 		echo $_GET['callback']."(".json_encode('Error Update').")";
 	}
 }
