@@ -13,8 +13,10 @@ class MXController extends Controller {
 	public function verifica(){
 
 		$id_usuario = filter_input(INPUT_GET, 'id');
+
 		$city = DB::table('auth_userprofile')->whereuser_id($id_usuario)->get()[0]->city;
 		$city1 = DB::table('users_info')->whereusers_id($id_usuario)->get()[0]->state;
+
 		$country = DB::table('auth_userprofile')->whereuser_id($id_usuario)->get()[0]->country;
 		$country1 = DB::table('users_info')->whereusers_id($id_usuario)->get()[0]->country;
 
@@ -23,7 +25,7 @@ class MXController extends Controller {
 			//falta pais
 			echo $_GET['callback']."(".json_encode('0').")";
 
-		}else if ( ( (isset($country)) || (isset($country1)) )&& ( ( empty($city)) && empty($city1) ) ) {
+		}else if ( ( empty($city)) && empty($city1) ) {
 
 			//falta ciudad
 			echo $_GET['callback']."(".json_encode('1').")";
