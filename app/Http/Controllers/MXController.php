@@ -14,13 +14,16 @@ class MXController extends Controller {
 
 		$id_usuario = filter_input(INPUT_GET, 'id');
 		$city = DB::table('auth_userprofile')->whereuser_id($id_usuario)->get()[0]->city;
+		$city1 = DB::table('users_info')->whereusers_id($id_usuario)->get()[0]->state;
 		$country = DB::table('auth_userprofile')->whereuser_id($id_usuario)->get()[0]->country;
+		$country1 = DB::table('users_info')->whereusers_id($id_usuario)->get()[0]->country;
 
-		if(empty($country)){
+		if(empty($country) && empty($country)){
+
 			//falta pais
 			echo $_GET['callback']."(".json_encode('0').")";
 
-		}else if ((isset($country)) && ( empty($city))) {
+		}else if ( ( (isset($country)) || (isset($country1)) )&& ( ( empty($city)) && empty($city1) ) ) {
 
 			//falta ciudad
 			echo $_GET['callback']."(".json_encode('1').")";
