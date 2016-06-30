@@ -66,6 +66,7 @@ public function addcountry(){
 	print_r("Entre a update1");
 	$exito = DB::table('users_info')->where('users_id', $id_usuario)->update(['country' => $pais]);
 print_r("Entre a update2");
+echo $_GET['callback']."(".json_encode($exito).")";
 
 
 	if($exito == 1){
