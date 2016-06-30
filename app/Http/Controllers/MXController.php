@@ -59,7 +59,7 @@ public function addcountry(){
 
 }else {
 	print_r("Entre a update1");
-	$exito = DB::table('users_info')->whereusers_id($id_usuario)->update(['country' => $pais]);
+	$exito = DB::table('users_info')->whereusers_id($id_usuario)->update('country' => $pais);
 print_r("Entre a update2");
 
 
@@ -92,8 +92,7 @@ public function addstate(){
 		echo $_GET['callback']."(".json_encode('Error insert').")";
 	}
 }else {
-	$exito = DB::table('users_info')->whereuser_id($id_usuario)
-	->update(['state' => $estado]);
+	$exito = DB::table('users_info')->whereuser_id($id_usuario)->update('state' => $estado);
 
 	if($exito == 1){
 		echo $_GET['callback']."(".json_encode('Exito Update').")";
