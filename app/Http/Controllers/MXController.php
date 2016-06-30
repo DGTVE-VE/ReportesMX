@@ -81,7 +81,7 @@ public function addstate(){
 	$id_usuario = filter_input (INPUT_GET, 'id');
 	$estado = filter_input (INPUT_GET, 'state');
 
-	$existe = DB::table('users_info')->whereuser_id($id_usuario)->get()[0]->id;
+	$existe = DB::table('users_info')->whereusers_id($id_usuario)->get()[0]->id;
 
 	if(empty($existe)){
 
