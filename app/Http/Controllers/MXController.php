@@ -37,7 +37,7 @@ public function addcountry(){
 	$id_usuario = filter_input (INPUT_GET, 'id');
 	$pais = filter_input (INPUT_GET, 'country');
 
-	$existe = DB::table('users_info')->whereusers_id($id_usuario)->get();
+	$existe = DB::table('users_info')->whereusers_id($id_usuario)->get()->get()[0]->id;
 
 	if($existe == ""){
 
