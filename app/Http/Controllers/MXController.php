@@ -39,19 +39,13 @@ public function addcountry(){
 
 	$existe = DB::table('users_info')->whereusers_id($id_usuario)->get();
 
-		echo $_GET['callback']."(".json_encode('Hi my friend').")";
-
 	if($existe == ""){
-
-		print_r("Hola");
 
 		$exito = DB::table('users_info')->insert(
 		['users_id' => $id_usuario, 'country' => $pais]
 	);
 
-		echo $_GET['callback']."(".json_encode('Hi my friend').")";
-
-	if($exito = 1){
+	if($exito == 1){
 		echo $_GET['callback']."(".json_encode('1').")";
 	}else {
 		echo $_GET['callback']."(".json_encode('0').")";
@@ -60,7 +54,7 @@ public function addcountry(){
 }else {
 	$exito = DB::table('users_info')->whereusers_id($id_usuario)->update(['country' => $pais]);
 
-	if($exito = 1){
+	if($exito == 1){
 		echo $_GET['callback']."(".json_encode('1').")";
 	}else {
 		echo $_GET['callback']."(".json_encode('0').")";
@@ -81,7 +75,7 @@ public function addstate(){
 		['users_id' => $id_usuario, 'state' => $estado]
 	);
 
-	if($exito = 1){
+	if($exito == 1){
 		echo $_GET['callback']."(".json_encode('1').")";
 	}else {
 		echo $_GET['callback']."(".json_encode('0').")";
@@ -90,7 +84,7 @@ public function addstate(){
 	$exito = DB::table('users_info')->whereuser_id($id_usuario)
 	->update(['state' => $estado]);
 
-	if($exito = 1){
+	if($exito == 1){
 		echo $_GET['callback']."(".json_encode('1').")";
 	}else {
 		echo $_GET['callback']."(".json_encode('0').")";
