@@ -44,13 +44,12 @@ public function addcountry(){
 
 	if($pais == ""){
 		echo $_GET['callback']."(".json_encode('Error').")";
+		return 0;
 	}
 
 	$existe = DB::table('users_info')->whereusers_id($id_usuario)->get();
-	print_r($existe);
 
 	if(empty($existe)){
-		print_r("Entre a existe =");
 
 		$exito = DB::table('users_info')->insert(
 		['users_id' => $id_usuario, 'country' => $pais]
@@ -61,24 +60,25 @@ public function addcountry(){
 	if($exito == 1){
 		print_r("Exito insert");
 		echo $_GET['callback']."(".json_encode('Exito insert').")";
+		return 1;
 	}else {
 		print_r("Error insert");
 		echo $_GET['callback']."(".json_encode('Error insert').")";
+		return 0;
 	}
 
 }else {
-	print_r("Entre a update1");
-	$exito = DB::table('users_info')->where('users_id', $id_usuario)->update(['country' => $pais]);
-print_r("Entre a update2");
-echo $_GET['callback']."(".json_encode($exito).")";
 
+	$exito = DB::table('users_info')->where('users_id', $id_usuario)->update(['country' => $pais]);
 
 	if($exito == 1){
 		print_r("Exito Update");
 		echo $_GET['callback']."(".json_encode('Exito Update').")";
+		return 1;
 	}else {
 		print_r("Error Update");
 		echo $_GET['callback']."(".json_encode('Error Update').")";
+		return 0;
 	}
 }
 }
@@ -90,6 +90,7 @@ public function addstate(){
 
 	if($estado == ""){
 		echo $_GET['callback']."(".json_encode('Error').")";
+		return 0;
 	}
 
 	$existe = DB::table('users_info')->whereusers_id($id_usuario)->get()[0]->id;
@@ -102,17 +103,20 @@ public function addstate(){
 
 	if($exito == 1){
 		echo $_GET['callback']."(".json_encode('Exito insert').")";
+		return 1;
 	}else {
 		echo $_GET['callback']."(".json_encode('Error insert').")";
+		return 0;
 	}
 }else {
 	$exito = DB::table('users_info')->where('users_id', $id_usuario)->update(['state' => $estado]);
-	echo $_GET['callback']."(".json_encode($exito).")";
 
 	if($exito == 1){
 		echo $_GET['callback']."(".json_encode('Exito Update').")";
+		return 1;
 	}else {
 		echo $_GET['callback']."(".json_encode('Error Update').")";
+		return 0;
 	}
 }
 }
