@@ -39,7 +39,7 @@ public function addcountry(){
 
 	$existe = DB::table('users_info')->whereuser_id($id_usuario)->get();
 
-	echo $_GET['callback']."(".json_encode($existe).")";
+//	echo $_GET['callback']."(".json_encode($existe).")";
 
 	if($existe == ""){
 
