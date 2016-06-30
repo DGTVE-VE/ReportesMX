@@ -16,11 +16,11 @@ class MXController extends Controller {
 		$city = DB::table('auth_userprofile')->whereuser_id($id_usuario)->get()[0]->city;
 		$country = DB::table('auth_userprofile')->whereuser_id($id_usuario)->get()[0]->country;
 
-		if($country == ""){
+		if(empty($country)){
 			//falta pais
 			echo $_GET['callback']."(".json_encode('0').")";
 
-		}else if (($country != "") && ($city == "")) {
+		}else if ((isset($country)) && ( empty($city))) {
 
 			//falta ciudad
 			echo $_GET['callback']."(".json_encode('1').")";
@@ -80,7 +80,7 @@ public function addstate(){
 
 	$existe = DB::table('users_info')->whereuser_id($id_usuario)->get()[0]->id;
 
-	if($existe == ""){
+	if(empty($existe)){
 
 		$exito = DB::table('users_info')->insert(
 		['users_id' => $id_usuario, 'state' => $estado]
