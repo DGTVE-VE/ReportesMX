@@ -18,7 +18,7 @@ class MXController extends Controller {
 		$country = DB::table('auth_userprofile')->whereuser_id($id_usuario)->get()[0]->country;
 		$country1 = DB::table('users_info')->whereusers_id($id_usuario)->get()[0]->country;
 
-		if(empty($country) && empty($country)){
+		if(empty($country) && empty($country1)){
 
 			//falta pais
 			echo $_GET['callback']."(".json_encode('0').")";
