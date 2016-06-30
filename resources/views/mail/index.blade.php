@@ -26,9 +26,18 @@
                         </div>-->
                         <textarea name='mensaje' rows="8" placeholder="Escribe aquí tu mensaje..."></textarea>
                         <br>
+                         <div class="form-group">
+                                    
+                        </div>
                         <div class="form-group">
-                            <div class="col-sm-offset-10 col-sm-2">
-                                <button type='submit' class="btn btn-default" id="btnSubmit">
+                            <div class="col-sm-offset-7 col-sm-2">
+                                <button name="submit" value="preview" type='submit' class="btn btn-default" id="btnSubmit">
+                                    <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+                                    Previsualizar
+                                </button>
+                              </div>
+                            <div class="col-sm-offset-1 col-sm-2">
+                                <button name="submit" value="send" type='submit' class="btn btn-default" id="btnSubmit">
                                     <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
                                     Enviar
                                 </button>
@@ -55,5 +64,12 @@
         <!-- Scripts -->
 @section ('scripts')
         <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-        <script>tinymce.init({ selector:'textarea' });</script>
+        <script>
+            tinymce.init({ 
+                selector:'textarea', 
+//                images_upload_credentials: true,
+//                plugins:'image',
+//                automatic_uploads: true
+            });
+        </script>
 @endsection

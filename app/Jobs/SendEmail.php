@@ -37,15 +37,21 @@ class SendEmail extends Job implements SelfHandling, ShouldQueue
     {                
 //        $users = \App\Model\Auth_user::all();        
         \App\Model\Auth_user::chunk(100, function($users) use ($mailer)
-        {
+        {            
             // Correr como daemon a ver si ya no se alenta el front en respoder.
             foreach ($users as $user){        
-                $mailer->send('emails.masivo', ['mensaje' => $this->mensaje], 
-                    function( $message ) use ($user){
-                        $message->from('mexicox@televisioneducativa.gob.mx', 'México X');
-                        $message->to($user->email)
-                                ->subject($this->asunto);
-                });
+                if (\App\Model\Unsuscribers::where ('email', $user->email)->first() == NULL){      
+                    try {
+                        $mailer->send('emails.masivo', ['mensaje' => $this->mensaje], 
+                            function( $message ) use ($user){
+                                $message->from('mexicox@televisioneducativa.gob.mx', 'México X');
+                                $message->to($user->email)
+                                        ->subject($this->asunto);
+                        });
+                    } catch (Exception $e) {
+                        Log.error ('Error enviando correo a: '.$user->email . ' -> '.$e->getMessage());                         
+                    }
+                }
             }
         });
     }
