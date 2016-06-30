@@ -99,6 +99,7 @@ public function addstate(){
 	}
 }else {
 	$exito = DB::table('users_info')->where('users_id', $id_usuario)->update(['state' => $estado]);
+	echo $_GET['callback']."(".json_encode($exito).")";
 
 	if($exito == 1){
 		echo $_GET['callback']."(".json_encode('Exito Update').")";
