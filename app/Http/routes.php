@@ -49,4 +49,8 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
     Route::get ('mailTemplate', function (){
         return view ('emails.masivo');
     });
+    Route::get ('mail/unsuscribe', function (){        
+        return view ('mail.unsuscribe');
+    });
+    Route::post ('mail/unsuscribe', 'MailController@unsuscribe');
 //});
