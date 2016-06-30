@@ -37,33 +37,31 @@ public function addcountry(){
 	$id_usuario = filter_input (INPUT_GET, 'id');
 	$pais = filter_input (INPUT_GET, 'country');
 
-	echo $_GET['callback']."(".json_encode('Hola').")";
+	$existe = DB::table('users_info')->whereuser_id($id_usuario)->get();
 
-// 	$existe = DB::table('users_info')->whereuser_id($id_usuario)->get();
-//
-// 	echo $_GET['callback']."(".json_encode($existe).")";
-//
-// 	if($existe == ""){
-//
-// 		$exito = DB::table('users_info')->insert(
-// 		['users_id' => $id_usuario, 'country' => $pais]
-// 	);
-//
-// 	if($exito = 1){
-// 		echo $_GET['callback']."(".json_encode('1').")";
-// 	}else {
-// 		echo $_GET['callback']."(".json_encode('0').")";
-// 	}
-// }else {
-// 	$exito = DB::table('users_info')->whereuser_id($id_usuario)
-// 	->update(['country' => $pais]);
-//
-// 	if($exito = 1){
-// 		echo $_GET['callback']."(".json_encode('1').")";
-// 	}else {
-// 		echo $_GET['callback']."(".json_encode('0').")";
-// 	}
-// }
+	echo $_GET['callback']."(".json_encode($existe).")";
+
+	if($existe == ""){
+
+		$exito = DB::table('users_info')->insert(
+		['users_id' => $id_usuario, 'country' => $pais]
+	);
+
+	if($exito = 1){
+		echo $_GET['callback']."(".json_encode('1').")";
+	}else {
+		echo $_GET['callback']."(".json_encode('0').")";
+	}
+}else {
+	$exito = DB::table('users_info')->whereuser_id($id_usuario)
+	->update(['country' => $pais]);
+
+	if($exito = 1){
+		echo $_GET['callback']."(".json_encode('1').")";
+	}else {
+		echo $_GET['callback']."(".json_encode('0').")";
+	}
+}
 }
 
 public function addstate(){
