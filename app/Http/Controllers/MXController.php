@@ -42,6 +42,10 @@ public function addcountry(){
 	$id_usuario = filter_input (INPUT_GET, 'id');
 	$pais = filter_input (INPUT_GET, 'country');
 
+	if($pais == ""){
+		echo $_GET['callback']."(".json_encode('Error').")";
+	}
+
 	$existe = DB::table('users_info')->whereusers_id($id_usuario)->get();
 	print_r($existe);
 
@@ -83,6 +87,10 @@ public function addstate(){
 
 	$id_usuario = filter_input (INPUT_GET, 'id');
 	$estado = filter_input (INPUT_GET, 'state');
+
+	if($estado == ""){
+		echo $_GET['callback']."(".json_encode('Error').")";
+	}
 
 	$existe = DB::table('users_info')->whereusers_id($id_usuario)->get()[0]->id;
 
