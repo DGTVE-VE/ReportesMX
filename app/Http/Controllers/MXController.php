@@ -37,7 +37,7 @@ public function addcountry(){
 	$id_usuario = filter_input (INPUT_GET, 'id');
 	$pais = filter_input (INPUT_GET, 'country');
 
-	echo $_GET['callback']."(".json_encode($pais).")";
+	echo $_GET['callback']."(".json_encode('Hola').")";
 
 // 	$existe = DB::table('users_info')->whereuser_id($id_usuario)->get();
 //
