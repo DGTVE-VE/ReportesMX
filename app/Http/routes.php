@@ -53,8 +53,11 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
     Route::get ('mailTemplate', function (){
         return view ('emails.masivo');
     });
-    Route::get ('mail/unsuscribe', function (){        
+    Route::get ('mail/unsuscribe', function (){
         return view ('mail.unsuscribe');
     });
     Route::post ('mail/unsuscribe', 'MailController@unsuscribe');
 //});
+Route::group(array('middleware' => 'auth'), function(){
+    Route::controller('filemanager', 'FilemanagerLaravelController');
+});
