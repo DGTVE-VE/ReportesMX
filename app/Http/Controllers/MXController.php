@@ -28,7 +28,16 @@ class MXController extends Controller {
 		}else if (  empty($city) && empty($city1[0]->state) ) {
 
 			//falta ciudad
-			echo $_GET['callback']."(".json_encode('1').")";
+			if(empty($country)){
+
+				echo $_GET['callback']."(".json_encode($country1).")";
+			}
+
+			elseif(empty($country1[0]->country)){
+
+				echo $_GET['callback']."(".json_encode($country).")";
+
+			}
 
 		}else{
 			//no falta nada
