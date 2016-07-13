@@ -70,7 +70,7 @@ class MXController extends Controller {
 			if(empty($existe)){
 
 				$exito = DB::table('users_info')->insert(
-				['users_id' => $id_usuario, 'country' => $pais , 'state' => $estado, 'codigopostal' => $cp]
+				['users_id' => $id_usuario, 'country' => $pais , 'state' => $estado, 'cp' => $cp]
 			);
 
 			if($exito == 1){
