@@ -37,130 +37,65 @@ class MXController extends Controller {
 
 	}
 
-	public function addcountry(){
+	public function adddata(){
 
 		$id_usuario = filter_input (INPUT_GET, 'id');
 		$pais = filter_input (INPUT_GET, 'country');
+		$estado = filter_input (INPUT_GET, 'state');
+		$cp = filter_input (INPUT_GET, 'codigopostal');
 
-		if($pais == ""){
+		if(empty($pais)){
 			echo $_GET['callback']."(".json_encode('Error country void').")";
 			return 0;
 		}
-
-		$existe = DB::table('users_info')->whereusers_id($id_usuario)->get();
-
-		if(empty($existe)){
-
-			$exito = DB::table('users_info')->insert(
-			['users_id' => $id_usuario, 'country' => $pais]
-		);
-
-		print_r("Entre a insert");
-
-		if($exito == 1){
-			print_r("Exito insert");
-			echo $_GET['callback']."(".json_encode('Success insert country').")";
-			return 1;
-		}else {
-			print_r("Error insert");
-			echo $_GET['callback']."(".json_encode('Error insert country').")";
+		else if(empty($estado)){
+			echo $_GET['callback']."(".json_encode('Error state void').")";
 			return 0;
 		}
-
-	}else {
-
-		$exito = DB::table('users_info')->where('users_id', $id_usuario)->update(['country' => $pais]);
-
-		if($exito == 1){
-			print_r("Exito Update");
-			echo $_GET['callback']."(".json_encode('Success Update country').")";
-			return 1;
-		}else {
-			print_r("Error Update");
-			echo $_GET['callback']."(".json_encode('Error Update country').")";
+		else if(empty($cp) || ){
+			echo $_GET['callback']."(".json_encode('Error cp void').")";
 			return 0;
-		}
-	}
-}
-
-public function addstate(){
-
-	$id_usuario = filter_input (INPUT_GET, 'id');
-	$estado = filter_input (INPUT_GET, 'state');
-
-	if($estado == ""){
-		echo $_GET['callback']."(".json_encode('Error, state void').")";
-		return 0;
-	}
-
-	$existe = DB::table('users_info')->whereusers_id($id_usuario)->get()[0]->id;
-
-	if(empty($existe)){
-
-		$exito = DB::table('users_info')->insert(
-		['users_id' => $id_usuario, 'state' => $estado]
-	);
-
-	if($exito == 1){
-		echo $_GET['callback']."(".json_encode('Success insert state').")";
-		return 1;
-	}else {
-		echo $_GET['callback']."(".json_encode('Error insert state').")";
-		return 0;
-	}
-}else {
-	$exito = DB::table('users_info')->where('users_id', $id_usuario)->update(['state' => $estado]);
-
-	if($exito == 1){
-		echo $_GET['callback']."(".json_encode('Success Update state').")";
-		return 1;
-	}else {
-		echo $_GET['callback']."(".json_encode('Error Update state').")";
-		return 0;
-	}
-}
-}
-
-public function addcp(){
-
-	$id_usuario = filter_input (INPUT_GET, 'id');
-	$cp = filter_input (INPUT_GET, 'codigopostal');
-
-	$existecp = DB::table('codigospostales')->wherecodigopostal($cp)->get();
-
-	if($cp < 1000 || $cp > 99998 || empty($cp) || empty($existecp)){
-		echo $_GET['callback']."(".json_encode('Error código postal invalido').")";
-		return 0;
-	}elseif (isset($existecp)) {
-
-		$existeus = DB::table('users_info')->whereusers_id($id_usuario)->get()[0]->id;
-
-		if( empty($existeus) ){
-
-			$exito = DB::table('users_info')->insert(
-			['users_id' => $id_usuario, 'codigopostal' => $cp]
-		);
-
-		if($exito == 1){
-			echo $_GET['callback']."(".json_encode('Success insert cp').")";
-			return 1;
 		}else {
-			echo $_GET['callback']."(".json_encode('Error insert cp').")";
-			return 0;
-		}
 
-	}else {
-		$exito = DB::table('users_info')->where('users_id', $id_usuario)->update(['codigopostal' => $cp]);
+			if($pais == "MX"){
+				$codigo = DB::table('codigospostales')-wherecodigopostal($cp)->get();
+				if(empty($codigo)){
+					echo $_GET['callback']."(".json_encode('Error invalid cp').")";
+					return 0;
+				}
+			}
 
-		if($exito == 1){
-			echo $_GET['callback']."(".json_encode('Success Update cp').")";
-			return 1;
+			$existe = DB::table('users_info')->whereusers_id($id_usuario)->get();
+
+			if(empty($existe)){
+
+				$exito = DB::table('users_info')->insert(
+				['users_id' => $id_usuario, 'country' => $pais , 'state' => $estado, 'codigopostal' => $cp]
+			);
+
+			if($exito == 1){
+				print_r("Exito insert");
+				echo $_GET['callback']."(".json_encode('Success Insert').")";
+				return 1;
+			}else {
+				print_r("Error insert");
+				echo $_GET['callback']."(".json_encode('Error Insert').")";
+				return 0;
+			}
 		}else {
-			echo $_GET['callback']."(".json_encode('Error Update cp').")";
-			return 0;
+
+			$exito = DB::table('users_info')->where('users_id', $id_usuario)->update(['country' => $pais, 'state' => $estado, 'codigopostal' => $cp]);
+
+			if($exito == 1){
+				print_r("Exito Update");
+				echo $_GET['callback']."(".json_encode('Success Update').")";
+				return 1;
+			}else {
+				print_r("Error Update");
+				echo $_GET['callback']."(".json_encode('Error Update').")";
+				return 0;
+			}
 		}
 	}
 }
-}
-
 }
