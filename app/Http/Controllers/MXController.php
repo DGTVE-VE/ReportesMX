@@ -15,7 +15,7 @@ class MXController extends Controller {
 		$id_usuario = filter_input(INPUT_GET, 'id');
 
 		 $city = DB::table('auth_userprofile')->whereuser_id($id_usuario)->get()[0]->city;
-		// $city1 = DB::table('users_info')->whereusers_id($id_usuario)->get();
+		 $city1 = DB::table('users_info')->whereusers_id($id_usuario)->get();
 
 		$country = DB::table('auth_userprofile')->whereuser_id($id_usuario)->get()[0]->country;
 		$country1 = DB::table('users_info')->whereusers_id($id_usuario)->get();
