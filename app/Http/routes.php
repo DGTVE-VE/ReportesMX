@@ -31,9 +31,7 @@ Route::get('mongo', ['middleware' => 'auth', 'uses' => 'UseController@mongo']);
 Route::get('logout', ['middleware' => 'auth', 'uses' => 'UseController@logout']);
 
 Route::any('verifica', 'MXController@verifica');
-Route::any('addcountry', 'MXController@addcountry');
-Route::any('addstate', 'MXController@addstate');
-Route::any('addcp', 'MXController@addcp');
+Route::any('adddata', 'MXController@adddata');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
