@@ -58,7 +58,7 @@ class MXController extends Controller {
 		}else {
 
 			if($pais == "MX"){
-				$codigo = DB::table('codigospostales')-wherecodigopostal($cp)->get();
+				$codigo = DB::table('codigospostales')->wherecodigopostal($cp)->get();
 				if(empty($codigo)){
 					echo $_GET['callback']."(".json_encode('Error invalid cp').")";
 					return 0;
