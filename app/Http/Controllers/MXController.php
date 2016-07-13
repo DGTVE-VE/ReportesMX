@@ -17,10 +17,10 @@ class MXController extends Controller {
 		echo $_GET['callback']."(".json_encode($id_usuario).")";
 
 
-		 $city = DB::table('auth_userprofile')->whereuser_id($id_usuario)->get()[0]->city;
+		 $city = DB::table('auth_userprofile')->whereuser_id($id_usuario)->get();
 		 $city1 = DB::table('users_info')->whereusers_id($id_usuario)->get();
 
-		$country = DB::table('auth_userprofile')->whereuser_id($id_usuario)->get()[0]->country;
+		$country = DB::table('auth_userprofile')->whereuser_id($id_usuario)->get();
 		$country1 = DB::table('users_info')->whereusers_id($id_usuario)->get();
 
 
@@ -32,14 +32,14 @@ class MXController extends Controller {
 		  echo $_GET['callback']."(".json_encode('-----').")";
 		 echo $_GET['callback']."(".json_encode($country1).")";
 
-		if(empty($country) && empty($country1)){
+		if(empty($country[0]->country) && empty($country1)){
 
 			//falta pais
 			echo $_GET['callback']."(".json_encode('0').")";
 
-		}else if ( ( isset($country) || isset($country1) ) && ( empty($city) && empty($city1) ) ) {
+		}else if ( ( isset($country[0]->country) || isset($country1) ) && ( empty($city[0]->city) && empty($city1) ) ) {
 
-				echo $_GET['callback']."(".json_encode($country).")";
+				echo $_GET['callback']."(".json_encode($country[0]->country).")";
 
 		}else{
 			//no falta nada
