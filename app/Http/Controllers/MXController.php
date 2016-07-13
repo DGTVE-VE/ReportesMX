@@ -52,7 +52,7 @@ class MXController extends Controller {
 			echo $_GET['callback']."(".json_encode('Error state void').")";
 			return 0;
 		}
-		else if(empty($cp) || ){
+		else if(empty($cp)){
 			echo $_GET['callback']."(".json_encode('Error cp void').")";
 			return 0;
 		}else {
