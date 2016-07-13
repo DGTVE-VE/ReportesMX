@@ -14,23 +14,12 @@ class MXController extends Controller {
 
 		$id_usuario = filter_input(INPUT_GET, 'id');
 
-		echo $_GET['callback']."(".json_encode($id_usuario).")";
-
-
-		 $city = DB::table('auth_userprofile')->whereuser_id($id_usuario)->get();
-		 $city1 = DB::table('users_info')->whereusers_id($id_usuario)->get();
+		$city = DB::table('auth_userprofile')->whereuser_id($id_usuario)->get();
+		$city1 = DB::table('users_info')->whereusers_id($id_usuario)->get();
 
 		$country = DB::table('auth_userprofile')->whereuser_id($id_usuario)->get();
 		$country1 = DB::table('users_info')->whereusers_id($id_usuario)->get();
 
-
-		 echo $_GET['callback']."(".json_encode($city).")";
-		  echo $_GET['callback']."(".json_encode('-----').")";
-		 echo $_GET['callback']."(".json_encode($city1).")";
-		  echo $_GET['callback']."(".json_encode('-----').")";
-		 echo $_GET['callback']."(".json_encode($country).")";
-		  echo $_GET['callback']."(".json_encode('-----').")";
-		 echo $_GET['callback']."(".json_encode($country1).")";
 
 		if(empty($country[0]->country) && empty($country1)){
 
