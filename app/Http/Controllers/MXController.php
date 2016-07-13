@@ -37,7 +37,7 @@ class MXController extends Controller {
 			//falta pais
 			echo $_GET['callback']."(".json_encode('0').")";
 
-		}else if ( ( isset($country) || isset($country1) ) && ( empty($city) && empty($city1) ) {
+		}else if ( ( isset($country) || isset($country1) ) && ( empty($city) && empty($city1) ) ) {
 
 				echo $_GET['callback']."(".json_encode($country).")";
 
