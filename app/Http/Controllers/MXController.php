@@ -128,10 +128,10 @@ public function addcp(){
 
 	$existecp = DB::table('codigospostales')->wherecodigopostal($cp)->get();
 
-	if($cp == "" || $cp < 1000 || $cp > 99998 || empty($cp)){
+	if($cp < 1000 || $cp > 99998 || empty($cp) || empty($existecp)){
 		echo $_GET['callback']."(".json_encode('Error código postal invalido').")";
 		return 0;
-	}elseif (isset($existe)) {
+	}elseif (isset($existecp)) {
 
 		$existeus = DB::table('users_info')->whereusers_id($id_usuario)->get()[0]->id;
 
