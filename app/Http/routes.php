@@ -32,6 +32,7 @@ Route::get('logout', ['middleware' => 'auth', 'uses' => 'UseController@logout'])
 
 Route::any('verifica', 'MXController@verifica');
 Route::any('adddata', 'MXController@adddata');
+Route::any('validarcp', 'MXController@validarcp');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');

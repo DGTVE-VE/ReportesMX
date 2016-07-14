@@ -10,6 +10,21 @@ class MXController extends Controller {
 	{
 	}
 
+	public function validarcp(){
+
+		$codigo = filter_input(INPUT_GET, 'codigopostal');
+
+		$direccion = DB::table('codigospostales')->wherecodigopostal($codigo)->get();
+
+		if(empty($direccion)){
+			echo $_GET['callback']."(".json_encode('0').")";
+
+		}else {
+			echo $_GET['callback']."(".json_encode($direccion).")";
+		}
+
+	}
+
 	public function verifica(){
 
 		$id_usuario = filter_input(INPUT_GET, 'id');
