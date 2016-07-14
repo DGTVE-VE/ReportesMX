@@ -43,8 +43,10 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
-//Consulta de Folios en constancias
+//Ruta para la Consulta de Folios en la tabla de constancias
 Route::match(array('GET','POST'),'constancias/{folio?}', array('uses'=>'ConstanciasController@constancias'));
+//ruta para el servicio Web de la tabla Auth_userprofile
+Route::match(array('GET','POST'),'webService', array('uses'=>'ConstanciasController@webService'));
 
 //Route::group(['middleware' => 'auth'], function () {
     Route::get ('mail/eco/{id}', 'MailController@eco');
