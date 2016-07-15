@@ -36,12 +36,12 @@ class MXController extends Controller {
 		//$country1 = DB::table('users_info')->whereusers_id($id_usuario)->get();
 
 
-		if( empty($country[0]->country) ){
+		if( empty($country[0]->country) || ( $country[0]->country == NULL ) ){
 
 			//falta pais
 			echo $_GET['callback']."(".json_encode('0').")";
 
-		}else if ( ( isset($country[0]->country)  ) && ( empty($city[0]->city) ) ) {
+		}else if ( ( isset($country[0]->country)  ) && ( ( empty($city[0]->city) ) || ( $city[0]->city == NULL ) ) ) {
 
 			echo $_GET['callback']."(".json_encode($country[0]->country).")";
 
