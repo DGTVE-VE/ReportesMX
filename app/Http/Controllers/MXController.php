@@ -80,26 +80,7 @@ class MXController extends Controller {
 				}
 			}
 
-			$existe = DB::table('users_info')->whereusers_id($id_usuario)->get();
-
-			if(empty($existe)){
-
-				$exito = DB::table('users_info')->insert(
-				['users_id' => $id_usuario, 'country' => $pais , 'state' => $estado, 'cp' => $cp]
-			);
-
-			if($exito == 1){
-				print_r("Exito insert");
-				echo $_GET['callback']."(".json_encode('Success Insert').")";
-				return 1;
-			}else {
-				print_r("Error insert");
-				echo $_GET['callback']."(".json_encode('Error Insert').")";
-				return 0;
-			}
-		}else {
-
-			$exito = DB::table('users_info')->where('users_id', $id_usuario)->update(['country' => $pais, 'state' => $estado, 'codigopostal' => $cp]);
+			$exito = DB::table('auth_userprofile')->where('user_id', $id_usuario)->update(['country' => $pais, 'city' => $estado, 'mailing_address' => $cp]);
 
 			if($exito == 1){
 				print_r("Exito Update");
@@ -110,7 +91,7 @@ class MXController extends Controller {
 				echo $_GET['callback']."(".json_encode('Error Update').")";
 				return 0;
 			}
-		}
+
 	}
 }
 }
