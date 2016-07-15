@@ -5,4 +5,4 @@ Homestead.json
 .env
 /nbproject/private/
 nbproject/
-public/download/*.csv
+/public/download/*.csv
