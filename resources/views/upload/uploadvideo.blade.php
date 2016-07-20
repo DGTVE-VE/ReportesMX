@@ -36,7 +36,7 @@
 
   <div class="row">
     <form method="POST"  class="form-signin" action="{{url('savevideo')}}" accept-charset="UTF-8" enctype="multipart/form-data">
-      <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+      <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <br>
       <br>
       <div class="col-md-6 col-md-offset-3">
@@ -46,16 +46,19 @@
 
           <label for="inputEmail">Correo electrónico</label>
           <input type="email" class="form-control" id="inputEmail" placeholder="correo@mail.com" name="inputEmai" required>
+          <input type="hidden" name="_token" value="{{ csrf_token() }}">
         </div>
 
         <div class="col-md-6 col-md-offset-3">
           <label for="inputText">Cuentanos tus logros, metas y demás gracias a los cursos de México X</label>
           <textarea class="form-control" id="inputText" rows="3" name="inputText" required></textarea>
+          <input type="hidden" name="_token" value="{{ csrf_token() }}">
         </div>
 
         <div class="col-md-6 col-md-offset-3">
           <label for="inputVideo">Archivo de video</label>
           <input type="file" id="inputVideo" name="inputVideo" required>
+          <input type="hidden" name="_token" value="{{ csrf_token() }}">
           <p class="help-block">MP4, MPG, 3GP ó WMV de máximo 20 MB</p>
         </div>
 
