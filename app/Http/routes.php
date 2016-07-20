@@ -10,6 +10,9 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+//rutas para registro de un nuevo curso
+Route::get('registro', 'RegistroController@cursoNuevo');
+Route::post('nuevoRegistro','RegistroController@registroNuevo');
 
 Route::get('/', ['middleware' => 'auth', 'uses' => 'UseController@correoacurso']);
 Route::any('home', ['middleware' => 'auth', 'uses' => 'UseController@inscritos']);
@@ -30,6 +33,13 @@ Route::get('mongo', ['middleware' => 'auth', 'uses' => 'UseController@mongo']);
 
 Route::get('logout', ['middleware' => 'auth', 'uses' => 'UseController@logout']);
 
+//busqueda cursos
+
+Route::get ('/busqueda','BusquedaController@buscarTodos');
+Route::get ('/categoria/{categoria}','BusquedaController@muestraCategoria');
+Route::post ('busca', 'BusquedaController@buscar');
+
+
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
@@ -46,4 +56,11 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
     Route::get ('mailTemplate', function (){
         return view ('emails.masivo');
     });
+    
 //});
+    
+    
+ 
+ 
+ 
+ 
