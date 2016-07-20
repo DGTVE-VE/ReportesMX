@@ -24,22 +24,21 @@
     </div>
   </nav>
 
+  @if (count($errors) > 0)
+  <div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+  </div>
+  @endif
+
   <div class="row">
     <form method="POST"  class="form-signin" action="{{url('savevideo')}}" accept-charset="UTF-8" enctype="multipart/form-data">
-      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+      <input type="hidden" name="_token" value="{!! csrf_token() !!}">
       <br>
       <br>
-
-        @if (count($errors) > 0)
-        <div class="alert alert-danger">
-          <ul>
-              @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
-              @endforeach
-          </ul>
-        </div>
-      @endif
-
       <div class="col-md-6 col-md-offset-3">
         <h3>Felicidades
           <br><small>Puedes compartir tus experiencias en nuestro primer aniversario.</small></h3>

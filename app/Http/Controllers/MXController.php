@@ -127,7 +127,7 @@ public function savevideo(Request $request){
 		[
 			'correo' => $email,
 			'texto' => $texto,
-			'ruta_video' => '/public/uploadvodeos/'.$id.'',
+			'ruta_video' => '/public/uploadvideos/'.$id.'',
 			]
 		);
 
