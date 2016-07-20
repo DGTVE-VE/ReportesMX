@@ -36,7 +36,8 @@
 
   <div class="row">
     <form method="POST"  class="form-signin" action="{{url('savevideo')}}" accept-charset="UTF-8" enctype="multipart/form-data">
-      <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+
+      <?php echo csrf_field(); ?>
       <br>
       <br>
       <div class="col-md-6 col-md-offset-3">
