@@ -103,17 +103,17 @@ public function uploadvideo(){
 
 public function savevideo(Request $request){
 
-	// $this->validate($request, [
-	//
-	// 	'inputEmai'  => 'required|email|max:150',
-	// 	'inputText'  => 'required|string|max:1000',
-	// 	'inputVideo'  => 'required|max:20000',
-	//
-	// ]);
+	$this->validate($request, [
+
+		'inputEmai'  => 'required|email|max:150',
+		'inputText'  => 'required|string|max:1000',
+		'inputVideo'  => 'required|max:20000',
+
+	]);
 
 	$video = $request->file('inputVideo');
-	$texto = $request->file('inputText');
-	$email = $request->file('inputEmai');
+	$texto = $request->input('inputText');
+	$email = $request->input('inputEmai');
 
 	$id = DB::table('upload_video')->max('id');
 
@@ -127,7 +127,7 @@ public function savevideo(Request $request){
 		[
 			'correo' => $email,
 			'texto' => $texto,
-			'ruta_video' => $video
+			'ruta_video' => '/public/uploadvodeos/'.$id.'',
 			]
 		);
 
