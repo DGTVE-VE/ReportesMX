@@ -46,7 +46,7 @@ return [
       | to any of the locales which will be supported by the application.
       |
      */
-    'locale' => 'en',
+    'locale' => 'es',
     /*
       |--------------------------------------------------------------------------
       | Application Fallback Locale

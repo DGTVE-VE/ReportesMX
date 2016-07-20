@@ -34,6 +34,10 @@ Route::any('verifica', 'MXController@verifica');
 Route::any('adddata', 'MXController@adddata');
 Route::any('validarcp', 'MXController@validarcp');
 
+
+Route::any('uploadvideo', 'MXController@uploadvideo');
+Route::any('savevideo', 'MXController@savevideo');
+
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');

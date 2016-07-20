@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use DB;
+use File;
 use Illuminate\Http\Request;
 
 class MXController extends Controller {
@@ -94,4 +95,48 @@ class MXController extends Controller {
 
 	}
 }
+
+public function uploadvideo(){
+
+	return view('upload.uploadvideo');
+}
+
+public function savevideo(Request $request){
+
+	$this->validate($request, [
+
+		'inputEmai'  => 'required|email|max:150',
+		'inputText'  => 'required|string|max:1000',
+		'inputVideo'  => 'required|max:20000',
+
+	]);
+
+	$video = $request->file('inputVideo');
+	$texto = $request->file('inputText');
+	$email = $request->file('inputEmai');
+
+	$id = DB::table('upload_video')->max('id');
+
+	\Storage::MakeDirectory($id);
+
+	$vid = $video->getClientOriginalName();
+
+	$route1 = \Storage::disk('local')->put($id.'/'.$vid, File::get($video));
+
+		$exito = DB::table('upload_video')->insert(
+		[
+			'correo' => $email,
+			'texto' => $texto,
+			'ruta_video' => $video
+			]
+		);
+
+		if($exito == 1 ){
+			return "Gracias";
+		}else {
+			return "Ocurrio un error al subir el video.";
+		}
+
+}
+
 }
