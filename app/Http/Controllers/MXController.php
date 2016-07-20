@@ -103,13 +103,13 @@ public function uploadvideo(){
 
 public function savevideo(Request $request){
 
-	$this->validate($request, [
-
-		'inputEmai'  => 'required|email|max:150',
-		'inputText'  => 'required|string|max:1000',
-		'inputVideo'  => 'required|max:20000',
-
-	]);
+	// $this->validate($request, [
+	//
+	// 	'inputEmai'  => 'required|email|max:150',
+	// 	'inputText'  => 'required|string|max:1000',
+	// 	'inputVideo'  => 'required|max:20000',
+	//
+	// ]);
 
 	$video = $request->file('inputVideo');
 	$texto = $request->file('inputText');
