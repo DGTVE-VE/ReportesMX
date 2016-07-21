@@ -38,7 +38,6 @@
     <form method="POST"  class="form-signin" action="{{url('savevideo')}}" accept-charset="UTF-8" enctype="multipart/form-data">
   {!! BootForm::open() !!}
 
-    {{ csrf_field() }}
 
       <br>
       <br>
