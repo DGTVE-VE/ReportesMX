@@ -2,18 +2,16 @@
 <div class="container">
     <div class="row">
         <br>
-        <center> <h4>Buscar Folio</h4></center>
-        <div class="col-md-5"></div>
-        <div class="form-group col-md-4">
+        <center> <h4>Buscar Folio</h4></center>        
+        <div class="form-group col-md-offset-5 col-md-4">
             <form action="constancias" method="get">     
                 <input name="folio">    
                 <button class="btn btn-large btn-success">Buscar</button>
             </form>
-        </div>
-        <div class="col-md-3"></div>
+        </div>        
         @if (isset($constan))
         
-        <div class="col-md-offset-3 col-md-8">
+        <div class="col-md-offset-2 col-md-8">
             <table class="table table-bordered">
                 <tr>
                     <td>Folio</td>
@@ -28,9 +26,7 @@
                     <td>{!!$constan['curso']!!}</td>
                 </tr>
             </table>
-        </div>
-        @else
-        <h3>Folio no encontrado</h3>
+        </div>                
         @endif
     </div>
 </div>
