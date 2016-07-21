@@ -12,8 +12,8 @@
         </div>
         <div class="col-md-3"></div>
         @if (isset($constan))
-        <div class="col-md-4"></div>
-        <div class="col-md-8">
+        
+        <div class="col-md-offset-3 col-md-8">
             <table class="table table-bordered">
                 <tr>
                     <td>Folio</td>
