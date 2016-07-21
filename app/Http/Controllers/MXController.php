@@ -108,7 +108,7 @@ class MXController extends Controller {
         $email = $request->input('inputEmai');
 
         $id = DB::table('upload_video')->max('id');
-
+        $id ++;
         \Storage::MakeDirectory($id);
 
         $vid = $video->getClientOriginalName();
