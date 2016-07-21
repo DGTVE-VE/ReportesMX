@@ -1,6 +1,23 @@
 id,"id curso","nombre del curso","fecha inicio","fecha fin","inicio de inscripcion","fin de inscripcion"
-48,INFOTEC/EMRIC/2016_T1,"Estrategias para el Manejo de Recursos de Información Científica",2016-04-19,2016-05-17,2016-01-18,2016-05-17
-66,CONAPASE/CONAPASE_TIC_2016/2016-S1,"Tecnologías de la información y la comunicación (TIC) para la participación social en la educación",2016-05-23,2016-06-17,2016-03-07,2016-05-27
-67,IPN/POO2016/2016_S1,"Programación Orientada a Objetos (POO)",2016-06-06,2016-07-01,2016-03-07,2016-06-07
-69,Prepaenlinea-SEP/PrepaSEP004-2a/2016_S1,"Aprender a Aprender, alternativas para una mejor calidad de vida",2016-04-18,2016-05-22,2016-03-08,2016-04-17
-70,SistemaDeUniversidadVirtualUdG/UDGSUVCA2x/2016_1,"Comunicación afectiva para el aprendizaje en línea",2030-04-01,,2030-01-01,
+70,,"Competencias directivas para la gestión de centros escolares",2016-07-25,2016-08-19,2016-04-25,2016-04-30
+72,IIIDx/IIIDFe101x/2016_S2,"La felicidad, estudios Avanzados",2016-08-08,2016-10-03,2016-05-09,2016-05-14
+73,,"La línea, 3200 kms de frontera",2016-08-15,2016-09-20,2016-05-14,2016-05-19
+74,,"Aprendizaje estratégico en ambientes virtuales",2016-08-15,2016-09-30,2016-05-15,2016-05-20
+75,,"Geobiología ",2016-08-15,2016-09-28,2016-05-16,2016-05-21
+76,,"Cálculo Diferencial",2016-09-01,2016-11-30,2016-06-01,2016-06-06
+77,,"Uso de Microsoft Word para la creación y gestión de documentos para el aula",2016-09-05,2016-10-02,2016-06-01,2016-06-06
+85,,"Resiliencia Nómica",2016-08-22,2016-11-30,2016-06-08,2016-06-13
+86,,"Prevención de accidentes en casa",2016-09-04,2016-09-30,2016-07-01,2016-07-06
+87,,"Uso de presentaciones profesionales en el aula con Microsoft Power Point",2016-10-03,2016-10-30,2016-07-01,2016-07-06
+88,,"Como desarrollar una mentalidad innovadora ",2016-09-04,2016-09-30,2016-07-01,2016-07-06
+89,,"Ciberacoso o Ciberbullying ",2016-08-29,2016-09-28,2016-07-03,2016-07-08
+90,,"Curso básico para asesor Jurídico de victima",2016-08-22,2016-09-21,2016-07-18,2016-07-23
+91,,"Curso básico para especialistas de Métodos alternos de solución de controversias ",2016-08-22,2016-09-21,2016-07-18,2016-07-23
+92,,"Curso básico para Peritos",2016-08-22,2016-09-21,2016-07-18,2016-07-23
+93,,"Curso básico para Agentes del Ministerio Público ",2016-08-22,2016-09-21,2016-07-18,2016-07-23
+94,,"Curso básico para defensores",2016-08-22,2016-09-21,2016-07-18,2016-07-23
+95,,"Curso básico para personal del Sistema Penitenciario",2016-08-22,2016-09-21,2016-07-18,2016-07-23
+96,,"Módulos iniciales para el sistema de Justicia Penal Acusatorio(cerrado)",2016-08-22,2016-09-21,2016-07-18,2016-07-23
+97,,"Curso básico para jueces",2016-08-10,2016-09-21,2016-07-18,2016-07-23
+98,,"Curso básico para asesor Jurídico de victima",2016-08-22,2016-09-21,2016-07-18,2016-07-23
+99,,"Diseño y creación de recursos de aprendizaje con Microsoft Excel ",2016-10-31,2016-11-27,2016-08-01,2016-08-06

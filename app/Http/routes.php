@@ -33,12 +33,20 @@ Route::get('mongo', ['middleware' => 'auth', 'uses' => 'UseController@mongo']);
 
 Route::get('logout', ['middleware' => 'auth', 'uses' => 'UseController@logout']);
 
-//busqueda cursos
 
 Route::get ('/busqueda','BusquedaController@buscarTodos');
 Route::get ('/categoria/{categoria}','BusquedaController@muestraCategoria');
 Route::post ('busca', 'BusquedaController@buscar');
 
+
+Route::any('verifica', 'MXController@verifica');
+Route::any('adddata', 'MXController@adddata');
+Route::any('validarcp', 'MXController@validarcp');
+
+
+Route::any('uploadvideo', 'MXController@uploadvideo');
+Route::any('savevideo', 'MXController@savevideo');
+Route::any('success', 'MXController@success');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
@@ -49,18 +57,29 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
+//Ruta para la Consulta de Folios en la tabla de constancias
+Route::match(array('GET','POST'),'constancias/{folio?}', array('uses'=>'ConstanciasController@constancias'));
+//ruta para el servicio Web de la tabla Auth_userprofile
+Route::match(array('GET','POST'),'webService', array('uses'=>'ConstanciasController@webService'));
+
 //Route::group(['middleware' => 'auth'], function () {
+    Route::get ('mail/eco/{id}', 'MailController@eco');
+    Route::get ('mail/count', 'MailController@getTotalRecords');
     Route::post ('mail/show', 'MailController@show');
-    Route::get ('mail/send', 'MailController@sendmail');
-    Route::get ('mail/compose', 'MailController@index');
+    Route::post ('mail/send', ['middleware' => 'auth', 'uses' => 'MailController@sendmail']);
+    Route::get ('mail/compose', ['middleware' => 'auth', 'uses' => 'MailController@create']);
+    Route::get ('mail/test', 'MailController@test');
     Route::get ('mailTemplate', function (){
         return view ('emails.masivo');
     });
-    
-//});
-    
-    
+    Route::get ('mail/unsuscribe', function (){
+        return view ('mail.unsuscribe');
+    });
+    Route::post ('mail/unsuscribe', 'MailController@unsuscribe');
  
- 
- 
- 
+Route::group(array('middleware' => 'auth'), function(){
+    Route::controller('filemanager', 'FilemanagerLaravelController');
+});
+Route::get ('phpinfo', function (){
+    phpinfo ();
+});
