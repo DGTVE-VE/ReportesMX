@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class MXController extends Controller {
 
     public function __construct() {
-        
+
     }
 
     public function validarcp() {
@@ -124,7 +124,7 @@ class MXController extends Controller {
         );
 
         if ($exito == 1) {
-            return "Gracias";
+            return view('upload.success');
         } else {
             return "Ocurrio un error al subir el video.";
         }
