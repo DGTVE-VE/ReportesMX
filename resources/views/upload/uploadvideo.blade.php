@@ -36,8 +36,10 @@
 
   <div class="row">
     <form method="POST"  class="form-signin" action="{{url('savevideo')}}" accept-charset="UTF-8" enctype="multipart/form-data">
+  {!! BootForm::open() !!}
 
     {{ csrf_field() }}
+
       <br>
       <br>
       <div class="col-md-6 col-md-offset-3">
@@ -50,23 +52,30 @@
         </div>
 
         <div class="col-md-6 col-md-offset-3">
-          <label for="inputText">Cuentanos tus logros, metas y demás gracias a los cursos de México X</label>
-          <textarea class="form-control" id="inputText" rows="3" name="inputText" required></textarea>
+
+          {!! BootForm::textarea('Cuentanos tus logros, metas y demás gracias a los cursos de México X', 'inputText') !!}
+
+          <!-- <label for="inputText">Cuentanos tus logros, metas y demás gracias a los cursos de México X</label>
+          <textarea class="form-control" id="inputText" rows="3" name="inputText" required></textarea> -->
         </div>
 
         <div class="col-md-6 col-md-offset-3">
-          <label for="inputVideo">Archivo de video</label>
-          <input type="file" id="inputVideo" name="inputVideo" required>
+          <!-- <label for="inputVideo">Archivo de video</label>
+          <input type="file" id="inputVideo" name="inputVideo" required> -->
+          {!! BootForm::file('Archivo de video', 'inputVideo') !!}
           <p class="help-block">MP4, MPG, 3GP ó WMV de máximo 20 MB</p>
         </div>
 
         <div class="checkbox col-md-6 col-md-offset-3">
-          <label>
+            {!! BootForm::checkbox('Acepto los términos y condiciones', 'checkbox') !!}
+            <!-- <label>
             <input type="checkbox" required>Acepto los términos y condiciones
-          </label>
+          </label> -->
         </div>
 
         <button type="submit" class="btn btn-defaultcol-md-6 col-md-offset-3 btn btn-danger">Enviar</button>
+
+        {!! BootForm::close() !!}
       </form>
 
     </div>
