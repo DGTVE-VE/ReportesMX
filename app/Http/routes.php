@@ -70,3 +70,6 @@ Route::match(array('GET','POST'),'webService', array('uses'=>'ConstanciasControl
 Route::group(array('middleware' => 'auth'), function(){
     Route::controller('filemanager', 'FilemanagerLaravelController');
 });
+Route::get ('phpinfo', function (){
+    phpinfo ();
+});
