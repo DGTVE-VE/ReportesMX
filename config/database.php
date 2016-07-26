@@ -67,10 +67,10 @@ return [
         'mongodb' => [
           'driver'   => 'mongodb',
           'host'     => env('DB_HOST', 'localhost'),
-          'port'     => env('DB_PORT', 27018),
-          'database' => env('bitnami_edx'),
-          'username' => env('root'),
-          'password' => env('97090771'),
+          'port'     => env('DB_PORT', 27017),
+          'database' => env('DB_DATABASE', 'bitnami_edx'),
+          'username' => env('DB_USERNAME', 'root'),
+          'password' => env('DB_PASSWORD', 'holamundo'),
           'options' => [
             'database' => 'admin' // sets the authentication database required by mongo 3
           ]

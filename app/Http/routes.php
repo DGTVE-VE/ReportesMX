@@ -74,3 +74,5 @@ Route::group(array('middleware' => 'auth'), function(){
 Route::get ('phpinfo', function (){
     phpinfo ();
 });
+
+Route::get('mongo', 'MongoController@mongo');
