@@ -178,6 +178,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'FilemanagerLaravel' => Pqb\FilemanagerLaravel\Facades\FilemanagerLaravel::class,
-        'BootForm' => 'AdamWathan\BootForms\Facades\BootForm'
+	'BootForm' => 'AdamWathan\BootForms\Facades\BootForm'
     ],
 ];
