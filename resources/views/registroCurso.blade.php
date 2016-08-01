@@ -120,8 +120,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div><br>
         <div class="row">
             <div class="col-md-12">
@@ -401,10 +399,66 @@
                     <div class="help-tip">
                         <p>Tipo de constancia</p>
                     </div>
-                </div>                                      
-                <hr>                
+                </div>                                                                    
             </div>
         </div>
+        <br>
+        <div class="row">
+            
+            <div class="col-md-4 col-md-offset-5">
+                <h4>Descargar</h4>
+            </div>
+            <div class="col-md-12">
+                <hr>
+            </div>
+            
+            <div class="col-md-10 col-md-offset-2">
+                
+                <div class="col-md-5">
+                    <div class="help-tip">
+                    <p>Descarga el archivo de titularidad de derechos de autor para la plataforma MéxicoX</p>
+                </div>
+                    <a href="{{asset('download/carta_aut.docx')}}"><button type="button" class="btn btn-primary btn-md">Carta Autorización</button></a>
+                </div>
+                <div class="col-md-5">
+                    <div class="help-tip">
+                    <p>Descarga el archivo de llenado para ser socio estrategico de MéxicoX</p>
+                </div>
+                    <a href="{{asset('download/carta_com.docx')}}"><button type="button" class="btn btn-primary btn-md">Carta Compromiso</button></a>
+                </div>                                
+            </div>
+            <hr>
+        </div>
+        <div class="row">
+            <hr>
+            <div class="col-md-10 col-md-offset-2">
+                
+                <div class="col-md-5">
+                    <div class="help-tip">
+                    <p>Carga el archivo de titularidad de derechos de autor previamente descargado lleno para la plataforma MéxicoX</p>
+                </div>
+                    <label for="addSignature">Carta Autorización</label><br><br>
+                        <label class="file">
+                            <input name="cartaAutorizacion" type="file" id="signature">
+                            <span class="file-custom"></span>                
+                        </label><br>
+                </div>
+                <div class="col-md-5">
+                    <div class="help-tip">
+                    <p>Carga el archivo de llenado para ser socio estrategico de MéxicoX previamente descargado lleno</p>
+                </div>
+                    <label for="addSignature">Carta compromiso</label><br><br>
+                        <label class="file">
+                            <input name="cartaCompromiso" type="file" id="signature">
+                            <span class="file-custom"></span>                
+                        </label><br>
+                </div>
+                
+                
+            </div>
+            <hr>
+        </div>
+        <br>
         <br>
         <div class="row">
             <div class="col-md-12">
@@ -552,7 +606,8 @@
                 num--;
             });
         });
-
+       
+        
     });
 </script>
 <script>
@@ -562,9 +617,9 @@
 
     }
 
-    function dragging(event) {
-        document.getElementById("demo").innerHTML = "The p element is being dragged";
-    }
+//    function dragging(event) {
+//        document.getElementById("demo").innerHTML = "The p element is being dragged";
+//    }
 
     function allowDrop(event) {
         event.preventDefault();
@@ -593,7 +648,7 @@
         }
 
         count = $('#cont2').children().length;
-        alert("el div2 tiene: " + count);
+        //alert("el div2 tiene: " + count);
         var values = [];
         $('#cont2').children().each(function () {
 
@@ -614,4 +669,7 @@
         }
     }
 </script>
+<scrip>
+    
+</scrip>
 @endsection

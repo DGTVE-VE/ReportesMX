@@ -132,6 +132,7 @@ return [
 
         Jenssegers\Mongodb\MongodbServiceProvider::class,
         'AdamWathan\BootForms\BootFormsServiceProvider',
+
     ],
     /*
       |--------------------------------------------------------------------------

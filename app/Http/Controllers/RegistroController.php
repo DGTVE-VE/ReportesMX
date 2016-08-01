@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Input;
 
 class RegistroController extends Controller {
 
+    public function __construct() {
+        
+        $this->middleware('auth', 
+            ['only' => [ 'registroNuevo', 'cursoNuevo']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -92,13 +97,17 @@ class RegistroController extends Controller {
         $destinationVideo='C:\xampp\htdocs\ReportesMX\public\imagenes\video_curso';
         $destinationFirma='C:\xampp\htdocs\ReportesMX\public\imagenes\firmas';
         $destinationFotosInst='C:\xampp\htdocs\ReportesMX\public\imagenes\foto_instructor';
+        $destinationCartaCom='C:\xampp\htdocs\ReportesMX\public\cartas\compromiso';
+        $destinationCartaAut='C:\xampp\htdocs\ReportesMX\public\cartas\autorizacion';
+        
         //ficha_curso
         $nombreCurso = filter_input(INPUT_POST, 'nombreCurso');
         $ficha_curso = new Ficha_curso;
         $ficha_curso->nombre = $nombreCurso;
         $idCurso = filter_input(INPUT_POST, 'idCurso');
         $ficha_curso->course_id = $idCurso;
-        
+                
+        //archivos multimedia
         $nombreImagen = Input::file('imagenCurso')->getClientOriginalName();
         $courseImage = Input::file('imagenCurso')->move($destinationPath, $nombreImagen);
         $ficha_curso->imagen=$nombreImagen;
@@ -112,6 +121,14 @@ class RegistroController extends Controller {
         
         $nombreFoto = Input::file('fotoInstructor')->getClientOriginalName();
         $foto_instructor = Input::file('fotoInstructor')->move($destinationFotosInst,$nombreFoto);
+        
+        //archivos de llenado
+        $cartaCompromiso = Input::file('cartaCompromiso')->getClientOriginalName();
+        $compromiso = Input::file('cartaCompromiso')->move($destinationCartaCom,$cartaCompromiso);
+        
+        $cartaAutorizacion = Input::file('cartaAutorizacion')->getClientOriginalName();
+        $autorizacion = Input::file('cartaAutorizacion')->move($destinationCartaAut,$cartaAutorizacion);
+        
 
         $desLarga = filter_input(INPUT_POST, 'desLarga');
         $ficha_curso->descripcion_lar = $desLarga;
@@ -153,9 +170,6 @@ class RegistroController extends Controller {
         $ficha_curso->categoria3 = $categoria3;
         $ficha_curso->save();
 
-
-
-
         $nombreInstructor = $_POST['nombreInstructor'];
         $biografia = $_POST ['biografia'];
         $especialidad = $_POST['especializacion'];
@@ -169,13 +183,6 @@ class RegistroController extends Controller {
             $staff->especialidad = $especialidad[$i];
             $staff->obras_imp = $obrasImportantes[$i];
             $ficha_curso->instructores()->save($staff);
-        }
-
-        
-    }
-
-    
-
-
-
+        }       
+    }            
 }
