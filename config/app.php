@@ -130,9 +130,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        Jenssegers\Mongodb\MongodbServiceProvider::class,
-        'AdamWathan\BootForms\BootFormsServiceProvider',
-
+//        Jenssegers\Mongodb\MongodbServiceProvider::class,
+        'AdamWathan\BootForms\BootFormsServiceProvider'
     ],
     /*
       |--------------------------------------------------------------------------
