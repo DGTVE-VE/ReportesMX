@@ -10,6 +10,10 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+//rutas para registro de un nuevo curso
+Route::get('registro', 'RegistroController@cursoNuevo');
+Route::post('nuevoRegistro','RegistroController@registroNuevo');
+Route::get('descarga','RegistroController@downloadFile');
 
 Route::get('/', ['middleware' => 'auth', 'uses' => 'UseController@correoacurso']);
 Route::any('home', ['middleware' => 'auth', 'uses' => 'UseController@inscritos']);
@@ -29,6 +33,12 @@ Route::get('videos', ['middleware' => 'auth', 'uses' => 'UseController@videos'])
 Route::get('mongo', ['middleware' => 'auth', 'uses' => 'UseController@mongo']);
 
 Route::get('logout', ['middleware' => 'auth', 'uses' => 'UseController@logout']);
+
+
+Route::get ('/busqueda','BusquedaController@buscarTodos');
+Route::get ('/categoria/{categoria}','BusquedaController@muestraCategoria');
+Route::post ('busca', 'BusquedaController@buscar');
+
 
 Route::any('verifica', 'MXController@verifica');
 Route::any('adddata', 'MXController@adddata');
@@ -67,10 +77,17 @@ Route::match(array('GET','POST'),'webService', array('uses'=>'ConstanciasControl
         return view ('mail.unsuscribe');
     });
     Route::post ('mail/unsuscribe', 'MailController@unsuscribe');
-//});
+
 Route::group(array('middleware' => 'auth'), function(){
     Route::controller('filemanager', 'FilemanagerLaravelController');
 });
 Route::get ('phpinfo', function (){
     phpinfo ();
 });
+
+Route::get('mongo', 'MongoController@mongo');
+Route::get('blog', 'MXController@blog');
+Route::any('viewblog', 'MXController@viewblog');
+Route::any('getblog', 'MXController@getblog');
+Route::any('adminblog', ['middleware' => 'auth', 'uses' => 'MXController@adminblog']);
+Route::any('saveblog', ['middleware' => 'auth', 'uses' => 'MXController@saveblog']);

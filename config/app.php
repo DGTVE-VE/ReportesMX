@@ -129,6 +129,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
 //        Jenssegers\Mongodb\MongodbServiceProvider::class,
         'AdamWathan\BootForms\BootFormsServiceProvider'
     ],
@@ -178,6 +179,10 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'FilemanagerLaravel' => Pqb\FilemanagerLaravel\Facades\FilemanagerLaravel::class,
+<<<<<<< HEAD
 	'BootForm' => 'AdamWathan\BootForms\Facades\BootForm'
+=======
+        'BootForm' => 'AdamWathan\BootForms\Facades\BootForm',
+>>>>>>> d1c58e39b82330a516e7a016e4182fb0f6853c60
     ],
 ];
