@@ -129,19 +129,9 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-<<<<<<< HEAD
+
         Jenssegers\Mongodb\MongodbServiceProvider::class,
         'AdamWathan\BootForms\BootFormsServiceProvider',
-=======
-
-//        Jenssegers\Mongodb\MongodbServiceProvider::class,
-
-
-        Jenssegers\Mongodb\MongodbServiceProvider::class,
-
-//        Jenssegers\Mongodb\MongodbServiceProvider::class,
-        'AdamWathan\BootForms\BootFormsServiceProvider'
->>>>>>> 06114226ed1ff9854c7caf7ac7f136a8e66d4648
     ],
     /*
       |--------------------------------------------------------------------------

@@ -47,11 +47,12 @@
                         <li><a href="{{url ('home')}}" class="bg-active">Listado Cursos</a></li>
                         <li><a href="{{url ('totales')}}" class="bg-active">Información usuarios</a></li>
                         <li><a href="{{url ('infocurso')}}" class="bg-active">Estadísticas curso</a></li>
-                        <li><a href="{{url('inscritost')}}" class="bgactive">Inscritos a cursos</a><li>
+                        <li><a href="{{url('inscritost')}}" class="bg-active">Inscritos a cursos</a><li>
                         <li><a href="{{url ('videos')}}" class="bg-active">Videos</a></li>
+                        <li><a href="{{url ('adminblog')}}" class="bg-active">Blog</a></li>
                         <li><a href="{{url ('constancias')}}" class="bg-active">Buscar Folio</a></li>
                         <?php
-                        $user = \Illuminate\Support\Facades\Auth::user ();        
+                        $user = \Illuminate\Support\Facades\Auth::user ();
                         $auth_user = \App\Model\Auth_user::where('email', $user->email)->first();
 
                         if (isset ($auth_user->is_superuser)){
@@ -60,6 +61,10 @@
                         <li><a href="{{url ('mail/compose')}}" class="bg-close" title="Envío de correos">
                                 <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
                             </a></li>
+                        <li><a href="{{url ('adminblog')}}" class="bg-close" title="Blog">
+                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                            </a></li>
+
                         <?php }}?>
                         <li><a href="{{url ('logout')}}" class="bg-close" title="Salir">
                                 <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
@@ -77,7 +82,7 @@
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-        
+
         @yield('scripts')
 </body>
 </html>

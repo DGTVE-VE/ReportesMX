@@ -48,6 +48,11 @@ return [
             'root'   => public_path('uploadvideos/'),
         ],
 
+        'local_public' => [
+            'driver' => 'local',
+            'root'   => public_path('imagenes_entradas/'),
+        ],
+
         'ftp' => [
             'driver'   => 'ftp',
             'host'     => 'ftp.example.com',
