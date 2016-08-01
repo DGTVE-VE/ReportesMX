@@ -49,7 +49,6 @@
                         <li><a href="{{url ('infocurso')}}" class="bg-active">Estadísticas curso</a></li>
                         <li><a href="{{url('inscritost')}}" class="bg-active">Inscritos a cursos</a><li>
                         <li><a href="{{url ('videos')}}" class="bg-active">Videos</a></li>
-                        <li><a href="{{url ('adminblog')}}" class="bg-active">Blog</a></li>
                         <li><a href="{{url ('constancias')}}" class="bg-active">Buscar Folio</a></li>
                         <?php
                         $user = \Illuminate\Support\Facades\Auth::user ();
