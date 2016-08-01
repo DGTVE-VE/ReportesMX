@@ -133,7 +133,7 @@ return [
 //        Jenssegers\Mongodb\MongodbServiceProvider::class,
 
 
-        Jenssegers\Mongodb\MongodbServiceProvider::class,
+//        Jenssegers\Mongodb\MongodbServiceProvider::class,
 
 //        Jenssegers\Mongodb\MongodbServiceProvider::class,
         'AdamWathan\BootForms\BootFormsServiceProvider'

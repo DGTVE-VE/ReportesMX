@@ -13,6 +13,7 @@
 //rutas para registro de un nuevo curso
 Route::get('registro', 'RegistroController@cursoNuevo');
 Route::post('nuevoRegistro','RegistroController@registroNuevo');
+Route::get('descarga','RegistroController@downloadFile');
 
 Route::get('/', ['middleware' => 'auth', 'uses' => 'UseController@correoacurso']);
 Route::any('home', ['middleware' => 'auth', 'uses' => 'UseController@inscritos']);
