@@ -27,7 +27,7 @@
   </nav>
 
 <br>
-<center><h3>Crear entrada en el Blog de México X</h3></center>
+<center><h3>Crear entrada en el Blog de MéxicoX</h3></center>
 <br>
 
 @if (count($errors) > 0)

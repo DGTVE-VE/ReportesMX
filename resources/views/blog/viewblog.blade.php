@@ -45,7 +45,7 @@
   </nav>
 
 
-  <center><h2><a href="{{url('blog')}}">Blog de México X</a></h2></center>
+  <center><h2><a href="{{url('blog')}}">Blog de MéxicoX</a></h2></center>
   <br>
 
     <div class="row">
