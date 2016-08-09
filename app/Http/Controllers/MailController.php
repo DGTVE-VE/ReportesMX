@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Mail;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Contracts\Mail\Mailer;
 use DB;
 
 class MailController extends Controller {
@@ -42,6 +43,7 @@ class MailController extends Controller {
         if (Input::get('submit') === 'preview'){
             return $this->show();
         }else{
+          $mailer = new Mailer ;
             $user = \Illuminate\Support\Facades\Auth::user ();
             $auth_user = \App\Model\Auth_user::where('email', $user->email)->first();
             $asunto = Input::get( 'asunto' );
