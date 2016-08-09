@@ -43,7 +43,7 @@ class MailController extends Controller {
         if (Input::get('submit') === 'preview'){
             return $this->show();
         }else{
-          $mailer = new Mailer ;
+          
             $user = \Illuminate\Support\Facades\Auth::user ();
             $auth_user = \App\Model\Auth_user::where('email', $user->email)->first();
             $asunto = Input::get( 'asunto' );
@@ -59,7 +59,7 @@ class MailController extends Controller {
                     Log.info('Enviando correo a: '.$user->email);
 
                         try {
-                            $mailer->send('emails.masivo', ['mensaje' => $mensaje],
+                            Mail::send('emails.masivo', ['mensaje' => $mensaje],
                                 function( $message ) use ($user){
                                     $message->from('mexicox@televisioneducativa.gob.mx', 'México X');
                                     $message->to($user->email)
