@@ -38,6 +38,7 @@ class MailController extends Controller {
 //    }
 
     public function sendmail() {
+      set_time_limit(60*60*24);
         if (Input::get('submit') === 'preview'){
             return $this->show();
         }else{
@@ -46,13 +47,52 @@ class MailController extends Controller {
             $asunto = Input::get( 'asunto' );
             $mensaje = Input::get( 'mensaje' );
             $id = Input::get( 'id' );
-            $this->dispatch(new \App\Jobs\SendEmail($asunto, $mensaje));
+
             $count = DB::table('correo_masivo')->count();
+            \App\Model\Correo_masivo::chunk(100, function($users) use ($mailer)
+            {
+                // Correr como daemon a ver si ya no se alenta el front en respoder.
+
+                foreach ($users as $user){
+                    Log.info('Enviando correo a: '.$user->email);
+
+                        try {
+                            $mailer->send('emails.masivo', ['mensaje' => $mensaje],
+                                function( $message ) use ($user){
+                                    $message->from('mexicox@televisioneducativa.gob.mx', 'México X');
+                                    $message->to($user->email)
+                                            ->subject($asunto);
+                            });
+                        } catch (Exception $e) {
+                            Log.error ('Error enviando correo a: '.$user->email . ' -> '.$e->getMessage());
+                        }
+
+                }
+            });
             return view ('mail.index')
                     ->with ('name_user', $auth_user->username)
                     ->with('info', "Serán enviados ". number_format($count). " correos.");
         }
+
     }
+
+    // public function sendmail() {
+    //
+    //     if (Input::get('submit') === 'preview'){
+    //         return $this->show();
+    //     }else{
+    //         $user = \Illuminate\Support\Facades\Auth::user ();
+    //         $auth_user = \App\Model\Auth_user::where('email', $user->email)->first();
+    //         $asunto = Input::get( 'asunto' );
+    //         $mensaje = Input::get( 'mensaje' );
+    //         $id = Input::get( 'id' );
+    //         $this->dispatch(new \App\Jobs\SendEmail($asunto, $mensaje));
+    //         $count = DB::table('correo_masivo')->count();
+    //         return view ('mail.index')
+    //                 ->with ('name_user', $auth_user->username)
+    //                 ->with('info', "Serán enviados ". number_format($count). " correos.");
+    //     }
+    // }
 
 
     /**
