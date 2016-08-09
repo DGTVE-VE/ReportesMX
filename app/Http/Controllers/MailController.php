@@ -47,7 +47,7 @@ class MailController extends Controller {
             $mensaje = Input::get( 'mensaje' );
             $id = Input::get( 'id' );
             $this->dispatch(new \App\Jobs\SendEmail($asunto, $mensaje));
-            $count = DB::table('auth_user')->count();
+            $count = DB::table('correo_masivo')->count();
             return view ('mail.index')
                     ->with ('name_user', $auth_user->username)
                     ->with('info', "Serán enviados ". number_format($count). " correos.");

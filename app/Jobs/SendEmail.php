@@ -36,11 +36,13 @@ class SendEmail extends Job implements SelfHandling, ShouldQueue
     public function handle(Mailer $mailer)
     {
 //        $users = \App\Model\Auth_user::all();
-        \App\Model\Auth_user::chunk(100, function($users) use ($mailer)
+        \App\Model\Correo_masivo::chunk(100, function($users) use ($mailer)
         {
             // Correr como daemon a ver si ya no se alenta el front en respoder.
+
             foreach ($users as $user){
-                if (\App\Model\Unsuscribers::where ('email', $user->email)->first() == NULL){
+                Log.info('Enviando correo a: '.$user->email);
+
                     try {
                         $mailer->send('emails.masivo', ['mensaje' => $this->mensaje],
                             function( $message ) use ($user){
@@ -48,11 +50,10 @@ class SendEmail extends Job implements SelfHandling, ShouldQueue
                                 $message->to($user->email)
                                         ->subject($this->asunto);
                         });
-                        Log.error ('Enviando correo a: '.$user->email);
                     } catch (Exception $e) {
                         Log.error ('Error enviando correo a: '.$user->email . ' -> '.$e->getMessage());
                     }
-                }
+
             }
         });
     }
