@@ -43,7 +43,7 @@ class MailController extends Controller {
         if (Input::get('submit') === 'preview'){
             return $this->show();
         }else{
-          
+
             $user = \Illuminate\Support\Facades\Auth::user ();
             $auth_user = \App\Model\Auth_user::where('email', $user->email)->first();
             $asunto = Input::get( 'asunto' );
@@ -51,7 +51,7 @@ class MailController extends Controller {
             $id = Input::get( 'id' );
 
             $count = DB::table('correo_masivo')->count();
-            \App\Model\Correo_masivo::chunk(100, function($users) use ($mailer)
+            \App\Model\Correo_masivo::chunk(100, function($users)
             {
                 // Correr como daemon a ver si ya no se alenta el front en respoder.
 
