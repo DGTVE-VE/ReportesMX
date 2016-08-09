@@ -39,7 +39,7 @@
           </a><br><br>
 
             <a href="http://mexicox.gob.mx/privacy"  target="_blank"> Consulta nuestro aviso de privacidad </a><br>
-            Si no quieres recibir más correos de México X da click
+            Si no quieres recibir más correos de MéxicoX da click
             <a href="http://www.mexicox.gob.mx:81/reportesmx/public/mail/unsuscribe"> aquí </a>.<br><br>
         </div>
     </body>
