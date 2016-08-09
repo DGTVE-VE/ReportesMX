@@ -33,6 +33,11 @@
             <a href='https://twitter.com/tveducativamx'>
             <img src='http://mexicox.gob.mx:81/reportesmx/public/imagenes/twitter.png' class='img-rounded'>
             </a><br>
+
+            <a href='http://mx.televisioneducativa.gob.mx/'>
+            <img src='http://mexicox.gob.mx:81/reportesmx/public/imagenes/boton.png' style="width: 135px; height: 30px; border-radius: 30px;">
+            </a><br>
+
             <a href="http://mexicox.gob.mx/privacy"> Consulta nuestro aviso de privacidad </a><br>
             Si no quieres recibir más correos de México X da click
             <a href="http://www.mexicox.gob.mx:81/reportesmx/public/mail/unsuscribe"> aquí </a>.<br>
