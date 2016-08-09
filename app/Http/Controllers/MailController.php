@@ -9,6 +9,7 @@ use Mail;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Contracts\Mail\Mailer;
 use DB;
+use Log;
 
 class MailController extends Controller {
 
