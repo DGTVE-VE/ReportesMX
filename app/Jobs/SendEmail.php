@@ -23,7 +23,7 @@ class SendEmail extends Job implements SelfHandling, ShouldQueue
      */
     public function __construct($asunto, $mensaje)
     {
-       
+
        $this->asunto = $asunto;
        $this->mensaje = $mensaje;
     }
@@ -34,22 +34,23 @@ class SendEmail extends Job implements SelfHandling, ShouldQueue
      * @return void
      */
     public function handle(Mailer $mailer)
-    {                
-//        $users = \App\Model\Auth_user::all();        
+    {
+//        $users = \App\Model\Auth_user::all();
         \App\Model\Auth_user::chunk(100, function($users) use ($mailer)
-        {            
+        {
             // Correr como daemon a ver si ya no se alenta el front en respoder.
-            foreach ($users as $user){        
-                if (\App\Model\Unsuscribers::where ('email', $user->email)->first() == NULL){      
+            foreach ($users as $user){
+                if (\App\Model\Unsuscribers::where ('email', $user->email)->first() == NULL){
                     try {
-                        $mailer->send('emails.masivo', ['mensaje' => $this->mensaje], 
+                        $mailer->send('emails.masivo', ['mensaje' => $this->mensaje],
                             function( $message ) use ($user){
                                 $message->from('mexicox@televisioneducativa.gob.mx', 'México X');
                                 $message->to($user->email)
                                         ->subject($this->asunto);
                         });
+                        Log.error ('Enviando correo a: '.$user->email);
                     } catch (Exception $e) {
-                        Log.error ('Error enviando correo a: '.$user->email . ' -> '.$e->getMessage());                         
+                        Log.error ('Error enviando correo a: '.$user->email . ' -> '.$e->getMessage());
                     }
                 }
             }
