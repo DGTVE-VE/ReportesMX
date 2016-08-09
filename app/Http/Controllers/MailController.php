@@ -61,7 +61,7 @@ class MailController extends Controller {
 
                         try {
                             Mail::send('emails.masivo', ['mensaje' => $mensaje],
-                                function( $message ) use ($user){
+                                function( $message ) use ($user, $asunto){
                                     $message->from('mexicox@televisioneducativa.gob.mx', 'México X');
                                     $message->to($user->email)
                                             ->subject($asunto);
