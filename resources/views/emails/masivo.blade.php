@@ -38,12 +38,12 @@
                       <a href="http://mx.televisioneducativa.gob.mx/courses/UPN/VE_UPN001_2/2016_S2/about" target="_blank"><img src="{{asset('/cursos_mensuales/3.png')}}"></a>
                     </td>
                     <td style="padding: 10px; text-align: center;">
-                      <a href="http://mx.televisioneducativa.gob.mx/courses/FEM-UAE/CBx/2016_T1/about" target="_blank"><img src="{{asset('/cursos_mensuales/4.png')}}"></a>
+                      <a href="http://mx.televisioneducativa.gob.mx/courses/FEM-UAE/CBx/2016_T1/about" target="_blank"><img src="{{asset('/cursos_mensuales/5.png')}}"></a>
                     </td>
                   </tr>
                   <tr>
                     <td colspan="2" style="padding: 10px; text-align: center;">
-                      <a href="http://mx.televisioneducativa.gob.mx/courses/INEA/PPEH/2016E1/about" target="_blank"><img src="{{asset('/cursos_mensuales/5.png')}}"></a>
+                      <a href="http://mx.televisioneducativa.gob.mx/courses/INEA/PPEH/2016E1/about" target="_blank"><img src="{{asset('/cursos_mensuales/6.png')}}"></a>
                     </td>
                   </tr>
                 </table>
