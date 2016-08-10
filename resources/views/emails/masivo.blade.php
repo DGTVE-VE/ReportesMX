@@ -19,7 +19,7 @@
                   Inscríbete en los cursos gratuitos de MéxicoX que comienzan en agosto.
                 </p>
 
-                <div class="col-md-12">
+                <div class="row">
                   <div class="col-md-4 centered">
                     <br>
                     <a href="http://mx.televisioneducativa.gob.mx/courses/IIIDx/IIIDRn103x/2016_s2/about" target="_blank"><img src="{{asset('/cursos_mensuales/1.png')}}"></a>
@@ -35,9 +35,7 @@
                     <a href="http://mx.televisioneducativa.gob.mx/courses/UPN/VE_UPN001_2/2016_S2/about" target="_blank"><img src="{{asset('/cursos_mensuales/3.png')}}"></a>
                     <br>
                   </div>
-                  <div class="col-md-12">
-                    <br>
-                  </div>
+                
                   <div class="col-md-4 centered">
                     <br>
                     <a href="http://mx.televisioneducativa.gob.mx/courses/FEM-UAE/CBx/2016_T1/about" target="_blank"><img src="{{asset('/cursos_mensuales/4.png')}}"></a>
