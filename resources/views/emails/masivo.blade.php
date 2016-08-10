@@ -26,23 +26,23 @@
 
                 <table>
                   <tr>
-                    <td style="padding: 5px">
+                    <td style="padding: 10px">
                       <a href="http://mx.televisioneducativa.gob.mx/courses/IIIDx/IIIDRn103x/2016_s2/about" target="_blank"><img src="{{asset('/cursos_mensuales/1.png')}}"></a>
                     </td>
-                    <td style="padding: 5px">
+                    <td style="padding: 10px">
                       <a href="http://mx.televisioneducativa.gob.mx/courses/INEA/LPTMx/2016_S2/about" target="_blank"><img src="{{asset('/cursos_mensuales/2.png')}}"></a>
                     </td>
                   </tr>
                   <tr>
-                    <td style="padding: 5px">
+                    <td style="padding: 10px">
                       <a href="http://mx.televisioneducativa.gob.mx/courses/UPN/VE_UPN001_2/2016_S2/about" target="_blank"><img src="{{asset('/cursos_mensuales/3.png')}}"></a>
                     </td>
-                    <td style="padding: 5px">
+                    <td style="padding: 10px">
                       <a href="http://mx.televisioneducativa.gob.mx/courses/FEM-UAE/CBx/2016_T1/about" target="_blank"><img src="{{asset('/cursos_mensuales/4.png')}}"></a>
                     </td>
                   </tr>
                   <tr>
-                    <td style="padding: 5px">
+                    <td style="padding: 10px">
                       <a href="http://mx.televisioneducativa.gob.mx/courses/INEA/PPEH/2016E1/about" target="_blank"><img src="{{asset('/cursos_mensuales/5.png')}}"></a>
                     </td>
                     <td>
