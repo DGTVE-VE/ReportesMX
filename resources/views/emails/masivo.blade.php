@@ -15,6 +15,24 @@
 
                 {!! $mensaje !!}
 
+                <div class="col-md-12">
+                  <div class="col-md-4 centered">
+                    <a href="http://mx.televisioneducativa.gob.mx/courses/IIIDx/IIIDRn103x/2016_s2/about"><img src="{{asset('/cursos_mensuales/1.png')}}"></a>
+                  </div>
+                  <div class="col-md-4 centered">
+                    <a href="http://mx.televisioneducativa.gob.mx/courses/INEA/LPTMx/2016_S2/about"><img src="{{asset('/cursos_mensuales/2.png')}}"></a>
+                  </div>
+                  <div class="col-md-4 centered">
+                    <a href="http://mx.televisioneducativa.gob.mx/courses/UPN/VE_UPN001_2/2016_S2/about"><img src="{{asset('/cursos_mensuales/3.png')}}"></a>
+                  </div>
+                  <div class="col-md-6 centered">
+                    <a href="http://mx.televisioneducativa.gob.mx/courses/FEM-UAE/CBx/2016_T1/about"><img src="{{asset('/cursos_mensuales/4.png')}}"></a>
+                  </div>
+                  <div class="col-md-6 centered">
+                    <a href="http://mx.televisioneducativa.gob.mx/courses/INEA/PPEH/2016E1/about"><img src="{{asset('/cursos_mensuales/5.png')}}"></a>
+                  </div>
+                </div>
+
             </div>
             <img src='http://mexicox.gob.mx:81/reportesmx/public/imagenes/email/linea.jpg'>
         </div>
