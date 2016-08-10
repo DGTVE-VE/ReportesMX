@@ -7,9 +7,6 @@
         <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
     </head>
     <body>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-      <script   src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script>
-      <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
         <div style="background-image: url('http://mexicox.gob.mx:81/reportesmx/public/imagenes/email/header.jpg');
              background-repeat: no-repeat;
              width: 600px;
@@ -23,33 +20,33 @@
                 </p>
 
                 <div class="row">
-                  <div class="col-md-4 centered">
+                  <div style="float: left; margin: 10px; padding: 10px; max-width: 150px; height: 175px; border: 1px;">
                     <br>
                     <a href="http://mx.televisioneducativa.gob.mx/courses/IIIDx/IIIDRn103x/2016_s2/about" target="_blank"><img src="{{asset('/cursos_mensuales/1.png')}}"></a>
                     <br>
                   </div>
-                  <div class="col-md-4 centered">
+                  <div style="float: left; margin: 10px; padding: 10px; max-width: 150px; height: 175px; border: 1px;">
                     <br>
                     <a href="http://mx.televisioneducativa.gob.mx/courses/INEA/LPTMx/2016_S2/about" target="_blank"><img src="{{asset('/cursos_mensuales/2.png')}}"></a>
                     <br>
                   </div>
-                  <div class="col-md-4 centered">
+                  <div style="float: left; margin: 10px; padding: 10px; max-width: 150px; height: 175px; border: 1px;">
                     <br>
                     <a href="http://mx.televisioneducativa.gob.mx/courses/UPN/VE_UPN001_2/2016_S2/about" target="_blank"><img src="{{asset('/cursos_mensuales/3.png')}}"></a>
                     <br>
                   </div>
 
-                  <div class="col-md-4 centered">
+                  <div style="float: left; margin: 10px; padding: 10px; max-width: 150px; height: 175px; border: 1px;">
                     <br>
                     <a href="http://mx.televisioneducativa.gob.mx/courses/FEM-UAE/CBx/2016_T1/about" target="_blank"><img src="{{asset('/cursos_mensuales/4.png')}}"></a>
                     <br>
                   </div>
-                  <div class="col-md-4 centered">
+                  <div style="float: left; margin: 10px; padding: 10px; max-width: 150px; height: 175px; border: 1px;">
                     <br>
                     <a href="http://mx.televisioneducativa.gob.mx/courses/INEA/PPEH/2016E1/about" target="_blank"><img src="{{asset('/cursos_mensuales/5.png')}}"></a>
                     <br>
                   </div>
-                  <div class="col-md-4 centered">
+                  <div style="float: left; margin: 10px; padding: 10px; max-width: 150px; height: 175px; border: 1px;">
                     <br>
                   </div>
                 </div>
