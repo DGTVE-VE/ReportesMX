@@ -42,7 +42,7 @@
                     </td>
                   </tr>
                   <tr>
-                    <td style="padding: 10px; text-align: center;">
+                    <td colspan="2" style="padding: 10px; text-align: center;">
                       <a href="http://mx.televisioneducativa.gob.mx/courses/INEA/PPEH/2016E1/about" target="_blank"><img src="{{asset('/cursos_mensuales/5.png')}}"></a>
                     </td>
                   </tr>
