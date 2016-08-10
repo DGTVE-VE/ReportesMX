@@ -55,6 +55,7 @@
 
                 <br>
                 <p class="h5">
+                  <br>
                   Refuerza tus competencias laborales y conocimientos en esta comunidad de aprendizaje.
                 </p>
 
