@@ -15,7 +15,9 @@
 
                 {!! $mensaje !!}
 
-                <h3>Inscríbete en los cursos gratuitos de MéxicoX que comienzan en agosto.</h3>
+                <p class="h5">
+                  Inscríbete en los cursos gratuitos de MéxicoX que comienzan en agosto.
+                </p>
 
                 <div class="col-md-12">
                   <div class="col-md-4 centered">
@@ -51,7 +53,10 @@
                   </div>
                 </div>
 
-                <h3>Refuerza tus competencias laborales y conocimientos en esta comunidad de aprendizaje.</h3>
+                <br>
+                <p class="h5">
+                  Refuerza tus competencias laborales y conocimientos en esta comunidad de aprendizaje.
+                </p>
 
             </div>
             <img src='http://mexicox.gob.mx:81/reportesmx/public/imagenes/email/linea.jpg'>
