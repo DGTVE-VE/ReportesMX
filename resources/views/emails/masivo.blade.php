@@ -24,7 +24,7 @@
                   </div>
                   <div class="col-md-4 centered">
                     <a href="http://mx.televisioneducativa.gob.mx/courses/UPN/VE_UPN001_2/2016_S2/about" target="_blank"><img src="{{asset('/cursos_mensuales/3.png')}}"></a>
-                  </div>
+                  </div><br><br>
                   <div class="col-md-4 centered">
                     <a href="http://mx.televisioneducativa.gob.mx/courses/FEM-UAE/CBx/2016_T1/about" target="_blank"><img src="{{asset('/cursos_mensuales/4.png')}}"></a>
                   </div>
