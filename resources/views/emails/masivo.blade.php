@@ -24,7 +24,7 @@
                   Inscríbete en los cursos gratuitos de MéxicoX que comienzan en agosto.
                 </p>
 
-                <table style="max-width: 600px;">
+                <table style="width: 600px;">
                   <tr>
                     <td style="padding: 10px; text-align: center;">
                       <a href="http://mx.televisioneducativa.gob.mx/courses/IIIDx/IIIDRn103x/2016_s2/about" target="_blank"><img src="{{asset('/cursos_mensuales/1.png')}}"></a>
