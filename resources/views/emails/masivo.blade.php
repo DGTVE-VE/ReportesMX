@@ -12,10 +12,10 @@
         </style>
     </head>
     <body>
-        <div style="background-image: url('https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/header.jpg');
-             background-repeat: no-repeat;
-             width: 600px;
-             margin: auto;">
+
+        <img src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/header.jpg" style="width: 600px; position: absolute;" />
+
+
             <div style='padding-top: 75px'>
 
                 {!! $mensaje !!}
@@ -52,31 +52,31 @@
                   <h5>Refuerza tus competencias laborales y conocimientos en esta comunidad de aprendizaje.</h5>
                 <br>
             </div>
+            
             <img src='https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/linea.jpg'>
-        </div>
+            <br>
+            <img src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/footer.jpg" style="width: 600px; height: 225px; position: absolute;" />
 
-        <div style="background-image: url('https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/footer.jpg');
-             background-repeat: no-repeat;
-             width: 600px;
-             height: 225px;
-             margin: auto;
-             padding-top: 25px"
-             align='right'>
+            <div>
 
-            <a href='http://www.facebook.com/TvEducativaMx'>
-            <img src='http://mexicox.gob.mx:81/reportesmx/public/imagenes/fb.png' class='img-rounded'>
-            </a>
-            <a href='https://twitter.com/tveducativamx'>
-            <img src='http://mexicox.gob.mx:81/reportesmx/public/imagenes/twitter.png' class='img-rounded'>
-          </a><br><br>
+              <a href='http://www.facebook.com/TvEducativaMx'>
+              <img src='http://mexicox.gob.mx:81/reportesmx/public/imagenes/fb.png' class='img-rounded'>
+              </a>
+              <a href='https://twitter.com/tveducativamx'>
+              <img src='http://mexicox.gob.mx:81/reportesmx/public/imagenes/twitter.png' class='img-rounded'>
+            </a><br><br>
 
-            <a href='http://mx.televisioneducativa.gob.mx/'>
-            <img src='http://mexicox.gob.mx:81/reportesmx/public/imagenes/boton.png' style="width: 125px; height: 25px; border-radius: 30px; paddin">
-          </a><br><br>
+              <a href='http://mx.televisioneducativa.gob.mx/'>
+              <img src='http://mexicox.gob.mx:81/reportesmx/public/imagenes/boton.png' style="width: 125px; height: 25px; border-radius: 30px; paddin">
+            </a><br><br>
 
-            <a href="http://mexicox.gob.mx/privacy"  target="_blank"> Consulta nuestro aviso de privacidad </a><br>
-            Si no quieres recibir más correos de MéxicoX da click
-            <a href="http://www.mexicox.gob.mx:81/reportesmx/public/mail/unsuscribe"> aquí </a>.<br><br>
+              <a href="http://mexicox.gob.mx/privacy"  target="_blank"> Consulta nuestro aviso de privacidad </a><br>
+              Si no quieres recibir más correos de MéxicoX da click
+              <a href="http://www.mexicox.gob.mx:81/reportesmx/public/mail/unsuscribe"> aquí </a>.<br><br>
+
+            </div>
+
+
         </div>
     </body>
 </html>
