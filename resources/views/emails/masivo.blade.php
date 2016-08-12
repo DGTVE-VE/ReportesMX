@@ -12,7 +12,7 @@
         </style>
     </head>
     <body>
-        <div style="background-image: url('http://mexicox.gob.mx:81/reportesmx/public/imagenes/email/header.jpg');
+        <div style="background-image: url('https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/header.jpg');
              background-repeat: no-repeat;
              width: 600px;
              margin: auto;">
