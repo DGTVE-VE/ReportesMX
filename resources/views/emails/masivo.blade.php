@@ -27,23 +27,23 @@
                 <table style="width: 600px;">
                   <tr>
                     <td style="padding: 10px; text-align: center;">
-                      <a href="http://mx.televisioneducativa.gob.mx/courses/IIIDx/IIIDRn103x/2016_s2/about" target="_blank"><img src="{{asset('/cursos_mensuales/1.png')}}"></a>
+                      <a href="http://mx.televisioneducativa.gob.mx/courses/IIIDx/IIIDRn103x/2016_s2/about" target="_blank"><img src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/1.png"></a>
                     </td>
                     <td style="padding: 10px; text-align: center;">
-                      <a href="http://mx.televisioneducativa.gob.mx/courses/INEA/LPTMx/2016_S2/about" target="_blank"><img src="{{asset('/cursos_mensuales/2.png')}}"></a>
+                      <a href="http://mx.televisioneducativa.gob.mx/courses/INEA/LPTMx/2016_S2/about" target="_blank"><img src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/2.png"></a>
                     </td>
                   </tr>
                   <tr>
                     <td style="padding: 10px; text-align: center;">
-                      <a href="http://mx.televisioneducativa.gob.mx/courses/UPN/VE_UPN001_2/2016_S2/about" target="_blank"><img src="{{asset('/cursos_mensuales/3.png')}}"></a>
+                      <a href="http://mx.televisioneducativa.gob.mx/courses/UPN/VE_UPN001_2/2016_S2/about" target="_blank"><img src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/3.png"></a>
                     </td>
                     <td style="padding: 10px; text-align: center;">
-                      <a href="http://mx.televisioneducativa.gob.mx/courses/FEM-UAE/CBx/2016_T1/about" target="_blank"><img src="{{asset('/cursos_mensuales/5.png')}}"></a>
+                      <a href="http://mx.televisioneducativa.gob.mx/courses/FEM-UAE/CBx/2016_T1/about" target="_blank"><img src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/5.png"></a>
                     </td>
                   </tr>
                   <tr>
                     <td colspan="2" style="padding: 10px; text-align: center;">
-                      <a href="http://mx.televisioneducativa.gob.mx/courses/INEA/PPEH/2016E1/about" target="_blank"><img src="{{asset('/cursos_mensuales/6.png')}}"></a>
+                      <a href="http://mx.televisioneducativa.gob.mx/courses/INEA/PPEH/2016E1/about" target="_blank"><img src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/6.png"></a>
                     </td>
                   </tr>
                 </table>
@@ -52,10 +52,10 @@
                   <h5>Refuerza tus competencias laborales y conocimientos en esta comunidad de aprendizaje.</h5>
                 <br>
             </div>
-            <img src='http://mexicox.gob.mx:81/reportesmx/public/imagenes/email/linea.jpg'>
+            <img src='https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/linea.jpg'>
         </div>
 
-        <div style="background-image: url('http://mexicox.gob.mx:81/reportesmx/public/imagenes/email/footer.jpg');
+        <div style="background-image: url('https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/footer.jpg');
              background-repeat: no-repeat;
              width: 600px;
              height: 225px;
