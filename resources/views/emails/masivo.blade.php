@@ -48,7 +48,7 @@
                   </tr>
                 </table>
 
-                <br><br>
+                <br>
                   <h5>Refuerza tus competencias laborales y conocimientos en esta comunidad de aprendizaje.</h5>
                 <br>
             </div>
