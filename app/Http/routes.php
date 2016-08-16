@@ -77,7 +77,7 @@ Route::match(array('GET','POST'),'webService', array('uses'=>'ConstanciasControl
         return view ('mail.unsuscribe');
     });
     Route::post ('mail/unsuscribe', 'MailController@unsuscribe');
- 
+
 Route::group(array('middleware' => 'auth'), function(){
     Route::controller('filemanager', 'FilemanagerLaravelController');
 });
@@ -86,3 +86,8 @@ Route::get ('phpinfo', function (){
 });
 
 Route::get('mongo', 'MongoController@mongo');
+Route::get('blog', 'MXController@blog');
+Route::any('viewblog', 'MXController@viewblog');
+Route::any('getblog', 'MXController@getblog');
+Route::any('adminblog', ['middleware' => 'auth', 'uses' => 'MXController@adminblog']);
+Route::any('saveblog', ['middleware' => 'auth', 'uses' => 'MXController@saveblog']);
