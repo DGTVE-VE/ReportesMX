@@ -44,6 +44,8 @@ Route::any('verifica', 'MXController@verifica');
 Route::any('adddata', 'MXController@adddata');
 Route::any('validarcp', 'MXController@validarcp');
 
+Route::any('show', 'SincoController@show');
+Route::any('store', 'SincoController@store');
 
 Route::any('uploadvideo', 'MXController@uploadvideo');
 Route::any('savevideo', 'MXController@savevideo');

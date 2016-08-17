@@ -47,9 +47,11 @@
 
                 </style>
     </head>
-    <body background="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/header.jpg";>
+    <body >
 <center>
+
       <div class="relative">
+<img src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/header.jpg">
 
         <div class="absolute">
 
