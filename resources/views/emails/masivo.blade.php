@@ -1,130 +1,121 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <title> México X</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <script   src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script>
-        <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
-        <style media="screen">
+<head>
+  <title> México X</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script   src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script>
+  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
+  <style media="screen">
 
-                  .relative{
-                    position: relative;
-                    width: 600px;
-                    height: 900px;
-                  }
-                  .absolute{
-                    position: absolute;
-                    top: 80px;
-
-                    width: 200px;
-                    height: 100px;
-                  }
-                  .absolute2{
-                    position: absolute;
-                    top: 25px;
-                    width: 200px;
-                    height: 100px;
-                    left: 400px;
-                  }
-                  .absolute3{
-                    position: absolute;
-                    top: 100px;
-                    width: 200px;
-                    height: 100px;
-                  }
-                  .right{
-                    text-aling: right;
-                  }
-                  p{
-                  font-size: 13px;
-                  width: 600px;
-                  text-aling: center;
-                  }
-                  body{
-                    background-position: center top;
-                    background-repeat: no-repeat;
-                  }
-
-                </style>
-    </head>
-    <body >
-<center>
-
-      <div class="relative">
-<img src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/header.jpg">
-
-        <div class="absolute">
-
-            {!! $mensaje !!}
-
+  .banner{
+    text-align: center;
+    width: 600px;
+  }
+  .footer{
+    text-align: center;
+    width: 600px;
+  }
+  .footer1{
+    padding: 5px;
+    text-align: center;
+    width: 600px;
+  }
+  p{
+    font-size: 15px;
+    text-align: center;
+  }
+  table{
+    width: 600px;
+  }
+  td{
+    width: 300px;
+    text-align: center;
+  }
+  </style>
+</head>
+<body>
+  <center>
+      <table>
+        <tr>
+          <td colspan="2" style="padding: 10px;">
+            <img class="banner" src="{{asset('/cursos_mensuales/pleca_superior.png')}}">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" style="padding: 10px;">
             <p>
               Inscríbete en los cursos gratuitos de MéxicoX que comienzan en agosto.
             </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://mx.televisioneducativa.gob.mx/courses/IIIDx/IIIDRn103x/2016_s2/about" target="_blank"><img src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/1.png"></a>
+          </td>
+          <td>
+            <a href="http://mx.televisioneducativa.gob.mx/courses/INEA/LPTMx/2016_S2/about" target="_blank"><img src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/2.png"></a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://mx.televisioneducativa.gob.mx/courses/UPN/VE_UPN001_2/2016_S2/about" target="_blank"><img src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/3.png"></a>
+          </td>
+          <td>
+            <a href="http://mx.televisioneducativa.gob.mx/courses/FEM-UAE/CBx/2016_T1/about" target="_blank"><img src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/5.png"></a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <a href="http://mx.televisioneducativa.gob.mx/courses/INEA/PPEH/2016E1/about" target="_blank"><img src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/6.png"></a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" style="padding: 10px; text-align: center;">
+            <p>Refuerza tus competencias laborales y conocimientos en esta comunidad de aprendizaje.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <img class="footer" src="{{asset('/cursos_mensuales/pleca_morada.png')}}">
+          </td>
+        </tr>
+        <tr>
+          <td  colspan="2" style="padding: 15px; text-align: right;">
+            <a href='http://www.facebook.com/TvEducativaMx'>
+              <img src='https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/fb.png' class='img-rounded'>
+            </a>
+            <a href='https://twitter.com/tveducativamx'>
+              <img src='https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/twitter.png' class='img-rounded'>
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td  colspan="2" style="padding: 5px; text-align: right;">
+            <a href='http://mx.televisioneducativa.gob.mx/'>
+              <img src='https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/boton.png' style="width: 125px; height: 25px; border-radius: 30px;">
+            </a>
+          </td>
+        </tr>
 
-            <table style="width: 600px;">
-              <tr>
-                <td style="padding: 10px; text-align: center;">
-                  <a href="http://mx.televisioneducativa.gob.mx/courses/IIIDx/IIIDRn103x/2016_s2/about" target="_blank"><img src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/1.png"></a>
-                </td>
-                <td style="padding: 10px; text-align: center;">
-                  <a href="http://mx.televisioneducativa.gob.mx/courses/INEA/LPTMx/2016_S2/about" target="_blank"><img src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/2.png"></a>
-                </td>
-              </tr>
-              <tr>
-                <td style="padding: 10px; text-align: center;">
-                  <a href="http://mx.televisioneducativa.gob.mx/courses/UPN/VE_UPN001_2/2016_S2/about" target="_blank"><img src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/3.png"></a>
-                </td>
-                <td style="padding: 10px; text-align: center;">
-                  <a href="http://mx.televisioneducativa.gob.mx/courses/FEM-UAE/CBx/2016_T1/about" target="_blank"><img src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/5.png"></a>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2" style="padding: 10px; text-align: center;">
-                  <a href="http://mx.televisioneducativa.gob.mx/courses/INEA/PPEH/2016E1/about" target="_blank"><img src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/6.png"></a>
-                </td>
-              </tr>
-            </table>
+        <tr>
+          <td  colspan="2" style="padding: 5px; text-align: center;">
+            <p>
+              <a href="http://mexicox.gob.mx/privacy"  target="_blank"> Consulta nuestro aviso de privacidad </a>
+            </p>
+            <p>Si no quieres recibir más correos de MéxicoX da click
+              <a href="http://www.mexicox.gob.mx:81/reportesmx/public/mail/unsuscribe"> aquí</a>.
+            </p>
 
-            <br>
-              <p>Refuerza tus competencias laborales y conocimientos en esta comunidad de aprendizaje.</p>
-            <br>
+          </td>
+        </tr>
 
+        <tr>
+          <td  colspan="2" >
+            <img class="footer1" src="{{asset('/cursos_mensuales/pleca_logos.png')}}" />
+          </td>
+        </tr>
 
-        </div>
-
-      </div>
-
-      <div class="relative">
-
-         <img src='https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/linea.jpg' style="width: 600px;">
-              <img src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/footer.jpg" style="width: 600px; height: 225px;" />
-
-        <div class="absolute2">
-
-
-<a href='http://www.facebook.com/TvEducativaMx'>
-                <img src='https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/fb.png' class='img-rounded'>
-                </a>
-                <a href='https://twitter.com/tveducativamx'>
-                <img src='https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/twitter.png' class='img-rounded'>
-              </a><br>
-
-                <a href='http://mx.televisioneducativa.gob.mx/'>
-                <img src='https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/boton.png' style="width: 125px; height: 25px; border-radius: 30px;">
-              </a><br>
-</div>
-<div class="absolute3">
-                <p><a href="http://mexicox.gob.mx/privacy"  target="_blank"> Consulta nuestro aviso de privacidad </a>
-</p>
-
-                <p>Si no quieres recibir más correos de MéxicoX da click
-<a href="http://www.mexicox.gob.mx:81/reportesmx/public/mail/unsuscribe"> aquí</a>.
-</p>
-
-<br>
-
-</div>
-</div>
-          </center>
-    </body>
+      </table>
+    </center>
+</body>
 </html>
