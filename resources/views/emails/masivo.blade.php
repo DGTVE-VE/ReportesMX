@@ -39,7 +39,7 @@
       <table>
         <tr>
           <td colspan="2" style="padding: 10px;">
-            <img class="banner" src="{{asset('/cursos_mensuales/pleca_superior.png')}}">
+            <img class="banner" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/mail1/pleca_superior.png">
           </td>
         </tr>
         <tr>
@@ -51,23 +51,23 @@
         </tr>
         <tr>
           <td>
-            <a href="http://mx.televisioneducativa.gob.mx/courses/IIIDx/IIIDRn103x/2016_s2/about" target="_blank"><img src="{{asset('/cursos_mensuales/1.png')}}"></a>
+            <a href="http://mx.televisioneducativa.gob.mx/courses/IIIDx/IIIDRn103x/2016_s2/about" target="_blank"><img src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/mail1/1.png"></a>
           </td>
           <td>
-            <a href="http://mx.televisioneducativa.gob.mx/courses/INEA/LPTMx/2016_S2/about" target="_blank"><img src="{{asset('/cursos_mensuales/2.png')}}"></a>
+            <a href="http://mx.televisioneducativa.gob.mx/courses/INEA/LPTMx/2016_S2/about" target="_blank"><img src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/mail1/2.png"></a>
           </td>
         </tr>
         <tr>
           <td>
-            <a  href="http://mx.televisioneducativa.gob.mx/courses/UPN/VE_UPN001_2/2016_S2/about" target="_blank"><img src="{{asset('/cursos_mensuales/3.png')}}"></a>
+            <a  href="http://mx.televisioneducativa.gob.mx/courses/UPN/VE_UPN001_2/2016_S2/about" target="_blank"><img src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/mail1/3.png"></a>
           </td>
           <td>
-            <a  href="http://mx.televisioneducativa.gob.mx/courses/FEM-UAE/CBx/2016_T1/about" target="_blank"><img src="{{asset('/cursos_mensuales/5.png')}}"></a>
+            <a  href="http://mx.televisioneducativa.gob.mx/courses/FEM-UAE/CBx/2016_T1/about" target="_blank"><img src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/mail1/5.png"></a>
           </td>
         </tr>
         <tr>
           <td colspan="2">
-            <a  href="http://mx.televisioneducativa.gob.mx/courses/INEA/PPEH/2016E1/about" target="_blank"><img src="{{asset('/cursos_mensuales/6.png')}}"></a>
+            <a  href="http://mx.televisioneducativa.gob.mx/courses/INEA/PPEH/2016E1/about" target="_blank"><img src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/mail1/6.png"></a>
           </td>
         </tr>
         <tr>
@@ -77,7 +77,7 @@
         </tr>
         <tr>
           <td colspan="2">
-            <img class="footer" src="{{asset('/cursos_mensuales/pleca_morada.png')}}">
+            <img class="footer" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/mail1/pleca_morada.png">
           </td>
         </tr>
         <tr>
@@ -112,7 +112,7 @@
 
         <tr>
           <td  colspan="2" >
-            <img class="footer1" src="{{asset('/cursos_mensuales/pleca_logos.png')}}" />
+            <img class="footer1" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/mail1/pleca_logos.png" />
           </td>
         </tr>
 
