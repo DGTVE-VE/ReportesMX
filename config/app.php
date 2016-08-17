@@ -131,7 +131,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
 //        Jenssegers\Mongodb\MongodbServiceProvider::class,
-        'AdamWathan\BootForms\BootFormsServiceProvider'
+        'AdamWathan\BootForms\BootFormsServiceProvider',
     ],
     /*
       |--------------------------------------------------------------------------
