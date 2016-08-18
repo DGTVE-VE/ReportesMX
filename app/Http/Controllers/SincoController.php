@@ -74,18 +74,22 @@ class SincoController extends Controller
           $usuario->user_id = $id;
           $usuario->sinco_1 = $clave;
           $usuario->save();
+          echo $_GET['callback'] . "(" . json_encode('Éxito') . ")";
 
         }else if(isset($var) && strlen($clave) == 2) {
           $var->sinco_2 = $clave;
           $var->save();
+          echo $_GET['callback'] . "(" . json_encode('Éxito') . ")";
 
         }else if(isset($var) && strlen($clave) == 3) {
           $var->sinco_3 = $clave;
           $var->save();
+          echo $_GET['callback'] . "(" . json_encode('Éxito') . ")";
 
         }else if(isset($var) && strlen($clave) == 4) {
           $var->sinco_4 = $clave;
           $var->save();
+          echo $_GET['callback'] . "(" . json_encode('Éxito') . ")";
         }
     }
 }
