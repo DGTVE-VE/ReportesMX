@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Model\Auth_perfilusuario;
 use App\Model\Auth_userprofile;
 use App\Model\Auth_sinco;
+use App\Model\Auth_user;
 use DB;
 
 class SincoController extends Controller
