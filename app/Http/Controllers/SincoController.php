@@ -17,6 +17,12 @@ class SincoController extends Controller
     public function show(Request $request)
     {
       $id = $request->input('id');
+      $session = Auth_user::where('id', $id)->first();
+
+      if($session == ""){
+        echo $_GET['callback'] . "(" . json_encode('2') . ")";
+      }
+
       $var = Auth_perfilusuario::where('user_id', $id)->first();
       $auth = Auth_userprofile::whereuser_id($id)->first();
 
@@ -52,6 +58,12 @@ class SincoController extends Controller
     public function store(Request $request)
     {
         $id = $request->input('id');
+        $session = Auth_user::where('id', $id)->first();
+
+        if($session == ""){
+          echo $_GET['callback'] . "(" . json_encode('2') . ")";
+        }
+
         $clave = $request->input('clave');
 
         $var = Auth_perfilusuario::where('user_id', $id)->first();
