@@ -53,6 +53,8 @@ class SincoController extends Controller
 
             echo $_GET['callback'] . "(" . json_encode('0') . ")";
         }
+      }else {
+        echo $_GET['callback'] . "(" . json_encode('0') . ")";
       }
     }
 
