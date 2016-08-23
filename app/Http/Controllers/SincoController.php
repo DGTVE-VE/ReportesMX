@@ -27,7 +27,7 @@ class SincoController extends Controller
       $var = Auth_perfilusuario::where('user_id', $id)->first();
       $auth = Auth_userprofile::whereuser_id($id)->first();
 
-      if (isset($auth->country) && isset($auth->city) ) {
+      if( (isset($auth->country) && isset($auth->city) ) && ( ($auth->country != null) && ( $auth->city != null ) ) && ( ($auth->country != '') && ($auth->city != '') ) ) {
 
         if (empty($var->sinco_1)) {
 
