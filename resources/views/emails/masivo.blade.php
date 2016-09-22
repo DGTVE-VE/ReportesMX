@@ -32,18 +32,8 @@
     padding: 10px;
   }
   .td1{
-    width: 285px;
-    text-align: right;
-    padding: 10px;
-  }
-  .td2{
-    width: 30px;
+    width: 300px;
     text-align: center;
-    padding: 10px;
-  }
-  .td3{
-    width: 285px;
-    text-align: left;
     padding: 10px;
   }
   .img{
@@ -64,7 +54,7 @@
       <tr>
         <td colspan="3" style="padding: 10px;">
           <p>
-            Inscríbete en los cursos gratuitos de MéxicoX que comienzan en septiembre y octubre.
+            Inscríbete en los cursos gratuitos de MéxicoX que comienzan en septiembre.
           </p>
         </td>
       </tr>
