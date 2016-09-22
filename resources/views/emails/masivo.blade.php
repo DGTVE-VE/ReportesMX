@@ -32,16 +32,17 @@
     padding: 10px;
   }
   .td1{
-    width: 290px;
+    width: 285px;
     text-align: right;
     padding: 10px;
   }
   .td2{
-    width: 20px;
+    width: 30px;
     text-align: center;
+    padding: 10px;
   }
   .td3{
-    width: 290px;
+    width: 285px;
     text-align: left;
     padding: 10px;
   }
