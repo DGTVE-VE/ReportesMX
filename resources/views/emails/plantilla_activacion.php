@@ -26,23 +26,9 @@
   table{
     width: 600px;
   }
-  .td0{
+  td{
     width: 200px;
     text-align: center;
-    padding: 10px;
-  }
-  .td1{
-    width: 290px;
-    text-align: right;
-    padding: 10px;
-  }
-  .td2{
-    width: 20px;
-    text-align: center;
-  }
-  .td3{
-    width: 290px;
-    text-align: left;
     padding: 10px;
   }
   .img{
@@ -63,40 +49,14 @@
       <tr>
         <td colspan="3" style="padding: 10px;">
           <p>
-            Inscríbete en los cursos gratuitos de MéxicoX que comienzan en septiembre.
+            Hola, te informamos que ya puedes comenzar tu aprendizaje en nuestra plataforma, tu cuenta ya ha sido activada.
+
+<p>Saludos.</p>
           </p>
         </td>
       </tr>
-      <tr>
-        <td class="td0">
-          <a href="http://mx.televisioneducativa.gob.mx/courses/course-v1:TecNM+ACF-0901-A+2016_S2/about" target="_blank"><img class="img" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20160922/1.png"></a>
-        </td>
-        <td class="td0">
-          <a href="http://mx.televisioneducativa.gob.mx/courses/IIIDx/IIIDRn103x/2016_s2/about" target="_blank"><img class="img" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20160922/2.png"></a>
-        </td>
-        <td class="td0">
-          <a href="http://mx.televisioneducativa.gob.mx/courses/UAEM/CRE101x/2016_S2/about" target="_blank"><img class="img" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20160922/3.png"></a>
-        </td>
-      </tr>
-</table>
-<table>
-      <tr>
-        <td class="td1">
-          <a href="http://mx.televisioneducativa.gob.mx/courses/Microsoft/MSW01/2016_S2/about" target="_blank"><img class="img" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20160922/4.png"></a>
-        </td>
-        <td class="td2">
 
-        </td>
-        <td class="td3">
-          <a href="http://mx.televisioneducativa.gob.mx/courses/UTRM/SAB01201601/2016_S2/about" target="_blank"><img class="img" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20160922/5.png"></a>
-        </td>
 
-      </tr>
-      <tr>
-        <td colspan="3" style="padding: 10px; text-align: center;">
-          <p>Refuerza tus competencias laborales y conocimientos en esta comunidad de aprendizaje.</p>
-        </td>
-      </tr>
       <tr>
         <td colspan="3">
           <img class="footer" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/mail1/pleca_morada.png">
