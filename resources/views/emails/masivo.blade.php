@@ -63,7 +63,7 @@
       <tr>
         <td colspan="3" style="padding: 10px;">
           <p>
-            Inscríbete en los cursos gratuitos de MéxicoX que comienzan en septiembre.
+            Inscríbete en los cursos gratuitos de MéxicoX que comienzan en septiembre y octubre.
           </p>
         </td>
       </tr>
