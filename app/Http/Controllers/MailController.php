@@ -52,7 +52,7 @@ class MailController extends Controller {
             $id = Input::get( 'id' );
 
             $count = DB::table('correo_masivo')->count();
-            \App\Model\Correo_masivo::chunk(100, function($users) use ($mensaje, $asunto)
+            \App\Model\Correo_masivo::chunk(2, function($users) use ($mensaje, $asunto)
             {
                 // Correr como daemon a ver si ya no se alenta el front en respoder.
 
