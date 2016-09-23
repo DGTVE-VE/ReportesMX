@@ -59,27 +59,35 @@
         </td>
       </tr>
       <tr>
-        <td class="td0">
-          <a href="http://mx.televisioneducativa.gob.mx/courses/course-v1:TecNM+ACF-0901-A+2016_S2/about" target="_blank"><img class="img" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20160922/1.png"></a>
+        <td>
+          <a href="http://mx.televisioneducativa.gob.mx/courses/course-v1:TecNM+ACF-0901-A+2016_S2/about" target="_blank">
+              <img class="img" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20160922/1.png">
+          </a>
         </td>
-        <td class="td0">
-          <a href="http://mx.televisioneducativa.gob.mx/courses/IIIDx/IIIDRn103x/2016_s2/about" target="_blank"><img class="img" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20160922/2.png"></a>
+        <td>
+          <a href="http://mx.televisioneducativa.gob.mx/courses/IIIDx/IIIDRn103x/2016_s2/about" target="_blank">
+              <img class="img" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20160922/2.png">
+          </a>
         </td>
-        <td class="td0">
-          <a href="http://mx.televisioneducativa.gob.mx/courses/UAEM/CRE101x/2016_S2/about" target="_blank"><img class="img" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20160922/3.png"></a>
+        <td>
+          <a href="http://mx.televisioneducativa.gob.mx/courses/UAEM/CRE101x/2016_S2/about" target="_blank">
+              <img class="img" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20160922/3.png">
+          </a>
         </td>
       </tr>
-</table>
-<table>
       <tr>
-        <td class="td1">
-          <a href="http://mx.televisioneducativa.gob.mx/courses/Microsoft/MSW01/2016_S2/about" target="_blank"><img class="img" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20160922/4.png"></a>
+        <td>
+          <a href="http://mx.televisioneducativa.gob.mx/courses/Microsoft/MSW01/2016_S2/about" target="_blank">
+              <img class="img" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20160922/4.png">
+          </a>
         </td>
-        <td class="td2">
+        <td>
 
         </td>
-        <td class="td3">
-          <a href="http://mx.televisioneducativa.gob.mx/courses/UTRM/SAB01201601/2016_S2/about" target="_blank"><img class="img" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20160922/5.png"></a>
+        <td>
+          <a href="http://mx.televisioneducativa.gob.mx/courses/UTRM/SAB01201601/2016_S2/about" target="_blank">
+              <img class="img" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20160922/5.png">
+          </a>
         </td>
 
       </tr>
