@@ -57,7 +57,7 @@ class MailController extends Controller {
                 // Correr como daemon a ver si ya no se alenta el front en respoder.
 
                 foreach ($users as $user){
-                     Log.info('Enviando correo a: '.$user->email);
+//                     Log.info('Enviando correo a: '.$user->email);
 
                         try {
                             Mail::send('emails.masivo', ['mensaje' => $mensaje],
@@ -67,7 +67,7 @@ class MailController extends Controller {
                                             ->subject($asunto);
                             });
                         } catch (Exception $e) {
-                             Log.error ('Error enviando correo a: '.$user->email . ' -> '.$e->getMessage());
+//                             Log.error ('Error enviando correo a: '.$user->email . ' -> '.$e->getMessage());
                         }
 
                 }
