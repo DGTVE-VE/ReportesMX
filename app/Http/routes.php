@@ -93,3 +93,7 @@ Route::any('viewblog', 'MXController@viewblog');
 Route::any('getblog', 'MXController@getblog');
 Route::any('adminblog', ['middleware' => 'auth', 'uses' => 'MXController@adminblog']);
 Route::any('saveblog', ['middleware' => 'auth', 'uses' => 'MXController@saveblog']);
+
+Route::get('email/preview', function (){
+    return view ('emails.masivo');
+});

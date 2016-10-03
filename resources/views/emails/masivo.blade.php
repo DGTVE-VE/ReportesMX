@@ -57,15 +57,18 @@
             Estmimada(o) participante
           </p>
 
-<p>Te enviamos este mensaje para informarte que el curso "Geobiología: Evolución de la vida y la tierra" ha sido pospuesto. Te informaremos por este medio de la nueva fecha de inicio del curso. Lamentamos los inconvenientes que esto pudiera ocasionarte.</p>
+          <p>
+            Te enviamos este mensaje para informarte que el curso "Geobiología: Evolución de la vida y la tierra" ha sido pospuesto. Te informaremos por este medio de la nueva fecha de inicio del curso. Lamentamos los inconvenientes que esto pudiera ocasionarte.
+          </p>
 
+          <p>
+            Atentamente
+          </p>
 
-<p>
-Atentamente
-</p>
-<p>
-El equipo de la plataforma.
-</p>
+          <p>
+            El equipo de la plataforma.
+          </p>
+
         </td>
       </tr>
 
