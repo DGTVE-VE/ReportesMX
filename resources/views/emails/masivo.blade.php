@@ -54,40 +54,21 @@
       <tr>
         <td colspan="3" style="padding: 10px;">
           <p>
-            Inscríbete en los cursos gratuitos de MéxicoX que comienzan en septiembre.
+            Estmimada(o) participante
           </p>
-        </td>
-      </tr>
-      <tr>
-        <td class="td0">
-          <a href="http://mx.televisioneducativa.gob.mx/courses/course-v1:TecNM+ACF-0901-A+2016_S2/about" target="_blank"><img class="img" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20160922/1.png"></a>
-        </td>
-        <td class="td0">
-          <a href="http://mx.televisioneducativa.gob.mx/courses/IIIDx/IIIDRn103x/2016_s2/about" target="_blank"><img class="img" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20160922/2.png"></a>
-        </td>
-        <td class="td0">
-          <a href="http://mx.televisioneducativa.gob.mx/courses/UAEM/CRE101x/2016_S2/about" target="_blank"><img class="img" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20160922/3.png"></a>
-        </td>
-      </tr>
-</table>
-<table>
-      <tr>
-        <td class="td1">
-          <a href="http://mx.televisioneducativa.gob.mx/courses/Microsoft/MSW01/2016_S2/about" target="_blank"><img class="img" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20160922/4.png"></a>
-        </td>
-        <td class="td2">
 
-        </td>
-        <td class="td3">
-          <a href="http://mx.televisioneducativa.gob.mx/courses/UTRM/SAB01201601/2016_S2/about" target="_blank"><img class="img" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20160922/5.png"></a>
-        </td>
+<p>Te enviamos este mensaje para informarte que el curso "Geobiología: Evolución de la vida y la tierra" ha sido pospuesto. Te informaremos por este medio de la nueva fecha de inicio del curso. Lamentamos los inconvenientes que esto pudiera ocasionarte.</p>
 
-      </tr>
-      <tr>
-        <td colspan="3" style="padding: 10px; text-align: center;">
-          <p>Refuerza tus competencias laborales y conocimientos en esta comunidad de aprendizaje.</p>
+
+<p>
+Atentamente
+</p>
+<p>
+El equipo de la plataforma.
+</p>
         </td>
       </tr>
+
       <tr>
         <td colspan="3">
           <img class="footer" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/mail1/pleca_morada.png">
