@@ -54,10 +54,10 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'host'      => env('DB_HOST', 'localhost'),
-            'database'  => env('DB_DATABASE', 'forge'),
-            'username'  => env('DB_USERNAME', 'forge'),
-            'password'  => env('DB_PASSWORD', ''),
+            'host'      => env('DB_HOST', '172.16.200.205'),
+            'database'  => env('DB_DATABASE', 'bitnami_edx'),
+            'username'  => env('DB_USERNAME', 'israel'),
+            'password'  => env('DB_PASSWORD', 'password'),
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',

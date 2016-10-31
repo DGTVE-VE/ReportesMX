@@ -95,7 +95,7 @@ and open the template in the editor.
 	100% { opacity:100%; }
 }
 
-//arrastrar elementos
+/*arrastrar elementos */
 
 .droptarget {
     float: left;

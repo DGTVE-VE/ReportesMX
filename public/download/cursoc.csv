@@ -15,7 +15,7 @@ id,"id curso","nombre del curso","fecha inicio","fecha fin","inicio de inscripci
 14,UPEV_IPN/03/2015_S2,"Administración de Proyectos de Tecnologías de la Información",2015-10-05,2015-10-30,2015-07-06,2015-10-30
 15,UNAM/UNAM003/2014,"Astronomía. Galaxias: los puentes entre las estrellas y el Universo",2015-10-05,2015-12-14,2015-07-06,2015-12-14
 16,INSP/osea1/2015_T2,"Salud ósea a lo largo de la vida",2015-10-12,2015-11-10,2015-07-13,2015-11-17
-17,UCSJ/SDSJ01/2015_T1,"Seducciones de Sor Juana",2015-10-12,2015-11-15,2015-06-15,2015-11-15
+17,UniversidaddelClaustrodeSorJuanaX/SDSJ01/2015_T1,"Seducciones de Sor Juana",2015-10-12,2015-11-15,2015-06-15,2015-11-15
 18,UPN/UPN002/2015,"Educación intercultural. Perspectivas interdisciplinarias",2015-10-19,2015-11-20,2015-06-18,2015-11-20
 19,IIIDx/IIIDRn101x/2015_T2,"Resiliencia Nómica",2015-10-19,2015-11-19,2015-07-20,2015-11-22
 20,UNAM/0004UNAM/2014,"Finanzas para emprendedores",2015-10-26,2015-12-07,2015-07-27,2015-12-07
@@ -24,8 +24,9 @@ id,"id curso","nombre del curso","fecha inicio","fecha fin","inicio de inscripci
 23,INGER/DEMENCIAS01/2016_S1,Demencias,2016-01-18,2016-02-28,2015-09-29,2016-02-21
 24,CENART/ABC2015/2015_S2,"ABC para la creación de proyectos culturales",2016-01-18,2016-02-22,2015-10-23,2016-02-07
 25,UNAM/UNAM005/2015,"México, sus grandes retos y oportunidades",2016-01-18,2016-02-19,2015-09-14,2016-02-19
-26,UNAM/UNAM0006/2015,"México multiculturalismo",2016-02-01,2016-02-26,2015-09-21,2016-02-26
-27,TecNM.MX/ACF-0903-15-A1/2016-T1,"Álgebra Lineal",2016-02-10,2016-03-06,2015-11-13,2016-03-08
+26,UNAM/UNAM0006/2015,"México multiculturalismo",2016-01-25,2016-02-26,2015-09-21,2016-02-26
+100,TecNM.MX/ACF-0903-15-A1/2016-T1,"Álgebra Lineal",2016-02-10,2016-04-07,,
+101,BUAP/BUAP-AA2016/2016_S2,"Apreciación y análisis. Una guía para entender el arte.",2016-06-07,2016-07-19,2016-04-17,2016-06-14
 28,TecNM.MX/M-ACC-0906-1_1/2016,"Investigación, Descubriendo Hechos y Principios",2016-03-07,2016-03-02,2015-10-12,2015-10-17
 29,TecNM.MX/ACF-0903-2/2016_T1,"Algebra de Espacios Vectoriales",2016-03-07,2016-05-02,2015-10-19,2015-10-24
 30,TecNM.MX/M-ACD0908-1/2016,"Desarrollo Sustentable, nuestro futuro compartido",2016-03-07,2016-05-02,2015-10-19,2016-03-25
@@ -36,14 +37,15 @@ id,"id curso","nombre del curso","fecha inicio","fecha fin","inicio de inscripci
 35,INFOTEC/HCIARS/2016_T1,"Herramientas de cómputo para la investigación y análisis de redes sociales",2016-02-22,2016-03-18,2016-01-18,2016-03-18
 36,INFOTEC/MOOC_IdC/062015,"Internet de las cosas",2016-04-12,2016-05-09,2016-01-18,2016-05-09
 37,INFOTEC/EMRIC/2016_T1,"Estrategias para el Manejo de Recursos de Información Científica",2016-04-19,2016-05-17,2016-01-18,2016-05-17
-38,UNIRMexico/CE_UNIRMex/2016_01,"Coaching Educativo",2016-03-07,2016-05-18,2016-01-25,2016-04-17
+38,UNIRMexico/CE_UNIRMex/2016_01,"Coaching Educativo",2016-04-18,2016-05-18,2016-01-25,2016-04-17
 39,CONAMED/PCDAM/2016_C1,"Prevención del conflicto derivado del acto médico",2016-02-18,2016-04-29,2016-01-25,2016-04-29
 40,,"Módulos iniciales para el sistema de Justicia Penal(cerrado)",2016-03-28,2016-04-27,2016-02-02,2016-02-07
 41,DGESPE/CICHD-2016/2016_S2,"Curso Integral de Consolidación a las Habilidades Docentes",2016-02-22,2016-04-29,2016-02-02,2016-02-07
 42,,"Módulos iniciales para el sistema de Justicia Penal Acusatorio (abierto)",2016-02-29,2016-03-30,2016-02-02,2016-02-07
 43,El_Colegio_de_Mexico/CMHI1x/2016_T1,"La historia de la vida cotidiana",2016-02-22,2016-03-08,2016-02-03,2016-02-08
-44,UNIRMexico/TIC_UNIRMex/2016_01,"El uso de las TIC en la Educación Primaria",2016-05-04,2016-06-04,2016-02-04,2016-02-09
+44,UNIRMexico/TIC_UNIRMex/2016_01,"El uso de las TIC en la Educación Básica ",2016-05-04,2016-06-04,2016-02-04,2016-02-09
 45,DGESPE/IAVA_2016/2016_S2,"Introducción a los Ambientes Virtuales de Aprendizaje",2016-02-22,2016-05-06,2016-02-08,2016-02-13
+46,IIIDx/IIIDRn102x/2016_T1,"Resiliencia Nómica",2016-05-16,2016-08-08,2016-02-15,2016-02-20
 47,UniversidadHebraica/UHMx_01/2016_T1,"Descifrando el Mundo de las adicciones",2016-04-15,2016-05-20,2016-02-15,2016-02-20
 48,Prepaenlinea-SEP/Prepa003-2p/2016_1,"Aprender a Aprender, alternativas para una mejor calidad de vida(cerrado 2)",2016-03-07,2016-04-10,2016-02-15,2016-03-06
 49,,"Módulos iniciales para el sistema de Justicia Penal Acusatorio (cerrado)",2016-03-28,2016-04-27,2016-02-22,2016-02-27
@@ -52,19 +54,24 @@ id,"id curso","nombre del curso","fecha inicio","fecha fin","inicio de inscripci
 52,Prepaenlinea-SEP/Prepa003-2p/2016_1,"Aprender a Aprender, alternativas para una mejor calidad de vida(cerrado 2)",0000-00-00,0000-00-00,2016-02-22,2016-03-06
 53,Prepaenlinea-SEP/PrepaSEP004-2a/2016_S1,"Aprender a Aprender, alternativas para una mejor calidad de vida(abierto 2)",2016-04-18,2016-05-22,2016-03-08,2016-04-17
 54,,"Curso básico para Agentes del Ministerio Público ",2016-04-16,2016-06-15,2016-03-13,2016-03-18
-55,IPN/IPN_BH01/2016_S2,"Biología Humana",2016-06-13,2016-07-08,2016-03-13,2016-02-18
-56,,"Administración de Proyectos de Tecnologías de la Información(2)",2016-06-20,2016-07-15,2016-03-20,2016-03-25
+55,IPN/IPN_BH01/2016_S2,"Biología Humana (2)",2016-06-13,2016-07-08,2016-03-13,2016-02-18
+56,IPN/APTI01/2016-S2,"Administración de Proyectos de Tecnologías de la Información(2)",2016-06-20,2016-07-15,2016-03-20,2016-03-25
 57,SistemaDeUniversidadVirtualUdG/H2016-1/2016-S2,"Otra forma de aprender historia",2016-04-25,2016-06-05,2016-03-22,2016-03-27
 59,FCPS-UNAM/UNAM0007x/2016-S1,"Finanzas para emprendedores",2016-06-01,2016-07-15,2016-04-04,2016-04-09
-60,BUAP/BUAP-AA2016/2016_S2,"Apreciación y análisis. Una guía para entender el arte.",2016-06-07,2016-07-01,2016-03-07,2016-03-12
+60,,"Apreciación del arte ",2016-06-01,2016-07-01,2016-03-07,2016-03-12
 61,CINVESTAV/FRPMx/2016_S1,"Resolución de problemas matemáticos y el uso de tecnologías digitales",2016-05-23,2016-06-30,2016-04-11,2016-04-16
 62,,"Comunicación afectiva para el aprendizaje en línea",2016-05-16,2016-06-26,2016-04-18,2016-04-23
 63,,"Actitud docente y cultural tecno-pedagógica",2016-06-06,2016-07-04,2016-05-01,2016-05-06
 64,,"El cuidador un rol poco comprendido",2016-06-20,2016-07-15,2016-05-15,2016-05-20
+65,,"Inducción a la correción de estilo",2016-07-11,2016-08-05,2016-04-11,2016-04-16
 66,,"Curso básico para defensores(cerrado)",2016-05-16,2016-06-15,2016-04-13,2016-04-18
-68,DGSPE/CPENx/2016-T2,"Portafolio de evidencias para Escuelas normales",2016-05-16,2016-07-15,2016-04-18,2016-04-23
+68,DGSPE/CPENx/2016-T2,"Portafolio de evidencias para Escuelas normales",2016-05-02,2016-07-15,2016-04-18,2016-04-23
 69,,"Módulos iniciales para el sistema de Justicia Penal Acusatorio (abierto 2)",2016-05-02,2016-06-01,2016-04-20,2016-04-25
-100,IPN-UPEV/FDEMNS_01/2016,"Formación docente para la enseñanza de matemáticas básicas",2016-06-13,2016-07-08,2016-04-29,2016-06-20
-103,DGESPE/CICHD-2016/2016_05,"Curso Integral de Consolidación a las Habilidades Docentes",2016-05-23,2016-07-22,2016-04-23,2016-05-30
-104,CENART/ABC2016/2016,"ABC para la creación de proyectos culturales",2016-06-20,2016-07-25,2016-05-20,2016-06-27
-105,IPN/APTI01/2016-S2,"Administración de proyectos de Tecnologías de la Información",2016-06-20,2016-07-15,2016-05-20,2016-06-27
+71,,"El docente y su identidad Profesional",2016-05-16,2016-07-29,2016-05-02,2016-05-07
+78,,"Curso básico para Peritos",2016-07-04,2016-08-03,2016-06-06,2016-06-11
+79,,"Curso básico para personal del Sistema Penitenciario",2016-07-04,2016-08-03,2016-06-06,2016-06-11
+80,,"Curso básico para jueces",2016-07-04,2016-08-03,2016-06-06,2016-06-11
+81,,"Módulos iniciales para el sistema de Justicia Penal Acusatorio(cerrado)",2016-07-04,2016-08-03,2016-06-06,2016-06-11
+82,,"Curso básico para Agentes del Ministerio Público ",2016-07-04,2016-08-03,2016-06-06,2016-06-11
+83,,"Curso básico para jueces",2016-07-04,2016-08-03,2016-06-06,2016-06-11
+84,,"Curso básico para defensores(cerrado)",2016-07-04,2016-08-03,2016-06-06,2016-06-11
