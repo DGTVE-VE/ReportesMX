@@ -132,9 +132,9 @@ class RegistroController extends Controller {
         $lenguajeCont = filter_input(INPUT_POST, 'lenguajeCont');
         $ficha_curso->lengua_cont = $lenguajeCont;
         $lenguajeMult = filter_input(INPUT_POST, 'lenguajeMult');
-        $ficha_curso->lengua_mult = $lenguajeMult;
-        $lenguajeTrans = filter_input(INPUT_POST, 'lenguajeTrans');
-        $ficha_curso->lengua_trans = $lenguajeTrans;
+//        $ficha_curso->lengua_mult = $lenguajeMult;
+//        $lenguajeTrans = filter_input(INPUT_POST, 'lenguajeTrans');
+//        $ficha_curso->lengua_trans = $lenguajeTrans;
         
         //About
 		
@@ -148,6 +148,8 @@ class RegistroController extends Controller {
         $ficha_curso->resultados_esp = $resApren;
         $nivelCurso = filter_input(INPUT_POST, 'nivelCurso');
         $ficha_curso->nivel_curso = 'basico';
+        $tipoConstancia = filter_input(INPUT_POST, 'tipoConstancia');
+        $ficha_curso->tipo_constancia = $tipoConstancia;        
         $redesSoc = filter_input(INPUT_POST, 'redSociales');
         $ficha_curso->redes_sociales = $redesSoc;
         $nombreImagen = Input::file('imagenCurso')->getClientOriginalName();
@@ -155,9 +157,7 @@ class RegistroController extends Controller {
         $ficha_curso->imagen=$nombreImagen;
         $nombreVideo = Input::file('videoCurso')->getClientOriginalName();
         $courseVideo = Input::file('videoCurso')->move($destinationVideo, $nombreVideo);
-        $ficha_curso->video=$nombreVideo;
-        $tipoConstancia = filter_input(INPUT_POST, 'tipoConstancia');
-        $ficha_curso->tipo_constancia = $tipoConstancia;
+        $ficha_curso->video=$nombreVideo;        
         $esfuerzoReq = filter_input(INPUT_POST, 'esfuerzoReq');
         $ficha_curso->esfuerzo_hr_sem = $esfuerzoReq;
         $duracionCurso = filter_input(INPUT_POST, 'duracionCurso');

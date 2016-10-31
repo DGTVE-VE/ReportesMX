@@ -26,13 +26,8 @@
   table{
     width: 600px;
   }
-  .td0{
+  td{
     width: 200px;
-    text-align: center;
-    padding: 10px;
-  }
-  .td1{
-    width: 300px;
     text-align: center;
     padding: 10px;
   }
@@ -54,24 +49,48 @@
       <tr>
         <td colspan="3" style="padding: 10px;">
           <p>
-            Estmimada(o) participante
+            Inscríbete en los cursos gratuitos de MéxicoX que comienzan en septiembre.
           </p>
-
-          <p>
-            Te enviamos este mensaje para informarte que el curso "Geobiología: Evolución de la vida y la tierra" ha sido pospuesto. Te informaremos por este medio de la nueva fecha de inicio del curso. Lamentamos los inconvenientes que esto pudiera ocasionarte.
-          </p>
-
-          <p>
-            Atentamente
-          </p>
-
-          <p>
-            El equipo de la plataforma.
-          </p>
-
         </td>
       </tr>
-
+      <tr>
+        <td>
+          <a href="http://mx.televisioneducativa.gob.mx/courses/TecNM/ACF090316Bx/2016_2/about" target="_blank"><img class="img" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20160902/algebraL.png"></a>
+        </td>
+        <td>
+          <a href="http://mx.televisioneducativa.gob.mx/courses/course-v1:TecNM+ACF-0901-A+2016_S2/about" target="_blank"><img class="img" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20160902/aritmetica.png"></a>
+        </td>
+        <td>
+          <a href="http://mx.televisioneducativa.gob.mx/courses/TECNM/ACF090116Ax/2016/about" target="_blank"><img class="img" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20160902/calculod.png"></a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a  href="http://mx.televisioneducativa.gob.mx/courses/TecNM/ACA090716Bx/2016/about" target="_blank"><img class="img" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20160902/etica.png"></a>
+        </td>
+        <td>
+          <a  href="http://mx.televisioneducativa.gob.mx/courses/course-v1:TecNM.MX+ACD090816Bx+2016_S2/about" target="_blank"><img class="img" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20160902/desarrollo.png"></a>
+        </td>
+        <td>
+          <a  href="http://mx.televisioneducativa.gob.mx/courses/TECNM/ACF090216Bx/2016/about" target="_blank"><img class="img" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20160902/calculoi.png"></a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a  href="http://mx.televisioneducativa.gob.mx/courses/TecNM/HGC090116Bx/2016/about" target="_blank"><img class="img" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20160902/herramientas.png"></a>
+        </td>
+        <td>
+          <a  href="http://mx.televisioneducativa.gob.mx/courses/course-v1:TecNM+ACA090916BX+2016_2/about" target="_blank"><img class="img" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20160902/investigacion.png"></a>
+        </td>
+        <td>
+          <a  href="http://mx.televisioneducativa.gob.mx/courses/TECNM/TecNM_PE2016/2016/about" target="_blank"><img class="img" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20160902/probabilidad.png"></a>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3" style="padding: 10px; text-align: center;">
+          <p>Refuerza tus competencias laborales y conocimientos en esta comunidad de aprendizaje.</p>
+        </td>
+      </tr>
       <tr>
         <td colspan="3">
           <img class="footer" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/mail1/pleca_morada.png">

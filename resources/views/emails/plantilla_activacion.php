@@ -26,13 +26,8 @@
   table{
     width: 600px;
   }
-  .td0{
+  td{
     width: 200px;
-    text-align: center;
-    padding: 10px;
-  }
-  .td1{
-    width: 300px;
     text-align: center;
     padding: 10px;
   }
@@ -54,23 +49,13 @@
       <tr>
         <td colspan="3" style="padding: 10px;">
           <p>
-            Estmimada(o) participante
-          </p>
+            Hola, te informamos que ya puedes comenzar tu aprendizaje en nuestra plataforma, tu cuenta ya ha sido activada.
 
-          <p>
-            Te enviamos este mensaje para informarte que el curso "Geobiología: Evolución de la vida y la tierra" ha sido pospuesto. Te informaremos por este medio de la nueva fecha de inicio del curso. Lamentamos los inconvenientes que esto pudiera ocasionarte.
+<p>Saludos.</p>
           </p>
-
-          <p>
-            Atentamente
-          </p>
-
-          <p>
-            El equipo de la plataforma.
-          </p>
-
         </td>
       </tr>
+
 
       <tr>
         <td colspan="3">

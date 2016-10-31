@@ -75,21 +75,21 @@
             <hr>
         </div>
         <div class="form-group col-md-8 col-md-offset-2">
-            <label for="contactoPersona">Nombre de contacto</label>
+            <label for="contactoInstitucion">Nombre de contacto</label>
             <input name="contactoInst" type="text" class="form-control" placeholder="Escribe el nombre de conctacto" required>
             <div class="help-tip posicion">
                 <p>- Nombre de la persona a cargo del MOOC (lider de proyecto)</p>
             </div><br>
         </div>
         <div class="form-group col-md-8 col-md-offset-2">
-            <label for="contactoPersona">Correo electrónico de contacto</label>
+            <label for="correoInstitucion">Correo electrónico de contacto</label>
             <input name="correoInst" type="text" class="form-control" placeholder="Escribe el correo de contacto" required>
             <div class="help-tip posicion">
                 <p>- Correo electrónico de la persona o institución a cargo del MOOC</p>
             </div><br>
         </div>
         <div class="form-group col-md-8 col-md-offset-2">
-            <label for="contactoPersona">Número telefónico </label>
+            <label for="telefonoInstitucion">Número telefónico </label>
             <input name="telefonoInst" type="text" class="form-control" placeholder="Escribe el número telefónico de la institución" required>
             <div class="help-tip posicion">
                 <p>- Número telefónico de la institución 

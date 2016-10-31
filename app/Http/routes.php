@@ -44,6 +44,8 @@ Route::any('verifica', 'MXController@verifica');
 Route::any('adddata', 'MXController@adddata');
 Route::any('validarcp', 'MXController@validarcp');
 
+Route::any('show', 'SincoController@show');
+Route::any('store', 'SincoController@store');
 
 Route::any('uploadvideo', 'MXController@uploadvideo');
 Route::any('savevideo', 'MXController@savevideo');
@@ -91,3 +93,7 @@ Route::any('viewblog', 'MXController@viewblog');
 Route::any('getblog', 'MXController@getblog');
 Route::any('adminblog', ['middleware' => 'auth', 'uses' => 'MXController@adminblog']);
 Route::any('saveblog', ['middleware' => 'auth', 'uses' => 'MXController@saveblog']);
+
+Route::get('email/preview', function (){
+    return view ('emails.masivo');
+});
