@@ -34,7 +34,7 @@ class UseController extends Controller {
 		{
 
 			$id = DB::table('auth_user')->whereemail($correo)->whereis_active('1')->get()[0]->id;
-			$course_id = DB::table('student_courseaccessrole')->whereuser_id($id)->whererole("instructor")->get();
+			$course_id = DB::table('student_courseaccessrole')->whereuser_id($id)->whererole("instructor")->where('course_id', 'like', 'course%')->get();
 
 			$n = sizeof($course_id);
 
