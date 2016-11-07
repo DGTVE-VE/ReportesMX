@@ -8,13 +8,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Model\Ficha_curso;
 use App\Model\Instructores;
+use App\Model\Instructor_task_ficha;
 use Illuminate\Support\Facades\Input;
 
 class RegistroController extends Controller {
 
     public function __construct() {
-        
-        $this->middleware('auth', 
+
+        $this->middleware('auth',
             ['only' => [ 'registroNuevo', 'cursoNuevo']]);
     }
     /**
@@ -91,8 +92,8 @@ class RegistroController extends Controller {
         return view('registroCurso')->with('name_user', 'Luis');
     }
 
-    public function registroNuevo() {
-        
+    public function registroNuevo(Request $request) {
+
         $destinationPath='C:\xampp\htdocs\ReportesMX\public\imagenes\cursos';
         $destinationVideo='C:\xampp\htdocs\ReportesMX\public\imagenes\video_curso';
         $destinationFirma='C:\xampp\htdocs\ReportesMX\public\imagenes\firmas';
@@ -101,7 +102,7 @@ class RegistroController extends Controller {
         $destinationCartaAut='C:\xampp\htdocs\ReportesMX\public\cartas\autorizacion';
         $ficha_curso = new Ficha_curso;
         //ficha_curso
-        
+
         $nameOrg = filter_input(INPUT_POST, 'nombreOrganizacion');
         $ficha_curso->organizacion=$nameOrg;
         $nombreCurso = filter_input(INPUT_POST, 'nombreCurso');
@@ -119,7 +120,7 @@ class RegistroController extends Controller {
         $telefonoContacto = filter_input(INPUT_POST, 'telefonoInst');
         $ficha_curso->telefono_ins = $telefonoContacto;
 
-        
+
         //Fechas
         $fechaIni = filter_input(INPUT_POST, 'fechaIni');
         $ficha_curso->fecha_ini = $fechaIni;
@@ -135,9 +136,9 @@ class RegistroController extends Controller {
 //        $ficha_curso->lengua_mult = $lenguajeMult;
 //        $lenguajeTrans = filter_input(INPUT_POST, 'lenguajeTrans');
 //        $ficha_curso->lengua_trans = $lenguajeTrans;
-        
+
         //About
-		
+
         $desCorta = filter_input(INPUT_POST, 'desCorta');
         $ficha_curso->descripcion_cor = $desCorta;
         $desLarga = filter_input(INPUT_POST, 'desLarga');
@@ -149,37 +150,27 @@ class RegistroController extends Controller {
         $nivelCurso = filter_input(INPUT_POST, 'nivelCurso');
         $ficha_curso->nivel_curso = 'basico';
         $tipoConstancia = filter_input(INPUT_POST, 'tipoConstancia');
-        $ficha_curso->tipo_constancia = $tipoConstancia;        
+        $ficha_curso->tipo_constancia = $tipoConstancia;
         $redesSoc = filter_input(INPUT_POST, 'redSociales');
         $ficha_curso->redes_sociales = $redesSoc;
         $nombreImagen = Input::file('imagenCurso')->getClientOriginalName();
         $courseImage = Input::file('imagenCurso')->move($destinationPath, $nombreImagen);
-        $ficha_curso->imagen=$nombreImagen;
+        $ficha_curso->imagen=$courseImage;
         $nombreVideo = Input::file('videoCurso')->getClientOriginalName();
         $courseVideo = Input::file('videoCurso')->move($destinationVideo, $nombreVideo);
-        $ficha_curso->video=$nombreVideo;        
+        $ficha_curso->video=$courseVideo;
         $esfuerzoReq = filter_input(INPUT_POST, 'esfuerzoReq');
         $ficha_curso->esfuerzo_hr_sem = $esfuerzoReq;
         $duracionCurso = filter_input(INPUT_POST, 'duracionCurso');
         $ficha_curso->duracion_sem = $duracionCurso;
-        
-        
-        $nombreFirma = Input::file('firmaElectronica')->getClientOriginalName();
-        $InstructorSignature= Input::file('firmaElectronica')->move($destinationFirma,$nombreFirma);
-        
-        $nombreFoto = Input::file('fotoInstructor')->getClientOriginalName();
-        $foto_instructor = Input::file('fotoInstructor')->move($destinationFotosInst,$nombreFoto);
-        
+
         //archivos de llenado
         $cartaCompromiso = Input::file('cartaCompromiso')->getClientOriginalName();
         $compromiso = Input::file('cartaCompromiso')->move($destinationCartaCom,$cartaCompromiso);
-        
+
         $cartaAutorizacion = Input::file('cartaAutorizacion')->getClientOriginalName();
         $autorizacion = Input::file('cartaAutorizacion')->move($destinationCartaAut,$cartaAutorizacion);
-        
-       
-           
-        
+
         $categoria1 = filter_input(INPUT_POST, 'categoria1');
         $ficha_curso->categoria1 = $categoria1;
         $categoria2 = filter_input(INPUT_POST, 'categoria2');
@@ -188,22 +179,49 @@ class RegistroController extends Controller {
         $ficha_curso->categoria3 = $categoria3;
         $temario = filter_input(INPUT_POST, 'temario');
         $ficha_curso->temario = $temario;
-       
         $ficha_curso->save();
+        $id_ficha_curso = $ficha_curso->id;
 
-        $nombreInstructor = $_POST['nombreInstructor'];
-        $biografia = $_POST ['biografia'];
-        $especialidad = $_POST['especializacion'];
-        $obrasImportantes = $_POST['obrasImportantes'];
+        $name = $request->input('nombreInstructor');
+        $biografia  = $request->input('biografia');
+        $especializacion  = $request->input('especializacion');
+        $obrasImportantes  = $request->input('obrasImportantes');
+        $firmaElectronica  = $request->file('firmaElectronica');
+        $fotoInstructor  = $request->file('fotoInstructor');
 
+        $i = 0;
 
-        for ($i = 0; $i < count($nombreInstructor); $i++) {
+          foreach ($name as $key) {
+
             $staff = new Instructores();
-            $staff->nombre = $nombreInstructor[$i];
+
+            $staff->nombre = $key;
             $staff->biografia = $biografia[$i];
-            $staff->especialidad = $especialidad[$i];
+            $staff->especialidad = $especializacion[$i];
             $staff->obras_imp = $obrasImportantes[$i];
-            $ficha_curso->instructores()->save($staff);
-        }       
-    }            
+
+            $nombreFirma = $firmaElectronica[$i]->getClientOriginalName();
+            $InstructorSignature= $firmaElectronica[$i]->move($destinationFirma,$nombreFirma);
+            $staff->firma = $InstructorSignature;
+
+            $nombreFoto = $fotoInstructor[$i]->getClientOriginalName();
+            $foto_instructor = $fotoInstructor[$i]->move($destinationFotosInst,$nombreFoto);
+            $staff->foto = $foto_instructor;
+
+            $staff->save();
+
+            $instructor_ficha = new Instructor_task_ficha();
+            $instructor_ficha->instructor_id = $staff->id;
+            $instructor_ficha->ficha_curso_id = $id_ficha_curso;
+            $instructor_ficha->save();
+
+            $i++;
+          }
+
+          // return 0;
+
+
+
+         return redirect('registro');
+    }
 }

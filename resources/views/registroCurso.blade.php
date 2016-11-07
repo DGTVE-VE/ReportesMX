@@ -1,4 +1,4 @@
-@extends('app') 
+@extends('app')
 @section('content')
 <div class="container" >
     <style>
@@ -38,14 +38,14 @@
             <input name="nombreCurso" type="text" class="form-control" id="curseName" placeholder="Escribe el nombre del MOOC" required>
             <div class="help-tip posicion">
                 <p>- Longitud 70 caracteres máximo (con espacios)
-                    <br/>- Si el curso es una secuencia especificar las partes.</p>  
+                    <br/>- Si el curso es una secuencia especificar las partes.</p>
             </div>
         </div>
         <div class="form-group col-md-8 col-md-offset-2">
             <label for="siglasOrganizacion">Siglas de la organización</label>
             <input name="siglasOrg" type="text" class="form-control" id="siglasOrg" placeholder="Escribe las siglas de la organización" required>
             <div class="help-tip posicion">
-                <p>- Las siglas oficiales de la organización, aparecen de forma automática en la constancia de participación.  
+                <p>- Las siglas oficiales de la organización, aparecen de forma automática en la constancia de participación.
                     <br/>- No utilizar espacios en blanco o caracteres especiales, las siglas son parte de la URL del curso.
                 </p>
             </div>
@@ -57,14 +57,14 @@
                 <p> - Longitud 10 caracteres máximo
                     <br/>- Incluir una x al final (la x significa que es un curso extensivo)
                     <br/>- No se aceptan caracteres especiales, espacios en blanco, acentos, guiones
-                </p>            
+                </p>
             </div>
         </div>
         <div class="form-group col-md-8 col-md-offset-2">
             <label for="periodoEmision">Periodo de emision</label>
             <input name="periodoEmi" type="text" class="form-control" placeholder="Escribe el periodo de emisión" required>
             <div class="help-tip posicion">
-                <p>- Se compone del año seguido de un guión bajo y el semestre, trimestre o cuadrimestre que corresponda. 
+                <p>- Se compone del año seguido de un guión bajo y el semestre, trimestre o cuadrimestre que corresponda.
                     <br/>- Ejemplo: 2016_S1
                 </p>
             </div>
@@ -92,7 +92,7 @@
             <label for="telefonoInstitucion">Número telefónico </label>
             <input name="telefonoInst" type="text" class="form-control" placeholder="Escribe el número telefónico de la institución" required>
             <div class="help-tip posicion">
-                <p>- Número telefónico de la institución 
+                <p>- Número telefónico de la institución
                     <br/>- Incluir clave lada
                 </p>
             </div><br>
@@ -107,7 +107,7 @@
                 <label for="fechaInicio">Fecha de inicio del MOOC</label><br>
                 <input name="fechaIni" type="date" required>
                 <div class="help-tip posicion">
-                    <p>- Sugerimos empezar un día entre semana(martes, miércoles o jueves) 
+                    <p>- Sugerimos empezar un día entre semana(martes, miércoles o jueves)
                         <br/>- Especificar si el curso es a ritmo propio (self-paced)
                         <br/>- Evitar días feriados
                     </p>
@@ -170,7 +170,7 @@
                                 <option value="chino">Chino</option>
                                 <option value="portugues">Portugues</option>
                                 <option value="otro">Otro</option>
-                            </select>                
+                            </select>
                         </div>
                         <div class="col-md-4">
                             <label for="textLanguage">Lenguaje de transcripción</label>
@@ -215,14 +215,14 @@
             <label for="requirements">Conocimientos previos</label>
             <textarea name="requisitos" class="form-control" id="courseRequirements"></textarea>
             <div class="help-tip posicion">
-                <p>- Especificar si se require de algún conocimiento previo relacionado al MOOC</p>                
+                <p>- Especificar si se require de algún conocimiento previo relacionado al MOOC</p>
             </div>
         </div>
         <div class="form-group col-md-8 col-md-offset-2">
             <label for="courseResults">Aprendizaje esperado</label>
-            <textarea name="resApren" rows="3" cols="40" class="form-control" id="courseResults"></textarea>   
+            <textarea name="resApren" rows="3" cols="40" class="form-control" id="courseResults"></textarea>
             <div class="help-tip posicion">
-                <p>- Respóndete a esta pregunta: ¿qué aprenderé con este curso? 
+                <p>- Respóndete a esta pregunta: ¿qué aprenderé con este curso?
                     <br/>- Breve y conciso </p>
             </div><br>
         </div>
@@ -237,13 +237,13 @@
         <div class="form-group col-md-8 col-md-offset-2">
             <div class="col-md-9">
                 <div class="col-md-2">
-                    <input type="radio" name="level" value="basico" checked><br/>Básico     
+                    <input type="radio" name="level" value="basico" checked><br/>Básico
                 </div>
                 <div class="col-md-2 col-md-offset-2">
                     <input type="radio" name="level" value="intermedio">Intermedio
                 </div>
                 <div class="col-md-2 col-md-offset-2">
-                    <input type="radio" name="level" value="avanzado">Avanzado   
+                    <input type="radio" name="level" value="avanzado">Avanzado
                 </div>
             </div>
         </div>
@@ -253,7 +253,7 @@
                 <option value="gratuita">Gratuita</option>
             </select>
 
-        </div>     
+        </div>
 
 
         <div class="form-group col-md-8 col-md-offset-2"><br><br>
@@ -261,17 +261,17 @@
             <hr>
         </div>
         <div class="form-group col-md-8 col-md-offset-2" id="instructores">
-            <div id="instructor"> <!-- ??? -->
+            <div id="instructor[0]"> <!-- ??? -->
                 <div class="form-group col-md-12">
                     <label for="curseName">Nombre del Instructor</label>
-                    <input name="nombreInstructor[]" type="text" class="form-control" id="curseInstructor">    
+                    <input name="nombreInstructor[0]" id="nombreInstructor[0]" type="text" class="form-control" id="curseInstructor">
                     <div class="help-tip">
                         <p>- Nombre completo del instructor o asesor del MOOC</p>
                     </div>
                 </div>
                 <div class="form-group col-md-12">
                     <label for="biogrphia">Biografía</label>
-                    <textarea name="biografia[]" class="form-control" id="instructorBiography"></textarea>   
+                    <textarea name="biografia[0]" id="biografia[0]" class="form-control" id="instructorBiography"></textarea>
                     <div class="help-tip">
                         <p>- Formación académica
                             <br/>- Links a blogs, sitios web personales y de colaboración
@@ -280,14 +280,14 @@
                 </div>
                 <div class="form-group col-md-12">
                     <label for="specialization">Especialización</label>
-                    <textarea name="especializacion[]" class="form-control" ></textarea>   
+                    <textarea name="especializacion[0]" id="especializacion[0]" class="form-control" ></textarea>
                     <div class="help-tip">
                         <p>- Principales áreas de investigación</p>
                     </div>
                 </div>
                 <div class="form-group col-md-12">
                     <label for="importantWorks">Obras importantes</label>
-                    <textarea name="obrasImportantes[]" class="form-control" ></textarea>    
+                    <textarea name="obrasImportantes[0]" id="obrasImportantes[0]" class="form-control" ></textarea>
                     <div class="help-tip">
                         <p>- Obras destacadas en las que ha colaborado
                             <br/>- Enlaces a las obras realizadas
@@ -297,7 +297,7 @@
                 <div class="form-group col-md-7">
                     <label for="addInstructor">Agregar fotografía</label><br><br>
                     <label class="file">
-                        <input name="fotoInstructor[]" type="file" id="picture">
+                        <input name="fotoInstructor[0]" id="fotoInstructor[0]" type="file" id="picture">
                         <span class="file-custom"></span>
                     </label><br>
                     <div class="help-tip">
@@ -307,19 +307,19 @@
                 <div class="form-group col-md-7">
                     <label for="addSignature">Adjuntar firma</label><br><br>
                     <label class="file">
-                        <input name="firmaElectronica[]" type="file" id="signature">
-                        <span class="file-custom"></span>                
+                        <input name="firmaElectronica[0]" id="firmaElectronica[0]" type="file" id="signature">
+                        <span class="file-custom"></span>
                     </label><br>
                     <div class="help-tip">
-                        <p>Adjuntar firma en alta resolución, 300 pixeles por pulgada, firma escaneada(png, gif ó jpg) 
+                        <p>Adjuntar firma en alta resolución, 300 pixeles por pulgada, firma escaneada(png, gif ó jpg)
                             para cada instructor. Para mejor resolución, utilice tinta en negrita o negro sobre papel blanco limpio.
                             Nota: para evitar problemas de seguridad, se recomienda utilizar una firma única no estándar</p>
                     </div>
                 </div>
-                <div class="form-group col-md-8 col-md-offset-2" id="botonesFin"><br>
-                    <button id="quitaInst1" type="submit" class="quitaInst btn btn-danger">Quitar un instructor</button>    
-                    <button id="otroIns" class="btn btn-primary">Agregar otro instructor</button>  
-                </div>
+                <div class="form-group col-md-8 col-md-offset-2"><br>
+              <button onclick="remInsc();" type="button" name="button">Quitar un instructor</button>
+              <button onclick="addInsc();" type="button" name="button">Agregar otro instructor</button>
+              </div>
             </div>
         </div>
         <div class="form-group col-md-8 col-md-offset-2"><br><br>
@@ -358,7 +358,7 @@
                     <span class="file-custom"></span>
                 </label><br>
                 <div class="help-tip">
-                    <p>*El vídeo debe emocionar y atraer a potenciales estudiantes para tomar el curso. Piense en ello como un tráiler de la película o programa de televisión de promoción. 
+                    <p>*El vídeo debe emocionar y atraer a potenciales estudiantes para tomar el curso. Piense en ello como un tráiler de la película o programa de televisión de promoción.
                         El video debe ser convincente y exhibir la personalidad del instructor.
                         Longitud: longitud ideal es de 30-90 segundos (principiantes normalmente sólo ven un promedio de 30 segundos)
                         En caso de ser producidos y editados, utilice elementos como gráficos y clips libres de derechos
@@ -378,7 +378,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group col-md-8 col-md-offset-2"><br><br>   
+        <div class="form-group col-md-8 col-md-offset-2"><br><br>
             <h3>Especificaciones del curso</h3>
             <hr>
         </div>
@@ -424,14 +424,14 @@
                 <p ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="dragtarget9">Salud y bienestar</p>
                 <p ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="dragtarget0">Servicios</p>
             </div>
-            <div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" id="cont2"></div>                
+            <div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" id="cont2"></div>
             <p id="demo"></p>
         </div>
         <div class="form-group col-md-8 col-md-offset-2">
             <input id="categoria1" name="categoria1" type="hidden" value="" required>
             <input id="categoria2" name="categoria2" type="hidden" value="" required>
             <input id="categoria3" name="categoria3" type="hidden" value="" required>
-            <p style="clear:both;"><strong>Nota:</strong> Los eventos de arrastre no son soportados por Internet Explorer 8 y anteriores versiones o Safari 5.1 y anteriores versiones.</p>                
+            <p style="clear:both;"><strong>Nota:</strong> Los eventos de arrastre no son soportados por Internet Explorer 8 y anteriores versiones o Safari 5.1 y anteriores versiones.</p>
         </div>
         <div class="form-group col-md-8 col-md-offset-2">
             <h3>Contenido Temático del MOOC</h3>
@@ -439,10 +439,10 @@
         </div>
         <div class="form-group col-md-8 col-md-offset-2">
             <label for="temarioCurse">Temario del curso</label>
-            <textarea name="temario"  rows="10" cols="40" class="form-control" id="courseTemario" placeholder="Escribe el temario del MOOC"></textarea>  
+            <textarea name="temario"  rows="10" cols="40" class="form-control" id="courseTemario" placeholder="Escribe el temario del MOOC"></textarea>
             <div class="help-tip posicion">
                 <p>Una revisión de los contenidos tratados en el curso, organizado por semanas o módulos.
-                    Centrarse en los temas y contenidos; detalles de la mecánica del curso y logística (formas de evaluación, 
+                    Centrarse en los temas y contenidos; detalles de la mecánica del curso y logística (formas de evaluación,
                     las políticas de comunicación, listas de lectura, etc.)</p>
             </div>
         </div>
@@ -462,7 +462,7 @@
                     <p>Descarga el archivo de llenado para ser socio estrategico de MéxicoX</p>
                 </div>
                 <a href="{{asset('download/carta_com.docx')}}"><button type="button" class="btn btn-primary btn-md">Carta Compromiso</button></a>
-            </div>                                
+            </div>
         </div>
         <div class="form-group col-md-8 col-md-offset-2"><br>
             <h3>Subir archivos</h3>
@@ -476,7 +476,7 @@
                 <label for="addSignature">Carta Autorización</label><br><br>
                 <label class="file">
                     <input name="cartaAutorizacion" type="file" id="signature">
-                    <span class="file-custom"></span>                
+                    <span class="file-custom"></span>
                 </label><br>
             </div>
             <div class="col-md-4 col-md-offset-2">
@@ -486,7 +486,7 @@
                 <label for="addSignature">Carta compromiso</label><br><br>
                 <label class="file">
                     <input name="cartaCompromiso" type="file" id="signature">
-                    <span class="file-custom"></span>                
+                    <span class="file-custom"></span>
                 </label><br>
             </div>
         </div>
@@ -503,32 +503,54 @@
 
     @section ('scripts')
     <script>
-        $(document).ready(function () {
-            inst = 1;
-            num = 1;
-            $("#quitaInst" + num).click(function () {
-                event.preventDefault();
-                alert("Al menos debe haber un instructor para el curso");
-            });
-            $("#otroIns").click(function () {
-                num++;
-                event.preventDefault();
-                $("#instructor").clone().prop('id', 'inst' + num).appendTo("#instructores");
-                $("#inst" + num).find("#quitaInst1").prop('id', 'quitaInst' + num);
 
-                $("#quitaInst" + num).click(function () {
-                    event.preventDefault();
-                    alert(this.id);
-                    $("#inst" + num).remove();
-                    num--;
-                });
-            });
+        var num = 0;
 
+        function addInsc(){
 
-        });
+         var clon = document.getElementById('instructor['.concat(num).concat(']'));
+         cln = clon.cloneNode(true);
+         clon.id = 'instructor['.concat(num+1).concat(']');
+
+         document.getElementById('instructores').appendChild(cln);
+
+         document.getElementById('nombreInstructor['.concat(num).concat(']')).name = 'nombreInstructor['.concat(num+1).concat(']');
+         document.getElementById('nombreInstructor['.concat(num).concat(']')).id = 'nombreInstructor['.concat(num+1).concat(']');
+
+         document.getElementById('biografia['.concat(num).concat(']')).name = 'biografia['.concat(num+1).concat(']');
+         document.getElementById('biografia['.concat(num).concat(']')).id = 'biografia['.concat(num+1).concat(']');
+
+         document.getElementById('especializacion['.concat(num).concat(']')).name = 'especializacion['.concat(num+1).concat(']');
+         document.getElementById('especializacion['.concat(num).concat(']')).id = 'especializacion['.concat(num+1).concat(']');
+
+         document.getElementById('obrasImportantes['.concat(num).concat(']')).name = 'obrasImportantes['.concat(num+1).concat(']');
+         document.getElementById('obrasImportantes['.concat(num).concat(']')).id = 'obrasImportantes['.concat(num+1).concat(']');
+
+         document.getElementById('fotoInstructor['.concat(num).concat(']')).name = 'fotoInstructor['.concat(num+1).concat(']');
+         document.getElementById('fotoInstructor['.concat(num).concat(']')).id = 'fotoInstructor['.concat(num+1).concat(']');
+
+         document.getElementById('firmaElectronica['.concat(num).concat(']')).name = 'firmaElectronica['.concat(num+1).concat(']');
+         document.getElementById('firmaElectronica['.concat(num).concat(']')).id = 'firmaElectronica['.concat(num+1).concat(']');
+
+         num++;
+
+       }
+       function remInsc(){
+         if(num > 0){
+            var id = "instructor[".concat(num).concat("]");
+            var element = document.getElementById(id);
+            element.remove();
+            num--;
+         }
+         else {
+           alert('Al menos debe haber un instructor');
+         }
+
+       }
+
     </script>
     <script>
-        //arrastrar elementos               
+        //arrastrar elementos
         function dragStart(event) {
             event.dataTransfer.setData("Text", event.target.id);
 
@@ -570,7 +592,7 @@
             $('#cont2').children().each(function () {
 
                 if (numero === 2) {
-                    //                console.log($(this).html()); 
+                    //                console.log($(this).html());
                     values.push($(this).html());
                 }
 
