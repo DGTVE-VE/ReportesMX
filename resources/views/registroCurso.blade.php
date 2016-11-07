@@ -22,6 +22,18 @@
         <div class="form-group col-md-6 col-md-offset-4">
             <h2>Registro de MOOC para MéxicoX</h2>
         </div>
+        <div class="form-group col-md-8 col-md-offset-2">
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+      </div>
+
         <div class="form-group col-md-8 col-md-offset-2"><br>
             <h3>Información para crear un MOOC</h3>
             <hr>
@@ -105,7 +117,7 @@
         <div class="form-group col-md-8 col-md-offset-2">
             <div class="col-md-4">
                 <label for="fechaInicio">Fecha de inicio del MOOC</label><br>
-                <input name="fechaIni" type="date" required>
+                <input name="fechaIni" type="date" placeholder="mm/dd/aaaa"  required>
                 <div class="help-tip posicion">
                     <p>- Sugerimos empezar un día entre semana(martes, miércoles o jueves)
                         <br/>- Especificar si el curso es a ritmo propio (self-paced)
@@ -116,7 +128,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-4">
                 <label for="fechaFinal">Fecha final del MOOC</label><br>
-                <input name="fechaFin" type="date" required>
+                <input name="fechaFin" type="date" placeholder="mm/dd/aaaa" required>
                 <div class="help-tip posicion">
                     <p>- Especificar la fecha en que termina el MOOC
                         <br/>- Evitar cualquier cambio de fecha
@@ -127,7 +139,7 @@
         <div class="form-group col-md-8 col-md-offset-2">
             <div class="col-md-5">
                 <label for="fechaInscripciones">Fecha de inicio de Inscripciones</label><br>
-                <input name="fechaLan" type="date" required>
+                <input name="fechaLan" type="date" placeholder="mm/dd/aaaa"  required>
                 <div class="help-tip posicion">
                     <p>- Se recomiendan tres meses de inscripciones como mínimo.</p>
                 </div>
@@ -135,7 +147,7 @@
             <div class="col-md-1"></div>
             <div class="col-md-5">
                 <label for="fechaFinInsc">Fecha de finalización de inscripciones</label><br>
-                <input name="fechaEmi" type="date" required>
+                <input name="fechaEmi" type="date" placeholder="mm/dd/aaaa"  required>
                 <div class="help-tip posicion">
                     <p>- Se sugiere cerrar inscripciones 8 días después de iniciado el curso.</p>
                 </div>

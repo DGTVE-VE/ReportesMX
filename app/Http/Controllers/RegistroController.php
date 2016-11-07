@@ -94,6 +94,48 @@ class RegistroController extends Controller {
 
     public function registroNuevo(Request $request) {
 
+
+      $this->validate($request, [
+        'nombreOrganizacion' => 'required',
+        'nombreCurso' => 'required',
+        'siglasOrg' => 'required',
+        'idCurso' => 'required',
+        'periodoEmi' => 'required',
+        'contactoInst' => 'required',
+        'correoInst' => 'required|email',
+        'telefonoInst' => 'required|numeric',
+        'fechaIni' => 'required|date',
+        'fechaFin' => 'required|date',
+        'fechaLan' => 'required|date',
+        'fechaEmi' => 'required|date',
+        // 'lenguajeCont' => 'required',
+        // 'lenguajeMult' => 'required',
+        'desCorta' => 'required',
+        'desLarga' => 'required',
+        'requisitos' => 'required',
+        'resApren' => 'required',
+        // 'nivelCurso' => 'required',
+        'tipoConstancia' => 'required',
+        'redSociales' => 'required',
+        // 'imagenCurso' => 'mimes:jpg,png|image',
+        // 'videoCurso' => 'mimes:wmp, mp4, avi, mov',
+        'esfuerzoReq' => 'required|min:1|max:10',
+        'duracionCurso' => 'required|min:1|max:15',
+        // 'cartaCompromiso' => 'mimes:doc, docx',
+        // 'cartaAutorizacion' => 'mimes:doc, docx',
+        // 'categoria1' => 'required',
+        // 'categoria2' => 'required',
+        // 'categoria3' => 'required',
+        'temario' => 'required',
+        'nombreInstructor' => 'required',
+        'biografia' => 'required',
+        'especializacion' => 'required',
+        'obrasImportantes' => 'required',
+        // 'firmaElectronica' => 'mimes:jpg,png|image',
+        // 'fotoInstructor' => 'mimes:jpg,png|image',}
+      ]);
+
+
         $destinationPath='C:\xampp\htdocs\ReportesMX\public\imagenes\cursos';
         $destinationVideo='C:\xampp\htdocs\ReportesMX\public\imagenes\video_curso';
         $destinationFirma='C:\xampp\htdocs\ReportesMX\public\imagenes\firmas';
