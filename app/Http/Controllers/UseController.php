@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
+use App\Model\Auth_perfilusuario;
 
 class UseController extends Controller {
 
@@ -324,6 +325,27 @@ class UseController extends Controller {
 
 		if(($super_user == '1') && (session()->get('course_id') == null)){
 
+			$perfil_p = DB::table('auth_perfilusuario')
+				->where('sinco_4', '!=', '')
+				->join('auth_userprofile', 'auth_user.id', '=', 'auth_userprofile.user_id')
+				->join('auth_user', 'auth_user.id', '=', 'auth_perfilusuario.user_id')
+				->leftJoin('auth_sinco', 'auth_sinco.clave', '=', 'auth_perfilusuario.sinco_4')
+				->leftJoin('codigospostales', 'codigospostales.CodigoPostal', '=', 'auth_userprofile.mailing_address')
+				->select('auth_user.username', 'auth_user.email', 'auth_sinco.descripcion', 'auth_userprofile.year_of_birth', 'auth_userprofile.gender', 'auth_userprofile.level_of_education', 'auth_userprofile.mailing_address', 'auth_userprofile.city', 'auth_userprofile.country')
+				->get();
+
+				$fp = fopen('download/perfilp.csv', 'w');
+
+				$titulop = array('Username' , 'Correo', 'Perfil profesional', 'Fecha de nacimiento', 'Genero', 'Nivel educativo', 'Codigo postal', 'Ciudad', 'Pais');
+				fputcsv($fp, $titulop);
+
+				foreach ($perfil_p as $key) {
+					$array = array($key->username , $key->email, $key->descripcion, $key->year_of_birth, $key->gender, $key->level_of_education, $key->mailing_address, $key->city, $key->country);
+					fputcsv($fp, $array);
+				}
+
+				fclose($fp);
+
 			//////////////////////////////////////////////////////////////
 			$date = date("Y");
 			$edad15 = DB::table('auth_userprofile')->where('year_of_birth', '>=', $date - '15')->count('id');
@@ -434,7 +456,15 @@ class UseController extends Controller {
 			$cn1 = "Usuarios con cuenta activada en MéxicoX";
 			$cn2 = "Usuarios que no tienen su cuenta activada en MéxicoX";
 
-			return view('usuarios/totales')-> with ('info', collect($info)) -> with ('edad', collect($edad))->with('infot', collect($infot))->with ('estudio', collect($estudio))->with('name_user', $username )-> with('course_name0', $cn0)-> with('course_name1', $cn1)-> with('course_name2', $cn2)-> with('course_name', $cn);
+			///////////////////////////////////////////////////////////////////////////////////
+
+			$perfil_p = Auth_perfilusuario::all();
+
+			return 0;
+
+			///////////////////////////////////////////////////////////////////////////////////
+
+			return view('usuarios/totales')-> with ('info', collect($info)) -> with ('edad', collect($edad))->with('infot', collect($infot))->with ('estudio', collect($estudio))->with('name_user', $username )-> with('course_name0', $cn0)-> with('course_name1', $cn1)-> with('course_name2', $cn2)-> with('course_name', $cn)->with('perfil_p', $perfil_p);
 
 		}
 
@@ -446,6 +476,29 @@ class UseController extends Controller {
 			{
 				return $this->correoacurso();
 			}
+
+			$perfil_p = DB::table('auth_perfilusuario')
+				->where('sinco_4', '!=', '')
+				->join('student_courseenrollment', 'student_courseenrollment.course_id', '=', $course_id)
+				->join('auth_user', 'auth_user.id', '=', 'auth_perfilusuario.user_id')
+				->join('auth_userprofile', 'auth_user.id', '=', 'auth_userprofile.user_id')
+				->leftJoin('auth_sinco', 'auth_sinco.clave', '=', 'auth_perfilusuario.sinco_4')
+				->leftJoin('codigospostales', 'codigospostales.CodigoPostal', '=', 'auth_userprofile.mailing_address')
+				->select('auth_user.username', 'auth_user.email', 'auth_sinco.descripcion', 'auth_userprofile.year_of_birth', 'auth_userprofile.gender', 'auth_userprofile.level_of_education', 'auth_userprofile.mailing_address', 'auth_userprofile.city', 'auth_userprofile.country')
+				->get();
+
+				$fp = fopen('download/perfilp.csv', 'w');
+
+				$titulop = array('Username' , 'Correo', 'Perfil profesional', 'Fecha de nacimiento', 'Genero', 'Nivel educativo', 'Codigo postal', 'Ciudad', 'Pais');
+				fputcsv($fp, $titulop);
+
+				foreach ($perfil_p as $key) {
+					$array = array($key->username , $key->email, $key->descripcion, $key->year_of_birth, $key->gender, $key->level_of_education, $key->mailing_address, $key->city, $key->country);
+					fputcsv($fp, $array);
+				}
+
+				fclose($fp);
+
 
 			////////////////////////////////////////////////////////////////////////////////////////////////
 			$date = date("Y");
@@ -558,6 +611,7 @@ class UseController extends Controller {
 			$c_name2 = "No inscritos en ".$course_name;
 			fputcsv($fp, $info1);
 			fclose($fp);
+
 
 			return view('usuarios/totales') -> with ('info', collect($info)) -> with ('edad', collect($edad))->with ('infot', collect($infot))->with ('estudio', collect($estudio))->with('name_user', $username )-> with('course_name', $course_name)-> with('course_name0', $c_name0)-> with('course_name1', $c_name1)-> with('course_name2', $c_name2);
 

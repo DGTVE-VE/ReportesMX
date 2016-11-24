@@ -93,6 +93,10 @@ function drawChart() {
   <center> <h4>Información de usuarios inscritos a "{{$course_name}}"</h4></center>
 
   <div class="container">
+    <a class="btn btn-default" href="{{url ('/download/perfilp.csv')}}" role="button">Descargar archivo perfiles profesionales.csv</a>
+  </div>
+
+  <div class="container">
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
         <br><br>
@@ -200,6 +204,9 @@ function drawChart() {
 
 </table>
 </div>
+</div>
+<div class="container">
+  {{$perfil_p}}
 </div>
 
 </body>
