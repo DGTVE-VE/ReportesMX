@@ -327,8 +327,8 @@ class UseController extends Controller {
 
 			$perfil_p = DB::table('auth_perfilusuario')
 				->where('sinco_4', '!=', '')
-				->join('auth_userprofile', 'auth_userprofile.user_id', '=', 'auth_user.id')
 				->join('auth_user', 'auth_user.id', '=', 'auth_perfilusuario.user_id')
+				->join('auth_userprofile', 'auth_userprofile.user_id', '=', 'auth_user.id')
 				->leftJoin('auth_sinco', 'auth_sinco.clave', '=', 'auth_perfilusuario.sinco_4')
 				->leftJoin('codigospostales', 'codigospostales.CodigoPostal', '=', 'auth_userprofile.mailing_address')
 				->select('auth_user.username', 'auth_user.email', 'auth_sinco.descripcion', 'auth_userprofile.year_of_birth', 'auth_userprofile.gender', 'auth_userprofile.level_of_education', 'auth_userprofile.mailing_address', 'auth_userprofile.city', 'auth_userprofile.country')
@@ -481,7 +481,7 @@ class UseController extends Controller {
 				->where('sinco_4', '!=', '')
 				->join('student_courseenrollment', 'student_courseenrollment.course_id', '=', $course_id)
 				->join('auth_user', 'auth_user.id', '=', 'auth_perfilusuario.user_id')
-				->join('auth_userprofile', 'auth_user.id', '=', 'auth_userprofile.user_id')
+				->join('auth_userprofile', 'auth_userprofile.user_id', '=', 'auth_user.id')
 				->leftJoin('auth_sinco', 'auth_sinco.clave', '=', 'auth_perfilusuario.sinco_4')
 				->leftJoin('codigospostales', 'codigospostales.CodigoPostal', '=', 'auth_userprofile.mailing_address')
 				->select('auth_user.username', 'auth_user.email', 'auth_sinco.descripcion', 'auth_userprofile.year_of_birth', 'auth_userprofile.gender', 'auth_userprofile.level_of_education', 'auth_userprofile.mailing_address', 'auth_userprofile.city', 'auth_userprofile.country')
