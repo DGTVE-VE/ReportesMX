@@ -205,9 +205,6 @@ function drawChart() {
 </table>
 </div>
 </div>
-<div class="container">
-  {{$perfil_p}}
-</div>
 
 </body>
 </html>
