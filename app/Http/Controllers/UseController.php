@@ -325,10 +325,9 @@ class UseController extends Controller {
 		if(($super_user == '1') && (session()->get('course_id') == null)){
 
 
-		$perfil_p = DB::table('auth_perfilusuario')
-			// ->where('sinco_4', '!=', '')
-			->join('auth_user', 'auth_user.id', '=', 'auth_perfilusuario.user_id')
+		$perfil_p = DB::table('auth_user')
 			->join('auth_userprofile', 'auth_userprofile.user_id', '=', 'auth_user.id')
+			->leftJoin('auth_perfilusuario', 'auth_perfilusuario.user_id', '=', 'auth_user.id')
 			->leftJoin('auth_sinco', 'auth_sinco.clave', '=', 'auth_perfilusuario.sinco_4')
 			->leftJoin('codigospostales', 'codigospostales.CodigoPostal', '=', 'auth_userprofile.mailing_address')
 			->select('auth_user.username', 'auth_user.email', 'auth_sinco.descripcion', 'auth_userprofile.year_of_birth', 'auth_userprofile.gender', 'auth_userprofile.level_of_education', 'auth_userprofile.mailing_address', 'auth_userprofile.city', 'auth_userprofile.country')
@@ -470,14 +469,13 @@ class UseController extends Controller {
 			}
 
 
-			// $perfil_p = DB::table('auth_perfilusuario')
 			$perfil_p = DB::table('student_courseenrollment')
 				->where('student_courseenrollment.course_id', '=', $course_id)
 				->where('student_courseenrollment.is_active', '=', '1')
-				->join('auth_perfilusuario')
-				->join('auth_user', 'auth_user.id', '=', 'auth_perfilusuario.user_id')
+				->leftJoin('auth_perfilusuario', 'auth_perfilusuario.user_id', '<>', '')
+				->leftJoin('auth_user', 'auth_user.id', '=', 'auth_perfilusuario.user_id')
 				->join('auth_userprofile', 'auth_userprofile.user_id', '=', 'auth_user.id')
-				->leftJoin('auth_sinco', 'auth_sinco.clave', '=', 'auth_perfilusuario.sinco_4')
+				->join('auth_sinco', 'auth_sinco.clave', '=', 'auth_perfilusuario.sinco_4')
 				->leftJoin('codigospostales', 'codigospostales.CodigoPostal', '=', 'auth_userprofile.mailing_address')
 				->select('auth_user.username', 'auth_user.email', 'auth_sinco.descripcion', 'auth_userprofile.year_of_birth', 'auth_userprofile.gender', 'auth_userprofile.level_of_education', 'auth_userprofile.mailing_address', 'auth_userprofile.city', 'auth_userprofile.country')
 				->get();
