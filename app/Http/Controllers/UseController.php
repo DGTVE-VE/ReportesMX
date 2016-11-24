@@ -468,10 +468,9 @@ class UseController extends Controller {
 				return $this->correoacurso();
 			}
 
-			// $perfil_p = DB::table('auth_perfilusuario')
 			$perfil_p = DB::table('student_courseenrollment')
-				->where('course_id', '=', $course_id)
-				->where('is_active', '=', '1')
+				->wherecourse_id($course_id)
+				->whereis_active('1')
 				->join('auth_user', 'auth_user.id', '=', 'student_courseenrollment.user_id')
 				->join('auth_userprofile', 'auth_userprofile.user_id', '=', 'auth_user.id')
 				->leftJoin('auth_perfilusuario', 'auth_user.id', '=', 'auth_perfilusuario.user_id')
