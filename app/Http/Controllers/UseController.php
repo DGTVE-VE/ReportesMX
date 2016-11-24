@@ -580,7 +580,7 @@ class UseController extends Controller {
 			/////////////////////////////////////////////////////////////////////////////
 
 			$t = DB::table('auth_user')->count('id');
-			$inscritos = DB::table('student_courseenrollment')->wherecourse_id($course_id)->count('id');
+			$inscritos = DB::table('student_courseenrollment')->wherecourse_id($course_id)->whereis_active('1')->count('id');
 
 			$n = $t-$inscritos;
 			$info = array($t, $n, $inscritos);
