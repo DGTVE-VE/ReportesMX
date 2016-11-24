@@ -472,7 +472,7 @@ class UseController extends Controller {
 
 			$perfil_p = DB::table('auth_perfilusuario')
 				->where('sinco_4', '!=', '')
-				->join('student_courseenrollment', 'student_courseenrollment.course_id', '=', $course_id)
+				->where('student_courseenrollment.course_id', '=', $course_id)
 				->join('auth_user', 'auth_user.id', '=', 'auth_perfilusuario.user_id')
 				->join('auth_userprofile', 'auth_userprofile.user_id', '=', 'auth_user.id')
 				->leftJoin('auth_sinco', 'auth_sinco.clave', '=', 'auth_perfilusuario.sinco_4')
