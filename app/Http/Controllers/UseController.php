@@ -327,7 +327,7 @@ class UseController extends Controller {
 
 			$perfil_p = DB::table('auth_perfilusuario')
 				->where('sinco_4', '!=', '')
-				->join('auth_userprofile', 'auth_user.id', '=', 'auth_userprofile.user_id')
+				->join('auth_userprofile', 'auth_userprofile.user_id', '=', 'auth_user.id')
 				->join('auth_user', 'auth_user.id', '=', 'auth_perfilusuario.user_id')
 				->leftJoin('auth_sinco', 'auth_sinco.clave', '=', 'auth_perfilusuario.sinco_4')
 				->leftJoin('codigospostales', 'codigospostales.CodigoPostal', '=', 'auth_userprofile.mailing_address')
