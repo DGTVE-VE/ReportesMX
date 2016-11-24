@@ -92,7 +92,7 @@ function drawChart() {
   @extends('app') @section('content')
   <center> <h4>Información de usuarios inscritos a "{{$course_name}}"</h4></center>
 
-  <div class="container">
+  <div class="container center">
     <a class="btn btn-default" href="{{url ('/download/perfilp.csv')}}" role="button">Descargar archivo perfiles profesionales.csv</a>
   </div>
 
