@@ -80,10 +80,10 @@ Al mismo tiempo, les comunicamos que la plataforma dejará de tener cursos activ
       <tr>
         <td  colspan="3" style="height=70px; padding: 15px; text-align: right;">
           <a href='http://www.facebook.com/TvEducativaMx'>
-            <img class="redes" src='https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20161215/Facebook.png' class='img-rounded'>
+            <img class="redes" src='https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20161215/fb.png' class='img-rounded'>
           </a>
           <a href='https://twitter.com/tveducativamx'>
-            <img class="redes" src='https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20161215/Twitter.png' class='img-rounded'>
+            <img class="redes" src='https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20161215/tw.png' class='img-rounded'>
           </a>
         </td>
       </tr>
