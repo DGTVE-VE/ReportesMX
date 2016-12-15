@@ -35,6 +35,10 @@
     width: 165px;
 
   }
+  .redes{
+  	width: 45px;
+
+  }
 
   </style>
 </head>
@@ -43,7 +47,7 @@
     <table>
       <tr>
         <td colspan="3" style="padding: 10px;">
-          <img class="banner" src="https://photos.google.com/share/AF1QipM0CFfru6zN5iL9CjNGkG4VYTPFKNQJpZySx-40Zt727AsmZTAe37EcF5C7MO2mEw/photo/AF1QipPZ5O0cecGrceWyGTUXMzOlSqkbOTHDJPVyKIgy?key=eEVQUVhCU3Q4OTlHNzgwYWZ2ajZ0ZHIwOWJCdVNR">
+          <img class="banner" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20161215/pleca_superior.png">
         </td>
       </tr>
       <tr>
@@ -54,23 +58,23 @@
 
       <tr>
         <td colspan="3">
-          <img class="footer" src="https://photos.google.com/share/AF1QipM0CFfru6zN5iL9CjNGkG4VYTPFKNQJpZySx-40Zt727AsmZTAe37EcF5C7MO2mEw/photo/AF1QipMv7H3_SU4uewSW1w5E9eFV3UM3AsMWzlpblzOy?key=eEVQUVhCU3Q4OTlHNzgwYWZ2ajZ0ZHIwOWJCdVNR">
+          <img class="footer" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20161215/linea.jpg">
         </td>
       </tr>
       <tr>
-        <td  colspan="3" style="padding: 15px; text-align: right;">
+        <td  colspan="3" style="height=70px; padding: 15px; text-align: right;">
           <a href='http://www.facebook.com/TvEducativaMx'>
-            <img src='https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/fb.png' class='img-rounded'>
+            <img class="redes" src='https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20161215/Facebook.png' class='img-rounded'>
           </a>
           <a href='https://twitter.com/tveducativamx'>
-            <img src='https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/twitter.png' class='img-rounded'>
+            <img class="redes" src='https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20161215/Twitter.png' class='img-rounded'>
           </a>
         </td>
       </tr>
       <tr>
         <td  colspan="3" style="padding: 5px; text-align: right;">
           <a href='http://mx.televisioneducativa.gob.mx/'>
-            <img src='https://photos.google.com/share/AF1QipM0CFfru6zN5iL9CjNGkG4VYTPFKNQJpZySx-40Zt727AsmZTAe37EcF5C7MO2mEw/photo/AF1QipMcqfElzm2CtlzqQ-9pwV_uIzw0kRujOo8BuKJF?key=eEVQUVhCU3Q4OTlHNzgwYWZ2ajZ0ZHIwOWJCdVNR' style="width: 125px; height: 25px; border-radius: 30px;">
+            <img src='https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20161215/boton.png' style="width: 125px; height: 25px; border-radius: 30px;">
           </a>
         </td>
       </tr>
@@ -89,7 +93,7 @@
 
       <tr>
         <td  colspan="3" >
-          <img class="footer1" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail/mail1/pleca_logos.png" />
+          <img class="footer1" src="https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20161215/pleca_logos.png" />
         </td>
       </tr>
 
