@@ -57,13 +57,16 @@
 
       <tr>
         <td colspan="3" style="padding: 10px;">
-        <h4>A la comunidad MéxicoX: </h4>
 
-El equipo de la plataforma <b>MéxicoX</b> les desea que tengan felices fiestas en compañía de sus familiares y amigos, deseando que este 2017 sea un año colmado de experiencias gratificantes. Agradecemos la confianza que han depositado en nosotros, ya que sin ella, este trabajo colaborativo que hemos desarrollado por casi tres años, no hubiera sido posible. Al día de hoy, tenemos un total de <b>989,274</b> usuarios inscritos en plataforma, con un histórico de más de <b>130 cursos</b> y una <b>eficiencia terminal del 27.31%</b>.
+ <p style="text-align: justify;">
+ <b>A la comunidad MéxicoX: </b>
+ <br><br>
+El equipo de la plataforma MéxicoX les desea que tengan felices fiestas en compañía de sus familiares y amigos, deseando que este 2017 sea un año colmado de experiencias gratificantes. Agradecemos la confianza que han depositado en nosotros, ya que sin ella, este trabajo colaborativo que hemos desarrollado por casi tres años, no hubiera sido posible. Al día de hoy, tenemos un total de <b>989,274</b> usuarios inscritos en plataforma, con un histórico de más de <b>130 cursos</b> y una <b>eficiencia terminal del 27.31%</b>.
 
 Al mismo tiempo, les comunicamos que la plataforma dejará de tener cursos activos del <b>17 de diciembre de 2016 al 16 de enero de 2017</b>. Ésta solo quedará activa para inscripciones de los cursos que comienzan a principios del próximo año. Asimismo, a partir del <b>16 de enero de 2017</b> la plataforma también ya estará actualizada en su versión más reciente (Eucalyptus) reanudando actividades normalmente. Cabe mencionar que los usuarios que obtuvieron constancias de participación, cuentan con cuatro semanas para poder descargarlas de la plataforma.
 <br><br>
 <b>¡Felicidades!</b>
+</p>
 
         </td>
       </tr>
