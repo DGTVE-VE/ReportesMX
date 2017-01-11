@@ -130,6 +130,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+         Appzcoder\CrudGenerator\CrudGeneratorServiceProvider::class,
+         Collective\Html\HtmlServiceProvider::class,
+        
 //        Jenssegers\Mongodb\MongodbServiceProvider::class,
         'AdamWathan\BootForms\BootFormsServiceProvider',
     ],
@@ -180,5 +183,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'FilemanagerLaravel' => Pqb\FilemanagerLaravel\Facades\FilemanagerLaravel::class,
         'BootForm' => 'AdamWathan\BootForms\Facades\BootForm',
+        'Form' => Collective\Html\FormFacade::class,
+        'HTML' => Collective\Html\HtmlFacade::class,
     ],
 ];

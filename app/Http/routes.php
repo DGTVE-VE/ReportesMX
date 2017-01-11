@@ -97,3 +97,4 @@ Route::any('saveblog', ['middleware' => 'auth', 'uses' => 'MXController@saveblog
 Route::get('email/preview', function (){
     return view ('emails.masivo');
 });
+Route::resource('admin/course_name', 'Course_nameController');
