@@ -100,3 +100,4 @@ Route::get('email/preview', function (){
 Route::get('asociaCategoria', 'MXController@categoria');
 Route::post('asignaCategoria', 'MXController@guardaCategoria');
 Route::post('consultaCurso', 'MXController@consultaCurso');
+Route::resource('admin/course_name', 'Course_nameController');
