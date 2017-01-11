@@ -100,6 +100,5 @@ var arregloCat = new Array();
 		else{
 			arregloCat.splice(arregloCat.indexOf(categoria),1);
 		}
-		document.getElementById("nombreCurso").innerHTML = arregloCat;
 	}
 </script>
