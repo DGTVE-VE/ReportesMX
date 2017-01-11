@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use DB;
 use File;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Model;
+use App\Model\Categorias;
+use App\Model\CourseName;
+use App\Model\CursoCategorias;
 
 class MXController extends Controller {
 
@@ -228,4 +232,23 @@ public function adminblog(){
 
 }
 
+	public function categoria(){
+		$categorias = Categorias::all();
+		return view('vinculaCat')->with('categorias', $categorias);
+	}
+	
+	public function consultaCurso(){
+		$idCurso = $_POST['idCurso'];
+		$curso = CourseName::where('course_id', $idCurso)->first();
+		return $curso->course_name;
+	}
+	
+	public function guardaCategoria(){
+		$categorias = $_POST['arregloCat'];
+		$idCurso = $_POST['idCurso'];
+		$affectedRows = CursoCategorias::where('course_id', '=', $idCurso)->delete();
+		foreach($categorias as $categoria){
+			$cat = CursoCategorias::firstOrCreate(['course_id' => $idCurso, 'categoria_id' => $categoria]);
+		}
+	}
 }
