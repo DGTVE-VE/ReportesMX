@@ -232,23 +232,4 @@ public function adminblog(){
 
 }
 
-	public function categoria(){
-		$categorias = Categorias::all();
-		return view('vinculaCat')->with('categorias', $categorias);
-	}
-	
-	public function consultaCurso(){
-		$idCurso = $_POST['idCurso'];
-		$curso = CourseName::where('course_id', $idCurso)->first();
-		return $curso->course_name;
-	}
-	
-	public function guardaCategoria(){
-		$categorias = $_POST['arregloCat'];
-		$idCurso = $_POST['idCurso'];
-		$affectedRows = CursoCategorias::where('course_id', '=', $idCurso)->delete();
-		foreach($categorias as $categoria){
-			$cat = CursoCategorias::firstOrCreate(['course_id' => $idCurso, 'categoria_id' => $categoria]);
-		}
-	}
 }
