@@ -6,86 +6,97 @@
 
 <div class="container">
     <div class="row">
-		<div class="col-md-12">
-			<h3>Asociar Categoria</h3>
+		<div class="col-md-12 text-center">
+			<h3>Asociar curso a categorias</h3>
 		</div>
-        <div class="col-md-1">
+        <div class="col-md-2">
 			Course_id
         </div>
-		<div class="col-md-4">
+		<div class="col-md-5">
 			<input id="idCurso" type="text" oninput="buscaCurso()" style="width:100%"></input>
 		</div>
+        <div id="MensajeUsuario" class="col-md-3"></div>
+		<div class="col-md-12"></div>
 		<div class="col-md-2">
 			Nombre del Curso:
 		</div>
-		<div id="nombreCurso" class="col-md-3">
-			Escriba Id de curso
+		<div class="col-md-5">
+			<input id="nombreCurso" type="text" style="width:100%" disabled></input>
+		</div>
+		<div class="col-md-3 text-center">
+			<input id="botonAsociar" type="button" value="Asociar" disabled style="color:gray;" onclick="asociarCategoria()"></input>
 		</div>
 		<div class="col-md-12">
-			<br> Categorias
+			<h4> Categorias</h4>
 		</div>
 		@foreach($categorias as $categoria)
-			<div class="col-md-1">
+			<div class="col-md-1 text-center">
 				<input type="checkbox" class="check" value="{{$categoria->id}}" onclick="agregarCategoria(this.value, this.checked)"></input>
 			</div>
-			<div class="col-md-11">
+			<div class="col-md-5">
 				{{$categoria->categoria}}
 			</div>
 		@endforeach
-		<div class="col-md-12" style="padding:10px;">
-		</div>
-		<div class="col-md-3">
-			<input id="botonAsociar" type="button" value="Asociar" disabled style="color:gray;" onclick="asociarCategoria()"></input>
-		</div>
+		<div class="col-md-12" style="padding:10px;"></div>
+
     </div>
 </div>
 <script>
-var arregloCat = new Array();
+	var arregloCat = new Array();
+	divMsjUsuario = document.getElementById("MensajeUsuario");
+	btnAsociar = document.getElementById("botonAsociar");
+	divMuestraCurso = document.getElementById("nombreCurso");
+	txtCurso = document.getElementById("idCurso");
+
 	function buscaCurso(){
-		var txtCurso = document.getElementById("idCurso").value;
 		$.ajax({
 		method: "POST",
 				url: "{{url('consultaCurso')}}",
 				data: {
-					idCurso: txtCurso,
+					idCurso: txtCurso.value,
 					_token: "{{csrf_token()}}"
 				},
 				error: function (ts) {
-					document.getElementById("nombreCurso").innerHTML = "Especifique Id de curso";
-					document.getElementById("botonAsociar").disabled = true;
-					document.getElementById("botonAsociar").style.color = "gray";
+					divMsjUsuario.innerHTML= "Especifique Id de curso";
+					divMsjUsuario.style.backgroundColor = "#ffc966";
+					divMuestraCurso.value = "";
+					btnAsociar.disabled = true;
+					btnAsociar.style.color = "gray";
 				}
 		})
 		.done(function (msg) {
-			document.getElementById("nombreCurso").innerHTML = msg;
-			document.getElementById("botonAsociar").disabled = false;
-			document.getElementById("botonAsociar").style.color = "black";
+			divMuestraCurso.value = msg;
+			divMsjUsuario.innerHTML = "";
+			divMsjUsuario.style.backgroundColor = "#ffffff";
+			btnAsociar.disabled = false;
+			btnAsociar.style.color = "black";
 		});
 	}
 	
 	function asociarCategoria(){
-		var txtCurso = document.getElementById("idCurso").value;
 		$.ajax({
 		method: "POST",
 				url: "{{url('asignaCategoria')}}",
 				data: {
 					arregloCat: arregloCat,
-					idCurso: txtCurso,
+					idCurso: txtCurso.value,
 					_token: "{{csrf_token()}}"
 				},
 				error: function (ts) {
-					document.getElementById("nombreCurso").innerHTML = "Error al asociar categorías";
-					document.getElementById("botonAsociar").disabled = false;
-					document.getElementById("botonAsociar").style.color = "black";
+					divMsjUsuario.innerHTML = "Error al asociar categorías";
+					divMsjUsuario.style.backgroundColor = "#ffc966";
+					btnAsociar.disabled = false;
+					btnAsociar.style.color = "black";
 				}
 		})
 		.done(function (msg) {
-			document.getElementById("nombreCurso").innerHTML = "Actualizado correctamente";
-			document.getElementById("botonAsociar").disabled = true;
-			document.getElementById("botonAsociar").style.color = "gray";
-			document.getElementById("idCurso").value = "";
+			divMsjUsuario.innerHTML = "Actualizado correctamente";
+			divMsjUsuario.style.backgroundColor = "#ffc966";
+			btnAsociar.disabled = true;
+			btnAsociar.style.color = "gray";
+			txtCurso.value = "";
 			var seleccion = document.getElementsByClassName('check');
-			document.getElementById("nombreCurso").innerHTML = msg;
+			divMuestraCurso.value = "";
 			for (var i=0, len=seleccion.length; i < len; i++) {
 				seleccion[i].checked = false;
 			}
