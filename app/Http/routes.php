@@ -97,7 +97,7 @@ Route::any('saveblog', ['middleware' => 'auth', 'uses' => 'MXController@saveblog
 Route::get('email/preview', function (){
     return view ('emails.masivo');
 });
-Route::get('asociaCategoria', 'MXController@categoria');
-Route::post('asignaCategoria', 'MXController@guardaCategoria');
-Route::post('consultaCurso', 'MXController@consultaCurso');
+Route::get('asociaCategoria', 'categoriaController@categoria');
+Route::post('asignaCategoria', 'categoriaController@guardaCategoria');
+Route::post('consultaCurso', 'categoriaController@consultaCurso');
 Route::resource('admin/course_name', 'Course_nameController');
