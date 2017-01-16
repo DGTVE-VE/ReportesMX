@@ -33,10 +33,10 @@ class MXController extends Controller {
 
     $id_usuario = filter_input(INPUT_GET, 'id');
 
-    $city = DB::table('auth_userprofile')->whereuser_id($id_usuario)->get();
+    $city = DB::table('edxapp.auth_userprofile')->whereuser_id($id_usuario)->get();
     //$city1 = DB::table('users_info')->whereusers_id($id_usuario)->get();
 
-    $country = DB::table('auth_userprofile')->whereuser_id($id_usuario)->get();
+    $country = DB::table('edxapp.auth_userprofile')->whereuser_id($id_usuario)->get();
     //$country1 = DB::table('users_info')->whereusers_id($id_usuario)->get();
 
 
@@ -79,7 +79,7 @@ class MXController extends Controller {
         }
       }
 
-      $exito = DB::table('auth_userprofile')->where('user_id', $id_usuario)->update(['country' => $pais, 'city' => $estado, 'mailing_address' => $cp]);
+      $exito = DB::table('edxapp.auth_userprofile')->where('user_id', $id_usuario)->update(['country' => $pais, 'city' => $estado, 'mailing_address' => $cp]);
 
       if ($exito == 1) {
         print_r("Exito Update");
