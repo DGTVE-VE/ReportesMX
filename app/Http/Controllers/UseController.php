@@ -396,18 +396,18 @@ class UseController extends Controller {
 
 			//////////////////////////////////////////////////////////////////////////
 
-			$d = DB::table('edxapp.edxapp.auth_userprofile')->wherelevel_of_education('p')->select('id')->count();
-			$m = DB::table('edxapp.edxapp.auth_userprofile')->wherelevel_of_education('m')->select('id')->count();
-			$t = DB::table('edxapp.edxapp.auth_userprofile')->wherelevel_of_education('a')->select('id')->count();
-			$l = DB::table('edxapp.edxapp.auth_userprofile')->wherelevel_of_education('b')->select('id')->count();
-			$p = DB::table('edxapp.edxapp.auth_userprofile')->wherelevel_of_education('hs')->select('id')->count();
-			$s = DB::table('edxapp.edxapp.auth_userprofile')->wherelevel_of_education('jhs')->select('id')->count();
-			$pr = DB::table('edxapp.edxapp.auth_userprofile')->wherelevel_of_education('el')->select('id')->count();
-			$n = DB::table('edxapp.edxapp.auth_userprofile')->wherelevel_of_education('none')->select('id')->count();
-			$o = DB::table('edxapp.edxapp.auth_userprofile')->wherelevel_of_education('other')->select('id')->count();
-			$ne = DB::table('edxapp.edxapp.auth_userprofile')->wherelevel_of_education('')->select('id')->count();
-			$dc = DB::table('edxapp.edxapp.auth_userprofile')->wherelevel_of_education('p_se')->select('id')->count();
-			$do = DB::table('edxapp.edxapp.auth_userprofile')->wherelevel_of_education('p_oth')->select('id')->count();
+			$d = DB::table('edxapp.auth_userprofile')->wherelevel_of_education('p')->select('id')->count();
+			$m = DB::table('edxapp.auth_userprofile')->wherelevel_of_education('m')->select('id')->count();
+			$t = DB::table('edxapp.auth_userprofile')->wherelevel_of_education('a')->select('id')->count();
+			$l = DB::table('edxapp.auth_userprofile')->wherelevel_of_education('b')->select('id')->count();
+			$p = DB::table('edxapp.auth_userprofile')->wherelevel_of_education('hs')->select('id')->count();
+			$s = DB::table('edxapp.auth_userprofile')->wherelevel_of_education('jhs')->select('id')->count();
+			$pr = DB::table('edxapp.auth_userprofile')->wherelevel_of_education('el')->select('id')->count();
+			$n = DB::table('edxapp.auth_userprofile')->wherelevel_of_education('none')->select('id')->count();
+			$o = DB::table('edxapp.auth_userprofile')->wherelevel_of_education('other')->select('id')->count();
+			$ne = DB::table('edxapp.auth_userprofile')->wherelevel_of_education('')->select('id')->count();
+			$dc = DB::table('edxapp.auth_userprofile')->wherelevel_of_education('p_se')->select('id')->count();
+			$do = DB::table('edxapp.auth_userprofile')->wherelevel_of_education('p_oth')->select('id')->count();
 
 			$d = $d + $dc + $do;
 
