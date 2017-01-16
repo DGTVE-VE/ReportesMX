@@ -146,7 +146,7 @@ public function saveblog(Request $request){
 
   $correo = \Auth::user() -> email;
 
-  if(empty($name = DB::table('auth_user')->whereemail($correo)->first())){
+  if(empty($name = DB::table('edxapp.auth_user')->whereemail($correo)->first())){
     return ("Tu correo no esta asociado a algun curso en la plataforma");
   }
 
@@ -154,7 +154,7 @@ public function saveblog(Request $request){
   {
     return $this->blog();
   }
-  $id_usuario = DB::table('auth_user')->whereemail($correo)->first()->id;
+  $id_usuario = DB::table('edx.auth_user')->whereemail($correo)->first()->id;
 
   $this->validate($request, [
     'inputTitulo' => 'required|max:255',
@@ -219,7 +219,7 @@ public function adminblog(){
 
   $correo = \Auth::user() -> email;
 
-  if(empty($name = DB::table('auth_user')->whereemail($correo)->first())){
+  if(empty($name = DB::table('edxapp.auth_user')->whereemail($correo)->first())){
     return ("Tu correo no esta asociado a algun curso en la plataforma");
   }
 
@@ -236,13 +236,13 @@ public function adminblog(){
 		$categorias = Categorias::all();
 		return view('vinculaCat')->with('categorias', $categorias);
 	}
-	
+
 	public function consultaCurso(){
 		$idCurso = $_POST['idCurso'];
 		$curso = CourseName::where('course_id', $idCurso)->first();
 		return $curso->course_name;
 	}
-	
+
 	public function guardaCategoria(){
 		$categorias = $_POST['arregloCat'];
 		$idCurso = $_POST['idCurso'];

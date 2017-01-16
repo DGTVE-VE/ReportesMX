@@ -14,7 +14,7 @@ class UseController extends Controller {
 	{
 		$correo = \Auth::user() -> email;
 
-		if(empty($name = DB::table('auth_user')->whereemail($correo)->get())){
+		if(empty($name = DB::table('edxapp.auth_user')->whereemail($correo)->get())){
 			return ("Tu correo no esta asociado a algun curso en la plataforma");
 		}
 
@@ -24,7 +24,7 @@ class UseController extends Controller {
 		if($name[0]->is_superuser == 1)
 		{
 			session()->put('super_user', '1');
-			$id = DB::table('auth_user')->whereemail($correo)->whereis_superuser('1')->get()[0]->id;
+			$id = DB::table('edxapp.auth_user')->whereemail($correo)->whereis_superuser('1')->get()[0]->id;
 
 			$course_name = DB::table('course_name')->whereBetween('fin',array(20160000, 20990000))->whereBetween('inicio_inscripcion',array(20160000, date("Ymd")))->lists('course_name');
 			return $this->index($course_name);
@@ -33,7 +33,7 @@ class UseController extends Controller {
 		else if($name[0]->is_active == true)
 		{
 
-			$id = DB::table('auth_user')->whereemail($correo)->whereis_active('1')->get()[0]->id;
+			$id = DB::table('edxapp.auth_user')->whereemail($correo)->whereis_active('1')->get()[0]->id;
 
 			if( sizeof(DB::table('student_courseaccessrole')->whereuser_id($id)->whererole("instructor")->where('course_id', 'like', 'course%')->get()) > 1 ){
 					$course_id = DB::table('student_courseaccessrole')->whereuser_id($id)->whererole("instructor")->where('course_id', 'like', 'course%')->get();
@@ -326,11 +326,11 @@ class UseController extends Controller {
 
 			$perfil_p = DB::table('auth_perfilusuario')
 			->where('sinco_4', '!=', '')
-			->join('auth_user', 'auth_user.id', '=', 'auth_perfilusuario.user_id')
-			->join('auth_userprofile', 'auth_userprofile.user_id', '=', 'auth_user.id')
+			->join('edxapp.auth_user', 'edxapp.auth_user.id', '=', 'auth_perfilusuario.user_id')
+			->join('auth_userprofile', 'auth_userprofile.user_id', '=', 'edxapp.auth_user.id')
 			->leftJoin('auth_sinco', 'auth_sinco.clave', '=', 'auth_perfilusuario.sinco_4')
 			->leftJoin('codigospostales', 'codigospostales.CodigoPostal', '=', 'auth_userprofile.mailing_address')
-			->select('auth_user.username', 'auth_user.email', 'auth_sinco.descripcion', 'auth_userprofile.year_of_birth', 'auth_userprofile.gender', 'auth_userprofile.level_of_education', 'auth_userprofile.mailing_address', 'auth_userprofile.city', 'auth_userprofile.country')
+			->select('edxapp.auth_user.username', 'edxapp.auth_user.email', 'auth_sinco.descripcion', 'auth_userprofile.year_of_birth', 'auth_userprofile.gender', 'auth_userprofile.level_of_education', 'auth_userprofile.mailing_address', 'auth_userprofile.city', 'auth_userprofile.country')
 			->get();
 
 			$fp = fopen('download/perfilp.csv', 'w');
@@ -429,9 +429,9 @@ class UseController extends Controller {
 
 			//////////////////////////////////////////////////////////////////////////
 
-			$t = DB::table('auth_user')->count('id');
-			$n = DB::table('auth_user')->whereis_active('0')->count('id');
-			$a = DB::table('auth_user')->whereis_active('1')->count('id');
+			$t = DB::table('edxapp.auth_user')->count('id');
+			$n = DB::table('edxapp.auth_user')->whereis_active('0')->count('id');
+			$a = DB::table('edxapp.auth_user')->whereis_active('1')->count('id');
 
 			$info = array($t, $n, $a);
 
@@ -472,12 +472,12 @@ class UseController extends Controller {
 			$perfil_p = DB::table('student_courseenrollment')
 				->wherecourse_id($course_id)
 				->where('student_courseenrollment.is_active', '=', '1')
-				->join('auth_user', 'auth_user.id', '=', 'student_courseenrollment.user_id')
-				->join('auth_userprofile', 'auth_userprofile.user_id', '=', 'auth_user.id')
-				->leftJoin('auth_perfilusuario', 'auth_user.id', '=', 'auth_perfilusuario.user_id')
+				->join('edxapp.auth_user', 'edxapp.auth_user.id', '=', 'student_courseenrollment.user_id')
+				->join('auth_userprofile', 'auth_userprofile.user_id', '=', 'edxapp.auth_user.id')
+				->leftJoin('auth_perfilusuario', 'edxapp.auth_user.id', '=', 'auth_perfilusuario.user_id')
 				->leftJoin('auth_sinco', 'auth_sinco.clave', '=', 'auth_perfilusuario.sinco_4')
 				->leftJoin('codigospostales', 'codigospostales.CodigoPostal', '=', 'auth_userprofile.mailing_address')
-				->select('auth_user.username', 'auth_user.email', 'auth_sinco.descripcion', 'auth_userprofile.year_of_birth', 'auth_userprofile.gender', 'auth_userprofile.level_of_education', 'auth_userprofile.mailing_address', 'auth_userprofile.city', 'auth_userprofile.country')
+				->select('edxapp.auth_user.username', 'edxapp.auth_user.email', 'auth_sinco.descripcion', 'auth_userprofile.year_of_birth', 'auth_userprofile.gender', 'auth_userprofile.level_of_education', 'auth_userprofile.mailing_address', 'auth_userprofile.city', 'auth_userprofile.country')
 				->get();
 
 				$fp = fopen('download/perfilp.csv', 'w');
@@ -579,7 +579,7 @@ class UseController extends Controller {
 
 			/////////////////////////////////////////////////////////////////////////////
 
-			$t = DB::table('auth_user')->count('id');
+			$t = DB::table('edxapp.auth_user')->count('id');
 			$inscritos = DB::table('student_courseenrollment')->wherecourse_id($course_id)->whereis_active('1')->count('id');
 
 			$n = $t-$inscritos;
@@ -731,14 +731,14 @@ class UseController extends Controller {
 
 		if(($super_user == '1')){
 
-			$mes1 = DB::select(DB::raw('SELECT count(id) as cuenta FROM auth_user WHERE YEAR(date_joined) = 2015 GROUP BY MONTH(date_joined)'));
+			$mes1 = DB::select(DB::raw('SELECT count(id) as cuenta FROM edxapp.auth_user WHERE YEAR(date_joined) = 2015 GROUP BY MONTH(date_joined)'));
 
 			$i = 0;
 			foreach ($mes1 as $m){
 				$mes[$i] = $m->cuenta;
 				$i++;
 			}
-			$mes2 = DB::select(DB::raw('SELECT count(id) as cuenta FROM auth_user WHERE YEAR(date_joined) = 2016 GROUP BY MONTH(date_joined)'));
+			$mes2 = DB::select(DB::raw('SELECT count(id) as cuenta FROM edxapp.auth_user WHERE YEAR(date_joined) = 2016 GROUP BY MONTH(date_joined)'));
 
 			$i = sizeof($mes);
 			foreach ($mes2 as $m){
