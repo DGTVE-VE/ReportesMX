@@ -746,13 +746,13 @@ class UseController extends Controller {
 				$i++;
 			}
 
-			$cur1 = DB::select(DB::raw('SELECT count(id) as c FROM edxapp.edxapp.student_courseenrollment where year(created) = 2015 group by month(created)'));
+			$cur1 = DB::select(DB::raw('SELECT count(id) as c FROM edxapp.student_courseenrollment where year(created) = 2015 group by month(created)'));
 			$i = 0;
 			foreach ($cur1 as $c1){
 				$cur[$i] = $c1->c;
 				$i++;
 			}
-			$cur2 = DB::select(DB::raw('SELECT count(id) as c FROM edxapp.edxapp.student_courseenrollment where year(created) = 2016 group by month(created)'));
+			$cur2 = DB::select(DB::raw('SELECT count(id) as c FROM edxapp.student_courseenrollment where year(created) = 2016 group by month(created)'));
 			$i = sizeof($cur);
 			foreach ($cur2 as $c2){
 				$cur[$i] = $c2->c;
