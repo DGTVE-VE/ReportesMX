@@ -814,9 +814,9 @@ class UseController extends Controller {
 
 			$efi = fopen ('download/eficiencia_cursos.csv', 'w');
 
-			$constancias = DB::table('edxapp.constancias')->count('id');
+			$constancias = DB::table('mexicox.constancias')->count('id');
 			$lista_constancias = array();
-			$lista_constancias = DB::select(DB::raw('select count(curso) as constancias , course_id as nombre_curso from edxapp.constancias group by course_id'));
+			$lista_constancias = DB::select(DB::raw('select count(curso) as constancias , course_id as nombre_curso from mexicox.constancias group by course_id'));
 			$r = 0;
 
 			$eficiencia = array('Id del curso', 'Constancias emitidas', 'Inscritos', 'Eficiencia en porcentaje');
@@ -846,7 +846,7 @@ class UseController extends Controller {
 
 			///////////////////////////////////////////////////////////////////////////
 
-			$ncursos_constancia = DB::select(DB::raw('SELECT count(correo) as n FROM edxapp.constancias group by correo order by n asc'));
+			$ncursos_constancia = DB::select(DB::raw('SELECT count(correo) as n FROM mexicox.constancias group by correo order by n asc'));
 
 			$usc = fopen ('download/usuarios_curso_constancia.csv', 'w');
 
