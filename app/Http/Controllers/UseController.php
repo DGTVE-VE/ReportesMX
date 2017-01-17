@@ -469,10 +469,10 @@ class UseController extends Controller {
 			}
 
 			// $perfil_p = DB::table('auth_perfilusuario')
-			$perfil_p = DB::table('student_courseenrollment')
+			$perfil_p = DB::table('edxapp.student_courseenrollment')
 				->wherecourse_id($course_id)
-				->where('student_courseenrollment.is_active', '=', '1')
-				->join('edxapp.auth_user', 'edxapp.auth_user.id', '=', 'student_courseenrollment.user_id')
+				->where('edxapp.student_courseenrollment.is_active', '=', '1')
+				->join('edxapp.auth_user', 'edxapp.auth_user.id', '=', 'edxapp.student_courseenrollment.user_id')
 				->join('edxapp.auth_userprofile', 'edxapp.auth_userprofile.user_id', '=', 'edxapp.auth_user.id')
 				->leftJoin('auth_perfilusuario', 'edxapp.auth_user.id', '=', 'auth_perfilusuario.user_id')
 				->leftJoin('auth_sinco', 'auth_sinco.clave', '=', 'auth_perfilusuario.sinco_4')
@@ -494,15 +494,15 @@ class UseController extends Controller {
 
 			////////////////////////////////////////////////////////////////////////////////////////////////
 			$date = date("Y");
-			$edad15 = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '>=', $date - '15')->select('id')->count();
-			$edad15_20 = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '15')->where('year_of_birth', '>=', $date - '20')->select('id')->count();
-			$edad20_25 = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '20')->where('year_of_birth', '>=', $date - '25')->select('id')->count();
-			$edad25_30 = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '25')->where('year_of_birth', '>=', $date - '30')->select('id')->count();
-			$edad30_35 = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '30')->where('year_of_birth', '>=', $date - '35')->select('id')->count();
-			$edad35_40 = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '35')->where('year_of_birth', '>=', $date - '40')->select('id')->count();
-			$edad40_45 = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '40')->where('year_of_birth', '>=', $date - '45')->select('id')->count();
-			$edad45_50 = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '45')->where('year_of_birth', '>=', $date - '50')->select('id')->count();
-			$edad50 = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '50')->select('id')->count();
+			$edad15 = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '>=', $date - '15')->select('id')->count();
+			$edad15_20 = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '15')->where('year_of_birth', '>=', $date - '20')->select('id')->count();
+			$edad20_25 = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '20')->where('year_of_birth', '>=', $date - '25')->select('id')->count();
+			$edad25_30 = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '25')->where('year_of_birth', '>=', $date - '30')->select('id')->count();
+			$edad30_35 = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '30')->where('year_of_birth', '>=', $date - '35')->select('id')->count();
+			$edad35_40 = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '35')->where('year_of_birth', '>=', $date - '40')->select('id')->count();
+			$edad40_45 = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '40')->where('year_of_birth', '>=', $date - '45')->select('id')->count();
+			$edad45_50 = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '45')->where('year_of_birth', '>=', $date - '50')->select('id')->count();
+			$edad50 = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->where('year_of_birth', '<', $date - '50')->select('id')->count();
 
 			$edad = array($edad15,$edad15_20,$edad20_25,$edad25_30,$edad30_35,$edad35_40,$edad40_45,$edad45_50,$edad50);
 
@@ -520,9 +520,9 @@ class UseController extends Controller {
 			fclose($fp);
 			///////////////////////////////////////////////////////////////////////////////////////////
 
-			$m = DB::table('student_courseenrollment')->join('edxapp.auth_userprofile', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wheregender('m')->count();
-			$f = DB::table('student_courseenrollment')->join('edxapp.auth_userprofile', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wheregender('f')->count();
-			$n = DB::table('student_courseenrollment')->join('edxapp.auth_userprofile', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wheregender('')->count();
+			$m = DB::table('edxapp.student_courseenrollment')->join('edxapp.auth_userprofile', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wheregender('m')->count();
+			$f = DB::table('edxapp.student_courseenrollment')->join('edxapp.auth_userprofile', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wheregender('f')->count();
+			$n = DB::table('edxapp.student_courseenrollment')->join('edxapp.auth_userprofile', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wheregender('')->count();
 
 			$infot = array($f, $m, $n);
 
@@ -544,18 +544,18 @@ class UseController extends Controller {
 
 			//////////////////////////////////////////////////////////////////////////
 
-			$d = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('p')->select('id')->count();
-			$m = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('m')->select('id')->count();
-			$t = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('a')->select('id')->count();
-			$l = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('b')->select('id')->count();
-			$p = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('hs')->select('id')->count();
-			$s = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('jhs')->select('id')->count();
-			$pr = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('el')->select('id')->count();
-			$n = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('none')->select('id')->count();
-			$o = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('other')->select('id')->count();
-			$ne = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('')->select('id')->count();
-			$dc = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('p_se')->select('id')->count();
-			$do = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('p_oth')->select('id')->count();
+			$d = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('p')->select('id')->count();
+			$m = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('m')->select('id')->count();
+			$t = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('a')->select('id')->count();
+			$l = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('b')->select('id')->count();
+			$p = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('hs')->select('id')->count();
+			$s = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('jhs')->select('id')->count();
+			$pr = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('el')->select('id')->count();
+			$n = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('none')->select('id')->count();
+			$o = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('other')->select('id')->count();
+			$ne = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('')->select('id')->count();
+			$dc = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('p_se')->select('id')->count();
+			$do = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherelevel_of_education('p_oth')->select('id')->count();
 
 			$d = $d + $dc + $do;
 
@@ -580,7 +580,7 @@ class UseController extends Controller {
 			/////////////////////////////////////////////////////////////////////////////
 
 			$t = DB::table('edxapp.auth_user')->count('id');
-			$inscritos = DB::table('student_courseenrollment')->wherecourse_id($course_id)->whereis_active('1')->count('id');
+			$inscritos = DB::table('edxapp.student_courseenrollment')->wherecourse_id($course_id)->whereis_active('1')->count('id');
 
 			$n = $t-$inscritos;
 			$info = array($t, $n, $inscritos);
@@ -627,9 +627,9 @@ class UseController extends Controller {
 		}
 		elseif((session()->get('accescourse') > 0) || ($super_user == "1")) {
 
-			if(DB::table('student_courseenrollment')->wherecourse_id($course_id)->orderBy('created', 'asc')->lists('created'))
+			if(DB::table('edxapp.student_courseenrollment')->wherecourse_id($course_id)->orderBy('created', 'asc')->lists('created'))
 			{
-				$semanal = DB::table('student_courseenrollment')->wherecourse_id($course_id)->orderBy('created', 'asc')->lists('created');
+				$semanal = DB::table('edxapp.student_courseenrollment')->wherecourse_id($course_id)->orderBy('created', 'asc')->lists('created');
 
 			}
 			else {
@@ -746,13 +746,13 @@ class UseController extends Controller {
 				$i++;
 			}
 
-			$cur1 = DB::select(DB::raw('SELECT count(id) as c FROM edxapp.student_courseenrollment where year(created) = 2015 group by month(created)'));
+			$cur1 = DB::select(DB::raw('SELECT count(id) as c FROM edxapp.edxapp.student_courseenrollment where year(created) = 2015 group by month(created)'));
 			$i = 0;
 			foreach ($cur1 as $c1){
 				$cur[$i] = $c1->c;
 				$i++;
 			}
-			$cur2 = DB::select(DB::raw('SELECT count(id) as c FROM edxapp.student_courseenrollment where year(created) = 2016 group by month(created)'));
+			$cur2 = DB::select(DB::raw('SELECT count(id) as c FROM edxapp.edxapp.student_courseenrollment where year(created) = 2016 group by month(created)'));
 			$i = sizeof($cur);
 			foreach ($cur2 as $c2){
 				$cur[$i] = $c2->c;
@@ -945,39 +945,39 @@ class UseController extends Controller {
 
 		}elseif((session()->get('accescourse') > 0) || ($super_user == "1")) {
 
-			$AG = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('AG')->select('id')->count();
-			$BC = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('BC')->select('id')->count();
-			$BS = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('BS')->select('id')->count();
-			$CC = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('CC')->select('id')->count();
-			$CS = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('CS')->select('id')->count();
-			$CH = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('CH')->select('id')->count();
-			$CL = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('CL')->select('id')->count();
-			$CM = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('CM')->select('id')->count();
-			$DF = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('DF')->select('id')->count();
-			$DG = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('DG')->select('id')->count();
-			$GT = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('GT')->select('id')->count();
-			$GR = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('GR')->select('id')->count();
-			$HG = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('HG')->select('id')->count();
-			$JC = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('JC')->select('id')->count();
-			$MC = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('MC')->select('id')->count();
-			$MN = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('MN')->select('id')->count();
-			$MS = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('MS')->select('id')->count();
-			$NT = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('NT')->select('id')->count();
-			$NL = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('NL')->select('id')->count();
-			$OC = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('OC')->select('id')->count();
-			$PL = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('PL')->select('id')->count();
-			$QT = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('QT')->select('id')->count();
-			$QR = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('QR')->select('id')->count();
-			$SP = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('SP')->select('id')->count();
-			$SL = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('SL')->select('id')->count();
-			$SR = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('SR')->select('id')->count();
-			$TC = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('TC')->select('id')->count();
-			$TS = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('TS')->select('id')->count();
-			$TL = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('TL')->select('id')->count();
-			$VZ = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('VZ')->select('id')->count();
-			$YN = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('YN')->select('id')->count();
-			$ZS = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('ZS')->select('id')->count();
-			$EX = DB::table('edxapp.auth_userprofile')->join('student_courseenrollment', 'student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('EX')->select('id')->count();
+			$AG = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('AG')->select('id')->count();
+			$BC = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('BC')->select('id')->count();
+			$BS = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('BS')->select('id')->count();
+			$CC = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('CC')->select('id')->count();
+			$CS = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('CS')->select('id')->count();
+			$CH = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('CH')->select('id')->count();
+			$CL = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('CL')->select('id')->count();
+			$CM = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('CM')->select('id')->count();
+			$DF = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('DF')->select('id')->count();
+			$DG = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('DG')->select('id')->count();
+			$GT = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('GT')->select('id')->count();
+			$GR = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('GR')->select('id')->count();
+			$HG = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('HG')->select('id')->count();
+			$JC = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('JC')->select('id')->count();
+			$MC = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('MC')->select('id')->count();
+			$MN = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('MN')->select('id')->count();
+			$MS = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('MS')->select('id')->count();
+			$NT = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('NT')->select('id')->count();
+			$NL = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('NL')->select('id')->count();
+			$OC = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('OC')->select('id')->count();
+			$PL = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('PL')->select('id')->count();
+			$QT = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('QT')->select('id')->count();
+			$QR = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('QR')->select('id')->count();
+			$SP = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('SP')->select('id')->count();
+			$SL = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('SL')->select('id')->count();
+			$SR = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('SR')->select('id')->count();
+			$TC = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('TC')->select('id')->count();
+			$TS = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('TS')->select('id')->count();
+			$TL = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('TL')->select('id')->count();
+			$VZ = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('VZ')->select('id')->count();
+			$YN = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('YN')->select('id')->count();
+			$ZS = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('ZS')->select('id')->count();
+			$EX = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('EX')->select('id')->count();
 
 			$total = $AG + $BC + $BS + $CC + $CS + $CH + $CL + $CM + $DF + $DG + $GT + $GR + $HG + $JC + $MC + $MN + $MS + $NT + $NL + $OC + $PL + $QT + $QR + $SP + $SL + $SR + $TC + $TS + $TL + $VZ + $YN + $ZS + $EX;
 			$geo = array($AG, $BC, $BS, $CC, $CS, $CH, $CL, $CM, $DF, $DG, $GT, $GR, $HG, $JC, $MC, $MN, $MS, $NT, $NL, $OC, $PL, $QT, $QR, $SP, $SL, $SR, $TC, $TS, $TL, $VZ, $YN, $ZS, $EX, $total);
