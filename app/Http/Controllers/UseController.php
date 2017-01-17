@@ -35,10 +35,10 @@ class UseController extends Controller {
 
 			$id = DB::table('edxapp.auth_user')->whereemail($correo)->whereis_active('1')->get()[0]->id;
 
-			if( sizeof(DB::table('student_courseaccessrole')->whereuser_id($id)->whererole("instructor")->where('course_id', 'like', 'course%')->get()) > 1 ){
-					$course_id = DB::table('student_courseaccessrole')->whereuser_id($id)->whererole("instructor")->where('course_id', 'like', 'course%')->get();
+			if( sizeof(DB::table('edxapp.student_courseaccessrole')->whereuser_id($id)->whererole("instructor")->where('course_id', 'like', 'course%')->get()) > 1 ){
+					$course_id = DB::table('edxapp.student_courseaccessrole')->whereuser_id($id)->whererole("instructor")->where('course_id', 'like', 'course%')->get();
 			}else {
-				$course_id = DB::table('student_courseaccessrole')->whereuser_id($id)->whererole("instructor")->get();
+				$course_id = DB::table('edxapp.student_courseaccessrole')->whereuser_id($id)->whererole("instructor")->get();
 			}
 
 
@@ -877,7 +877,7 @@ class UseController extends Controller {
 
 			fclose($usc);
 
-			$n_instructores = DB::select(DB::raw('SELECT count(*) as n FROM student_courseaccessrole where role = "instructor"'))[0]->n;
+			$n_instructores = DB::select(DB::raw('SELECT count(*) as n FROM edxapp.student_courseaccessrole where role = "instructor"'))[0]->n;
 
 
 			return view('usuarios/inscritost')-> with('mes1', collect($mes))-> with('mes2', collect($cur))-> with('name_user', $username)->with('users_course', collect($users_course))->with('constancias', $constancias)->with('lista_constancias', $lista_constancias)->with('inscrito_curso', $inscrito_curso)->with('inscritos_nc', $inscritos_nc)->with('nn', $nn)->with('n_instructores', $n_instructores);
