@@ -11,16 +11,16 @@
         <!-- <link href="{{ asset('/css/app.css') }}" rel="stylesheet"> -->
 
         <!-- Fonts -->
-
-    <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.csss">
+        <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="{{asset ('css/estilos.css')}}">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+            <![endif]-->
 
     </head>
     <body>
@@ -50,22 +50,36 @@
                         <li><a href="{{url('inscritost')}}" class="bg-active">Inscritos a cursos</a><li>
                         <li><a href="{{url ('videos')}}" class="bg-active">Videos</a></li>
                         <li><a href="{{url ('constancias')}}" class="bg-active">Buscar Folio</a></li>
-                        <li><a href="{{url ('asociaCategoria')}}" class="bg-active">Asocia curso a categorias</a></li>
                         <?php
-                        $user = \Illuminate\Support\Facades\Auth::user ();
+                        $user = \Illuminate\Support\Facades\Auth::user();
                         $auth_user = \App\Model\Auth_user::where('email', $user->email)->first();
 
-                        if (isset ($auth_user->is_superuser)){
-                        if ($auth_user->is_superuser == 1){
-                        ?>
-                        <li><a href="{{url ('mail/compose')}}" class="bg-close" title="Envío de correos">
-                                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                            </a></li>
-                        <li><a href="{{url ('adminblog')}}" class="bg-close" title="Blog">
-                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                            </a></li>
+                        if (isset($auth_user->is_superuser)) {
+                            if ($auth_user->is_superuser == 1) {
+                                ?>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administración <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="{{url ('mail/compose')}}" class="bg-close" title="Envío de correos">
+                                                Envío de Correo
+                                            </a></li>
+                                        <li class="divider"></li>                                                                                    
+                                        <li><a href="{{url ('adminblog')}}" class="bg-close" title="Blog">
+                                            Blog</a></li>
+                                        <li class="divider"></li>                                        
+                                        <li><a href="{{url ('asociaCategoria')}}" class="bg-close" title="Blog">
+                                                Asocia curso a categorias
+                                            </a></li>
+                                        <li class="divider"></li>                                            
+                                        <li><a href="{{url ('admin/course_name')}}" class="bg-close" title="Agregar Cursos">                                        
+                                                Agregar Cursos</a></li>
+                                    </ul>
+                                </li>
 
-                        <?php }}?>
+                                <?php
+                            }
+                        }
+                        ?>
                         <li><a href="{{url ('logout')}}" class="bg-close" title="Salir">
                                 <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
                             </a></li>
@@ -79,10 +93,10 @@
 
         @yield('content')
 
-	<!-- Scripts -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <!-- Scripts -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
         @yield('scripts')
-</body>
+    </body>
 </html>

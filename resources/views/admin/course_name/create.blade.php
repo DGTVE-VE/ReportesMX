@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('app')
 
 @section('content')
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Create New Course_name</div>
+                    <div class="panel-heading">Crear Curso</div>
                     <div class="panel-body">
 
                         @if ($errors->any())
