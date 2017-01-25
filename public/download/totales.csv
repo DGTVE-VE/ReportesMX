@@ -1,4 +1,179 @@
-Usuarios,Cantidad
-"Registrados en MéxicoX",298558
-"Usuarios con cuenta activada en MéxicoX",54644
-"Usuarios que no tienen su cuenta activada en MéxicoX",243914
+id,"id curso","nombre del curso",inscritos
+1,CENAPRED/FEAP101x/2016_S2,,13
+2,UniversidadHebraica+UHMx_02+2016_S2,,19
+3,SETEC-SEGOB/SETEC-Inic/2016,,26266
+4,UTPuebla/ABPx/2016-S2,,46
+5,DGESPE/CICHD-2015/S1_2016,,14503
+6,Tecnologico_de_Monterrey/EPPE1I01x/2017_S1,,877
+7,course-v1:Prepaenlinea-SEP+Prepa001-2p+2016-1,,619
+8,SistemaDeUniversidadVirtualUdG/UDGSUVCA2x/2016_1,,100
+9,OrganizacionX/CP01/2016,,618
+10,Tecnologico_de_Monterrey/LREE1I01x/2017_S1,,878
+11,TecNM.MX/ACF-0901-A1/2016_T2,,3
+12,UniversidaddelClaustrodeSorJuanaX/SDSJ01/2015_T1,,4046
+13,course-v1:TecNM.MX+ACF-0902-2+2016-2,,457
+14,course-v1:EscuelaX+CPRPG+2017,,60
+15,Tecnologico_de_Monterrey/ECLE1I01x/2017_S1,,428
+16,course-v1:Colef+Colef01_2016+2016_S2,,4
+17,ecNM/ACA090716Bx/2016,,3
+18,0MexicoX/000MX/2015,,7349
+19,ITESM/innorea01x/2016_Borrar,,15
+20,course-v1:EscuelaX+CP2RPG+2017,,49
+21,UniversidadX/CP02/2016,,10
+22,course-v1:ITESM+innorea01x+2016_2,,196
+23,course-v1:Microsoft+MSW01+MSW01,,1
+24,Tecnologico_de_Monterrey/LNIE1I01x/2017_S1,,377
+25,TecNM.MX+ACD090816Bx+2016_S2,,2
+26,TecNM+ACF-0901-A+2016_S2,,26
+27,TecNM+ACA090916BX+2016_2,,18
+28,INEE/DP01/2016,,45
+29,DGESPE/CICHD-2016/05_2016,,1
+30,UNIRMexico+CE_UNIRMex_02+2016_S2,,123
+31,UNAM/UNAM004/2014,,225
+32,TecdeMonterrey/innorea01/2016_B,,1
+33,course-v1:CENART+ABC2016+2016,"ABC para la creación de proyectos culturales",4682
+34,course-v1:CENART+ABC2015+2015_S2,"ABC para la creación de proyectos culturales",8474
+35,UPEV_IPN/03/2015_S2,"Administración de Proyectos de Tecnologías de la Información",8521
+36,course-v1:IPN+APTI01+2016-S2,"Administración de proyectos de Tecnologías de la Información",3587
+37,course-v1:SAGARPA+CMHI1x+2016_S2,"Agricultura Familiar: Transformaciones y Perspectivas",1782
+38,course-v1:TecNM.MX+ACF-0903-2+2016_T1,"Algebra de Espacios Vectoriales",5821
+39,course-v1:TecNM.MX+ACF-0903-15-A1+2016-T1,"Álgebra Lineal",16596
+40,TecNM.MX/ACF-0903-1/2015_T2,"Algebra Lineal",24956
+41,course-v1:TecNM+ACF090316Bx+2016_2,"Álgebra Lineal",7854
+42,course-v1:TECNM+AL1P022017AX+2017_S1,"Álgebra Lineal, primera parte",1463
+43,course-v1:BUAP+BUAP-AA2016+2016_S2,"Apreciación y análisis. Una guía para entender el arte.",5376
+44,course-v1:Prepaenlinea-SEP+Prepa003-2p+2016_1,"Aprender a Aprender, alternativas para una mejor calidad de vida",3687
+45,course-v1:Prepaenlinea-SEP+PrepaSEP005-3a+2016_S2,"Aprender a Aprender, alternativas para una mejor calidad de vida",1970
+46,course-v1:Prepaenlinea-SEP+PELSEPAAOx+2016_S2,"Aprender a Aprender, alternativas para una mejor calidad de vida",1586
+47,course-v1:Prepaenlinea-SEP+PrepaSEP005-3c+2016_S2,"Aprender a Aprender, alternativas para una mejor calidad de vida",1788
+48,course-v1:Prepaenlinea-SEP+PrepaSEP004-2a+2016_S1,"Aprender a Aprender, alternativas para una mejor calidad de vida(abierto 2)",2778
+49,course-v1:Prepaenlinea-SEP+Prepa001p+2015-4,"Aprender a Aprender, Alternativas para una mejor calidad de vida(abierto)",5880
+50,Prepaenlinea-SEP/Prepa001/2015-5,"Aprender a Aprender, Alternativas para una mejor calidad de vida(cerrado)",3004
+51,course-v1:UnADM+UnADM-AEAV-01+2016_S2,"Aprendizaje estratégico en ambientes virtuales",5253
+52,course-v1:TECNM+APA022017AX+2017_S1,"Aritmética y principios de Álgebra",1610
+53,course-v1:TecNM+ACF-0901-A+2016_S2,"Aritmética y principios de Álgebra",13356
+54,course-v1:UNAM+UNAM003+2014,"Astronomía. Galaxias: los puentes entre las estrellas y el Universo",7949
+55,UPEV_IPN/01/2015_S2,"Biología Humana",6363
+56,course-v1:IPN+IPN_BH01+2016_S2,"Biología Humana",3851
+57,course-v1:UAEM+eUAEM_2016_2+2016_2,"Búsqueda en Internet para Universitarios",5544
+58,course-v1:TECNM+ACF090116Ax+2016,"Cálculo Diferencial",15072
+59,course-v1:TECNM+CD1P022017AX+2017_S1,"Cálculo diferencial, primera parte",1518
+60,course-v1:UNAM+UNAM002+Trimestral,"Cambio climático",7596
+61,course-v1:FEM-UAE+CBx+2016_T1,"Ciberbullying: la otra cara del internet ",3980
+62,course-v1:CENART+CNRG2016+2016_S2,CineRegistro,6149
+63,course-v1:UNIRMexico+CE_UNIRMex+2016_01,"Coaching Educativo",7725
+64,course-v1:UNIRMexico+CE_UNIRMex_02+2016_S2,"Coaching Educativo",6256
+65,course-v1:UnADM+CCMPT01+2015_S2,"Cómo crear un MOOC ... para todos",4557
+66,course-v1:MexicoX+CMX01+2016,"Conoce MéxicoX",33087
+67,course-v1:UAEM+CRE101x+2016_S2,"Curaduría de recursos educativos en línea",1495
+68,course-v1:SETEC-SEGOB+SETEC-CBAMPSPA+2016-S2,"Curso básico para Agentes del Ministerio Público en el Sistema Penal Acusatorio",413
+69,course-v1:SETEC-SEGOB+SETEC-CBAMPSPA+2016_T3,"Curso básico para Agentes del Ministerio Público en el Sistema Penal Acusatorio",166
+70,course-v1:SETEC-SEGOB+SETEC-CBAMPSPA+2016_T4,"Curso básico para Agentes del Ministerio Público en el Sistema Penal Acusatorio ",739
+71,course-v1:SETEC-SEGOB+SETEC-DSPA+2016-S2,"Curso básico para Defensores en el Sistema Penal Acusatorio ",207
+72,course-v1:SETEC-SEGOB+SETEC-DSPA+2016_T3,"Curso básico para Defensores en el Sistema Penal Acusatorio",260
+73,course-v1:SETEC-SEGOB+SETEC-DSPA+2016_T4,"Curso básico para Defensores en el Sistema Penal Acusatorio",142
+74,course-v1:SETEC-SEGOB+SETEC-Jueces+2016,"Curso básico para Jueces en el Sistema Penal Acusatorio",95
+75,course-v1:SETEC-SEGOB+SETEC-Jueces+2016_T3,"Curso básico para Jueces en el Sistema Penal Acusatorio",61
+76,course-v1:SETEC-SEGOB+SETEC-Jueces+2016_T4,"Curso básico para Jueces en el Sistema Penal Acusatorio",71
+77,course-v1:DGESPE+CICHD-2016_S2+2016_S2,"Curso Integral de Consolidación a las Habilidades Docentes",4160
+78,course-v1:DGESPE+CICHD-2016+2016_05,"Curso Integral de Consolidación a las Habilidades Docentes",3299
+79,DGESPE/CICHD-2016/2016_S2,"Curso Integral de Consolidación a las Habilidades Docentes",11399
+80,course-v1:UniversidadX+CP01+2016,"Curso Prueba",10
+81,course-v1:UCSJ+UCSJMXv2x+2016_S2,"De México al mundo, los ingredientes",3233
+82,course-v1:UCSJ+G01+2015G01,"De México al mundo, los ingredientes",3736
+83,course-v1:INGER+DEMENCIAS01+2016_S1,Demencias,5089
+84,course-v1:TecNM.MX+M-ACD0908-1+2016,"Desarrollo Sustentable, nuestro futuro compartido",11391
+85,course-v1:TecNM.MX+ACD090816Bx+2016_S2,"Desarrollo Sustentable, nuestro futuro compartido",8540
+86,course-v1:TECNM+DSNFC022017Bx+2017_S1,"Desarrollo Sustentable, nuestro futuro compartido",1393
+87,course-v1:UniversidadHebraica+UHMx_02+2016_S2,"Descifrando el Mundo de las adicciones ",1065
+88,course-v1:UniversidadHebraica+UHMx_01+2016_T1,"Descifrando el Mundo de las adicciones",5248
+89,course-v1:INEE+DP01+2016_S2,"Diez en Planea",4243
+90,course-v1:Microsoft+MSW01+2016_S2,"Edición de documentos para el aula de clases con Microsoft Word",12391
+91,course-v1:UPN+EI_UPN002_2+2016_S2,"Educación intercultural. Perspectivas interdisciplinarias",2138
+92,course-v1:UPN+UPN002+2015,"Educación intercultural. Perspectivas interdisciplinarias",3730
+93,course-v1:edX+DemoX+Demo_Course,"edX Demonstration Course",91
+94,course-v1:UNIRMexico+TIC_UNIRMex02+2016_S2,"El uso de las TIC en la Educación Primaria",1135
+95,course-v1:UNIRMexico+TIC_UNIRMex+2016_01,"El uso de las TIC en la Educación Primaria",1827
+96,course-v1:Tecnologico_de_Monterrey+EPPE1I01x+2017_T1,"Energía: pasado, presente y futuro ",4375
+97,course-v1:Tecnologico_de_Monterrey+ECLE1I01x+2017_T1,"Energías convencionales, limpias y su tecnología ",2411
+98,TecNM.MX/ACF-0902-1/2016,"Entendiendo el Cálculo Integral",13022
+99,course-v1:TECNM+ACF090216Bx+2016,"Entendiendo el Cálculo Integral",5308
+100,course-v1:TECNM+ACF010217Bx+2017_S1,"Entendiendo el Cálculo Integral",1224
+101,course-v1:INFOTEC+EMRIC+2016_T1,"Estrategias para el Manejo de Recursos de Información Científica",4400
+102,course-v1:INSP+insp.etv.001+2015_T1,"ETV: Paludismo, Dengue y Chikungunya",2322
+103,course-v1:INEE+EEC01+2016_S2,"Evaluación educativa en un clic",4129
+104,course-v1:IIIDx+IIIDFe101x+2016_S2,"Felicidad estudios avanzados",8751
+105,course-v1:IIIDx+IIIDFe102x+2017_S1,"Felicidad, Estudios avanzados",5871
+106,course-v1:FCPS-UNAM+UNAM0008x+2016_S2,"Finanzas para emprendedores",115
+107,UNAM/0004UNAM/2014,"Finanzas para emprendedores",27834
+108,course-v1:FCPS-UNAM+UNAM0007x+2016-S1,"Finanzas para emprendedores",10091
+109,course-v1:SHCP_UNAM+D_PbR1x+2016_S2,"Finanzas Públicas e Introducción al Presupuesto basado en Resultados",9071
+110,course-v1:IPN-UPEV+FDEMNS_01+2016,"Formación docente para la enseñanza de matemáticas básicas",4069
+111,course-v1:IPN-UPEV+GEOB_01+2016,"Geobiología: evolución de la vida y la Tierra",3068
+112,course-v1:INFOTEC+HCIARS+2016_T1,"Herramientas de cómputo para la investigación y análisis de redes sociales",4543
+113,course-v1:TECNM+HGCN022017+2017_S1,"Herramientas de gestión y comunicación en la nube",2801
+114,course-v1:TecNM+HGC090116Bx+2016,"Herramientas de gestión y comunicación en la nube",9781
+115,course-v1:IPN-UPEV+ICE_01+2016,"Inducción a la correción de estilo",9980
+116,course-v1:TecNM.MX+TIP-1017-1+2016_T1,"Informática en la vida moderna",13818
+117,course-v1:Microsoft+MSE01+2016_S2,"Iniciación al uso de hojas de cálculo en el aula con Microsoft Excel",19830
+118,course-v1:TecdeMonterrey+innorea01x+2016,"Innovación en la creación de recursos abiertos para la educación",4943
+119,course-v1:INFOTEC+MOOC_IdC+062015,"Internet de las cosas",4419
+120,course-v1:BANSEFI+BANSEFIIEF01x+2016_S2,"Introducción a la Educación Financiera",5768
+121,course-v1:UPN+UPN003x+2016,"Introducción a la Nueva Epistemología",2989
+122,course-v1:DGESPE+IAVA_2016+2016_S2,"Introducción a los Ambientes Virtuales de Aprendizaje",26574
+123,course-v1:UTRM+SAB01201601+2016_S2,"Introducción al Servicio de Alimentos y Bebidas",5635
+124,course-v1:CENTROGEO+CGGTARE_1x+2016_S2,"Introducción al uso y representación de información geoespacial",7204
+125,TecNM.MX/M-ACC-0906-1_1/2016,"Investigación, Descubriendo Hechos y Principios",11098
+126,course-v1:TecNM+ACA090916BX+2016_2,"Investigación. Descubriendo Hechos y Principios",8263
+127,course-v1:TecNM+IDHP02201717AX+2017_S1,"Investigación. Descubriendo Hechos y Principios",1108
+128,course-v1:CCT-Television-educativa+CCT-101-16+2016-S1,"La dramática en el audiovisual de ficción",1268
+129,TelevisionEducativa/CCT-101/2015-S2,"La dramática en el audiovisual de ficción",2501
+130,course-v1:TECNM+ESHC022017AX+2017_S1,"La ética, el ser humano y la ciencia",1441
+131,course-v1:TecNM+ACA090716Bx+2016,"La ética, el ser humano y la ciencia",8968
+132,course-v1:El_Colegio_de_Mexico+CMHI1x+2016_T1,"La historia de la vida cotidiana",5862
+133,course-v1:Colef+Colef02x+2016_S2,"La línea, 3200 kms de frontera",1766
+134,course-v1:Tecnologico_de_Monterrey+LNIE1I01x+2017_T1,"La nueva industria eléctrica en México",1928
+135,course-v1:Tecnologico_de_Monterrey+LREE1I01x+2017_T1,"La Reforma Energética de México y sus oportunidades",3707
+136,course-v1:INSP+lactancia.01+2015_T1,"Lactancia materna y amamantamiento",5286
+137,course-v1:IPN-UPEV+LGCEPQ_01+2016,"Liderazgo de gestión en centros educativos ¿por qué?",4387
+138,course-v1:El_Colegios_de_Mexico+CMLT1X+2015_LT1,"Literatura y cultura tradicional de México",6585
+139,course-v1:El_Colegio_de_Mexico+CMLT1X+2016_2,"Literatura y cultura tradicional de México",2479
+140,course-v1:CENAPRED+FEAP101x+2017_S1,"Los desastres y sus efectos psicológicos",4993
+141,course-v1:INEA+LPTMx+2016_S2,"Los pueblos tenemos memoria",1606
+142,course-v1:SHCP-UNAM+DPbR3x+2016_S2,"Metodología de Marco Lógico y Matriz de Indicadores para Resultados",5127
+143,course-v1:UNAM+UNAM0006+2015,"México multiculturalismo",7341
+144,course-v1:INEA+PPEH+2016E1,"México y su pasado reciente",1936
+145,course-v1:UNAM+UNAM005+2015,"México, sus grandes retos y oportunidades",4572
+146,course-v1:Colef+Colef01+2015_COLEF,"Migración, un fenómeno global",3099
+147,course-v1:Colef+Colef02+2016_S2,"Migración, un fenómeno global",2421
+148,course-v1:SistemaDeUniversidadVirtualUdG+H2016-1+2016-S2,"Otra forma de aprender historia",1559
+149,course-v1:TecNM+ACF-0901-A+2016,"Piérdele el miedo a las mates",23153
+150,course-v1:SHCP-UNAM+DPbR2x+2016_S2,"Planeación y Presupuesto Orientado a Resultados",6113
+151,course-v1:DGSPE+CPENx+2016-T2,"Portafolio de evidencias para Escuelas normales",4066
+152,course-v1:UTPuebla+UTPPDDx+2017_S1,"Portafolios Digitales para Docentes",7258
+153,course-v1:UnADM+UnADM-PAC-01+2016,"Prevención de accidentes en casa",4332
+154,course-v1:CONAMED+PCDAM2+2016_S2,"Prevención del conflicto derivado del acto médico",704
+155,course-v1:CONAMED+PCDAM+2016_C1,"Prevención del conflicto derivado del acto médico",1538
+156,course-v1:CONAMED+PCDAM02+2016_S2,"Prevención del conflicto derivado del acto médico",3
+157,course-v1:TECNM+TecNM_PE2016+2016,"Probabilidad y estadística",9214
+158,course-v1:TECNM+PE022017AX+2017_S1,"Probabilidad y estadística",2247
+159,course-v1:UTPuebla+PMMDx+2016_S2,"Producción Multimedia de Material Didáctico",7242
+160,course-v1:Microsoft+MSPP01+2016_S2,"Productividad y creatividad en el aula con Microsoft Power Point",10856
+161,course-v1:IPN+POO2016+2016_S1,"Programación Orientada a Objetos (POO)",4680
+162,UPEV_IPN/02/2015,"Programación Orientada a Objetos (POO)",11169
+163,course-v1:INFOTEC+INFOTECPDP+2016_T1,"Protección de Datos Personales",2379
+164,course-v1:DGTVE_UNAM+DGTVEUNAM001+2016_S2,"Redacción para todos",37
+165,course-v1:UNAM+UNAM001+Trimestral,"Redacción para todos",159983
+166,course-v1:IIIDx+IIIDRn102x+2016_T1,"Resiliencia Nómica",7873
+167,course-v1:IIIDx+IIIDRn103x+2016_s2,"Resiliencia Nómica",8444
+168,IIIDx/IIIDRn101x/2015_T2,"Resiliencia Nómica",12108
+169,course-v1:IIIDx+IIIDRn104x+2017_S1,"Resiliencia nómica",2626
+170,course-v1:CINVESTAV+FRPMx+2016_S1,"Resolución de problemas matemáticos y el uso de tecnologías digitales",2379
+171,course-v1:CINVESTAV+RPMUTDX02+2017_S1,"Resolución de problemas matemáticos y el uso de tecnologías digitales",2011
+172,course-v1:INSP+osea1+2015_T2,"Salud ósea a lo largo de la vida",2809
+173,course-v1:UCSJ+SDSJ01+2015_T1,"Seducciones de Sor Juana",3
+174,course-v1:UTC+UTCM01+2016_C3,"Servicios Turísticos",2906
+175,course-v1:SHCP-UNAM+DPbR4x+2016_S2,"Sistema de Evaluación del Desempeño",4728
+176,course-v1:CONAPASE+CONAPASE_TIC_2016+2016-S1,"Tecnologías de la información y la comunicación (TIC) para la participación social en la educación",2649
+177,course-v1:UPN+VE_UPN001_2+2016_S2,"Violencia en la Escuela. Herramientas para su análisis e intervención",7377
+178,course-v1:UPN+UPN001+2015,"Violencia en la Escuela. Herramientas para su análisis e intervención",5589

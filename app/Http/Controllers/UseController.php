@@ -325,7 +325,7 @@ class UseController extends Controller {
 		if(($super_user == '1') && (session()->get('course_id') == null)){
 
 			$perfil_p = DB::table('vm_perfil_usuario')
-			->select('course_id', 'user_id','descripcion', 'year_of_birth', 'gender', 'level_of_education', 'mailing_address', 'city', 'country')
+			->select('course_id', 'user_id','description', 'year_of_birth', 'gender', 'level_of_education', 'mailing_address', 'city', 'country')
 			->get();
 
 			$fp = fopen('download/perfilp.csv', 'w');
@@ -334,7 +334,7 @@ class UseController extends Controller {
 			fputcsv($fp, $titulop);
 
 			foreach ($perfil_p as $key) {
-				$array = array($key->username , $key->email, $key->descripcion, $key->year_of_birth, $key->gender, $key->level_of_education, $key->mailing_address, $key->city, $key->country);
+				$array = array($key->course_id , $key->user_id, $key->description, $key->year_of_birth, $key->gender, $key->level_of_education, $key->mailing_address, $key->city, $key->country);
 				fputcsv($fp, $array);
 			}
 
@@ -465,7 +465,7 @@ class UseController extends Controller {
 
 			// $perfil_p = DB::table('auth_perfilusuario')
 			$perfil_p = DB::table('vm_perfil_usuario')->wherecourse_id($course_id)
-				->select('descripcion', 'year_of_birth', 'gender', 'level_of_education', 'mailing_address', 'city', 'country')
+				->select('description', 'year_of_birth', 'gender', 'level_of_education', 'mailing_address', 'city', 'country')
 				->get();
 
 				$fp = fopen('download/perfilp.csv', 'w');
@@ -474,7 +474,7 @@ class UseController extends Controller {
 				fputcsv($fp, $titulop);
 
 				foreach ($perfil_p as $key) {
-					$array = array($key->username , $key->email, $key->descripcion, $key->year_of_birth, $key->gender, $key->level_of_education, $key->mailing_address, $key->city, $key->country);
+					$array = array($key->description, $key->year_of_birth, $key->gender, $key->level_of_education, $key->mailing_address, $key->city, $key->country);
 					fputcsv($fp, $array);
 				}
 
