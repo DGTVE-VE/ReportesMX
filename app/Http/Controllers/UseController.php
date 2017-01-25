@@ -325,12 +325,12 @@ class UseController extends Controller {
 		if(($super_user == '1') && (session()->get('course_id') == null)){
 
 			$perfil_p = DB::table('vm_perfil_usuario')
-			->select('user_id','descripcion', 'year_of_birth', 'gender', 'level_of_education', 'mailing_address', 'city', 'country')
+			->select('course_id', 'user_id','descripcion', 'year_of_birth', 'gender', 'level_of_education', 'mailing_address', 'city', 'country')
 			->get();
 
 			$fp = fopen('download/perfilp.csv', 'w');
 
-			$titulop = array('User_ID' , 'Perfil profesional', 'Fecha de nacimiento', 'Genero', 'Nivel educativo', 'Codigo postal', 'Ciudad', 'Pais');
+			$titulop = array('Course_ID', 'User_ID' , 'Perfil profesional', 'Fecha de nacimiento', 'Genero', 'Nivel educativo', 'Codigo postal', 'Ciudad', 'Pais');
 			fputcsv($fp, $titulop);
 
 			foreach ($perfil_p as $key) {
