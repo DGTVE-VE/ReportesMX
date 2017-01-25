@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Model\Course_name;
 use Illuminate\Http\Request;
 use Session;
+use App\Model\Auth_userprofile;
 
 class Course_nameController extends Controller
 {
@@ -16,11 +17,16 @@ class Course_nameController extends Controller
      *
      * @return \Illuminate\View\View
      */
+    
+
+        
     public function index()
     {
+         $super_user = session()->get('super_user');
+        $username = session()->get('nombre');
         $course_name = Course_name::paginate(25);
 
-        return view('admin.course_name.index', compact('course_name'));
+        return view('admin.course_name.index', compact('course_name'))->with('name_user', $username);
     }
 
     /**
@@ -30,7 +36,9 @@ class Course_nameController extends Controller
      */
     public function create()
     {
-        return view('admin.course_name.create');
+                 $super_user = session()->get('super_user');
+        $username = session()->get('nombre');
+        return view('admin.course_name.create')->with('name_user', $username);
     }
 
     /**
@@ -61,9 +69,11 @@ class Course_nameController extends Controller
      */
     public function show($id)
     {
+                     $super_user = session()->get('super_user');
+        $username = session()->get('nombre');
         $course_name = Course_name::findOrFail($id);
 
-        return view('admin.course_name.show', compact('course_name'));
+        return view('admin.course_name.show', compact('course_name'))->with('name_user', $username);
     }
 
     /**
@@ -75,9 +85,11 @@ class Course_nameController extends Controller
      */
     public function edit($id)
     {
+         $super_user = session()->get('super_user');
+        $username = session()->get('nombre');
         $course_name = Course_name::findOrFail($id);
 
-        return view('admin.course_name.edit', compact('course_name'));
+        return view('admin.course_name.edit', compact('course_name'))->with('name_user', $username);
     }
 
     /**

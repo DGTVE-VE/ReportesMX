@@ -34,6 +34,9 @@ Route::get('mongo', ['middleware' => 'auth', 'uses' => 'UseController@mongo']);
 
 Route::get('logout', ['middleware' => 'auth', 'uses' => 'UseController@logout']);
 
+//*Ruta para dar de alta Cursos*//
+Route::resource('admin/course_name', 'Course_nameController');
+
 
 Route::get ('/busqueda','BusquedaController@buscarTodos');
 Route::get ('/categoria/{categoria}','BusquedaController@muestraCategoria');
@@ -100,4 +103,4 @@ Route::get('email/preview', function (){
 Route::get('asociaCategoria', 'categoriaController@categoria');
 Route::post('asignaCategoria', 'categoriaController@guardaCategoria');
 Route::post('consultaCurso', 'categoriaController@consultaCurso');
-Route::resource('admin/course_name', 'Course_nameController');
+
