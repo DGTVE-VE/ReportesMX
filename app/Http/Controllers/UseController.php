@@ -324,18 +324,13 @@ class UseController extends Controller {
 
 		if(($super_user == '1') && (session()->get('course_id') == null)){
 
-			$perfil_p = DB::table('auth_perfilusuario')
-			->where('sinco_4', '!=', '')
-			->join('edxapp.auth_user', 'edxapp.auth_user.id', '=', 'auth_perfilusuario.user_id')
-			->join('edxapp.auth_userprofile', 'edxapp.auth_userprofile.user_id', '=', 'edxapp.auth_user.id')
-			->leftJoin('auth_sinco', 'auth_sinco.clave', '=', 'auth_perfilusuario.sinco_4')
-			->leftJoin('codigospostales', 'codigospostales.CodigoPostal', '=', 'edxapp.auth_userprofile.mailing_address')
-			->select('edxapp.auth_user.username', 'edxapp.auth_user.email', 'auth_sinco.descripcion', 'edxapp.auth_userprofile.year_of_birth', 'edxapp.auth_userprofile.gender', 'edxapp.auth_userprofile.level_of_education', 'edxapp.auth_userprofile.mailing_address', 'edxapp.auth_userprofile.city', 'edxapp.auth_userprofile.country')
+			$perfil_p = DB::table('vm_perfil_usuario')
+			->select('user_id','descripcion', 'year_of_birth', 'gender', 'level_of_education', 'mailing_address', 'city', 'country')
 			->get();
 
 			$fp = fopen('download/perfilp.csv', 'w');
 
-			$titulop = array('Username' , 'Correo', 'Perfil profesional', 'Fecha de nacimiento', 'Genero', 'Nivel educativo', 'Codigo postal', 'Ciudad', 'Pais');
+			$titulop = array('User_ID' , 'Perfil profesional', 'Fecha de nacimiento', 'Genero', 'Nivel educativo', 'Codigo postal', 'Ciudad', 'Pais');
 			fputcsv($fp, $titulop);
 
 			foreach ($perfil_p as $key) {
@@ -469,20 +464,13 @@ class UseController extends Controller {
 			}
 
 			// $perfil_p = DB::table('auth_perfilusuario')
-			$perfil_p = DB::table('edxapp.student_courseenrollment')
-				->wherecourse_id($course_id)
-				->where('edxapp.student_courseenrollment.is_active', '=', '1')
-				->join('edxapp.auth_user', 'edxapp.auth_user.id', '=', 'edxapp.student_courseenrollment.user_id')
-				->join('edxapp.auth_userprofile', 'edxapp.auth_userprofile.user_id', '=', 'edxapp.auth_user.id')
-				->leftJoin('auth_perfilusuario', 'edxapp.auth_user.id', '=', 'auth_perfilusuario.user_id')
-				->leftJoin('auth_sinco', 'auth_sinco.clave', '=', 'auth_perfilusuario.sinco_4')
-				->leftJoin('codigospostales', 'codigospostales.CodigoPostal', '=', 'edxapp.auth_userprofile.mailing_address')
-				->select('edxapp.auth_user.username', 'edxapp.auth_user.email', 'auth_sinco.descripcion', 'edxapp.auth_userprofile.year_of_birth', 'edxapp.auth_userprofile.gender', 'edxapp.auth_userprofile.level_of_education', 'edxapp.auth_userprofile.mailing_address', 'edxapp.auth_userprofile.city', 'edxapp.auth_userprofile.country')
+			$perfil_p = DB::table('vm_perfil_usuario')->wherecourse_id($course_id)
+				->select('descripcion', 'year_of_birth', 'gender', 'level_of_education', 'mailing_address', 'city', 'country')
 				->get();
 
 				$fp = fopen('download/perfilp.csv', 'w');
 
-				$titulop = array('Username' , 'Correo', 'Perfil profesional', 'Fecha de nacimiento', 'Genero', 'Nivel educativo', 'Codigo postal', 'Ciudad', 'Pais');
+				$titulop = array('Perfil profesional', 'Fecha de nacimiento', 'Genero', 'Nivel educativo', 'Codigo postal', 'Ciudad', 'Pais');
 				fputcsv($fp, $titulop);
 
 				foreach ($perfil_p as $key) {
