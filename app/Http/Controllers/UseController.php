@@ -324,20 +324,19 @@ class UseController extends Controller {
 
 		if(($super_user == '1') && (session()->get('course_id') == null)){
 
-			$perfil_p = DB::table('vm_perfil_usuario')
-			->select('course_id', 'user_id','description', 'year_of_birth', 'gender', 'level_of_education', 'mailing_address', 'city', 'country')
-			->get();
+			 $perfil_p = DB::select(DB::raw('SELECT count(p.sinco_1) c, s.descripcion d FROM mexicox.auth_perfilusuario p
+			 inner join mexicox.auth_sinco s on p.sinco_1 = s.clave
+			 group by p.sinco_1 order by count(p.sinco_1) desc'));
 
 			$fp = fopen('download/perfilp.csv', 'w');
 
-			$titulop = array('Course_ID', 'User_ID' , 'Perfil profesional', 'Fecha de nacimiento', 'Genero', 'Nivel educativo', 'Codigo postal', 'Ciudad', 'Pais');
+			$titulop = array('Usuarios', 'Descripcion');
 			fputcsv($fp, $titulop);
 
 			foreach ($perfil_p as $key) {
-				$array = array($key->course_id , $key->user_id, $key->description, $key->year_of_birth, $key->gender, $key->level_of_education, $key->mailing_address, $key->city, $key->country);
+				$array = array($key->c , $key->d);
 				fputcsv($fp, $array);
 			}
-
 			fclose($fp);
 
 			//////////////////////////////////////////////////////////////
@@ -463,22 +462,21 @@ class UseController extends Controller {
 				return $this->correoacurso();
 			}
 
-			// $perfil_p = DB::table('auth_perfilusuario')
-			$perfil_p = DB::table('vm_perfil_usuario')->wherecourse_id($course_id)
-				->select('description', 'year_of_birth', 'gender', 'level_of_education', 'mailing_address', 'city', 'country')
-				->get();
+			$perfil_p = DB::select(DB::raw('SELECT count(p.sinco_1) c, s.descripcion d FROM mexicox.auth_perfilusuario p
+			inner join mexicox.auth_sinco s on p.sinco_1 = s.clave
+			group by p.sinco_1 order by count(p.sinco_1) desc'));
 
-				$fp = fopen('download/perfilp.csv', 'w');
+		 $fp = fopen('download/perfilp.csv', 'w');
 
-				$titulop = array('Perfil profesional', 'Fecha de nacimiento', 'Genero', 'Nivel educativo', 'Codigo postal', 'Ciudad', 'Pais');
-				fputcsv($fp, $titulop);
+		 $titulop = array('Usuarios', 'Descripcion');
+		 fputcsv($fp, $titulop);
 
-				foreach ($perfil_p as $key) {
-					$array = array($key->description, $key->year_of_birth, $key->gender, $key->level_of_education, $key->mailing_address, $key->city, $key->country);
-					fputcsv($fp, $array);
-				}
+		 foreach ($perfil_p as $key) {
+			 $array = array($key->c , $key->d);
+			 fputcsv($fp, $array);
+		 }
+		 fclose($fp);
 
-				fclose($fp);
 
 			////////////////////////////////////////////////////////////////////////////////////////////////
 			$date = date("Y");
