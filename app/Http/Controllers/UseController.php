@@ -324,9 +324,9 @@ class UseController extends Controller {
 
 		if(($super_user == '1') && (session()->get('course_id') == null)){
 
-			 $perfil_p = DB::select(DB::raw('SELECT count(p.sinco_1) c, s.descripcion d FROM mexicox.auth_perfilusuario p
-			 inner join mexicox.auth_sinco s on p.sinco_1 = s.clave
-			 group by p.sinco_1 order by count(p.sinco_1) desc'));
+			$perfil_p = DB::select(DB::raw('SELECT count(p.sinco_1) c, s.descripcion d FROM mexicox.auth_perfilusuario p
+			inner join mexicox.auth_sinco s on p.sinco_1 = s.clave
+			group by p.sinco_1 order by count(p.sinco_1) desc'));
 
 			$fp = fopen('download/perfilp.csv', 'w');
 
@@ -449,7 +449,17 @@ class UseController extends Controller {
 			$cn1 = "Usuarios con cuenta activada en MéxicoX";
 			$cn2 = "Usuarios que no tienen su cuenta activada en MéxicoX";
 
-			return view('usuarios/totales')-> with ('info', collect($info)) -> with ('edad', collect($edad))->with('infot', collect($infot))->with ('estudio', collect($estudio))->with('name_user', $username )-> with('course_name0', $cn0)-> with('course_name1', $cn1)-> with('course_name2', $cn2)-> with('course_name', $cn);
+			return view('usuarios/totales')
+			-> with ('info', collect($info))
+			-> with ('edad', collect($edad))
+			-> with('infot', collect($infot))
+			-> with ('estudio', collect($estudio))
+			-> with('name_user', $username )
+			-> with('course_name0', $cn0)
+			-> with('course_name1', $cn1)
+			-> with('course_name2', $cn2)
+			-> with('course_name', $cn)
+			-> with('perfil_p', collect($perfil_p));
 
 		}
 
@@ -462,9 +472,12 @@ class UseController extends Controller {
 				return $this->correoacurso();
 			}
 
-			$perfil_p = DB::select(DB::raw('SELECT count(p.sinco_1) c, s.descripcion d FROM mexicox.auth_perfilusuario p
-			inner join mexicox.auth_sinco s on p.sinco_1 = s.clave
-			group by p.sinco_1 order by count(p.sinco_1) desc'));
+			$perfil_p = DB::select(DB::raw('SELECT count(p.sinco_1) c, s.descripcion d
+				FROM mexicox.auth_perfilusuario p
+				inner join mexicox.auth_sinco s on p.sinco_1 = s.clave
+				left join edxapp.student_courseenrollment c on c.user_id = p.user_id
+				where c.course_id = "'.$course_id.'" group by p.sinco_1 order by c desc'));
+
 
 		 $fp = fopen('download/perfilp.csv', 'w');
 
@@ -590,7 +603,17 @@ class UseController extends Controller {
 			fputcsv($fp, $info1);
 			fclose($fp);
 
-			return view('usuarios/totales') -> with ('info', collect($info)) -> with ('edad', collect($edad))->with ('infot', collect($infot))->with ('estudio', collect($estudio))->with('name_user', $username )-> with('course_name', $course_name)-> with('course_name0', $c_name0)-> with('course_name1', $c_name1)-> with('course_name2', $c_name2);
+			return view('usuarios/totales')
+			-> with ('info', collect($info))
+			-> with ('edad', collect($edad))
+			-> with ('infot', collect($infot))
+			-> with ('estudio', collect($estudio))
+			-> with('name_user', $username )
+			-> with('course_name', $course_name)
+			-> with('course_name0', $c_name0)
+			-> with('course_name1', $c_name1)
+			-> with('course_name2', $c_name2)
+			-> with('perfil_p', collect($perfil_p));
 
 		}
 		else

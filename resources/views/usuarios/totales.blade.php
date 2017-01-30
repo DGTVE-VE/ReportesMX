@@ -82,6 +82,27 @@ function drawChart() {
 
     ////////////////////////////////////////////////////////////////////////////
 
+    var data3 = google.visualization.arrayToDataTable([
+
+      ['',"{{$perfil_p[0]->d}}", "{{$perfil_p[1]->d}}", "{{$perfil_p[2]->d}}", "{{$perfil_p[3]->d}}", "{{$perfil_p[4]->d}}", "{{$perfil_p[5]->d}}", "{{$perfil_p[6]->d}}", "{{$perfil_p[7]->d}}", "{{$perfil_p[8]->d}}"],
+      ['Usuarios',{{$perfil_p[0]->c}}, {{$perfil_p[1]->c}}, {{$perfil_p[2]->c}}, {{$perfil_p[3]->c}}, {{$perfil_p[4]->c}}, {{$perfil_p[5]->c}}, {{$perfil_p[6]->c}}, {{$perfil_p[7]->c}}, {{$perfil_p[8]->c}}]
+
+    ]);
+
+    var options3 = {
+      legend: { position: 'left' },
+      chart: {
+        title: 'Nivel de estudios usuarios',
+        subtitle: '',
+      }
+    };
+
+    var chart3 = new google.charts.Bar(document.getElementById('columnchart_profesiones'));
+
+    chart3.draw(data3, options3);
+
+    ////////////////////////////////////////////////////////////////////////////
+
 
   }
 
@@ -92,9 +113,6 @@ function drawChart() {
   @extends('app') @section('content')
   <center> <h4>Información de usuarios inscritos a "{{$course_name}}"</h4></center>
 
-  <div class="container center">
-    <a class="btn btn-default" href="{{url ('/download/perfilp.csv')}}" role="button">Descargar archivo perfiles profesionales.csv</a>
-  </div>
 
   <div class="container">
     <div class="row">
@@ -202,7 +220,29 @@ function drawChart() {
   </table>
   <br>
 
-</table>
+  <div class="container">
+    <div class="row">
+      <br><br>
+      <table class="table table-hover table-bordered">
+        <td><div id="columnchart_profesiones" style="width: 850px; height: 600px;"></div></td>
+        <td><div><table class="table table-hover table-bordered">
+          <tr><td class="success" style="font-size: medium">Nivel de estudios</td><td class="success" style="font-size: medium">Cantidad</td></tr>
+          <tr><td class="warning">{{$perfil_p[0]->d}},</td><td class="warning">{{$perfil_p[0]->c}}</td></tr>
+          <tr><td class="warning">{{$perfil_p[1]->d}},</td><td class="warning">{{$perfil_p[1]->c}}</td></tr>
+          <tr><td class="warning">{{$perfil_p[2]->d}},</td><td class="warning">{{$perfil_p[2]->c}}</td></tr>
+          <tr><td class="warning">{{$perfil_p[3]->d}},</td><td class="warning">{{$perfil_p[3]->c}}</td></tr>
+          <tr><td class="warning">{{$perfil_p[4]->d}},</td><td class="warning">{{$perfil_p[4]->c}}</td></tr>
+          <tr><td class="warning">{{$perfil_p[5]->d}},</td><td class="warning">{{$perfil_p[5]->c}}</td></tr>
+          <tr><td class="warning">{{$perfil_p[6]->d}},</td><td class="warning">{{$perfil_p[6]->c}}</td></tr>
+          <tr><td class="warning">{{$perfil_p[7]->d}},</td><td class="warning">{{$perfil_p[7]->c}}</td></tr>
+          <tr><td class="warning">{{$perfil_p[8]->d}},</td><td class="warning">{{$perfil_p[8]->c}}</td></tr>
+        </table>
+        <a class="btn btn-default" href="{{url ('/download/perfilp.csv')}}" role="button">Descargar archivo perfiles profesionales.csv</a>
+      </div></td>
+    </table>
+    <br>
+
+
 </div>
 </div>
 
