@@ -326,8 +326,8 @@
                                             </div>
                                         </div>
                                         <div class="form-group col-md-8 col-md-offset-2">
-                                            <label for="califConstancia">Rango de calificación aprobatoria</label>
-                                            <input name="rangoCalificacion" type="text" class="form-control" placeholder="Especifica el rango de calificación aprobatoria para el Curso">   
+                                            <label for="califConstancia">Calificación mínima aprobatoria</label>
+                                            <input name="rangoCalificacion" max="10" min="0" type="number" class="form-control" placeholder="Especifica la calificación mínima aprobatoria para el Curso">   
                                             <div class="help-tip posicion">
                                                 <p>- Especificar la calificación mínima aprobatoria para obtener constancia 
                                                     <br/>- El número debe ser mayor o igual a 6 y menor o igual a 10  </p>
@@ -412,7 +412,6 @@
                                         {{csrf_field()}}
                                         <div class="form-group col-md-8 col-md-offset-2"><br><br>
                                             <h3>STAFF del curso</h3>
-                                            <h5>(Hasta 4 integrantes del staff podrán aparecer en la constancia del curso)</h5>
                                             <hr>
                                         </div>
                                         <div class="form-group col-md-8 col-md-offset-2" id="instructores">
