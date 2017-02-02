@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group col-md-12">
-                        <h2 class="text-center">Registro de MOOC para MéxicoX</h2>
+                        <h2 class="text-center">Registro de Curso para MéxicoX</h2>
                     </div>
                     <div class="panel with-nav-tabs panel-info">
                         <div class="panel-heading">
@@ -55,21 +55,21 @@
                                         </div>
                                         <div class="form-group col-md-8 col-md-offset-2">
                                             <label for="curseName">Nombre del curso</label>
-                                            <input name="nombreCurso" type="text"  max="70" class="form-control" id="curseName" placeholder="Escribe el nombre del MOOC" required>
+                                            <input name="nombreCurso" type="text"  max="70" class="form-control" id="curseName" placeholder="Escribe el nombre del Curso" required>
                                             <div class="help-tip posicion">
                                                 <p>- Longitud: 70 caracteres máximo (con espacios)
                                             </div>
                                         </div>  
 
                                         <div class="col-md-3 col-md-offset-2">
-                                            <label for="typeMOOC">Tipo de Curso: </label>
-                                            <select name="tipoMOOC">
-                                                <option value="mooc">MOOC</option>
+                                            <label for="typeCurso">Tipo de Curso: </label>
+                                            <select name="tipoCurso">
+                                                <option value="mooc">Curso</option>
                                                 <option value="spoc">SPOC</option>
                                                 <option value="diplomado">Diplomado</option>
                                             </select>
                                             <div class="help-tip posicion">
-                                                <p>- MOOC: Público en general  
+                                                <p>- Curso: Público en general  
                                                     <br/>- SPOC: Por invitación 
                                                     <br/>- Diplomado  
                                                 </p>
@@ -77,7 +77,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <label for="numEmision">Número de Edición</label>
-                                            <select name="emisionMOOC">
+                                            <select name="emisionCurso">
                                                 <option value="1">1ra.</option>
                                                 <option value="2">2da.</option>
                                                 <option value="3">3ra.</option>
@@ -85,7 +85,7 @@
                                                 <option value="5">5ta.</option>
                                             </select>
                                             <div class="help-tip posicion">
-                                                <p>- Número de emisión del MOOC</p>
+                                                <p>- Número de emisión del Curso</p>
                                             </div>
                                         </div>
                                         <div class="form-group col-md-3">
@@ -126,14 +126,14 @@
                                             <label for="contactoInstitucion">Nombre de contacto</label>
                                             <input name="contactoInst" type="text" class="form-control" placeholder="Escribe el nombre completo del conctacto" required>
                                             <div class="help-tip posicion">
-                                                <p>- Nombre completo de la persona a cargo del MOOC (líder de proyecto)</p>
+                                                <p>- Nombre completo de la persona a cargo del Curso (líder de proyecto)</p>
                                             </div><br>
                                         </div>
                                         <div class="form-group col-md-8 col-md-offset-2">
                                             <label for="correoInstitucion">Correo electrónico de contacto</label>
                                             <input name="correoInst" type="text" class="form-control" placeholder="Escribe el correo electrónico del contacto " required>
                                             <div class="help-tip posicion">
-                                                <p>- Correo electrónico de la persona o institución a cargo del MOOC
+                                                <p>- Correo electrónico de la persona o institución a cargo del Curso
                                                     <br>- Correo electrónico personal </p>
                                             </div><br>
                                         </div>
@@ -174,12 +174,12 @@
                                     <form  action="{{url('nuevoRegistro')}}" method="POST" id="body" enctype="multipart/form-data">
                                         {{csrf_field()}}
                                         <div class="form-group col-md-8 col-md-offset-2"><br>
-                                            <h3>Fechas del MOOC</h3>
+                                            <h3>Fechas del Curso</h3>
                                             <hr>
                                         </div>
                                         <div class="form-group col-md-8 col-md-offset-2">
                                             <div class="col-md-4">
-                                                <label for="fechaInicio">Fecha de inicio del MOOC</label><br>
+                                                <label for="fechaInicio">Fecha de inicio del Curso</label><br>
                                                 <input name="fechaIni" type="date" required>
                                                 <div class="help-tip posicion">
                                                     <p>- Sugerimos empezar un día entre semana(martes, miércoles o jueves) 
@@ -190,10 +190,10 @@
                                             </div>
                                             <div class="col-md-2"></div>
                                             <div class="col-md-4">
-                                                <label for="fechaFinal">Fecha final del MOOC</label><br>
+                                                <label for="fechaFinal">Fecha final del Curso</label><br>
                                                 <input name="fechaFin" type="date" required>
                                                 <div class="help-tip posicion">
-                                                    <p>- Especificar la fecha en que termina el MOOC
+                                                    <p>- Especificar la fecha en que termina el Curso
                                                         <br/>- Evitar cualquier cambio de fecha
                                                     </p>
                                                 </div>
@@ -217,7 +217,7 @@
                                             </div>
                                         </div><br>
                                         <div class="form-group col-md-8 col-md-offset-2"><br><br>
-                                            <h3>Idioma del MOOC</h3>
+                                            <h3>Idioma del Curso</h3>
                                             <hr>
                                         </div>
                                         <div class="form-group col-md-5 col-md-offset-2">
@@ -254,23 +254,23 @@
                                     <form  action="{{url('nuevoRegistro')}}" method="POST" id="body" enctype="multipart/form-data">
                                         {{csrf_field()}}
                                         <div class="form-group col-md-8 col-md-offset-2"><br><br>
-                                            <h3>Resumen del MOOC</h3>
+                                            <h3>Resumen del Curso</h3>
                                             <hr>
                                         </div>
                                         <div class="form-group col-md-8 col-md-offset-2">
                                             <label for="courseDescriptionShort">Descripción breve del curso</label>
-                                            <textarea name="desCorta" class="form-control" id="courseDescriptionShort" placeholder="Escribe la descripción breve del MOOC"></textarea>
+                                            <textarea name="desCorta" class="form-control" id="courseDescriptionShort" placeholder="Escribe la descripción breve del Curso"></textarea>
                                             <div class="help-tip posicion">
-                                                <p>- Objetivo específico del MOOC
+                                                <p>- Objetivo específico del Curso
                                                     <br/>- Limitado a 160 caracteres incluyendo espacios</p>
                                             </div>
                                         </div>
                                         <div class="form-group col-md-8 col-md-offset-2">
                                             <label for="courseDescriptionLong">Acerca del Curso</label>
-                                            <textarea name="desLarga" rows="6" cols="40" class="form-control" id="courseDescriptionLong" placeholder="Escribe la descripción general del MOOC"></textarea>
+                                            <textarea name="desLarga" rows="6" cols="40" class="form-control" id="courseDescriptionLong" placeholder="Escribe la descripción general del Curso"></textarea>
                                             <div class="help-tip posicion">
                                                 <p>- Descripción general del curso.
-                                                    <br/>- Conforma la página de presentación del MOOC (About)
+                                                    <br/>- Conforma la página de presentación del Curso (About)
                                                     <br/>- Se sugieren 2,000 caracteres como máximo</p>
                                             </div>
                                         </div>
@@ -278,19 +278,19 @@
                                             <label for="requirements">Conocimientos previos</label>
                                             <textarea name="requisitos" class="form-control" id="courseRequirements" placeholder="Especificar si se requieren conocimientos previos del tema"></textarea>
                                             <div class="help-tip posicion">
-                                                <p>- Especificar si se require de algún conocimiento previo relacionado al MOOC</p>                
+                                                <p>- Especificar si se require de algún conocimiento previo relacionado al Curso</p>                
                                             </div>
                                         </div>
                                         <div class="form-group col-md-8 col-md-offset-2">
                                             <label for="courseResults">Aprendizaje esperado</label>
-                                            <textarea name="resApren" rows="3" cols="40" class="form-control" id="courseResults" placeholder="Describe el resultado esperado al finalizar el MOOC"></textarea>   
+                                            <textarea name="resApren" rows="3" cols="40" class="form-control" id="courseResults" placeholder="Describe el resultado esperado al finalizar el Curso"></textarea>   
                                             <div class="help-tip posicion">
                                                 <p>- Respóndete a esta pregunta: ¿qué aprenderé con este curso? 
                                                     <br/>- Breve y conciso </p>
                                             </div><br>
                                         </div>
                                         <div class="form-group col-md-6 col-md-offset-2">
-                                            <label for="nivelCourse">Nivel del MOOC</label>
+                                            <label for="nivelCourse">Nivel del Curso</label>
                                             <div class="help-tip posicion">
                                                 <p>- Básico: participantes con formación académica básica
                                                     <br/>- Intermedio: participantes con formación académica media superior
@@ -319,7 +319,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group col-md-8 col-md-offset-2"><br>
-                                            <label for="duracionSem">Duración total del MOOC</label>
+                                            <label for="duracionSem">Duración total del Curso</label>
                                             <input name="duracionCurso" type="number" class="form-control" name="quantity" min="1" max="15" placeholder="Escribe la duración del curso en número de semanas">
                                             <div class="help-tip posicion">
                                                 <p>- Número de semanas en las que se impartirá el curso</p>
@@ -327,7 +327,7 @@
                                         </div>
                                         <div class="form-group col-md-8 col-md-offset-2">
                                             <label for="califConstancia">Rango de calificación aprobatoria</label>
-                                            <input name="rangoCalificacion" type="text" class="form-control" placeholder="Especifica el rango de calificación aprobatoria para el MOOC">   
+                                            <input name="rangoCalificacion" type="text" class="form-control" placeholder="Especifica el rango de calificación aprobatoria para el Curso">   
                                             <div class="help-tip posicion">
                                                 <p>- Especificar la calificación mínima aprobatoria para obtener constancia 
                                                     <br/>- El número debe ser mayor o igual a 6 y menor o igual a 10  </p>
@@ -418,9 +418,9 @@
                                         <div class="form-group col-md-8 col-md-offset-2" id="instructores">
                                             <div id="instructor"> <!-- ??? -->
                                                 <label for="curseName">Nombre del Instructor</label>
-                                                <input name="nombreInstructor[]" type="text" class="form-control" id="curseInstructor" placeholder="Escribe el nombre completo del instructor, asesor o colaborador del MOOC">    
+                                                <input name="nombreInstructor[]" type="text" class="form-control" id="curseInstructor" placeholder="Escribe el nombre completo del instructor, asesor o colaborador del Curso">    
                                                 <div class="help-tip posicion">
-                                                    <p>- Nombre completo del instructor, asesor o colaborador del MOOC</p>
+                                                    <p>- Nombre completo del instructor, asesor o colaborador del Curso</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -477,15 +477,15 @@
                                         {{csrf_field()}}
                                         <div class="form-group col-md-8 col-md-offset-2"><br><br>
                                             <h3>Nombres de Persona que aparecerán en las constancias</h3>
-                                            <h5>(Hasta 4 asesores o colaboradores del MOOC)</h5>
+                                            <h5>(Hasta 4 asesores o colaboradores del Curso)</h5>
                                             <hr>
                                         </div>
                                         <div class="form-group col-md-8 col-md-offset-2" id="asesores">
                                             <div id="asesorConstancia"> <!-- ??? -->
                                                 <label for="asesorConstancy">Nombre completo del Asesor</label>
-                                                <input name="nombreAsesor[]" type="text" class="form-control" id="curseInstructor" placeholder="Escribe el nombre completo del asesor o colaborador del MOOC">    
+                                                <input name="nombreAsesor[]" type="text" class="form-control" id="curseInstructor" placeholder="Escribe el nombre completo del asesor o colaborador del Curso">    
                                                 <div class="help-tip posicion">
-                                                    <p>- Nombre completo del asesor o colaborador del MOOC</p>
+                                                    <p>- Nombre completo del asesor o colaborador del Curso</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -522,12 +522,12 @@
                                     <form  action="{{url('nuevoRegistro')}}" method="POST" id="body" enctype="multipart/form-data">
                                         {{csrf_field()}}
                                         <div class="form-group col-md-8 col-md-offset-2"><br>
-                                            <h3>Contenido Temático del MOOC</h3>
+                                            <h3>Contenido Temático del Curso</h3>
                                             <hr>
                                         </div>
                                         <div class="form-group col-md-8 col-md-offset-2">
                                             <label for="temarioCurse">Temario del curso</label>
-                                            <textarea name="temario"  rows="10" cols="40" class="form-control" id="courseTemario" placeholder="Escribe el temario del MOOC"></textarea>  
+                                            <textarea name="temario"  rows="10" cols="40" class="form-control" id="courseTemario" placeholder="Escribe el temario del Curso"></textarea>  
                                             <div class="help-tip posicion">
                                                 <p>- Ordenar el contenido por semanas, unidades, módulos o temas.
                                                     <br/>- Incluir introducción, desarrollo de módulos y ejercicios o evaluaciones </p>
@@ -638,7 +638,7 @@
                                         <div class="form-group col-md-8 col-md-offset-2">
                                             <div class="col-md-5">
                                                 <div class="help-tip posicion">
-                                                    <p>- Descarga la carta de autorización para la emisión del MOOC en la plataforma MéxicoX</p>
+                                                    <p>- Descarga la carta de autorización para la emisión del Curso en la plataforma MéxicoX</p>
                                                 </div>
                                                 <a href="{{asset('download/carta_aut.docx')}}"><button type="button" class="btn btn-primary btn-md">Carta Autorización</button></a>
                                             </div>
