@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Model\Categorias;
 use App\Model\CourseName;
 use App\Model\CursoCategorias;
+use App\Model\Auth_user;
+use Session;
 
 class categoriaController extends Controller {
 
@@ -17,17 +19,16 @@ class categoriaController extends Controller {
 	}
 	
 	public function categoria(){
-		$correo = \Auth::user() -> email;
+        $super_user = session()->get('super_user');
+        $correo = session()->get('email');
 
-		if(empty($name = DB::table('auth_user')->whereemail($correo)->get())){
+		if(empty($name = Auth_user::whereemail($correo)->get())){
 			return ("Tu correo no esta asociado a algun curso en la plataforma");
 		}
-		$username = $name[0]->username;
-		session()->put('nombre', $username);
 
-		if($name[0]->is_superuser == 1)
+		if($super_user == 1)
 		{
-			$categorias = Categorias::all();
+            $categorias = Categorias::all();
 			return view('vinculaCat')->with('categorias', $categorias);
 		}
 		else{
@@ -36,11 +37,12 @@ class categoriaController extends Controller {
 	}
 
 	public function consultaCurso(){
-		$correo = \Auth::user() -> email;
-		if(empty($name = DB::table('auth_user')->whereemail($correo)->get())){
+        $super_user = session()->get('super_user');
+        $correo = session()->get('email');
+		if(empty($name = Auth_user::whereemail($correo)->get())){
 			return ("Tu correo no esta asociado a algun curso en la plataforma");
 		}
-		if($name[0]->is_superuser == 1)
+		if($super_user == 1)
 		{
 			$idCurso = $_POST['idCurso'];
 			$curso = CourseName::where('course_id', $idCurso)->first();
@@ -52,11 +54,12 @@ class categoriaController extends Controller {
 	}
 
 	public function guardaCategoria(){
-		$correo = \Auth::user() -> email;
-		if(empty($name = DB::table('auth_user')->whereemail($correo)->get())){
+        $super_user = session()->get('super_user');
+        $correo = session()->get('email');
+		if(empty($name = Auth_user::whereemail($correo)->get())){
 			return ("Tu correo no esta asociado a algun curso en la plataforma");
 		}
-		if($name[0]->is_superuser == 1)
+		if($super_user == 1)
 		{
 			$categorias = $_POST['arregloCat'];
 			$idCurso = $_POST['idCurso'];
@@ -66,7 +69,7 @@ class categoriaController extends Controller {
 			}
 		}
 		else{
-			return ("Acceso denegado");
+            return ("Acceso denegado");
 		}
 	}
 }
