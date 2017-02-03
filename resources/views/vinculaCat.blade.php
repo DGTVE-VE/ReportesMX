@@ -8,9 +8,9 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-			<h3>Asociar curso a categorias</h3>
+    <div class="row" style="border: solid 1px #e7e7e7;">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" style="background-color:#e7e7e7; margin-bottom:20px;">
+			<h3 style="margin-top:5px">Asociar curso a categorias</h3>
 		</div>
         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-5">
 			Course_id
@@ -29,11 +29,11 @@
 		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 text-center">
 			<input id="botonAsociar" type="button" value="Asociar" disabled style="color:gray;" onclick="asociarCategoria()"></input>
 		</div>
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
 			<h4> Categorias</h4>
 		</div>
 		@foreach($categorias as $categoria)
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12 col-lg-offset-1">
 			<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center">
 				<input type="checkbox" class="check" value="{{$categoria->id}}" onclick="agregarCategoria(this.value, this.checked)"></input>
 			</div>
