@@ -132,8 +132,8 @@ return [
 
          Appzcoder\CrudGenerator\CrudGeneratorServiceProvider::class,
          Collective\Html\HtmlServiceProvider::class,
-        
-//        Jenssegers\Mongodb\MongodbServiceProvider::class,
+
+       Jenssegers\Mongodb\MongodbServiceProvider::class,
         'AdamWathan\BootForms\BootFormsServiceProvider',
     ],
     /*

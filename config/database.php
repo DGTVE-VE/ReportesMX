@@ -67,13 +67,14 @@ return [
         'mongodb' => [
           'driver'   => 'mongodb',
           'host'     => env('DB_HOST', 'localhost'),
-          'port'     => env('DB_PORT', 27017),
-          'database' => env('DB_DATABASE', 'bitnami_edx'),
-          'username' => env('DB_USERNAME', 'root'),
-          'password' => env('DB_PASSWORD', 'holamundo'),
-          'options' => [
-            'database' => 'admin' // sets the authentication database required by mongo 3
-          ]
+          // 'port'     => env('DB_PORT', 27017),
+          'port'     => 27017,
+          'database' => 'test',
+          'username' => 'root',
+          'password' => 'm3x1c0X',
+          // 'options'  => [
+            // 'replicaSet' => 'replicaSetName'
+          // ]
         ],
 
         'pgsql' => [

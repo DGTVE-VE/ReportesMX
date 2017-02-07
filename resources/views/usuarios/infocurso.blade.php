@@ -128,7 +128,8 @@ function drawChart() {
         x: {
           0: {side: 'top'}
         }
-      }
+      },
+        colors: ['purple']
     };
 
     var chart = new google.charts.Line(document.getElementById('line_top_x'));
@@ -138,8 +139,38 @@ function drawChart() {
     chart.draw(data, options);
     chart1.draw(data1, options1);
 
+    ////////////////////////////////////////////////////////////////////
+
+    var data_a = new google.visualization.DataTable();
+     data_a.addColumn('number', 'Actividades');
+     data_a.addColumn('number', 'Alumnos');
+
+    var array_0 = {!! $activities_activities !!};
+    var array_1 = {!! $activities_users !!};
+
+    for(var i = 1; i < array_0.length ; i++){
+      data_a.addRows([
+        [array_0[i], array_1[i]],
+      ]);
+}
+
+
+     var options_a = {
+       chart: {
+         title: "Actividades en el curso.",
+         subtitle: "Usuarios que contestaron N actividades."
+       },
+       width: 900,
+       height: 400
+     };
+
+     var chart_a = new google.charts.Line(document.getElementById('actividades'));
+
+     chart_a.draw(data_a, options_a);
+
 }
 </script>
+
 </head>
 <body>
 @extends('app') @section('content')
@@ -170,10 +201,40 @@ function drawChart() {
           </div></td>
 
     </table>
-    </table>
+
     <br>
   </div>
   </div>
+
+  <div class="container">
+    <div class="row">
+    <br>
+    <h4>Actividades completadas por alumnos.</h4>
+
+    <table class="table table-hover table-bordered">
+       <td><div id="actividades"></div>
+       </td>
+          <td><div><table class="table table-hover table-bordered">
+                <tr class="primary" style="font-size: medium">
+                  <td>Actividades #</td>
+                  <td>Alumnos</td>
+                </tr>
+                <?php
+                for($i = 1; $i < sizeof($activities_activities); $i++ ){?>
+                  <tr>
+                  <td>{{ $activities_activities[$i] }}</td>
+                  <td>{{ $activities_users[$i]}}</td>
+                  </tr>
+
+              <?php } ?>
+                </table>
+                <a class="btn btn-default" href="{{url ('/download/complete_activities.csv')}}" role="button">Descargar archivo actividades.csv</a>
+          </div></td>
+
+    </table>
+
+</div>
+</div>
 
   <div class="container">
     <div class="row">

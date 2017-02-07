@@ -715,13 +715,73 @@ class UseController extends Controller {
 		fclose($fhistorico);
 /////////////////////////////////////////////////////////////////////
 
-
-
-
-
 			$json = json_encode ($desercion);
 
-			return view('usuarios/infocurso') -> with('desercion', $json)->with('name_user', $username )-> with('course_name', $course_name)->with('semanal', collect($sem1))->with('s', $s)->with('f', $f)->with('l', $l);
+			$activities_course = DB::select(DB::raw('select count(distinct(module_id)) from edxapp.courseware_studentmodule where course_id = "'.$course_id.'"'));
+			$users_complete_activities = DB::select(DB::raw('select count(distinct(module_id)) c from edxapp.courseware_studentmodule where course_id = "'.$course_id.'" group by student_id order by count(distinct(module_id))'));
+
+			$activities_activities = array();
+			$activities_users = array();
+
+			$activities_activities[0] = "Numero de actividades";
+			$activities_users[0] = "Numero de alumnos que las completaron";
+
+			$last = 0;
+			$n = 0;
+			$m = 0;
+			$k = 1;
+
+			$sizearray = count($users_complete_activities);
+
+			$fusers_complete_activities = fopen ('download/complete_activities.csv', 'w');
+			$act = array('Actividades', 'Usuarios');
+
+			fputcsv($fusers_complete_activities, $act);
+
+			foreach ($users_complete_activities as $key) {
+
+				if($last == 0 ){
+
+					$last = $key->c;
+					$n++;
+					$m++;
+				}
+				else if ($last == $key->c) {
+
+					$n++;
+					$m++;
+				}
+				else if($last != $key->c) {
+
+					$activities_activities[$k] = $last;
+					$activities_users[$k] = $n;
+					$act = array($last, $n);
+					fputcsv($fusers_complete_activities, $act);
+					$n = 1;
+					$m++;
+					$k++;
+					$last = $key->c;
+
+					if($m == $sizearray){
+						$activities_activities[$k] = $last;
+						$activities_users[$k] = $n;
+
+					}
+				}
+			}
+			fclose($fusers_complete_activities);
+
+			return view('usuarios/infocurso')
+			-> with('desercion', $json)
+			-> with('name_user', $username )
+			-> with('course_name', $course_name)
+			-> with('semanal', collect($sem1))
+			-> with('s', $s)
+			-> with('f', $f)
+			-> with('l', $l)
+			-> with('activities_course', $activities_course)
+			-> with('activities_activities', collect($activities_activities))
+			-> with('activities_users', collect($activities_users));
 		}
 		else{
 
