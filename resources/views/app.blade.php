@@ -17,7 +17,7 @@
         <link rel="stylesheet" type="text/css" href="{{asset ('css/estilos.css')}}">
         <!-- Css ficha-->
         <link rel="stylesheet" type="text/css" href="{{asset ('css/fichaCss.css')}}">
-        
+
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -66,8 +66,7 @@
                         </li>  
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Formatos de llenado<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">                                
-                                <li><a href="{{url ('instituciones/institucion')}}" class="bg-active">Institución</a></li>
+                            <ul class="dropdown-menu" role="menu">                                                                
                                 <li class="divider"></li>                                         
                                 <li><a href="{{url ('registro')}}" class="bg-active">Ficha Técnica</a></li>
                             </ul>
@@ -95,6 +94,8 @@
                                         <li class="divider"></li>                                            
                                         <li><a href="{{url ('admin/course_name')}}" class="bg-close" title="Agregar Cursos">                                        
                                                 Agregar Cursos</a></li>
+                                        <li class="divider"></li>                                            
+                                        <li><a href="{{url ('instituciones/institucion')}}" class="bg-active">Institución</a></li>                            
                                     </ul>
                                 </li>
 
@@ -119,8 +120,8 @@
         <!-- Scripts -->
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-        
-<!--        //code.jquery.com/jquery-1.12.4.js-->
+
+        <!--        //code.jquery.com/jquery-1.12.4.js-->
         @yield('scripts')
     </body>
 </html>
