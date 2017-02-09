@@ -291,22 +291,7 @@
                                             <br/>- El número debe ser mayor o igual a 6 y menor o igual a 10  </p>
                                     </div><br>
                                 </div>
-
-                                <div class="form-group col-md-8 col-md-offset-3">
-                                    <div class="col-md-6">
-                                        <label for="addlogo">Añadir Logo de la Institución</label><br><br>
-                                        <label class="file">
-                                            <input name="imagenLogo" type="file">
-                                            <span class="file-custom"></span>
-                                        </label><br>
-                                        <div class="help-tip posicion" style="align: left;">
-                                            <p>- Logotipo oficial de la Institución
-                                                <br/>- Fondo transparente
-                                                <br/>- Tamaño: 90 x 90 píxeles
-                                                <br/>- Tipo de arhivo: *.png</p>
-                                        </div>
-                                    </div>
-                                </div>
+                               
                                 <div class="form-group col-md-8 col-md-offset-3"><br>
                                     <div class="col-md-6">
                                         <label for="addImagen">Añadir imagen del curso</label><br><br>
@@ -346,16 +331,7 @@
                                 </div>
                                 <div class="form-group col-md-8 col-md-offset-2">
                                     <hr>
-                                </div>
-                                <div class="form-group col-md-8 col-md-offset-2">
-                                    <label for="redesSociales">Redes sociales de la Institución</label>
-                                    <textarea name="redSocial" class="form-control" id="socialesRed" placeholder="Escribe la dirección de las redes sociales"></textarea>
-                                    <div class="help-tip posicion">
-                                        <p>- Linkedin
-                                            <br/>- Facebook
-                                            <br/>- Twitter</p>
-                                    </div><br>
-                                </div>                                        
+                                </div>                                  
                                 <div class="form-group col-md-8 col-md-offset-2">
                                     <div class="col-md-12 col-md-offset-5">
                                         <button type="submit" class="btn btn-success">Guardar</button>
@@ -378,7 +354,7 @@
                                             @foreach ($staffs as $staff)
                                             <tr>
                                                 <td>{{$staff->id}}</td>
-                                                <td>{{$staff->nombre_staff}}</td>
+                                                <td>{{$staff->nombre}}</td>
                                                 <td><input type="checkbox" name="checkbox"/></td>                                                    
                                             </tr>
                                             @endforeach                                                  
@@ -410,7 +386,7 @@
                                             @foreach ($asesores as $asesor)
                                             <tr>
                                                 <td>{{$asesor->id}}</td>
-                                                <td>{{$asesor->nombre_asesor}}</td>
+                                                <td>{{$asesor->nombre}}</td>
                                                 <td><input type="checkbox" name="checkbox"/></td>                                                    
                                             </tr>
                                             @endforeach                                        

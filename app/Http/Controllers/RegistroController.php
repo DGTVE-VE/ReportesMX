@@ -12,8 +12,7 @@ use App\Model\Instructor_task_ficha;
 use Illuminate\Support\Facades\Input;
 use Session;
 use App\Model\contactos_instit;
-use App\Model\asesor_contancia;
-use App\Model\staff;
+
 
 class RegistroController extends Controller {
 
@@ -96,9 +95,14 @@ class RegistroController extends Controller {
         $super_user = session()->get('super_user');
         $username = session()->get('nombre');
         //contacto
-        $contactos = contactos_instit::where('institucion_id', '=', 1)->get();
-        $staffs = staff::where('institucion_id', '=', 1)->get();
-        $asesores = asesor_contancia::where('institucion_id', '=', 1)->get();
+        $contactos = contactos_instit::where('institucion_id', '=', 1)
+                                     ->where('rol','=','1')->get();
+        
+        $staffs = contactos_instit::where('institucion_id', '=', 1)
+                       ->where('rol','=','2')->get();
+        
+        $asesores = contactos_instit::where('institucion_id', '=', 1)
+                                    ->where('rol','=','3')->get();
 
         return view('instituciones/registroCurso')
                 ->with('name_user', $username)
