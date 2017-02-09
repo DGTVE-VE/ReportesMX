@@ -103,3 +103,7 @@ Route::get('email/preview', function (){
 Route::get('asociaCategoria', 'categoriaController@categoria');
 Route::post('asignaCategoria', 'categoriaController@guardaCategoria');
 Route::post('consultaCurso', 'categoriaController@consultaCurso');
+
+Route::resource('instituciones/contactos_instit', 'contactos_institController');
+
+Route::resource('instituciones/institucion', 'institucionController');

@@ -10,14 +10,18 @@ use App\Model\Ficha_curso;
 use App\Model\Instructores;
 use App\Model\Instructor_task_ficha;
 use Illuminate\Support\Facades\Input;
+use Session;
+use App\Model\contactos_instit;
+use App\Model\asesor_contancia;
+use App\Model\staff;
 
 class RegistroController extends Controller {
 
     public function __construct() {
 
-        $this->middleware('auth',
-            ['only' => [ 'registroNuevo', 'cursoNuevo']]);
+        $this->middleware('auth', ['only' => [ 'registroNuevo', 'cursoNuevo']]);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -88,69 +92,78 @@ class RegistroController extends Controller {
     }
 
     public function cursoNuevo() {
-//        print 'hola';
-        return view('registroCurso')->with('name_user', 'Luis');
+        //usuario logueado
+        $super_user = session()->get('super_user');
+        $username = session()->get('nombre');
+        //contacto
+        $contactos = contactos_instit::where('institucion_id', '=', 1)->get();
+        $staffs = staff::where('institucion_id', '=', 1)->get();
+        $asesores = asesor_contancia::where('institucion_id', '=', 1)->get();
+
+        return view('instituciones/registroCurso')
+                ->with('name_user', $username)
+                ->with('contactos', $contactos)
+                ->with('staffs', $staffs)
+                ->with('asesores', $asesores);
     }
 
     public function registroNuevo(Request $request) {
+        $this->validate($request, [
+            'nombreOrganizacion' => 'required',
+            'nombreCurso' => 'required',
+            'siglasOrg' => 'required',
+            'idCurso' => 'required',
+            'periodoEmi' => 'required',
+            'contactoInst' => 'required',
+            'correoInst' => 'required|email',
+            'telefonoInst' => 'required|numeric',
+            'fechaIni' => 'required|date',
+            'fechaFin' => 'required|date',
+            'fechaLan' => 'required|date',
+            'fechaEmi' => 'required|date',
+            // 'lenguajeCont' => 'required',
+            // 'lenguajeMult' => 'required',
+            'desCorta' => 'required',
+            'desLarga' => 'required',
+            'requisitos' => 'required',
+            'resApren' => 'required',
+            // 'nivelCurso' => 'required',
+            'tipoConstancia' => 'required',
+            'redSociales' => 'required',
+            // 'imagenCurso' => 'mimes:jpg,png|image',
+            // 'videoCurso' => 'mimes:wmp, mp4, avi, mov',
+            'esfuerzoReq' => 'required|min:1|max:10',
+            'duracionCurso' => 'required|min:1|max:15',
+            // 'cartaCompromiso' => 'mimes:doc, docx',
+            // 'cartaAutorizacion' => 'mimes:doc, docx',
+            // 'categoria1' => 'required',
+            // 'categoria2' => 'required',
+            // 'categoria3' => 'required',
+            'temario' => 'required',
+            'nombreInstructor' => 'required',
+            'biografia' => 'required',
+            'especializacion' => 'required',
+            'obrasImportantes' => 'required',
+            // 'firmaElectronica' => 'mimes:jpg,png|image',
+            // 'fotoInstructor' => 'mimes:jpg,png|image',}
+        ]);
 
 
-      $this->validate($request, [
-        'nombreOrganizacion' => 'required',
-        'nombreCurso' => 'required',
-        'siglasOrg' => 'required',
-        'idCurso' => 'required',
-        'periodoEmi' => 'required',
-        'contactoInst' => 'required',
-        'correoInst' => 'required|email',
-        'telefonoInst' => 'required|numeric',
-        'fechaIni' => 'required|date',
-        'fechaFin' => 'required|date',
-        'fechaLan' => 'required|date',
-        'fechaEmi' => 'required|date',
-        // 'lenguajeCont' => 'required',
-        // 'lenguajeMult' => 'required',
-        'desCorta' => 'required',
-        'desLarga' => 'required',
-        'requisitos' => 'required',
-        'resApren' => 'required',
-        // 'nivelCurso' => 'required',
-        'tipoConstancia' => 'required',
-        'redSociales' => 'required',
-        // 'imagenCurso' => 'mimes:jpg,png|image',
-        // 'videoCurso' => 'mimes:wmp, mp4, avi, mov',
-        'esfuerzoReq' => 'required|min:1|max:10',
-        'duracionCurso' => 'required|min:1|max:15',
-        // 'cartaCompromiso' => 'mimes:doc, docx',
-        // 'cartaAutorizacion' => 'mimes:doc, docx',
-        // 'categoria1' => 'required',
-        // 'categoria2' => 'required',
-        // 'categoria3' => 'required',
-        'temario' => 'required',
-        'nombreInstructor' => 'required',
-        'biografia' => 'required',
-        'especializacion' => 'required',
-        'obrasImportantes' => 'required',
-        // 'firmaElectronica' => 'mimes:jpg,png|image',
-        // 'fotoInstructor' => 'mimes:jpg,png|image',}
-      ]);
-
-
-        $destinationPath='C:\xampp\htdocs\ReportesMX\public\imagenes\cursos';
-        $destinationVideo='C:\xampp\htdocs\ReportesMX\public\imagenes\video_curso';
-        $destinationFirma='C:\xampp\htdocs\ReportesMX\public\imagenes\firmas';
-        $destinationFotosInst='C:\xampp\htdocs\ReportesMX\public\imagenes\foto_instructor';
-        $destinationCartaCom='C:\xampp\htdocs\ReportesMX\public\cartas\compromiso';
-        $destinationCartaAut='C:\xampp\htdocs\ReportesMX\public\cartas\autorizacion';
+        $destinationPath = 'C:\xampp\htdocs\ReportesMX\public\imagenes\cursos';
+        $destinationVideo = 'C:\xampp\htdocs\ReportesMX\public\imagenes\video_curso';
+        $destinationFirma = 'C:\xampp\htdocs\ReportesMX\public\imagenes\firmas';
+        $destinationFotosInst = 'C:\xampp\htdocs\ReportesMX\public\imagenes\foto_instructor';
+        $destinationCartaCom = 'C:\xampp\htdocs\ReportesMX\public\cartas\compromiso';
+        $destinationCartaAut = 'C:\xampp\htdocs\ReportesMX\public\cartas\autorizacion';
         $ficha_curso = new Ficha_curso;
         //ficha_curso
 
         $nameOrg = filter_input(INPUT_POST, 'nombreOrganizacion');
-        $ficha_curso->organizacion=$nameOrg;
+        $ficha_curso->organizacion = $nameOrg;
         $nombreCurso = filter_input(INPUT_POST, 'nombreCurso');
         $ficha_curso->nombre = $nombreCurso;
         $siglasOrga = filter_input(INPUT_POST, 'siglasOrg');
-        $ficha_curso->siglas_org=$siglasOrga;
+        $ficha_curso->siglas_org = $siglasOrga;
         $idCurso = filter_input(INPUT_POST, 'idCurso');
         $ficha_curso->course_id = $idCurso;
         $periodoEm = filter_input(INPUT_POST, 'periodoEmi');
@@ -178,7 +191,6 @@ class RegistroController extends Controller {
 //        $ficha_curso->lengua_mult = $lenguajeMult;
 //        $lenguajeTrans = filter_input(INPUT_POST, 'lenguajeTrans');
 //        $ficha_curso->lengua_trans = $lenguajeTrans;
-
         //About
 
         $desCorta = filter_input(INPUT_POST, 'desCorta');
@@ -197,10 +209,10 @@ class RegistroController extends Controller {
         $ficha_curso->redes_sociales = $redesSoc;
         $nombreImagen = Input::file('imagenCurso')->getClientOriginalName();
         $courseImage = Input::file('imagenCurso')->move($destinationPath, $nombreImagen);
-        $ficha_curso->imagen=$courseImage;
+        $ficha_curso->imagen = $courseImage;
         $nombreVideo = Input::file('videoCurso')->getClientOriginalName();
         $courseVideo = Input::file('videoCurso')->move($destinationVideo, $nombreVideo);
-        $ficha_curso->video=$courseVideo;
+        $ficha_curso->video = $courseVideo;
         $esfuerzoReq = filter_input(INPUT_POST, 'esfuerzoReq');
         $ficha_curso->esfuerzo_hr_sem = $esfuerzoReq;
         $duracionCurso = filter_input(INPUT_POST, 'duracionCurso');
@@ -208,10 +220,10 @@ class RegistroController extends Controller {
 
         //archivos de llenado
         $cartaCompromiso = Input::file('cartaCompromiso')->getClientOriginalName();
-        $compromiso = Input::file('cartaCompromiso')->move($destinationCartaCom,$cartaCompromiso);
+        $compromiso = Input::file('cartaCompromiso')->move($destinationCartaCom, $cartaCompromiso);
 
         $cartaAutorizacion = Input::file('cartaAutorizacion')->getClientOriginalName();
-        $autorizacion = Input::file('cartaAutorizacion')->move($destinationCartaAut,$cartaAutorizacion);
+        $autorizacion = Input::file('cartaAutorizacion')->move($destinationCartaAut, $cartaAutorizacion);
 
         $categoria1 = filter_input(INPUT_POST, 'categoria1');
         $ficha_curso->categoria1 = $categoria1;
@@ -225,15 +237,15 @@ class RegistroController extends Controller {
         $id_ficha_curso = $ficha_curso->id;
 
         $name = $request->input('nombreInstructor');
-        $biografia  = $request->input('biografia');
-        $especializacion  = $request->input('especializacion');
-        $obrasImportantes  = $request->input('obrasImportantes');
-        $firmaElectronica  = $request->file('firmaElectronica');
-        $fotoInstructor  = $request->file('fotoInstructor');
+        $biografia = $request->input('biografia');
+        $especializacion = $request->input('especializacion');
+        $obrasImportantes = $request->input('obrasImportantes');
+        $firmaElectronica = $request->file('firmaElectronica');
+        $fotoInstructor = $request->file('fotoInstructor');
 
         $i = 0;
 
-          foreach ($name as $key) {
+        foreach ($name as $key) {
 
             $staff = new Instructores();
 
@@ -243,11 +255,11 @@ class RegistroController extends Controller {
             $staff->obras_imp = $obrasImportantes[$i];
 
             $nombreFirma = $firmaElectronica[$i]->getClientOriginalName();
-            $InstructorSignature= $firmaElectronica[$i]->move($destinationFirma,$nombreFirma);
+            $InstructorSignature = $firmaElectronica[$i]->move($destinationFirma, $nombreFirma);
             $staff->firma = $InstructorSignature;
 
             $nombreFoto = $fotoInstructor[$i]->getClientOriginalName();
-            $foto_instructor = $fotoInstructor[$i]->move($destinationFotosInst,$nombreFoto);
+            $foto_instructor = $fotoInstructor[$i]->move($destinationFotosInst, $nombreFoto);
             $staff->foto = $foto_instructor;
 
             $staff->save();
@@ -258,12 +270,13 @@ class RegistroController extends Controller {
             $instructor_ficha->save();
 
             $i++;
-          }
+        }
 
-          // return 0;
+        // return 0;
 
 
 
-         return redirect('registro');
+        return redirect('registro');
     }
+
 }
