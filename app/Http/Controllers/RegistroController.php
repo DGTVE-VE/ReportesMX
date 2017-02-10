@@ -103,12 +103,15 @@ class RegistroController extends Controller {
         
         $asesores = contactos_instit::where('institucion_id', '=', 1)
                                     ->where('rol','=','3')->get();
+        
+        $ficha = new Ficha_curso();
 
         return view('instituciones/registroCurso')
                 ->with('name_user', $username)
                 ->with('contactos', $contactos)
                 ->with('staffs', $staffs)
-                ->with('asesores', $asesores);
+                ->with('asesores', $asesores)
+                ->with('ficha_curso', $ficha);
     }
 
     public function registroNuevo(Request $request) {

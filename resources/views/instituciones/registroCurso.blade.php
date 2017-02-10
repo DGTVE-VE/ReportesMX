@@ -24,7 +24,8 @@
                 <div class="panel-body">
                     <div class="tab-content">
                         <div class="tab-pane fade in active" id="infBasica"> <!--bloque información inicial-->
-                            <form  action="{{url('nuevoRegistro')}}" method="POST" id="body" enctype="multipart/form-data">
+                            {!! Form::model($ficha_curso, ['action'=> 'RegistroController@store']) !!}
+                            <!--<form  action="{{url('nuevoRegistro')}}" method="POST" id="body" enctype="multipart/form-data">-->
                                 {{csrf_field()}}                                  
                                 <div class="form-group col-md-8 col-md-offset-2"><br>
                                     <h3>Crear Curso</h3>
@@ -39,8 +40,8 @@
                                     <label class="text-success text-uppercase">jala de tabla</label>
                                 </div>
                                 <div class="form-group col-md-8 col-md-offset-2">
-                                    <label for="curseName">Nombre del curso</label>
-                                    <input name="nombreCurso" type="text"  max="70" class="form-control" id="curseName" placeholder="Escribe el nombre del Curso" required>
+                                    <label for="nombre_curso">Nombre del curso</label>
+                                    <input name="nombre_curso" type="text"  max="70" class="form-control" id="nombre_curso" placeholder="Escribe el nombre del Curso" required onchange='updateCodigoCurso()'>
                                     <div class="help-tip posicion">
                                         <p>- Longitud: 70 caracteres máximo (con espacios)
                                     </div>
@@ -48,7 +49,7 @@
 
                                 <div class="col-md-3 col-md-offset-2">
                                     <label for="typeCurso">Tipo de Curso: </label>
-                                    <select name="tipoCurso">
+                                    <select name="tipo_curso">
                                         <option value="mooc">Curso</option>
                                         <option value="spoc">SPOC</option>
                                         <option value="diplomado">Diplomado</option>
@@ -62,7 +63,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="numEmision">Número de Edición</label>
-                                    <select name="emisionCurso">
+                                    <select name="num_edicion" onchange='updateCodigoCurso()'>
                                         <option value="1">1ra.</option>
                                         <option value="2">2da.</option>
                                         <option value="3">3ra.</option>
@@ -70,20 +71,28 @@
                                         <option value="5">5ta.</option>
                                     </select>
                                     <div class="help-tip posicion">
-                                        <p>- Número de emisión del Curso</p>
+                                        <p>- Número consecutivo de la emisión del curso en el año </p>
                                     </div>
                                 </div>
+<!--                                <div class="form-group col-md-3">
+                                    <label for="anioEmision">Año de emisión</label>
+                                    <input name="periodoEmi" type="text" class="form-control" placeholder="Escribe el periodo de emisión" required>
+                                    <input name='anio_emision' type="number" min="{{date("Y")}}" max="{{date("Y")+1}}" step="1" value="{{date("Y")}}" />
+                                    <div class="help-tip posicion">
+                                        <p>- Año de inicio del curso </p>
+                                    </div>
+                                </div>-->
                                 <div class="form-group col-md-3">
-                                    <label for="periodoEmision">Mes de emisión</label>
+                                    <label for="periodo_emision">Mes de emisión</label>
                                     <!--<input name="periodoEmi" type="text" class="form-control" placeholder="Escribe el periodo de emisión" required>-->
-                                    <select name="periodoEmi">
-                                        <option value="1">Enero</option>
-                                        <option value="2">Febrero</option>                                                
-                                    </select>
+                                    <input name='periodo_emision' id='periodo_emision' type="month" onchange='updateCodigoCurso()'>
+                                    <div class="help-tip posicion">
+                                        <p>- Mes de inicio del curso </p>
+                                    </div>
                                 </div>
                                 <div class="form-group col-md-4 col-md-offset-2">
-                                    <label for="codeCurse">Código del curso</label><br>
-                                    <label class="text-success text-uppercase">autogenera</label>
+                                    <label for="codigo_curso">Código del curso</label><br>
+                                    <input type='text'  class="text-success text-uppercase" id='codigo_curso' name='codigo_curso' readonly>
                                 </div>                                        
                                 <div class="form-group col-md-4 col-md-offset-2">
                                     <label for="codeCurse">Periodo de emisión</label><br>
@@ -577,8 +586,34 @@
 
 @endsection
 
+
+@section ('scripts')
 <script>
+    function updateCodigoCurso (){
+        var iniciales = getIniciales ();
+        $("#codigo_curso").val (iniciales);
+    }
+    
+    function getIniciales (){
+        var nombre = $('#nombre_curso').val ();
+        var palabras = nombre.split (' ');
+        console.log (palabras.length);
+        if (palabras.length == 1){
+            return palabras[0].substring (0, 4);
+        }
+        if (palabras.length == 2){
+    }
+    
+    
     $(document).ready(function () {
+        var today = new Date();
+        var guion = '-';
+        if (today.getMonth() < 10)
+            guion += '0';
+        var fecha = today.getFullYear()+guion+(today.getMonth()+1);
+        alert (fecha);
+        $('#periodo_emision').val (fecha);
+        
         inst = 1;
         num = 1;
         $("#quitaInst" + num).click(function () {
@@ -661,7 +696,7 @@
 
 </script>
 
-
+@endsection
 
 
 
