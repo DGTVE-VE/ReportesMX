@@ -426,8 +426,9 @@ class UseController extends Controller {
 			$t = DB::table('edxapp.auth_user')->count('id');
 			$n = DB::table('edxapp.auth_user')->whereis_active('0')->count('id');
 			$a = DB::table('edxapp.auth_user')->whereis_active('1')->count('id');
+                        $d = DB::table('edxapp.auth_user')->whereis_active('0')->count('id');
 
-			$info = array($t, $n, $a);
+			$info = array($t, $n, $a,$d);
 
 			$fp = fopen ('download/totales.csv', 'w');
 
@@ -442,12 +443,16 @@ class UseController extends Controller {
 
 			$info1 = array('Usuarios que no tienen su cuenta activada en MéxicoX', $info[2]);
 			fputcsv($fp, $info1);
+                        
+                        $info1 = array('Usuarios desinscritos en MéxicoX', $info[3]);
+			fputcsv($fp, $info1);
 			fclose($fp);
 
 			$cn ="MéxicoX";
 			$cn0 = "Registrados en MéxicoX";
 			$cn1 = "Usuarios con cuenta activada en MéxicoX";
 			$cn2 = "Usuarios que no tienen su cuenta activada en MéxicoX";
+                        $cn3 = "Usuarios que se desinscribieron";
 
 			return view('usuarios/totales')
 			-> with ('info', collect($info))
@@ -458,6 +463,7 @@ class UseController extends Controller {
 			-> with('course_name0', $cn0)
 			-> with('course_name1', $cn1)
 			-> with('course_name2', $cn2)
+                        -> with('course_name3', $cn3)
 			-> with('course_name', $cn)
 			-> with('perfil_p', collect($perfil_p));
 
@@ -580,8 +586,11 @@ class UseController extends Controller {
 
 			$t = DB::table('edxapp.auth_user')->count('id');
 			$inscritos = DB::table('edxapp.student_courseenrollment')->wherecourse_id($course_id)->whereis_active('1')->count('id');
-
-			$n = $t-$inscritos;
+                        $desinscritos = DB::table('edxapp.student_courseenrollment')->wherecourse_id($course_id)->whereis_active('0')->count('id'); 
+			
+                        $n = $t-$inscritos;
+                        $d=$inscritos-$desinscritos;
+                        
 			$info = array($t, $n, $inscritos);
 			$course_name = session()->get('course_name');
 
@@ -601,6 +610,10 @@ class UseController extends Controller {
 			$info1 = array('No activos en '. $course_name, $info[2]);
 			$c_name2 = "No inscritos en ".$course_name;
 			fputcsv($fp, $info1);
+                        
+                        $info1 = array('Desinscritos en '. $course_name, $info[3]);
+			$c_name3 = "Desinscritos en ".$course_name;
+			fputcsv($fp, $info1);
 			fclose($fp);
 
 			return view('usuarios/totales')
@@ -613,6 +626,7 @@ class UseController extends Controller {
 			-> with('course_name0', $c_name0)
 			-> with('course_name1', $c_name1)
 			-> with('course_name2', $c_name2)
+                        -> with('course_name3', $c_name3)
 			-> with('perfil_p', collect($perfil_p));
 
 		}
