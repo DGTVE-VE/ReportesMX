@@ -11,7 +11,8 @@
 |
 */
 //rutas para registro de un nuevo curso
-Route::resource ('ficha', 'RegistroController');
+Route::post ('ficha', 'RegistroController@ficha_1');
+
 Route::get('registro', 'RegistroController@cursoNuevo');
 Route::post('nuevoRegistro','RegistroController@registroNuevo');
 Route::get('descarga','RegistroController@downloadFile');

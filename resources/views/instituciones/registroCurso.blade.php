@@ -24,8 +24,8 @@
                 <div class="panel-body">
                     <div class="tab-content">
                         <div class="tab-pane fade in active" id="infBasica"> <!--bloque información inicial-->
-                            {!! Form::model($ficha_curso, ['action'=> 'RegistroController@store']) !!}
-                            <!--<form  action="{{url('nuevoRegistro')}}" method="POST" id="body" enctype="multipart/form-data">-->
+                            {!! Form::model($ficha_curso, ['action'=> 'RegistroController@ficha_1']) !!}
+                            
                                 {{csrf_field()}}                                  
                                 <div class="form-group col-md-8 col-md-offset-2"><br>
                                     <h3>Crear Curso</h3>
@@ -34,26 +34,23 @@
                                 <div class="form-group col-md-8 col-md-offset-2">
                                     <label for="orgazacionName">Nombre de la Institución</label>
                                     <!--<input name="nombreOrganizacion" type="text" class="form-control" placeholder="Escribe el nombre completo de la institución" required>-->
-                                    <select name="nombreOrganizacion">
-                                        <option>Tecnológico de Monterrey</option>
-                                    </select>
-                                    <label class="text-success text-uppercase">jala de tabla</label>
+                                    {!! Form::select('id_institucion', $instituciones, $ficha_curso->id_institucion, ['class' => 'form-control'] ) !!}
                                 </div>
                                 <div class="form-group col-md-8 col-md-offset-2">
                                     <label for="nombre_curso">Nombre del curso</label>
-                                    <input name="nombre_curso" type="text"  max="70" class="form-control" id="nombre_curso" placeholder="Escribe el nombre del Curso" required onchange='updateCodigoCurso()'>
+                                    <input name="nombre_curso" type="text"  max="70" class="form-control" 
+                                           id="nombre_curso" placeholder="Escribe el nombre del Curso" 
+                                           value='{{$ficha_curso->nombre_curso}}'
+                                           required onchange='updateCodigoCurso()'>
                                     <div class="help-tip posicion">
                                         <p>- Longitud: 70 caracteres máximo (con espacios)
                                     </div>
                                 </div>  
 
                                 <div class="col-md-3 col-md-offset-2">
-                                    <label for="typeCurso">Tipo de Curso: </label>
-                                    <select name="tipo_curso">
-                                        <option value="mooc">Curso</option>
-                                        <option value="spoc">SPOC</option>
-                                        <option value="diplomado">Diplomado</option>
-                                    </select>
+                                    <label for="tipo_curso">Tipo de Curso: </label>
+                                    {!! Form::select('tipo_curso', $tipo_curso, $ficha_curso->tipo_curso, ['class' => 'form-control'] ) !!}
+                                    
                                     <div class="help-tip posicion">
                                         <p>- Curso: Público en general  
                                             <br/>- SPOC: Por invitación 
@@ -62,48 +59,32 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <label for="numEmision">Número de Edición</label>
-                                    <select name="num_edicion" onchange='updateCodigoCurso()'>
-                                        <option value="1">1ra.</option>
-                                        <option value="2">2da.</option>
-                                        <option value="3">3ra.</option>
-                                        <option value="4">4ta.</option>
-                                        <option value="5">5ta.</option>
-                                    </select>
+                                    <label for="num_edicion">Número de Edición</label>
+                                    {!! Form::select('num_edicion', ['1'=>'1', '2'=>'2', '3'=>'3', '4'=>'4', '5'=>'5'], $ficha_curso->num_edicion, ['class' => 'form-control'] ) !!}
+                                    
                                     <div class="help-tip posicion">
                                         <p>- Número consecutivo de la emisión del curso en el año </p>
                                     </div>
                                 </div>
-<!--                                <div class="form-group col-md-3">
-                                    <label for="anioEmision">Año de emisión</label>
-                                    <input name="periodoEmi" type="text" class="form-control" placeholder="Escribe el periodo de emisión" required>
-                                    <input name='anio_emision' type="number" min="{{date("Y")}}" max="{{date("Y")+1}}" step="1" value="{{date("Y")}}" />
-                                    <div class="help-tip posicion">
-                                        <p>- Año de inicio del curso </p>
-                                    </div>
-                                </div>-->
                                 <div class="form-group col-md-3">
-                                    <label for="periodo_emision">Mes de emisión</label>
+                                    <label for="periodo_emision">Periodo de emisión</label>
                                     <!--<input name="periodoEmi" type="text" class="form-control" placeholder="Escribe el periodo de emisión" required>-->
-                                    <input name='periodo_emision' id='periodo_emision' type="month" onchange='updateCodigoCurso()'>
+                                    <input name='periodo_emision' id='periodo_emision' type="month" onchange='updateCodigoCurso()' class="form-control"
+                                           value='2018-06'>
                                     <div class="help-tip posicion">
                                         <p>- Mes de inicio del curso </p>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4 col-md-offset-2">
                                     <label for="codigo_curso">Código del curso</label><br>
-                                    <input type='text'  class="text-success text-uppercase" id='codigo_curso' name='codigo_curso' readonly>
+                                    <input type='text'  class="text-success text-uppercase form-control"  id='codigo_curso' name='codigo_curso'  readonly>
                                 </div>                                        
-                                <div class="form-group col-md-4 col-md-offset-2">
-                                    <label for="codeCurse">Periodo de emisión</label><br>
-                                    <label class="text-success text-uppercase">autogenera</label>
-                                </div>
-                                <div class="form-group col-md-8 col-md-offset-2">
-                                    <hr>
-                                </div>
+                                @if (!empty ($ficha_curso->id))
+                                <input type="hidden" name='id' value='{{$ficha_curso->id}}'>
+                                @endif
                                 <div class="form-group col-md-8 col-md-offset-2">
                                     <div class="col-md-12 col-md-offset-5">
-                                        <button type="submit" class="btn btn-success">Guardar</button>
+                                        <button type="submit" class="btn btn-success ">Guardar</button>
                                     </div>
                                 </div>
                             </form>
@@ -590,8 +571,20 @@
 @section ('scripts')
 <script>
     function updateCodigoCurso (){
-        var iniciales = getIniciales ();
-        $("#codigo_curso").val (iniciales);
+        var iniciales = getIniciales ().toUpperCase();
+        var periodo = getPeriodo ();
+        var edicion = $("#num_edicion").val();
+        console.log (iniciales);
+        $("#codigo_curso").val (iniciales+periodo+edicion+'x');
+        
+    }
+    
+    function getPeriodo (){
+        var periodo = $('#periodo_emision').val ();
+        var tokens = periodo.split('-');
+        console.log (tokens);
+        console.log (tokens[0].toString().substr(2,2));
+        return (tokens[0].toString().substr(2,2) + tokens[1]);
     }
     
     function getIniciales (){
@@ -602,6 +595,16 @@
             return palabras[0].substring (0, 4);
         }
         if (palabras.length == 2){
+            return palabras[0].substring (0, 2)+palabras[1].substring (0, 2);
+        }
+        if (palabras.length == 3){
+            return palabras[0].substring (0, 2)+palabras[1].substring (0, 1)
+            +palabras[2].substring (0, 1);
+        }
+        if (palabras.length > 3){
+            return palabras[0].substring (0, 1)+palabras[1].substring (0, 1)
+            +palabras[2].substring (0, 1)+palabras[3].substring (0, 1);
+        }
     }
     
     
@@ -611,7 +614,7 @@
         if (today.getMonth() < 10)
             guion += '0';
         var fecha = today.getFullYear()+guion+(today.getMonth()+1);
-        alert (fecha);
+        
         $('#periodo_emision').val (fecha);
         
         inst = 1;

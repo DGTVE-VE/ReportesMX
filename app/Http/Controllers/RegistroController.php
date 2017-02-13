@@ -12,6 +12,7 @@ use App\Model\Instructor_task_ficha;
 use Illuminate\Support\Facades\Input;
 use Session;
 use App\Model\contactos_instit;
+use Illuminate\Support\Facades\Log;
 
 
 class RegistroController extends Controller {
@@ -89,9 +90,20 @@ class RegistroController extends Controller {
     public function destroy($id) {
         //
     }
+    
+    public function ficha_1 (Request $request){
+        
+        $ficha = Ficha_curso::create (Input::all());
+        if (!empty (Input::get('id'))){
+            $ficha->id = Input::get('id');
+        }
+        $ficha->save();
+        return $this->cursoNuevo ($ficha);
+        
+    }
 
-    public function cursoNuevo() {
-        //usuario logueado
+    public function cursoNuevo($ficha = NULL) {
+        Log::info('Ficha: '.$ficha);
         $super_user = session()->get('super_user');
         $username = session()->get('nombre');
         //contacto
@@ -104,14 +116,20 @@ class RegistroController extends Controller {
         $asesores = contactos_instit::where('institucion_id', '=', 1)
                                     ->where('rol','=','3')->get();
         
-        $ficha = new Ficha_curso();
-
+        if ($ficha === NULL){
+            $ficha = new Ficha_curso();
+        }
+        
+        $instituciones = \App\Model\institucion::all()->pluck ('nombre_institucion', 'id')->all();
+        $tipo_curso = \App\Model\TipoCurso::all()->pluck ('tipo_curso', 'id')->all();
         return view('instituciones/registroCurso')
                 ->with('name_user', $username)
                 ->with('contactos', $contactos)
                 ->with('staffs', $staffs)
                 ->with('asesores', $asesores)
-                ->with('ficha_curso', $ficha);
+                ->with('ficha_curso', $ficha)
+                ->with('instituciones', $instituciones)
+                ->with('tipo_curso', $tipo_curso);
     }
 
     public function registroNuevo(Request $request) {
