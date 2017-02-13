@@ -591,7 +591,7 @@ class UseController extends Controller {
                         $n = $t-$inscritos;
                         $d=$inscritos-$desinscritos;
                         
-			$info = array($t, $n, $inscritos);
+			$info = array($t, $n, $inscritos, $desinscritos);
 			$course_name = session()->get('course_name');
 
 			$fp = fopen ('download/totales.csv', 'w');
