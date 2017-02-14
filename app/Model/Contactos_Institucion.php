@@ -4,14 +4,14 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class contactos_instit extends Model
+class Contactos_Institucion extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'contactos_instit';
+    protected $table = 'contactos_institucion';
 
     /**
     * The database primary key value.

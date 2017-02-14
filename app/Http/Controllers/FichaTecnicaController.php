@@ -13,13 +13,14 @@ use Illuminate\Support\Facades\Input;
 use Session;
 use App\Model\contactos_instit;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 
-class RegistroController extends Controller {
+class FichaTecnicaController extends Controller {
 
     public function __construct() {
 
-        $this->middleware('auth', ['only' => [ 'registroNuevo', 'cursoNuevo']]);
+        $this->middleware('auth');
     }
 
     /**
@@ -28,7 +29,12 @@ class RegistroController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        //
+        $super_user = session()->get('super_user');
+        $username = session()->get('nombre');
+        $fichas = Ficha_curso::all ();
+        return view('formatos/ficha/list')
+            ->with('name_user', $username)
+            ->with('fichas', $fichas);
     }
 
     /**
@@ -37,7 +43,22 @@ class RegistroController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        //
+        $super_user = session()->get('super_user');
+        $username = session()->get('nombre');
+        
+        $contactos = \App\Model\Contactos_Institucion::all ();
+        
+        $ficha = new Ficha_curso();
+        
+        //$instituciones = \App\Model\institucion::all()->pluck ('nombre_institucion', 'id')->all();
+        $tipo_curso = \App\Model\TipoCurso::all()->pluck ('tipo_curso', 'id')->all();
+        $institucion = \App\Model\institucion::find (Auth::user()->institucion_id);
+        return view('instituciones/registroCurso')
+                ->with('name_user', $username)
+                ->with('contactos', $contactos)
+                ->with('ficha_curso', $ficha)
+                ->with('institucion', $institucion)
+                ->with('tipo_curso', $tipo_curso);
     }
 
     /**
@@ -47,7 +68,14 @@ class RegistroController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        //
+        if (Input::get('seccion') === 'info_basica' ){
+            Log::info ('Guardando info_basica');
+            return $this->storeInfoBasica ($request);            
+        }
+        if (Input::get('seccion') === 'contactos' ){
+            Log::info ('Guardando Contactos');
+            return $this->storeContactos ($request);            
+        }
     }
 
     /**
@@ -57,7 +85,22 @@ class RegistroController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        //
+        $ficha = Ficha_curso::find ($id);
+        $super_user = session()->get('super_user');
+        $username = session()->get('nombre');
+        //contacto
+        
+        $contactos = \App\Model\Contactos_Institucion::where ('institucion_id', Auth::user()->institucion_id)->get();
+               
+        //$instituciones = \App\Model\institucion::all()->pluck ('nombre_institucion', 'id')->all();
+        $tipo_curso = \App\Model\TipoCurso::all()->pluck ('tipo_curso', 'id')->all();
+        $institucion = \App\Model\institucion::find (Auth::user()->institucion_id);
+        return view('instituciones/registroCurso')
+                ->with('name_user', $username)
+                ->with('contactos', $contactos)
+                ->with('ficha_curso', $ficha)
+                ->with('institucion', $institucion)
+                ->with('tipo_curso', $tipo_curso);
     }
 
     /**
@@ -91,14 +134,27 @@ class RegistroController extends Controller {
         //
     }
     
-    public function ficha_1 (Request $request){
-        
-        $ficha = Ficha_curso::create (Input::all());
+    public function storeInfoBasica (Request $request){
         if (!empty (Input::get('id'))){
-            $ficha->id = Input::get('id');
+            Log::info('Actualizando ficha: '.Input::get('id'));
+            $ficha = Ficha_curso::find (Input::get('id'));
+            $ficha->update(Input::all());
+        } else{
+            Log::info('Guardando nueva ficha');
+            $ficha = Ficha_curso::create (Input::all());
+            $ficha->save();
         }
-        $ficha->save();
-        return $this->cursoNuevo ($ficha);
+        Log::info('Ficha guardada:'.$ficha);
+        return $this->show ($ficha->id);        
+    }
+    
+    public function storeContactos (Request $request){
+        $contactos = Input::get('contactos');
+        var_dump ($contactos);
+        
+    }
+    
+    public function ficha_tecnica (){
         
     }
 
@@ -107,14 +163,7 @@ class RegistroController extends Controller {
         $super_user = session()->get('super_user');
         $username = session()->get('nombre');
         //contacto
-        $contactos = contactos_instit::where('institucion_id', '=', 1)
-                                     ->where('rol','=','1')->get();
-        
-        $staffs = contactos_instit::where('institucion_id', '=', 1)
-                       ->where('rol','=','2')->get();
-        
-        $asesores = contactos_instit::where('institucion_id', '=', 1)
-                                    ->where('rol','=','3')->get();
+        $contactos = \App\Model\Contactos_Institucion::all ();
         
         if ($ficha === NULL){
             $ficha = new Ficha_curso();
@@ -124,9 +173,7 @@ class RegistroController extends Controller {
         $tipo_curso = \App\Model\TipoCurso::all()->pluck ('tipo_curso', 'id')->all();
         return view('instituciones/registroCurso')
                 ->with('name_user', $username)
-                ->with('contactos', $contactos)
-                ->with('staffs', $staffs)
-                ->with('asesores', $asesores)
+                ->with('contactos', $contactos)                
                 ->with('ficha_curso', $ficha)
                 ->with('instituciones', $instituciones)
                 ->with('tipo_curso', $tipo_curso);

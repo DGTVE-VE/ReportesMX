@@ -11,11 +11,14 @@
 |
 */
 //rutas para registro de un nuevo curso
-Route::post ('ficha', 'RegistroController@ficha_1');
+Route::resource ('formatos/ficha_tecnica', 'FichaTecnicaController');
+//Route::post ('formatos/ficha_tecnica', 'FichaTecnicaController');
 
-Route::get('registro', 'RegistroController@cursoNuevo');
-Route::post('nuevoRegistro','RegistroController@registroNuevo');
-Route::get('descarga','RegistroController@downloadFile');
+//Route::get('formatos/ficha_tecnica', 'FichaTecnicaController@ficha_tecnica');
+//Route::get('formatos/ficha_tecnica/{id}', 'FichaTecnicaController@ficha_tecnica');
+//
+//Route::post('nuevoRegistro','FichaTecnicaController@registroNuevo');
+//Route::get('descarga','FichaTecnicaController@downloadFile');
 
 Route::get('/', ['middleware' => 'auth', 'uses' => 'UseController@correoacurso']);
 Route::any('home', ['middleware' => 'auth', 'uses' => 'UseController@inscritos']);
