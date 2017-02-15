@@ -11,7 +11,7 @@
         <!-- <link href="{{ asset('/css/app.css') }}" rel="stylesheet"> -->
 
         <!-- Fonts -->
-        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.csss">
+        <script src="https://use.fontawesome.com/a967cb30b3.js"></script>
         <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="{{asset ('css/estilos.css')}}">
@@ -64,13 +64,13 @@
 
                             </ul>
                         </li>
-                        <!-- <li class="dropdown">
+                        <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Formatos de llenado<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li class="divider"></li>
-                                <li><a href="{{url ('registro')}}" class="bg-active">Ficha Técnica</a></li>
+                                <li><a href="{{url ('formatos/ficha_tecnica')}}" class="bg-active">Ficha Técnica</a></li>
                             </ul>
-                        </li>                         -->
+                        </li>                        
                         <?php
                         $user = \Illuminate\Support\Facades\Auth::user();
                         $auth_user = \App\Model\Auth_user::where('email', $user->email)->first();

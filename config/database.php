@@ -54,10 +54,22 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'host'      => env('DB_HOST', '172.16.200.205'),
-            'database'  => env('DB_DATABASE', 'bitnami_edx'),
-            'username'  => env('DB_USERNAME', 'israel'),
-            'password'  => env('DB_PASSWORD', 'password'),
+            'host'      => env('DB_HOST', 'localhost'),
+            'database'  => env('DB_DATABASE', 'mexicox'),
+            'username'  => env('DB_USERNAME', 'root'),
+            'password'  => env('DB_PASSWORD', 'm3x1c0X'),
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+            'strict'    => false,
+        ],
+        
+        'edxapp' => [
+            'driver'    => 'mysql',
+            'host'      => env('DB_HOST_EDXAPP', 'localhost'),
+            'database'  => env('DB_DATABASE_EDXAPP', 'edxapp'),
+            'username'  => env('DB_USERNAME_EDXAPP', 'root'),
+            'password'  => env('DB_PASSWORD_EDXAPP', 'm3x1c0X'),
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
