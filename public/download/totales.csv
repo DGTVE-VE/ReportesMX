@@ -1,4 +1,2 @@
-Usuarios,Cantidad
-"Activos en MéxicoX",689147
-"Activos en Felicidad estudios avanzados",680397
-"No activos en Felicidad estudios avanzados",8750
+id,"id curso","nombre del curso",inscritos
+133,course-v1:Colef+Colef02x+2016_S2,"La línea, 3200 kms de frontera",1766

@@ -1,17 +1,143 @@
-id,"id curso","nombre del curso","fecha inicio","fecha fin","inicio de inscripcion","fin de inscripcion"
-76,,"Cálculo Diferencial",2016-09-01,2016-11-30,2016-06-01,2016-06-06
-77,,"Uso de Microsoft Word para la creación y gestión de documentos para el aula",2016-09-05,2016-10-02,2016-06-01,2016-06-06
-85,,"Resiliencia Nómica",2016-08-22,2016-11-30,2016-06-08,2016-06-13
-86,,"Prevención de accidentes en casa",2016-09-04,2016-09-30,2016-07-01,2016-07-06
-87,,"Uso de presentaciones profesionales en el aula con Microsoft Power Point",2016-10-03,2016-10-30,2016-07-01,2016-07-06
-88,,"Como desarrollar una mentalidad innovadora ",2016-09-04,2016-09-30,2016-07-01,2016-07-06
-89,,"Ciberacoso o Ciberbullying ",2016-08-29,2016-09-28,2016-07-03,2016-07-08
-90,,"Curso básico para asesor Jurídico de victima",2016-08-22,2016-09-21,2016-07-18,2016-07-23
-91,,"Curso básico para especialistas de Métodos alternos de solución de controversias ",2016-08-22,2016-09-21,2016-07-18,2016-07-23
-92,,"Curso básico para Peritos",2016-08-22,2016-09-21,2016-07-18,2016-07-23
-93,,"Curso básico para Agentes del Ministerio Público ",2016-08-22,2016-09-21,2016-07-18,2016-07-23
-94,,"Curso básico para defensores",2016-08-22,2016-09-21,2016-07-18,2016-07-23
-95,,"Curso básico para personal del Sistema Penitenciario",2016-08-22,2016-09-21,2016-07-18,2016-07-23
-96,,"Módulos iniciales para el sistema de Justicia Penal Acusatorio(cerrado)",2016-08-22,2016-09-21,2016-07-18,2016-07-23
-98,,"Curso básico para asesor Jurídico de victima",2016-08-22,2016-09-21,2016-07-18,2016-07-23
-99,,"Diseño y creación de recursos de aprendizaje con Microsoft Excel ",2016-10-31,2016-11-27,2016-08-01,2016-08-06
+"nombre del curso","id curso",organizacion,"fecha inicio","fecha fin","inicio de inscripcion","fin de inscripcion"
+"De México al mundo, los ingredientes. ",course-v1:UCSJ+G01+2015G01,UCSJ,"2030-09-21 00:00:00",,"2030-09-11 00:00:00",
+"Curso de Prueba RPG",course-v1:EscuelaX+CP2RPG+2017,EscuelaX,"2030-01-01 00:00:00",,"2030-01-01 00:00:00",
+"Curso Prueba",course-v1:UniversidadX+CP01+2016,UniversidadX,"2030-01-01 00:00:00",,"2030-01-01 00:00:00",
+"Resolución de problemas matemáticos y el uso de tecnologías digitales",course-v1:CINVESTAV+RPMUTDX02+2017_S1,CINVESTAV,"2030-01-01 00:00:00",,"2030-01-01 00:00:00",
+"Edición de documentos para el aula de clases con Microsoft Word",course-v1:Microsoft+MSW01+MSW01,Microsoft,"2030-10-01 00:00:00",,"2029-01-01 00:00:00",
+"Prevención del conflicto derivado del acto médico",course-v1:CONAMED+PCDAM02+2016_S2,CONAMED,"2030-01-01 00:00:00",,"2029-01-01 00:00:00",
+"La historia de la vida cotidiana",course-v1:COLMEX+CMHVC02x+2017_S1,"El Colegio de México","2017-03-20 00:00:00","2017-04-07 00:00:00","2017-02-14 00:00:00","2017-03-28 00:00:00"
+"Introducción al uso y representación de información geoespacial",course-v1:CENTROGEO+CGIURIG02x+2017_S1,CENTROGEO,"2017-03-30 00:00:00","2017-04-27 06:00:00","2017-02-09 00:00:00","2017-04-06 06:00:00"
+"¿Cómo entender el presupuesto? El gasto público a través de los datos",course-v1:SHCP+CEPGP005x+2017_S1,SHCP,"2017-03-15 06:00:00","2017-04-19 06:00:00","2017-02-02 00:00:00","2017-03-22 00:00:00"
+" ¿Cómo son nuestras escuelas? Evaluación de Condiciones Básicas para la Enseñanza y el Aprendizaje",course-v1:INEE+INEEECEA04x+2017_S1,INEE,"2017-03-01 00:00:00","2017-03-29 00:00:00","2017-02-01 00:00:00","2017-03-01 06:00:00"
+"Probabilidad y estadística",course-v1:TECNM+PE022017AX+2017_S1,TECNM,"2017-02-13 06:00:00","2017-03-26 06:00:00","2017-01-01 06:00:00","2017-02-20 06:00:00"
+"La ética, el ser humano y la ciencia",course-v1:TECNM+ESHC022017AX+2017_S1,TECNM,"2017-02-13 06:00:00","2017-03-26 06:00:00","2017-01-01 06:00:00","2017-02-20 06:00:00"
+"Conoce MéxicoX",course-v1:MexicoX+CMX01+2016,MexicoX,"2017-01-01 18:00:00","2017-12-30 18:00:00","2017-01-01 00:30:00","2017-12-28 00:00:00"
+"Curso de Prueba RPG",course-v1:EscuelaX+CPRPG+2017,EscuelaX,"2017-01-01 00:00:00","2017-02-02 21:30:00","2017-01-01 00:00:00",
+"Aritmética y principios de Álgebra",course-v1:TECNM+APA022017AX+2017_S1,TECNM,"2017-02-13 05:00:00","2017-03-26 05:00:00","2017-01-01 00:00:00","2017-02-20 23:59:00"
+"Entendiendo el Cálculo Integral",course-v1:TECNM+ACF010217Bx+2017_S1,TECNM,"2017-02-13 07:00:00","2017-04-23 07:00:00","2016-12-19 07:00:00","2017-02-20 23:30:00"
+"Herramientas de gestión y comunicación en la nube",course-v1:TECNM+HGCN022017+2017_S1,TECNM,"2017-02-13 06:00:00","2017-04-02 23:30:00","2016-12-19 00:00:00","2017-02-20 23:30:00"
+"Álgebra Lineal, primera parte",course-v1:TECNM+AL1P022017AX+2017_S1,TECNM,"2017-02-13 00:00:00","2017-03-26 00:00:00","2016-12-19 00:00:00","2017-02-20 23:30:00"
+"Cálculo diferencial, primera parte",course-v1:TECNM+CD1P022017AX+2017_S1,TECNM,"2017-02-13 00:00:00","2017-03-26 06:00:00","2016-12-19 00:00:00","2017-02-20 06:00:00"
+"Desarrollo Sustentable, nuestro futuro compartido",course-v1:TECNM+DSNFC022017Bx+2017_S1,TECNM,"2017-02-13 00:00:00","2017-03-26 05:00:00","2016-12-19 00:00:00","2017-02-20 00:00:00"
+"Investigación. Descubriendo Hechos y Principios",course-v1:TecNM+IDHP02201717AX+2017_S1,TecNM,"2017-02-13 00:00:00","2017-04-09 23:59:00","2016-12-19 00:00:00","2017-02-20 00:00:00"
+"Resolución de problemas matemáticos y el uso de tecnologías digitales",course-v1:CINVESTAV+RPMUTDX03+2017_S1,CINVESTAV,"2017-01-30 06:00:00","2017-03-20 06:00:00","2016-12-11 00:00:00","2017-02-06 00:00:00"
+"Resiliencia nómica",course-v1:IIIDx+IIIDRn104x+2017_S1,IIIDx,"2017-02-06 00:00:00","2017-04-24 00:00:00","2016-11-30 00:00:00","2017-03-15 00:00:00"
+"Diez en Planea",course-v1:INEE+DP01+2016_S2,INEE,"2016-11-14 00:00:00","2016-12-09 23:30:00","2016-11-10 00:00:00","2016-11-26 23:30:00"
+"Sistema de Evaluación del Desempeño",course-v1:SHCP-UNAM+DPbR4x+2016_S2,SHCP-UNAM,"2016-11-09 06:00:00","2016-12-07 05:30:00","2016-11-04 00:00:00","2016-11-10 00:00:00"
+"Energías convencionales, limpias y su tecnología",course-v1:Tecnologico_de_Monterrey+ECLE1I01x+2017_T1,"Tecnológico de Monterrey","2017-02-27 00:00:00","2017-04-15 05:00:00","2016-11-04 00:00:00","2017-02-26 19:00:00"
+"Finanzas para emprendedores",course-v1:FCPS-UNAM+UNAM0008x+2016_S2,FCPS-UNAM,"2016-10-24 00:00:00","2016-12-09 23:30:00","2016-10-24 00:00:00","2016-11-13 23:30:00"
+"Producción Multimedia de Material Didáctico",course-v1:UTPuebla+PMMDx+2016_S2,UTPuebla,"2017-02-20 00:00:00","2017-03-20 00:00:00","2016-10-20 00:00:00","2017-02-27 00:00:00"
+"Los desastres y sus efectos psicológicos",course-v1:CENAPRED+FEAP101x+2017_S1,CENAPRED,"2017-01-16 00:00:00","2017-03-16 00:00:00","2016-10-20 00:00:00","2017-01-23 00:00:00"
+"Agricultura Familiar: Transformaciones y Perspectivas ",course-v1:SAGARPA+CMHI1x+2016_S2,SAGARPA,"2016-11-12 00:00:00","2016-12-09 23:00:00","2016-10-19 00:00:00","2016-11-12 23:30:00"
+"Portafolios Digitales para Docentes",course-v1:UTPuebla+UTPPDDx+2017_S1,UTPuebla,"2017-01-16 00:00:00","2017-02-12 00:00:00","2016-10-19 00:00:00","2017-01-23 00:00:00"
+"Felicidad, Estudios avanzados",course-v1:IIIDx+IIIDFe102x+2017_S1,IIIDx,"2017-01-16 00:30:00","2017-03-20 23:00:00","2016-10-17 00:30:00","2017-02-28 23:00:00"
+"Introducción a la Educación Financiera",course-v1:BANSEFI+BANSEFIIEF01x+2016_S2,BANSEFI,"2016-11-15 18:00:00","2016-12-11 23:30:00","2016-10-10 00:00:00","2016-12-09 23:30:00"
+"Aprender a Aprender, alternativas para una mejor calidad de vida",course-v1:Prepaenlinea-SEP+PELSEPAAOx+2016_S2,Prepaenlinea-SEP,"2016-10-24 06:00:00","2016-11-27 06:00:00","2016-10-05 06:00:00","2016-10-31 06:00:00"
+"Prevención del conflicto derivado del acto médico",course-v1:CONAMED+PCDAM2+2016_S2,CONAMED,"2016-11-01 00:00:00","2016-11-30 00:00:00","2016-10-01 00:00:00","2016-11-08 00:00:00"
+"La nueva industria eléctrica en México",course-v1:Tecnologico_de_Monterrey+LNIE1I01x+2017_T1,"Tecnológico de Monterrey","2017-02-13 05:00:00","2017-04-01 04:59:00","2016-09-30 00:00:00","2017-02-20 04:59:00"
+"Redacción para todos",course-v1:DGTVE_UNAM+DGTVEUNAM001+2016_S2,DGTVE_UNAM,"2016-10-03 00:00:00","2016-11-03 06:00:00","2016-09-28 00:00:00","2016-10-08 19:00:00"
+"Aprendizaje estratégico en ambientes virtuales",course-v1:UnADM+UnADM-AEAV-01+2016_S2,UnADM,"2016-11-07 00:00:00","2016-12-02 00:00:00","2016-09-27 00:00:00","2016-11-14 00:00:00"
+"La reforma energética de México y sus oportunidades",course-v1:Tecnologico_de_Monterrey+LREE1I01x+2017_T1,"Tecnológico de Monterrey","2017-01-30 05:00:00","2017-03-18 04:59:00","2016-09-23 00:00:00","2017-02-08 04:59:00"
+"Curso Integral de Consolidación a las Habilidades Docentes",course-v1:DGESPE+CICHD-2016_S2+2016_S2,DGESPE,"2016-09-12 00:00:00","2016-11-25 00:00:00","2016-09-12 00:00:00","2016-10-28 00:00:00"
+"Energía: pasado, presente y futuro",course-v1:Tecnologico_de_Monterrey+EPPE1I01x+2017_T1,"Tecnológico de Monterrey","2017-01-16 00:00:00","2017-03-03 04:59:00","2016-09-12 00:00:00","2017-01-30 04:59:00"
+"Introducción al uso y representación de información geoespacial",course-v1:CENTROGEO+CGGTARE_1x+2016_S2,CENTROGEO,"2016-11-03 00:00:00","2016-12-09 06:00:00","2016-09-10 00:00:00","2016-11-24 06:00:00"
+"De México al mundo, los ingredientes. ",course-v1:UCSJ+UCSJMXv2x+2016_S2,UCSJ,"2016-10-24 13:00:00","2016-12-05 05:00:00","2016-09-05 01:00:00","2016-10-31 00:00:00"
+"Curaduría de recursos educativos en línea",course-v1:UAEM+CRE101x+2016_S2,UAEM,"2016-09-26 23:00:00","2016-10-27 17:00:00","2016-08-29 05:00:00","2016-10-27 17:00:00"
+"Descifrando el Mundo de las adicciones",course-v1:UniversidadHebraica+UHMx_02+2016_S2,UniversidadHebraica,"2016-09-15 00:00:00","2016-11-30 12:00:00","2016-08-26 12:00:00","2016-09-22 12:00:00"
+"La línea, 3200 Kms de frontera",course-v1:Colef+Colef02x+2016_S2,Colef,"2016-10-17 00:00:00","2016-12-04 23:30:00","2016-08-20 00:00:00","2016-10-16 23:30:00"
+"Coaching Educativo",course-v1:UNIRMexico+CE_UNIRMex_02+2016_S2,UNIRMexico,"2016-10-17 11:00:00","2016-11-21 04:30:00","2016-08-18 20:00:00","2016-10-24 04:30:00"
+"El uso de las TIC en la Educación Primaria",course-v1:UNIRMexico+TIC_UNIRMex02+2016_S2,"UNIR México","2016-09-19 10:00:00","2016-10-16 23:30:00","2016-08-18 14:00:00","2016-09-18 23:30:00"
+CineRegistro,course-v1:CENART+CNRG2016+2016_S2,CENART,"2016-10-17 00:00:00","2016-12-11 00:00:00","2016-08-15 00:00:00","2016-11-14 00:00:00"
+"Resiliencia nómica",course-v1:IIIDx+IIIDRn103x+2016_s2,IIIDx,"2016-09-12 01:00:00","2016-12-17 23:00:00","2016-08-08 23:00:00","2016-12-29 00:30:00"
+"Introducción al Servicio de Alimentos y Bebidas",course-v1:UTRM+SAB01201601+2016_S2,UTRM,"2016-10-08 07:00:00","2016-11-08 17:00:00","2016-08-01 00:00:00","2016-10-16 07:00:00"
+"Cálculo diferencial",course-v1:TECNM+ACF090116Ax+2016,TECNM,"2016-09-05 00:00:00","2016-11-15 06:00:00","2016-07-28 00:00:00","2016-09-19 06:00:00"
+"Literatura y cultura tradicional de México",course-v1:El_Colegio_de_Mexico+CMLT1X+2016_2,"El Colegio de México","2016-08-22 00:00:00","2016-10-03 23:00:00","2016-07-25 13:00:00","2016-08-29 23:30:00"
+"Introducción a la Nueva Epistemología",course-v1:UPN+UPN003x+2016,UPN,"2016-09-05 00:00:00","2016-11-13 00:00:00","2016-07-25 00:00:00",
+"Educación intercultural. Perspectivas interdisciplinarias",course-v1:UPN+EI_UPN002_2+2016_S2,UPN,"2016-08-29 00:30:00","2016-10-16 23:30:00","2016-07-18 05:00:00",
+"Violencia en la Escuela. Herramientas para su análisis e intervención",course-v1:UPN+VE_UPN001_2+2016_S2,UPN,"2016-08-15 00:00:00","2016-10-16 23:30:00","2016-07-15 05:00:00","2016-10-09 00:00:00"
+"Finanzas Públicas e Introducción al Presupuesto basado en Resultados",course-v1:SHCP_UNAM+D_PbR1x+2016_S2,SHCP_UNAM,"2016-08-01 00:00:00","2016-09-04 04:30:00","2016-07-13 00:00:00","2016-08-03 23:30:00"
+"Geobiología: evolución de la vida y la Tierra",course-v1:IPN-UPEV+GEOB_01+2016,IPN-UPEV,"2016-08-15 00:00:00","2016-09-09 00:00:00","2016-07-06 00:00:00","2016-08-19 00:00:00"
+"Entendiendo el Cálculo Integral",course-v1:TECNM+ACF090216Bx+2016,TECNM,"2016-09-05 07:00:00","2016-11-14 07:00:00","2016-07-05 07:00:00","2016-09-19 23:30:00"
+"Curso básico para Defensores en el Sistema Penal Acusatorio",course-v1:SETEC-SEGOB+SETEC-DSPA+2016_T3,SETEC-SEGOB,"2016-07-04 10:00:00","2016-08-05 00:00:00","2016-07-03 00:00:00",
+"Curso básico para Jueces en el Sistema Penal Acusatorio",course-v1:SETEC-SEGOB+SETEC-Jueces+2016_T3,SETEC-SEGOB,"2016-07-04 10:00:00","2016-08-05 00:00:00","2016-07-03 00:00:00",
+"Curso básico para Agentes del Ministerio Público en el Sistema Penal Acusatorio",course-v1:SETEC-SEGOB+SETEC-CBAMPSPA+2016_T3,SETEC-SEGOB,"2016-07-04 00:00:00","2016-08-05 00:00:00","2016-07-03 00:00:00",
+"La ética, el ser humano y la ciencia",course-v1:TecNM+ACA090716Bx+2016,TecNM,"2016-09-05 00:00:00","2016-10-24 06:00:00","2016-06-28 00:00:00","2016-09-19 06:00:00"
+"Aritmética y principios de Álgebra",course-v1:TecNM+ACF-0901-A+2016_S2,TecNM,"2016-09-26 00:00:00","2016-11-04 05:00:00","2016-06-27 00:00:00","2016-10-10 23:59:00"
+"México y su pasado reciente",course-v1:INEA+PPEH+2016E1,INEA,"2016-08-22 00:00:00","2016-09-30 23:59:00","2016-06-24 00:00:00","2016-09-03 23:59:00"
+"Herramientas de gestión y comunicación en la nube",course-v1:TecNM+HGC090116Bx+2016,TecNM,"2016-09-12 00:00:00","2016-10-24 00:00:00","2016-06-20 00:00:00","2016-09-30 23:30:00"
+"Investigación. Descubriendo Hechos y Principios",course-v1:TecNM+ACA090916BX+2016_2,TecNM,"2016-09-05 00:00:00","2016-11-04 23:59:00","2016-06-20 00:00:00","2016-09-18 00:00:00"
+"Búsqueda en Internet para Universitarios",course-v1:UAEM+eUAEM_2016_2+2016_2,UAEM,"2016-09-05 04:30:00","2016-11-05 05:00:00","2016-06-20 00:00:00","2016-09-10 05:00:00"
+"Desarrollo Sustentable, nuestro futuro compartido",course-v1:TecNM.MX+ACD090816Bx+2016_S2,TecNM.MX,"2016-09-05 00:00:00","2016-10-16 05:00:00","2016-06-20 00:00:00","2016-09-19 00:00:00"
+"Los pueblos tenemos memoria",course-v1:INEA+LPTMx+2016_S2,INEA,"2016-08-15 00:00:00","2016-09-23 00:00:00","2016-06-17 00:00:00","2016-08-22 00:00:00"
+"Ciberbullying: la otra cara del internet",course-v1:FEM-UAE+CBx+2016_T1,FEM-UAE,"2016-09-01 00:00:00","2016-09-29 00:00:00","2016-06-15 00:00:00","2016-09-09 23:30:00"
+"Iniciación al uso de hojas de cálculo en el aula con Microsoft Excel",course-v1:Microsoft+MSE01+2016_S2,Microsoft,"2016-10-31 00:00:00","2016-11-27 23:30:00","2016-06-15 00:00:00","2016-11-06 23:30:00"
+"Aprender a Aprender, alternativas para una mejor calidad de vida",course-v1:Prepaenlinea-SEP+PrepaSEP005-3a+2016_S2,Prepaenlinea-SEP,"2016-07-11 06:00:00","2016-08-14 06:00:00","2016-06-10 06:00:00","2016-07-10 06:00:00"
+"Aprender a Aprender, alternativas para una mejor calidad de vida",course-v1:Prepaenlinea-SEP+PrepaSEP005-3c+2016_S2,Prepaenlinea-SEP,"2016-06-20 06:00:00","2016-07-17 05:30:00","2016-06-10 06:00:00","2016-06-20 05:30:00"
+"Edición de documentos para el aula de clases con Microsoft Word",course-v1:Microsoft+MSW01+2016_S2,Microsoft,"2016-10-03 00:00:00","2016-10-30 23:30:00","2016-06-06 00:00:00","2016-10-09 23:30:00"
+"Productividad y creatividad en el aula con Microsoft PowerPoint",course-v1:Microsoft+MSPP01+2016_S2,Microsoft,"2016-09-05 00:00:00","2016-10-02 23:30:00","2016-06-01 00:00:00","2016-09-11 23:30:00"
+"Liderazgo de Gestión en Centros Educativos ¿Por qué?",course-v1:IPN-UPEV+LGCEPQ_01+2016,IPN-UPEV,"2016-07-25 00:00:00","2016-08-19 23:59:00","2016-05-23 00:00:00","2016-08-01 00:00:00"
+"Migración, un fenómeno global",course-v1:Colef+Colef02+2016_S2,"El Colef","2016-07-10 00:00:00","2016-08-28 23:30:00","2016-05-20 00:00:00","2016-07-09 23:30:00"
+"ABC para la creación de proyectos culturales",course-v1:CENART+ABC2016+2016,CENART,"2016-06-20 00:00:00","2016-07-25 23:30:00","2016-05-16 05:00:00","2016-07-04 12:00:00"
+"Innovación educativa con recursos abiertos",course-v1:TecdeMonterrey+innorea01x+2016,"Tecnológico de Monterrey","2016-09-05 12:00:00","2016-10-10 00:00:00","2016-05-16 00:00:00","2016-09-04 23:59:00"
+"Curso básico para Jueces en el Sistema Penal Acusatorio",course-v1:SETEC-SEGOB+SETEC-Jueces+2016,SETEC-SEGOB,"2016-05-16 10:00:00","2016-06-16 00:00:00","2016-05-15 00:00:00","2016-05-16 00:00:00"
+"Curso básico para Defensores en el Sistema Penal Acusatorio",course-v1:SETEC-SEGOB+SETEC-DSPA+2016-S2,SETEC-SEGOB,"2016-05-16 11:00:00","2016-06-16 00:00:00","2016-05-15 00:00:00","2016-05-16 00:00:00"
+"Felicidad, Estudios avanzados.",course-v1:IIIDx+IIIDFe101x+2016_S2,IIIDx,"2016-08-08 00:30:00","2016-10-24 23:00:00","2016-05-09 00:30:00","2016-09-22 23:00:00"
+"Portafolio de evidencias para Escuelas Normales",course-v1:DGSPE+CPENx+2016-T2,DGESPE,"2016-05-16 00:00:00","2016-07-22 23:30:00","2016-05-09 00:00:00","2016-06-01 23:30:00"
+"Curso Integral de Consolidación a las Habilidades Docentes",course-v1:DGESPE+CICHD-2016+2016_05,DGESPE,"2016-05-16 00:00:00","2016-07-11 23:30:00","2016-05-08 00:00:00","2016-05-23 23:30:00"
+"Apreciación y análisis. Una guía para entender el arte.",course-v1:BUAP+BUAP-AA2016+2016_S2,BUAP,"2016-06-07 00:00:00","2016-07-19 00:00:00","2016-04-17 00:00:00","2016-06-14 00:00:00"
+"Resolución de problemas matemáticos y el uso de tecnologías digitales",course-v1:CINVESTAV+FRPMx+2016_S1,CINVESTAV,"2016-05-23 00:00:00","2016-07-11 06:00:00","2016-04-10 18:00:00","2016-05-30 00:00:00"
+"Finanzas para emprendedores",course-v1:FCPS-UNAM+UNAM0007x+2016-S1,FCPS-UNAM,"2016-06-01 00:00:00","2016-07-13 23:30:00","2016-04-01 00:00:00","2016-07-13 23:30:00"
+"La dramática en el audiovisual de ficción",course-v1:CCT-Television-educativa+CCT-101-16+2016-S1,"Televisión educativa","2016-06-20 01:00:00","2016-08-20 17:00:00","2016-03-21 08:00:00","2016-07-01 18:00:00"
+"Otra forma de aprender Historia",course-v1:SistemaDeUniversidadVirtualUdG+H2016-1+2016-S2,SistemaDeUniversidadVirtualUdG,"2016-04-25 00:00:00","2016-06-05 23:30:00","2016-03-20 23:00:00","2016-04-26 00:00:00"
+"Administración de Proyectos de Tecnologías de la Información ",course-v1:IPN+APTI01+2016-S2,IPN,"2016-06-20 00:00:00","2016-07-15 23:59:00","2016-03-20 00:00:00","2016-06-20 17:00:00"
+"El uso de las TIC en la Educación Primaria",course-v1:UNIRMexico+TIC_UNIRMex+2016_01,UNIRMexico,"2016-05-02 18:00:00","2016-05-29 23:30:00","2016-03-15 14:00:00","2016-05-03 00:00:00"
+"Descifrando el Mundo de las adicciones",course-v1:UniversidadHebraica+UHMx_01+2016_T1,UniversidadHebraica,"2016-04-15 12:00:00","2016-05-30 12:00:00","2016-03-15 12:00:00","2016-05-06 12:00:00"
+"Biología Humana",course-v1:IPN+IPN_BH01+2016_S2,IPN,"2016-06-13 00:00:00","2016-07-08 00:00:00","2016-03-14 00:00:00","2016-06-13 00:00:00"
+"Aprender a Aprender, alternativas para una mejor calidad de vida",course-v1:Prepaenlinea-SEP+PrepaSEP004-2a+2016_S1,Prepaenlinea-SEP,"2016-04-18 06:00:00","2016-05-22 06:00:00","2016-03-08 06:00:00","2016-05-01 06:00:00"
+"Tecnologías de la información y la comunicación (TIC) para la participación social en la educación",course-v1:CONAPASE+CONAPASE_TIC_2016+2016-S1,CONAPASE,"2016-05-23 09:00:00","2016-06-17 23:00:00","2016-03-07 09:00:00","2016-05-27 22:00:00"
+"Programación Orientada a Objetos (POO)",course-v1:IPN+POO2016+2016_S1,IPN,"2016-06-06 00:00:00","2016-07-01 23:59:00","2016-03-07 00:00:00","2016-06-07 00:00:00"
+"Aprender a Aprender, alternativas para una mejor calidad de vida",course-v1:Prepaenlinea-SEP+Prepa003-2p+2016_1,Prepaenlinea-SEP,"2016-03-07 06:00:00","2016-04-10 06:00:00","2016-02-22 06:00:00","2016-03-06 06:00:00"
+"Resiliencia nómica",course-v1:IIIDx+IIIDRn102x+2016_T1,IIIDx,"2016-05-16 01:00:00","2016-08-08 23:00:00","2016-02-15 23:00:00","2016-06-15 23:00:00"
+"Inducción a los Ambientes Virtuales de Aprendizaje",course-v1:DGESPE+IAVA_2016+2016_S2,DGESPE,"2016-02-22 00:00:00","2016-04-15 00:00:00","2016-02-15 00:00:00","2016-03-14 23:30:00"
+"La historia de la vida cotidiana",course-v1:El_Colegio_de_Mexico+CMHI1x+2016_T1,"El Colegio de México","2016-02-22 00:00:00","2016-04-15 00:00:00","2016-02-04 00:00:00","2016-03-28 00:00:00"
+"Coaching Educativo",course-v1:UNIRMexico+CE_UNIRMex+2016_01,UNIRMexico,"2016-03-07 12:00:00","2016-04-29 23:30:00","2016-01-25 20:00:00","2016-03-04 21:00:00"
+"Estrategias para el Manejo de Recursos de Información Científica",course-v1:INFOTEC+EMRIC+2016_T1,INFOTEC,"2016-04-19 16:00:00","2016-05-19 23:30:00","2016-01-18 00:00:00","2016-04-22 23:30:00"
+"Internet de las Cosas",course-v1:INFOTEC+MOOC_IdC+062015,INFOTEC,"2016-04-12 12:00:00","2016-05-12 23:30:00","2016-01-18 00:00:00","2016-04-15 23:30:00"
+"Herramientas de cómputo para la investigación y análisis de redes sociales",course-v1:INFOTEC+HCIARS+2016_T1,INFOTEC,"2016-02-22 00:00:00","2016-03-27 12:00:00","2016-01-11 00:00:00","2016-02-23 00:00:00"
+"ABC para la creación de proyectos culturales",course-v1:CENART+ABC2015+2015_S2,CENART,"2016-01-18 00:00:00","2016-02-29 23:30:00","2015-12-07 05:00:00","2016-02-11 12:00:00"
+"Piérdele el miedo a las mates",course-v1:TecNM+ACF-0901-A+2016,TecNM,"2016-03-07 00:00:00","2016-05-09 05:00:00","2015-12-01 00:00:00","2016-03-14 23:59:00"
+"Informática en la vida moderna",course-v1:TecNM.MX+TIP-1017-1+2016_T1,TecNM.MX,"2016-03-07 06:00:00","2016-05-03 06:00:00","2015-11-17 00:00:00","2016-03-14 06:00:00"
+"Álgebra Lineal",course-v1:TecNM.MX+ACF-0903-15-A1+2016-T1,TecNM.MX,"2016-02-10 05:00:00","2016-04-07 05:00:00","2015-11-13 00:00:00","2016-02-22 23:30:00"
+"Protección de Datos Personales",course-v1:INFOTEC+INFOTECPDP+2016_T1,INFOTEC,"2016-02-15 00:00:00","2016-03-27 12:00:00","2015-11-03 00:00:00","2016-02-16 23:30:00"
+"Desarrollo Sustentable, nuestro futuro compartido",course-v1:TecNM.MX+M-ACD0908-1+2016,TecNM.MX,"2016-03-07 05:00:00","2016-05-02 05:00:00","2015-10-19 00:00:00","2016-03-15 23:59:00"
+"Álgebra de Espacios Vectoriales",course-v1:TecNM.MX+ACF-0903-2+2016_T1,TecNM.MX,"2016-03-07 06:00:00","2016-05-05 05:59:00","2015-10-12 00:00:00","2016-03-14 23:59:00"
+Demencias,course-v1:INGER+DEMENCIAS01+2016_S1,INGER,"2016-01-18 06:00:00","2016-03-06 23:30:00","2015-09-28 06:00:00","2016-01-24 23:30:00"
+"México multiculturalismo ",course-v1:UNAM+UNAM0006+2015,UNAM,"2016-02-01 08:30:00","2016-03-07 23:30:00","2015-09-21 00:00:00","2016-02-08 23:30:00"
+"México, sus grandes retos y oportunidades ",course-v1:UNAM+UNAM005+2015,UNAM,"2016-01-18 23:00:00","2016-02-26 23:30:00","2015-09-14 00:00:00","2016-02-21 23:30:00"
+"Álgebra Lineal",course-v1:TecNM+ACF090316Bx+2016_2,TecNM,"2016-09-05 00:00:00","2016-11-14 00:00:00","2015-08-04 00:00:00","2016-09-19 23:30:00"
+"Lactancia materna y amamantamiento",course-v1:INSP+lactancia.01+2015_T1,INSP,"2015-10-12 18:00:00","2015-11-10 11:30:00","2015-08-04 00:00:00","2015-11-08 00:00:00"
+"Educación intercultural. Perspectivas interdisciplinarias",course-v1:UPN+UPN002+2015,UPN,"2015-10-19 00:30:00","2015-11-20 23:30:00","2015-07-20 05:00:00","2015-10-30 23:30:00"
+"Seducciones de Sor Juana",course-v1:UCSJ+SDSJ01+2015_T1,UCSJ,"2015-10-12 01:00:00","2015-11-15 00:00:00","2015-07-13 01:00:00","2015-11-10 06:00:00"
+"Astronomía. Galaxias: los puentes entre las estrellas y el Universo.",course-v1:UNAM+UNAM003+2014,UNAM,"2015-10-05 01:00:00","2015-12-16 23:30:00","2015-07-06 01:00:00","2015-12-13 23:30:00"
+"Redacción para todos",course-v1:UNAM+UNAM001+Trimestral,UNAM,"2015-09-28 00:00:00","2015-12-12 23:30:00","2015-06-29 00:00:00","2015-11-10 19:00:00"
+"Literatura y cultura tradicional de México",course-v1:El_Colegios_de_Mexico+CMLT1X+2015_LT1,"El Colegio de México","2015-09-21 08:00:00","2015-11-08 23:00:00","2015-06-23 10:00:00","2015-11-01 23:30:00"
+"Violencia en la Escuela. Herramientas para su análisis e intervención",course-v1:UPN+UPN001+2015,UPN,"2015-09-21 00:30:00","2015-11-15 23:30:00","2015-06-21 05:00:00","2015-10-10 23:30:00"
+"Cómo crear un MOOC ...  para todos",course-v1:UnADM+CCMPT01+2015_S2,UnADM,"2015-09-21 01:00:00","2015-10-30 00:00:00","2015-06-21 01:00:00","2015-10-12 00:00:00"
+"Cambio climático",course-v1:UNAM+UNAM002+Trimestral,UNAM,"2015-09-21 01:00:00","2015-12-12 23:30:00","2015-06-21 01:00:00","2015-11-16 06:00:00"
+"Migración, un fenómeno global",course-v1:Colef+Colef01+2015_COLEF,"El Colef","2015-09-21 00:00:00","2015-11-29 23:30:00","2015-06-21 00:00:00","2015-11-29 00:00:00"
+"ETV: Paludismo, Dengue y Chikungunya",course-v1:INSP+insp.etv.001+2015_T1,INSP,"2015-09-21 00:00:00","2015-11-10 11:00:00","2015-06-21 00:00:00","2015-09-28 00:00:00"
+"Evaluación educativa en un clic",course-v1:INEE+EEC01+2016_S2,INEE,"2016-10-18 00:00:00","2016-11-18 23:30:00",,"2016-10-26 00:00:00"
+"Salud ósea a lo largo de la vida",course-v1:INSP+osea1+2015_T2,INSP,"2015-10-12 23:00:00","2015-11-10 11:00:00",,"2015-11-08 00:00:00"
+"Servicios Turísticos",course-v1:UTC+UTCM01+2016_C3,UTC,"2016-10-24 00:00:00","2016-12-02 23:30:00",,"2016-10-31 23:30:00"
+"Inducción a la corrección de estilo",course-v1:IPN-UPEV+ICE_01+2016,IPN-UPEV,"2016-07-11 00:00:00","2016-07-22 00:00:00",,
+"Prevención del conflicto derivado del acto médico",course-v1:CONAMED+PCDAM+2016_C1,CONAMED,"2030-01-01 00:00:00",,,
+"edX Demonstration Course",course-v1:edX+DemoX+Demo_Course,edX,"2013-02-05 05:00:00",,,
+"Formación docente para la enseñanza de Matemáticas básicas",course-v1:IPN-UPEV+FDEMNS_01+2016,IPN-UPEV,"2016-06-13 00:00:00","2016-07-08 00:00:00",,
+"Probabilidad y estadística",course-v1:TECNM+TecNM_PE2016+2016,TECNM,"2016-09-12 00:00:00","2016-11-09 00:00:00",,"2016-11-02 00:00:00"
+"Prevención de accidentes en casa",course-v1:UnADM+UnADM-PAC-01+2016,UnADM,"2016-09-04 00:00:00","2016-10-04 06:00:00",,
+"Planeación y Presupuesto Orientado a Resultados",course-v1:SHCP-UNAM+DPbR2x+2016_S2,SHCP-UNAM,"2016-09-08 06:00:00","2016-10-06 04:30:00",,
+"Metodología de Marco Lógico y Matriz de Indicadores para Resultados",course-v1:SHCP-UNAM+DPbR3x+2016_S2,SHCP-UNAM,"2016-10-10 06:00:00","2016-11-07 05:30:00",,
+"Curso básico para Defensores en el Sistema Penal Acusatorio",course-v1:SETEC-SEGOB+SETEC-DSPA+2016_T4,SETEC-SEGOB,"2016-08-22 00:00:00","2016-09-22 07:00:00",,
+"Curso básico para Jueces en el Sistema Penal Acusatorio",course-v1:SETEC-SEGOB+SETEC-Jueces+2016_T4,SETEC-SEGOB,"2016-08-22 00:00:00","2016-09-22 07:00:00",,
+"Curso básico para Agentes del Ministerio Público en el Sistema Penal Acusatorio",course-v1:SETEC-SEGOB+SETEC-CBAMPSPA+2016-S2,SETEC-SEGOB,"2016-05-16 00:00:00","2016-06-16 00:00:00",,
+"Curso básico para Agentes del Ministerio Público en el Sistema Penal Acusatorio",course-v1:SETEC-SEGOB+SETEC-CBAMPSPA+2016_T4,SETEC-SEGOB,"2016-08-22 00:00:00","2016-09-22 07:00:00",,
