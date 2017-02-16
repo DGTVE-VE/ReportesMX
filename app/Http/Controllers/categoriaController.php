@@ -28,8 +28,9 @@ class categoriaController extends Controller {
 
 		if($super_user == 1)
 		{
+            $usuario = session()->get('name_user');
             $categorias = Categorias::all();
-			return view('vinculaCat')->with('categorias', $categorias);
+			return view('vinculaCat')->with('categorias', $categorias)->with('name_user',$usuario);
 		}
 		else{
 			return ("Acceso denegado");
