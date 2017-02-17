@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
+use App\Model\Course_overviews;
 
 class UseController extends Controller {
 
@@ -26,7 +27,7 @@ class UseController extends Controller {
 			session()->put('super_user', '1');
 			$id = DB::table('edxapp.auth_user')->whereemail($correo)->whereis_superuser('1')->get()[0]->id;
 
-			$course_name = DB::table('course_name')->whereBetween('fin',array(20160000, 20990000))->whereBetween('inicio_inscripcion',array(20160000, date("Ymd")))->lists('course_name');
+			$course_name = Course_overviews::whereBetween('end',array(20160000, 20990000))->whereBetween('enrollment_start',array(20160000, date("Ymd")))->lists('display_name','id');
 			return $this->index($course_name);
 		}
 
@@ -50,7 +51,7 @@ class UseController extends Controller {
 			for($i = 0, $j=0; $i < $n ; $i++, $j++)
 			{
 				$cursoid[$j] = $course_id[$i]->course_id;
-				$course_name[$j] = DB::table('course_name')->wherecourse_id($cursoid[$j])->get()[0]->course_name;
+				$course_name[$j] = Course_overviews::whereid($cursoid[$j])->get()[0]->display_name;
 			}
 			if($n < 1){
 				return view('accescourse')-> with('name_user', $username);
@@ -83,7 +84,7 @@ class UseController extends Controller {
 
 		if($course_name){
 
-			$course_id = DB::table('course_name')->wherecourse_name($course_name)->get()[0]->course_id;
+			$course_id = Course_overviews::wheredisplay_name($course_name)->get()[0]->id;
 			session()->put('course_id', $course_id);
 			session()->put('course_name', $course_name);
 		}
@@ -180,14 +181,14 @@ class UseController extends Controller {
 
 		if($super_user == '1'){
 
-			$activos = DB::select(DB::raw('SELECT * FROM course_name WHERE (CURDATE() <= fin AND CURDATE() >= inicio)'));
+			$activos = Course_overviews::where('end', '>=', DB::raw('curdate()'))->where('enrollment_start', '<=', DB::raw('curdate()'))->orderBy('end', 'desc')->get();
 			$cn = "Puedes ver estadísticas de los siguientes cursos:";
 
 			$fp = fopen ('download/cursoa.csv', 'w');
 			$listaid = array();
-			$listaid[0][0] = 'id';
+			$listaid[0][0] = 'nombre del curso';
 			$listaid[0][1] = 'id curso';
-			$listaid[0][2] = 'nombre del curso';
+			$listaid[0][2] = 'organizacion';
 			$listaid[0][3] = 'fecha inicio';
 			$listaid[0][4] = 'fecha fin';
 			$listaid[0][5] = 'inicio de inscripcion';
@@ -195,13 +196,13 @@ class UseController extends Controller {
 			$i = 1;
 			foreach ($activos as $key => $value) {
 
-				$listaid[$i][0] = ($value->id);
-				$listaid[$i][1] = ($value->course_id);
-				$listaid[$i][2] = ($value->course_name);
-				$listaid[$i][3] = ($value->inicio);
-				$listaid[$i][4] = ($value->fin);
-				$listaid[$i][5] = ($value->inicio_inscripcion);
-				$listaid[$i][6] = ($value->fin_inscripcion);
+				$listaid[$i][0] = ($value->display_name);
+				$listaid[$i][1] = ($value->id);
+				$listaid[$i][2] = ($value->display_org_with_default);
+				$listaid[$i][3] = ($value->start);
+				$listaid[$i][4] = ($value->end);
+				$listaid[$i][5] = ($value->enrollment_start);
+				$listaid[$i][6] = ($value->enrollment_end);
 				$i++;
 			}
 
@@ -227,15 +228,15 @@ class UseController extends Controller {
 
 		if($super_user == '1'){
 
-			$no_activos = DB::select(DB::raw('SELECT * FROM course_name WHERE CURDATE() < inicio'));
+			$no_activos = Course_overviews::where(DB::raw('curdate()'), '<', 'start')->orderBy('enrollment_start', 'desc')->get();
 
 			$cn = "Puedes ver estadísticas de los siguientes cursos:";
 
 			$fp = fopen ('download/no_activos.csv', 'w');
 			$listaid = array();
-			$listaid[0][0] = 'id';
+			$listaid[0][0] = 'nombre del curso';
 			$listaid[0][1] = 'id curso';
-			$listaid[0][2] = 'nombre del curso';
+			$listaid[0][2] = 'organizacion';
 			$listaid[0][3] = 'fecha inicio';
 			$listaid[0][4] = 'fecha fin';
 			$listaid[0][5] = 'inicio de inscripcion';
@@ -243,13 +244,13 @@ class UseController extends Controller {
 			$i = 1;
 			foreach ($no_activos as $key => $value) {
 
-				$listaid[$i][0] = ($value->id);
-				$listaid[$i][1] = ($value->course_id);
-				$listaid[$i][2] = ($value->course_name);
-				$listaid[$i][3] = ($value->inicio);
-				$listaid[$i][4] = ($value->fin);
-				$listaid[$i][5] = ($value->inicio_inscripcion);
-				$listaid[$i][6] = ($value->fin_inscripcion);
+				$listaid[$i][0] = ($value->display_name);
+				$listaid[$i][1] = ($value->id);
+				$listaid[$i][2] = ($value->display_org_with_default);
+				$listaid[$i][3] = ($value->start);
+				$listaid[$i][4] = ($value->end);
+				$listaid[$i][5] = ($value->enrollment_start);
+				$listaid[$i][6] = ($value->enrollment_end);
 				$i++;
 			}
 
@@ -276,14 +277,14 @@ class UseController extends Controller {
 
 		if($super_user == '1'){
 
-			$concluido = DB::select(DB::raw('SELECT * FROM course_name WHERE CURDATE() > fin'));
+			$concluido = Course_overviews::where('end', '<', DB::raw('now()'))->orderBy('end', 'desc')->get();
 			$cn = "Puedes ver estadísticas de los siguientes cursos:";
 
 			$fp = fopen ('download/cursoc.csv', 'w');
 			$listaid = array();
-			$listaid[0][0] = 'id';
+			$listaid[0][0] = 'nombre del curso';
 			$listaid[0][1] = 'id curso';
-			$listaid[0][2] = 'nombre del curso';
+			$listaid[0][2] = 'organizacion';
 			$listaid[0][3] = 'fecha inicio';
 			$listaid[0][4] = 'fecha fin';
 			$listaid[0][5] = 'inicio de inscripcion';
@@ -291,13 +292,14 @@ class UseController extends Controller {
 			$i = 1;
 			foreach ($concluido as $key => $value) {
 
-				$listaid[$i][0] = ($value->id);
-				$listaid[$i][1] = ($value->course_id);
-				$listaid[$i][2] = ($value->course_name);
-				$listaid[$i][3] = ($value->inicio);
-				$listaid[$i][4] = ($value->fin);
-				$listaid[$i][5] = ($value->inicio_inscripcion);
-				$listaid[$i][6] = ($value->fin_inscripcion);
+				$listaid[$i][0] = ($value->display_name);
+				$listaid[$i][1] = ($value->id);
+				$listaid[$i][2] = ($value->display_org_with_default);
+				$listaid[$i][3] = ($value->start);
+				$listaid[$i][4] = ($value->end);
+				$listaid[$i][5] = ($value->enrollment_start);
+				$listaid[$i][6] = ($value->enrollment_end);
+
 				$i++;
 			}
 
@@ -443,7 +445,7 @@ class UseController extends Controller {
 
 			$info1 = array('Usuarios que no tienen su cuenta activada en MéxicoX', $info[2]);
 			fputcsv($fp, $info1);
-                        
+
                         $info1 = array('Usuarios desinscritos en MéxicoX', $info[3]);
 			fputcsv($fp, $info1);
 			fclose($fp);
@@ -586,11 +588,11 @@ class UseController extends Controller {
 
 			$t = DB::table('edxapp.auth_user')->count('id');
 			$inscritos = DB::table('edxapp.student_courseenrollment')->wherecourse_id($course_id)->whereis_active('1')->count('id');
-                        $desinscritos = DB::table('edxapp.student_courseenrollment')->wherecourse_id($course_id)->whereis_active('0')->count('id'); 
-			
+                        $desinscritos = DB::table('edxapp.student_courseenrollment')->wherecourse_id($course_id)->whereis_active('0')->count('id');
+
                         $n = $t-$inscritos;
                         $d=$inscritos-$desinscritos;
-                        
+
 			$info = array($t, $n, $inscritos, $desinscritos);
 			$course_name = session()->get('course_name');
 
@@ -610,7 +612,7 @@ class UseController extends Controller {
 			$info1 = array('No activos en '. $course_name, $info[2]);
 			$c_name2 = "No inscritos en ".$course_name;
 			fputcsv($fp, $info1);
-                        
+
                         $info1 = array('Desinscritos en '. $course_name, $info[3]);
 			$c_name3 = "Desinscritos en ".$course_name;
 			fputcsv($fp, $info1);

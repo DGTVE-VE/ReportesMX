@@ -51,23 +51,23 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Reportes <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{url ('home')}}" class="bg-active">Listado Cursos</a></li>
-                                <li class="divider"></li>                                                                                    
+                                <li class="divider"></li>
                                 <li><a href="{{url ('totales')}}" class="bg-active">Información usuarios</a></li>
-                                <li class="divider"></li>                                                                                    
+                                <li class="divider"></li>
                                 <li><a href="{{url ('infocurso')}}" class="bg-active">Estadísticas curso</a></li>
-                                <li class="divider"></li>                                                                                    
+                                <li class="divider"></li>
                                 <li><a href="{{url('inscritost')}}" class="bg-active">Inscritos a cursos</a><li>
-                                <li class="divider"></li>                                                                                    
+                                <li class="divider"></li>
                                 <li><a href="{{url ('videos')}}" class="bg-active">Videos</a></li>
-                                <li class="divider"></li>                                                                                    
+                                <li class="divider"></li>
                                 <li><a href="{{url ('constancias')}}" class="bg-active">Buscar Folio</a></li>
 
                             </ul>
-                        </li>  
+                        </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Formatos de llenado<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">                                                                
-                                <li class="divider"></li>                                         
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="divider"></li>
                                 <li><a href="{{url ('formatos/ficha_tecnica')}}" class="bg-active">Ficha Técnica</a></li>
                             </ul>
                         </li>                        
@@ -84,18 +84,18 @@
                                         <li><a href="{{url ('mail/compose')}}" class="bg-close" title="Envío de correos">
                                                 Envío de Correo
                                             </a></li>
-                                        <li class="divider"></li>                                                                                    
+                                        <li class="divider"></li>
                                         <li><a href="{{url ('adminblog')}}" class="bg-close" title="Blog">
                                                 Blog</a></li>
-                                        <li class="divider"></li>                                        
+                                        <li class="divider"></li>
                                         <li><a href="{{url ('asociaCategoria')}}" class="bg-close" title="Blog">
                                                 Asocia curso a categorias
                                             </a></li>
-                                        <li class="divider"></li>                                            
-                                        <li><a href="{{url ('admin/course_name')}}" class="bg-close" title="Agregar Cursos">                                        
+                                        <li class="divider"></li>
+                                        <li><a href="{{url ('admin/course_name')}}" class="bg-close" title="Agregar Cursos">
                                                 Agregar Cursos</a></li>
-                                        <li class="divider"></li>                                            
-                                        <li><a href="{{url ('instituciones/institucion')}}" class="bg-active">Institución</a></li>                            
+                                        <li class="divider"></li>
+                                        <li><a href="{{url ('instituciones/institucion')}}" class="bg-active">Institución</a></li>
                                     </ul>
                                 </li>
 

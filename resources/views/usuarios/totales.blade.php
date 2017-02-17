@@ -92,7 +92,7 @@ function drawChart() {
     var options3 = {
       legend: { position: 'left' },
       chart: {
-        title: 'Nivel de estudios usuarios',
+        title: 'Tipos de estudios de los usuarios',
         subtitle: '',
       }
     };

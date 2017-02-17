@@ -21,19 +21,22 @@ class categoriaController extends Controller {
 	public function categoria(){
         $super_user = session()->get('super_user');
         $correo = session()->get('email');
-
+        $usuario = session()->get('nombre');
+        
 		if(empty($name = Auth_user::whereemail($correo)->get())){
 			return ("Tu correo no esta asociado a algun curso en la plataforma");
 		}
-
-		if($super_user == 1)
-		{
-            $categorias = Categorias::all();
-			return view('vinculaCat')->with('categorias', $categorias);
-		}
-		else{
-			return ("Acceso denegado");
-		}
+        else{
+            if($super_user == 1)
+            {
+                //$usuario = $name[0]->username;
+                $categorias = Categorias::all();
+                return view('vinculaCat')->with('categorias', $categorias)->with('name_user',$usuario);
+            }
+            else{
+                return ("Acceso denegado");
+            }
+        }
 	}
 
 	public function consultaCurso(){

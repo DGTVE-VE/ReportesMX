@@ -9,9 +9,9 @@
                <thead>
                 <tr>
 
-                    <td class="danger" style="font-size: medium">ID</td>
-                    <td class="danger" aling="right" style="font-size: medium">ID Curso</td>
-                    <td class="danger" aling="right" style="font-size: medium">Nombre</td>
+                  <td class="danger" aling="right" style="font-size: medium">Nombre</td>
+                  <td class="danger" aling="right" style="font-size: medium">ID Curso</td>
+                    <td class="danger" style="font-size: medium">Institución</td>
                     <td class="danger" aling="right" style="font-size: medium">Fecha Inicio Curso</td>
                     <td class="danger" aling="right" style="font-size: medium">Fecha Fin Curso</td>
                     <td class="danger" aling="right" style="font-size: medium">Fecha Inicio Inscripción</td>
@@ -25,13 +25,13 @@
                     @foreach ($activos as $i)
 <tbody>
                     <tr>
-                        <td aling="right">{{$i->id}}</td>
-                        <td aling="right">{{$i->course_id}}</td>
-                        <td aling="right">{{$i->course_name}}</td>
-                        <td aling="right">{{$i->inicio}}</td>
-                        <td aling="right">{{$i->fin}}</td>
-                        <td aling="right">{{$i->inicio_inscripcion}}</td>
-                        <td aling="right">{{$i->fin_inscripcion}}</td>
+                      <td aling="right">{{$i->display_name}}</td>
+                      <td aling="right">{{$i->id}}</td>
+                        <td aling="right">{{$i->display_org_with_default}}</td>
+                        <td aling="right">{{substr($i->start, 0, -9)}}</td>
+                        <td aling="right">{{substr($i->end, 0, -9)}}</td>
+                        <td aling="right">{{substr($i->enrollment_start, 0, -9)}}</td>
+                        <td aling="right">{{substr($i->enrollment_end, 0, -9)}}</td>
 
 
                     @endforeach
