@@ -69,6 +69,8 @@ class FichaTecnicaController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
+        Log::info ('metodo store...');
+        Log::info ('Input::get("seccion")'. Input::get('seccion'));
         if (Input::get('seccion') === 'info_basica' ){
             Log::info ('Guardando info_basica');
             return $this->storeInfoBasica ($request);            
@@ -80,6 +82,10 @@ class FichaTecnicaController extends Controller {
         if (Input::get('seccion') === 'fechas' ){
             Log::info ('Guardando fechas');
             return $this->storeFechas ($request);            
+        }
+        if (Input::get('seccion') === 'resumen' ){
+            Log::info ('Guardando resumen');
+            return $this->storeResumen ($request);            
         }
     }
 
@@ -190,9 +196,23 @@ class FichaTecnicaController extends Controller {
         else{
             abort (500, "El formulario no pertenece a ninguna ficha.");
         }
-        return $this->show ($ficha->id, 'info_basica');  
+        return $this->show ($ficha->id, 'fechas');  
     }
     
+    public function storeResumen (Request $request){
+        $idFicha = Input::get('id');
+        $ficha = Ficha_curso::find ($idFicha);
+        Log::info ('Input:'.implode ("|",Input::all()));
+        if (!empty ($idFicha)){
+            $ficha->update (Input::all ());
+            Log::info ('Ficha:'.$ficha);
+        }
+        else{
+            abort (500, "El formulario no pertenece a ninguna ficha.");
+        }
+        return $this->show ($ficha->id, 'resumen'); 
+    }
+            
     public function ficha_tecnica (){
         
     }
