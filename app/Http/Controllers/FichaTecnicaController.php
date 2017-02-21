@@ -81,11 +81,15 @@ class FichaTecnicaController extends Controller {
         }
         if (Input::get('seccion') === 'fechas' ){
             Log::info ('Guardando fechas');
-            return $this->storeFechas ($request);            
+            return $this->storeDatos ($request);            
         }
         if (Input::get('seccion') === 'resumen' ){
             Log::info ('Guardando resumen');
-            return $this->storeResumen ($request);            
+            return $this->storeDatos ($request);            
+        }
+        if (Input::get('seccion') === 'graficos' ){
+            Log::info ('Guardando graficos');
+            return $this->storeGraficos ($request);            
         }
     }
 
@@ -185,7 +189,7 @@ class FichaTecnicaController extends Controller {
         }        
     }
     
-    public function storeFechas (Request $request){
+    public function storeDatos (Request $request){
         $idFicha = Input::get('id');
         $ficha = Ficha_curso::find ($idFicha);
         Log::info ('Input:'.implode ("|",Input::all()));
@@ -196,27 +200,31 @@ class FichaTecnicaController extends Controller {
         else{
             abort (500, "El formulario no pertenece a ninguna ficha.");
         }
-        return $this->show ($ficha->id, 'fechas');  
+        return $this->show ($ficha->id, Input::get('seccion'));  
     }
     
-    public function storeResumen (Request $request){
+    public function storeGraficos (Request $request){
         $idFicha = Input::get('id');
         $ficha = Ficha_curso::find ($idFicha);
-        Log::info ('Input:'.implode ("|",Input::all()));
-        if (!empty ($idFicha)){
-            $ficha->update (Input::all ());
-            Log::info ('Ficha:'.$ficha);
-        }
-        else{
-            abort (500, "El formulario no pertenece a ninguna ficha.");
-        }
-        return $this->show ($ficha->id, 'resumen'); 
-    }
-            
-    public function ficha_tecnica (){
         
+        if ($request->hasFile ('imagen_cuadrada')){            
+            Log::info ('Imagen cuadrada recibida');
+            $path = $request->imagen_cuadrada->move('imagenes/cursos', $idFicha.'_c.jpg');
+            Log::info ('Path:'.$path);
+        }
+        if ($request->hasFile ('imagen_rectangular')){            
+            Log::info ('Imagen rectangular recibida');
+            $path = $request->imagen_rectangular->move('imagenes/cursos', $idFicha.'_r.jpg');
+            Log::info ('Path:'.$path);
+        }
+        if ($request->hasFile ('imagen_promocional')){  
+            Log::info ('Imagen promocional recibida');
+            $path = $request->imagen_promocional->move('imagenes/cursos', $idFicha.'_p.jpg');
+            Log::info ('Path:'.$path);
+        }
+        
+        return $this->show ($ficha->id, 'graficos'); 
     }
-
     public function cursoNuevo($ficha = NULL) {
         Log::info('Ficha: '.$ficha);
         $super_user = session()->get('super_user');
