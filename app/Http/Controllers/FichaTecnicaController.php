@@ -95,6 +95,10 @@ class FichaTecnicaController extends Controller {
             Log::info ('Guardando staff');            
             return $this->storeContactos ($request, 'staff');            
         }
+        if (Input::get('seccion') === 'asesores' ){
+            Log::info ('Guardando asesores');            
+            return $this->storeContactos ($request, 'asesor');            
+        }
     }
 
     /**
@@ -193,7 +197,8 @@ class FichaTecnicaController extends Controller {
     
     public function detach ($ficha, $rol){
         if ($rol === 'contacto') $ficha->contactos()->detach();
-        if ($rol === 'staff') $ficha->staff()->detach();        
+        if ($rol === 'staff') $ficha->staff()->detach();
+        if ($rol === 'asesor') $ficha->asesores()->detach();
     }
     
     
