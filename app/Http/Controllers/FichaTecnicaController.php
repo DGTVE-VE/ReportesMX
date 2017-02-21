@@ -77,7 +77,7 @@ class FichaTecnicaController extends Controller {
         }
         if (Input::get('seccion') === 'contactos' ){
             Log::info ('Guardando Contactos');
-            return $this->storeContactos ($request);            
+            return $this->storeContactos ($request, 'contacto');            
         }
         if (Input::get('seccion') === 'fechas' ){
             Log::info ('Guardando fechas');
@@ -90,6 +90,10 @@ class FichaTecnicaController extends Controller {
         if (Input::get('seccion') === 'graficos' ){
             Log::info ('Guardando graficos');
             return $this->storeGraficos ($request);            
+        }
+        if (Input::get('seccion') === 'staff' ){
+            Log::info ('Guardando staff');            
+            return $this->storeContactos ($request, 'staff');            
         }
     }
 
@@ -165,29 +169,33 @@ class FichaTecnicaController extends Controller {
         return $this->show ($ficha->id, 'info_basica');  
     }
     
-    public function storeContactos (Request $request){
+    public function storeContactos (Request $request, $rol){
         $ids_contactos = Input::get('contactos');        
         $idFicha = Input::get('id');
         $ficha = Ficha_curso::find ($idFicha);
-        $ficha->contactos()->detach ();
-        //Log::info('ids:'.$ids_contactos);
-        if (!empty ($idFicha)){
-            //$ficha = Ficha_curso::find (Input::get('id'));
+        $this->detach ($ficha, $rol);
+        if (!empty ($idFicha)){            
             if ($ids_contactos != null){
                 foreach ($ids_contactos as $contacto_id){
                     $contactosFicha = new \App\Model\Contactos_Ficha;
                     $contactosFicha->id_contacto = $contacto_id;
                     $contactosFicha->id_ficha = Input::get('id');
-                    $contactosFicha->rol = 'contacto';
+                    $contactosFicha->rol = $rol;
                     $contactosFicha->save();
                 }
             }
-            return $this->show ($idFicha, 'contactos');
+            return $this->show ($idFicha, Input::get ('seccion'));
         }
         else{
             abort (500, "El formulario no pertenece a ninguna ficha.");
         }        
     }
+    
+    public function detach ($ficha, $rol){
+        if ($rol === 'contacto') $ficha->contactos()->detach();
+        if ($rol === 'staff') $ficha->staff()->detach();        
+    }
+    
     
     public function storeDatos (Request $request){
         $idFicha = Input::get('id');
@@ -225,6 +233,9 @@ class FichaTecnicaController extends Controller {
         
         return $this->show ($ficha->id, 'graficos'); 
     }
+    
+    
+    
     public function cursoNuevo($ficha = NULL) {
         Log::info('Ficha: '.$ficha);
         $super_user = session()->get('super_user');

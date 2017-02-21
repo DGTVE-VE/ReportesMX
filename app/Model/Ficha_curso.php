@@ -25,4 +25,9 @@ class Ficha_curso extends Model
                 ->withPivot('rol')
                 ->wherePivot('rol', 'contacto');
     }
+    public function staff (){
+        return $this->belongsToMany('App\Model\Contactos_Institucion', 'contactos_ficha', 'id_ficha', 'id_contacto')
+                ->withPivot('rol')
+                ->wherePivot('rol', 'staff');
+    }
 }
