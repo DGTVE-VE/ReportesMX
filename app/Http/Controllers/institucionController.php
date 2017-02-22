@@ -18,7 +18,7 @@ class institucionController extends Controller {
     public function index() {
         $super_user = session()->get('super_user');
         $username = session()->get('nombre');
-        $institucion = institucion::paginate(25);
+        $institucion = institucion::paginate(10);
 
         return view('instituciones.institucion.index', compact('institucion'))->with('name_user', $username);
     }

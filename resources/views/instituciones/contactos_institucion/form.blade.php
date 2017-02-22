@@ -7,7 +7,7 @@
 </div><div class="form-group {{ $errors->has('institucion_id') ? 'has-error' : ''}}">
     {!! Form::label('institucion_id', 'Institución', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::number('institucion_id', null, ['class' => 'form-control','disabled']) !!}
+        {!! Form::number('institucion_id',null, ['class' => 'form-control','disabled']) !!}
         {!! $errors->first('institucion_id', '<p class="help-block">:message</p>') !!}
     </div>
 </div><div class="form-group {{ $errors->has('nombre') ? 'has-error' : ''}}">
@@ -31,7 +31,7 @@
 </div><div class="form-group {{ $errors->has('cargo') ? 'has-error' : ''}}">
     {!! Form::label('cargo', 'Cargo', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::text('cargo', null, ['class' => 'form-control']) !!}
+        {!! Form::text('cargo_contacto', null, ['class' => 'form-control']) !!}
         {!! $errors->first('cargo', '<p class="help-block">:message</p>') !!}
     </div>
 </div><div class="form-group {{ $errors->has('activo') ? 'has-error' : ''}}">
@@ -39,6 +39,12 @@
     <div class="col-md-6">
         {!! Form::checkbox('activo',null,null, ['class' => 'form-control']) !!}        
         {!! $errors->first('activo', '<p class="help-block">:message</p>') !!}
+    </div>
+</div><div class="form-group {{ $errors->has('rol') ? 'has-error' : ''}}">
+    {!! Form::label('rol', 'Rol', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::checkbox('rol',null,null, ['class' => 'form-control']) !!}        
+        {!! $errors->first('rol', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
 
