@@ -72,6 +72,7 @@ class FichaTecnicaController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
+        Log::info ("Usuario modificando:".Auth::user()->id);
         Log::info ('metodo store...');
         Log::info ('Input::get("seccion")'. Input::get('seccion'));
         if (Input::get('seccion') === 'info_basica' ){
@@ -118,6 +119,25 @@ class FichaTecnicaController extends Controller {
             Log::info ('Guardando cartas');            
             return $this->enviarRevision ($request); 
         }
+        if (Input::get('seccion') === 'aprobar' ){
+            Log::info ('Guardando cartas');            
+            return $this->aprobar ($request); 
+        }
+    }
+    
+    public function aprobar (Request $request){
+        $idFicha = Input::get('id');
+        $ficha = Ficha_curso::find ($idFicha);
+        if (!empty ($idFicha)){
+            $ficha->estado = 'aprobada';        
+            $ficha->aprobo()->save(Auth::user());
+            $ficha->save();
+            Session::flash ('success_message', 'Ficha aprobada');
+            return $this->show ($idFicha, Input::get ('seccion'));
+        }
+        else{
+            abort (500, "El formulario no pertenece a ninguna ficha.");
+        }   
     }
     
     public function enviarRevision (Request $request){
@@ -125,6 +145,7 @@ class FichaTecnicaController extends Controller {
         $ficha = Ficha_curso::find ($idFicha);
         if (!empty ($idFicha)){
             $ficha->estado = 'revision';        
+            $ficha->edito()->save(Auth::user());
             $ficha->save();
             Session::flash ('success_message', 'Ficha enviada a revisión');
             return $this->show ($idFicha, Input::get ('seccion'));

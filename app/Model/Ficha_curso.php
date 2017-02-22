@@ -35,5 +35,16 @@ class Ficha_curso extends Model
                 ->withPivot('rol')
                 ->wherePivot('rol', 'asesor');
     }
-    
+    public function institucion (){
+        return $this->belongsTo('App\Model\Institucion', 'id_institucion');
+    }
+    public function edito (){
+        return $this->belongsTo('App\User', 'edito_id');
+    }
+    public function creo (){
+        return $this->belongsTo('App\User', 'creo_id', 'id');
+    }
+    public function aprobo (){
+        return $this->belongsTo('App\User', 'aprobo_id');
+    }
 }

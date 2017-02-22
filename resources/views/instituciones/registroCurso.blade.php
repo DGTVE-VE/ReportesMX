@@ -660,6 +660,25 @@
                                     <button type="submit" class="btn btn-success">Enviar a revisión</button>
                                 </div>
                             </div>
+                            </form>
+                            @if (Auth::user()->is_superuser)
+                            <div class="form-group col-md-8 col-md-offset-2"><br>
+                                    <h3>Aprobar para apertura</h3>
+                                    <hr>
+                                    
+                                </div>
+                            <div class="form-group col-md-8 col-md-offset-2">
+                            
+                            {!! Form::model($ficha_curso, ['action'=> 'FichaTecnicaController@store', 'files'=>true]) !!}
+                            <input type='hidden' name='seccion' value='aprobar'>
+                            <input type='hidden' name='id' value='{{$ficha_curso->id}}'>
+                                <div class="col-md-10 ">
+                                    <button type="submit" class="btn btn-primary">Aprobar para apertura</button>
+                                </div>
+                            </form>
+                            </div>
+                            @endif
+                            
                         </div>
                         @endif
                     </div> <!--cierra tab-content-->                    
@@ -766,7 +785,7 @@
         $('#periodo_emision').val (fecha);
         @endif
         
-        @if ($ficha_curso->estado != 'edicion')
+        @if ($ficha_curso->estado != 'edicion' && ! Auth::user()->is_superuser)
             $(':button').prop('disabled', true); 
         @endif
 //        inst = 1;
