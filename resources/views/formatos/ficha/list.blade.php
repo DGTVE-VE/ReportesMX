@@ -6,6 +6,7 @@
         <div class="col-md-12">
             <div class="form-group col-md-12">
                 <h2 class="text-center">Fichas técnicas</h2>
+                
                 <div class="panel-body">
                     <table class='table table-responsive table-striped'>
                         <thead>

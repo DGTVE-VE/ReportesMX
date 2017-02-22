@@ -10,10 +10,11 @@ use App\Model\Ficha_curso;
 use App\Model\Instructores;
 use App\Model\Instructor_task_ficha;
 use Illuminate\Support\Facades\Input;
-use Session;
+//use Session;
 use App\Model\contactos_instit;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use \Illuminate\Support\Facades\Session;
 
 
 class FichaTecnicaController extends Controller {
@@ -28,10 +29,12 @@ class FichaTecnicaController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
-        $super_user = session()->get('super_user');
-        $username = session()->get('nombre');
-        $fichas = Ficha_curso::all ();
+    public function index() {        
+        $username = Auth::user()->name;
+        if (Auth::user()->is_superuser)
+            $fichas = Ficha_curso::all();
+        else
+            $fichas = Ficha_curso::where ('id_institucion', Auth::user()->institucion_id)->get ();
         return view('formatos/ficha/list')
             ->with('name_user', $username)
             ->with('fichas', $fichas);
@@ -111,6 +114,24 @@ class FichaTecnicaController extends Controller {
             Log::info ('Guardando cartas');            
             return $this->storeCartas ($request); 
         }
+        if (Input::get('seccion') === 'revision' ){
+            Log::info ('Guardando cartas');            
+            return $this->enviarRevision ($request); 
+        }
+    }
+    
+    public function enviarRevision (Request $request){
+        $idFicha = Input::get('id');
+        $ficha = Ficha_curso::find ($idFicha);
+        if (!empty ($idFicha)){
+            $ficha->estado = 'revision';        
+            $ficha->save();
+            Session::flash ('success_message', 'Ficha enviada a revisión');
+            return $this->show ($idFicha, Input::get ('seccion'));
+        }
+        else{
+            abort (500, "El formulario no pertenece a ninguna ficha.");
+        }   
     }
 
     /**
@@ -181,6 +202,7 @@ class FichaTecnicaController extends Controller {
             $ficha = Ficha_curso::create (Input::all());
             $ficha->save();
         }
+        Session::flash ('success_message', 'Información básica guardada');
         Log::info('Ficha guardada:'.$ficha);
         return $this->show ($ficha->id, 'info_basica');  
     }
@@ -200,6 +222,7 @@ class FichaTecnicaController extends Controller {
                     $contactosFicha->save();
                 }
             }
+            Session::flash ('success_message', 'Contactos guardados');
             return $this->show ($idFicha, Input::get ('seccion'));
         }
         else{
@@ -234,7 +257,7 @@ class FichaTecnicaController extends Controller {
                 $ficha->linea_estrategica_3 = $ids_lineas[2];
             
             $ficha->save();
-            
+            Session::flash ('success_message', 'Áreas y líneas guardadas');
             return $this->show ($idFicha, Input::get ('seccion'));
         }
         else{
@@ -260,6 +283,7 @@ class FichaTecnicaController extends Controller {
         else{
             abort (500, "El formulario no pertenece a ninguna ficha.");
         }
+        Session::flash ('success_message', 'Datos guardados');
         return $this->show ($ficha->id, Input::get('seccion'));  
     }
     
@@ -282,7 +306,7 @@ class FichaTecnicaController extends Controller {
             $path = $request->imagen_promocional->move('imagenes/cursos', $idFicha.'_p.jpg');
             Log::info ('Path:'.$path);
         }
-        
+        Session::flash ('success_message', 'Imágenes guardadas');
         return $this->show ($ficha->id, 'graficos'); 
     }
     
@@ -298,7 +322,7 @@ class FichaTecnicaController extends Controller {
             Log::info ('carta_compromiso recibida');
             $path = $request->carta_compromiso->move('cartas/', $idFicha.'_compromiso.pdf');
         }
-        
+        Session::flash ('success_message', 'Contactos guardados');
         return $this->show ($ficha->id, 'graficos'); 
     }
     

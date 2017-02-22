@@ -18,9 +18,10 @@
                         <li><a href="#graficos" data-toggle="tab">Gráficos</a></li>
                         <li><a href="#staff" data-toggle="tab">Staff</a></li>
                         <li><a href="#asesores" data-toggle="tab">Asesores</a></li>
-                        <li><a href="#temario" data-toggle="tab">Contenido temático</a></li>
-                        <li><a href="#areas" data-toggle="tab">Areás temáticas</a></li>
+                        <li><a href="#temario" data-toggle="tab">Contenido</a></li>
+                        <li><a href="#areas" data-toggle="tab">Areás</a></li>
                         <li><a href="#cartas" data-toggle="tab">Cartas</a></li>
+                        <li><a href="#revision" data-toggle="tab">Revision</a></li>
                         @endif
                     </ul>
                 </div>
@@ -637,12 +638,29 @@
                                     <hr>
                                 </div>
                                 <div class="form-group col-md-8 col-md-offset-2">
-                                    <div class="col-md-12 col-md-offset-5">
+                                    <div class="col-md-10 ">
                                         <button type="submit" class="btn btn-success">Guardar</button>
-                                    </div>
+                                    </div>                                    
                                 </div>
                             </form>    
                         </div><!--fin bloque archivos-->
+                        <div class="tab-pane fade" id="revision"> <!--bloque archivos-->
+                            {!! Form::model($ficha_curso, ['action'=> 'FichaTecnicaController@store', 'files'=>true]) !!}
+                            <input type='hidden' name='seccion' value='revision'>
+                            <input type='hidden' name='id' value='{{$ficha_curso->id}}'>
+                            <div class="form-group col-md-8 col-md-offset-2"><br>
+                                    <h3>Enviar a revisión</h3>
+                                    <hr>
+                                    <strong> Una vez enviada a revisión la ficha ya no podrá ser editada. </strong> <br>
+                                    Toma en cuenta esto antes de enviarla.
+                                </div>
+                            <div class="form-group col-md-8 col-md-offset-2">
+                            
+                                <div class="col-md-10 ">
+                                    <button type="submit" class="btn btn-success">Enviar a revisión</button>
+                                </div>
+                            </div>
+                        </div>
                         @endif
                     </div> <!--cierra tab-content-->                    
                 </div> <!--cierra panel-body-->
@@ -748,6 +766,9 @@
         $('#periodo_emision').val (fecha);
         @endif
         
+        @if ($ficha_curso->estado != 'edicion')
+            $(':button').prop('disabled', true); 
+        @endif
 //        inst = 1;
 //        num = 1;
 //        $("#quitaInst" + num).click(function () {
