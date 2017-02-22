@@ -13,7 +13,7 @@ class Ficha_curso extends Model
         'fecha_fin_inscripcion','descripcion_corta','acerca_del_curso','conocimientos_previos',
         'aprendizaje_esperado','nivel_curso','tipo_constancia','idioma','esfuerzo_horas',
         'calificacion_minima','redes_soc','url_logo','url_imagen','id_video',
-        'temario','area_tem1','area_tem2','area_tem3','linea_estrat1','linea_estrat2','linea_estrat3'];
+        'temario','categoria_1','categoria_2','categoria_3','linea_estrategica_1','linea_estrategica_2','linea_estrategica_3'];
     
     public function instructores()
     {
@@ -35,4 +35,5 @@ class Ficha_curso extends Model
                 ->withPivot('rol')
                 ->wherePivot('rol', 'asesor');
     }
+    
 }

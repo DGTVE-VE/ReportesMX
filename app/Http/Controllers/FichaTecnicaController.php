@@ -99,6 +99,18 @@ class FichaTecnicaController extends Controller {
             Log::info ('Guardando asesores');            
             return $this->storeContactos ($request, 'asesor');            
         }
+        if (Input::get('seccion') === 'temario' ){
+            Log::info ('Guardando temario');            
+            return $this->storeDatos ($request); 
+        }
+        if (Input::get('seccion') === 'areas' ){
+            Log::info ('Guardando areas');            
+            return $this->storeAreas ($request); 
+        }
+        if (Input::get('seccion') === 'cartas' ){
+            Log::info ('Guardando cartas');            
+            return $this->storeCartas ($request); 
+        }
     }
 
     /**
@@ -111,12 +123,10 @@ class FichaTecnicaController extends Controller {
         $ficha = Ficha_curso::find ($id);
         $super_user = session()->get('super_user');
         $username = session()->get('nombre');
-        //contacto
-        
         $contactos = \App\Model\Contactos_Institucion::where ('institucion_id', Auth::user()->institucion_id)->get();
-               
-        //$instituciones = \App\Model\institucion::all()->pluck ('nombre_institucion', 'id')->all();
         $tipo_curso = \App\Model\TipoCurso::all()->pluck ('tipo_curso', 'id')->all();
+        $categorias = \App\Model\Categorias::all();
+        $lineasEstrategicas = \App\Model\LineasEstrategicas::all();
         $institucion = \App\Model\institucion::find (Auth::user()->institucion_id);
         return view('instituciones/registroCurso')
                 ->with('name_user', $username)
@@ -125,6 +135,8 @@ class FichaTecnicaController extends Controller {
                 ->with('institucion', $institucion)
                 ->with('tipo_curso', $tipo_curso)
                 ->with('seccion', $seccion)
+                ->with('lineasEstrategicas', $lineasEstrategicas)
+                ->with('categorias', $categorias)
             ;
     }
 
@@ -195,6 +207,36 @@ class FichaTecnicaController extends Controller {
         }        
     }
     
+    public function storeAreas (Request $request){
+        $ids_categorias = Input::get('categorias');        
+        $ids_lineas = Input::get('lineas');        
+        $idFicha = Input::get('id');
+        $ficha = Ficha_curso::find ($idFicha);
+        
+        if (!empty ($idFicha)){            
+            if (!empty($ids_categorias[0]))
+                $ficha->categoria_1 = $ids_categorias[0];
+            if (!empty($ids_categorias[1]))
+                $ficha->categoria_2 = $ids_categorias[1];
+            if (!empty($ids_categorias[2]))
+                $ficha->categoria_3 = $ids_categorias[2];
+            
+            if (!empty($ids_lineas[0]))
+                $ficha->linea_estrategica_1 = $ids_lineas[0];
+            if (!empty($ids_lineas[1]))
+                $ficha->linea_estrategica_2 = $ids_lineas[1];
+            if (!empty($ids_lineas[2]))
+                $ficha->linea_estrategica_3 = $ids_lineas[2];
+            
+            $ficha->save();
+            
+            return $this->show ($idFicha, Input::get ('seccion'));
+        }
+        else{
+            abort (500, "El formulario no pertenece a ninguna ficha.");
+        }        
+    }
+    
     public function detach ($ficha, $rol){
         if ($rol === 'contacto') $ficha->contactos()->detach();
         if ($rol === 'staff') $ficha->staff()->detach();
@@ -234,6 +276,22 @@ class FichaTecnicaController extends Controller {
             Log::info ('Imagen promocional recibida');
             $path = $request->imagen_promocional->move('imagenes/cursos', $idFicha.'_p.jpg');
             Log::info ('Path:'.$path);
+        }
+        
+        return $this->show ($ficha->id, 'graficos'); 
+    }
+    
+    public function storeCartas (Request $request){
+        $idFicha = Input::get('id');
+        $ficha = Ficha_curso::find ($idFicha);
+        
+        if ($request->hasFile ('carta_autorizacion')){            
+            Log::info ('carta_autorizacion recibida');
+            $path = $request->carta_autorizacion->move('cartas/', $idFicha.'_autorizacion.pdf');            
+        }
+        if ($request->hasFile ('carta_compromiso')){            
+            Log::info ('carta_compromiso recibida');
+            $path = $request->carta_compromiso->move('cartas/', $idFicha.'_compromiso.pdf');
         }
         
         return $this->show ($ficha->id, 'graficos'); 

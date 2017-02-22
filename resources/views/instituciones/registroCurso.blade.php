@@ -18,9 +18,9 @@
                         <li><a href="#graficos" data-toggle="tab">Gráficos</a></li>
                         <li><a href="#staff" data-toggle="tab">Staff</a></li>
                         <li><a href="#asesores" data-toggle="tab">Asesores</a></li>
-                        <li><a href="#contenido" data-toggle="tab">Contenido</a></li>
-                        <li><a href="#tematica" data-toggle="tab">Temática</a></li>
-                        <li><a href="#archivos" data-toggle="tab">Archivos</a></li>
+                        <li><a href="#temario" data-toggle="tab">Contenido temático</a></li>
+                        <li><a href="#areas" data-toggle="tab">Areás temáticas</a></li>
+                        <li><a href="#cartas" data-toggle="tab">Cartas</a></li>
                         @endif
                     </ul>
                 </div>
@@ -471,6 +471,7 @@
                                                 <td>{{$contacto->id}}</td>
                                                 <td>{{$contacto->nombre}}</td>
                                                 <td><input type="checkbox" name="contactos[]" value='{{$contacto->id}}'
+                                                           
                                                         @if($ficha_curso->asesores->contains ($contacto->id))
                                                             checked
                                                         @endif
@@ -488,16 +489,18 @@
                             </form>    
                         </div>  <!--fin bloque constancias-->
 
-                        <div class="tab-pane fade" id="contenido">  <!--bloque contenido-->
-                            <form  action="{{url('nuevoRegistro')}}" method="POST" id="body" enctype="multipart/form-data">
-                                {{csrf_field()}}
+                        <div class="tab-pane fade" id="temario">  <!--bloque temario-->
+                            {!! Form::model($ficha_curso, ['action'=> 'FichaTecnicaController@store', 'files'=>true]) !!}
+                            <input type='hidden' name='seccion' value='temario'>
+                            <input type='hidden' name='id' value='{{$ficha_curso->id}}'>
                                 <div class="form-group col-md-8 col-md-offset-2"><br>
                                     <h3>Contenido Temático del Curso</h3>
                                     <hr>
                                 </div>
                                 <div class="form-group col-md-8 col-md-offset-2">
-                                    <label for="temarioCurse">Temario del curso</label>
-                                    <textarea name="temario"  rows="10" cols="40" class="form-control" id="courseTemario" placeholder="Escribe el temario del Curso"></textarea>  
+                                    <label for="temario">Temario del curso</label>
+                                    <textarea name="temario"  rows="10" cols="40" class="form-control" 
+                                              id="temario" placeholder="Escribe el temario del Curso">{{$ficha_curso->temario}}</textarea>  
                                     <div class="help-tip posicion">
                                         <p>- Ordenar el contenido por semanas, unidades, módulos o temas.
                                             <br/>- Incluir introducción, desarrollo de módulos y ejercicios o evaluaciones </p>
@@ -514,92 +517,70 @@
                             </form>    
                         </div> <!--fin bloque contenido-->
 
-                        <div class="tab-pane fade col-md-offset-2" id="tematica"> <!--bloque temática-->
-                            <form  action="{{url('nuevoRegistro')}}" method="POST" id="body" enctype="multipart/form-data">
+                        <div class="tab-pane fade col-md-offset-1" id="areas"> <!--bloque temática-->
+                            {!! Form::model($ficha_curso, ['action'=> 'FichaTecnicaController@store', 'files'=>true]) !!}
+                            <input type='hidden' name='seccion' value='areas'>
+                            <input type='hidden' name='id' value='{{$ficha_curso->id}}'>
                                 {{csrf_field()}}
-                                <div class="form-group col-md-12"><br>
+                                <div class="form-group col-md-6"><br>
                                     <h3>Áreas temáticas que cubre el curso</h3>
-                                    <hr>
-                                </div>
-                                <div class="form-group col-md-12">
-                                    <div class="col-md-11">
-                                        <p>Arrastra tres materias para clasificar el curso y ordena por jerarquía. Esto ayudará al alumno a buscar el curso por materia.</p>
-                                    </div> <br>
-                                    <div class="col-md-1">
-                                        <div class="help-tip posicion">
+                                    <div class="help-tip posicion">
                                             <p>- Elige tres materias para clasificar tu curso
                                                 <br/>- Este criterio ayudará en la tarea de búsqueda del mismo</p>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-6 droptarget" style="width: 350px; height: 400px;" ondrop="drop(event)" ondragover="allowDrop(event)" id="cont1">
-                                        <p ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="dragtarget">Programas y certificaciones génericos</p>
-                                        <p ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="dragtarget1">Educación</p>
-                                        <p ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="dragtarget2">Artes y humanidades</p>
-                                        <p ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="dragtarget3">Ciencias sociales, periodismo e información</p>
-                                        <p ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="dragtarget4">Administración de empresas y derecho</p>
-                                        <p ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="dragtarget5">Ciencias naturales, matemáticas y estadística</p>
-                                        <p ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="dragtarget6">Tecnologías de la información y la comunicación (TIC)</p>
-                                        <p ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="dragtarget7">Ingeniería,industría y construcción</p>
-                                        <p ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="dragtarget8">Agricultura, silvicultura, pesca y veterinaria</p>
-                                        <p ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="dragtarget9">Salud y bienestar</p>
-                                        <p ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="dragtarget0">Servicios</p>
-                                    </div>
-                                    <div class="col-md-6  droptarget" style="width: 350px; height: 400px;" ondrop="drop(event)" ondragover="allowDrop(event)" id="cont2"></div>                
-                                    <p id="demo"></p>
-                                </div>
-                                <div class="form-group col-md-12">
-                                    <input id="categoria1" name="categoria1" type="hidden" value="" required>
-                                    <input id="categoria2" name="categoria2" type="hidden" value="" required>
-                                    <input id="categoria3" name="categoria3" type="hidden" value="" required>
-                                    <p style="clear:both;"><strong>Nota:</strong> Los eventos de arrastre no son soportados por Internet Explorer 8 y anteriores versiones o Safari 5.1 y anteriores versiones.</p>                
-                                </div>
-                                <div class="form-group col-md-12"><br>
-                                    <h3>Líneas estratégicas</h3>
                                     <hr>
-                                </div>
-                                <div class="form-group col-md-12">
-                                    <div class="col-md-11">
-                                        <p>Arrastra tres líneas estratégicas para clasificar el curso y ordena por jerarquía</p>
-                                    </div> <br>
-                                    <div class="col-md-1">
-                                        <div class="help-tip posicion">
+                                    @foreach ($categorias as $categoria)
+                                    <div class="checkbox">
+                                        <label>
+                                        <input type="checkbox" name="categorias[]" value='{{$categoria->id}}'
+                                            @if($ficha_curso->categoria_1 === $categoria->id ||
+                                                $ficha_curso->categoria_2 === $categoria->id ||
+                                                $ficha_curso->categoria_3 === $categoria->id
+                                                )
+                                                checked
+                                            @endif
+                                        /> {{$categoria->categoria}}
+                                        </label>
+                                    </div>
+                                    @endforeach 
+                                </div>                                
+                                <div class="form-group col-md-6"><br>
+                                    <h3>Líneas estratégicas</h3>
+                                    <div class="help-tip posicion">
                                             <p>- Elige tres líneas estratégicas de la Plataforma MéxicoX en las que contribuye el curso </p>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-12">
-                                    <div class="droptarget" style="width: 350px; height: 400px;" ondrop="drop(event)" ondragover="allowDrop(event)" id="cont3">
-                                        <p ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="estrategia">Capacidades académicas fundamentales</p>
-                                        <p ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="estrategia1">Capacitación a profesores</p>
-                                        <p ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="estrategia2">Capacitación especializada</p>
-                                        <p ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="estrategia3">Retos nacionales</p>
-                                        <p ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="estrategia4">Desafíos globales</p>
-                                        <p ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="estrategia5">Divulgación de la cultura, la historia, la ciencia y el disfrute del conocimiento</p>
-                                    </div>
-                                    <div class="droptarget" style="width: 350px; height: 400px;" ondrop="drop(event)" ondragover="allowDrop(event)" id="cont4"></div>                
-                                    <p id="demo"></p>
-                                </div>
-                                <div class="form-group col-md-12">
-                                    <input id="estrategia1" name="estrategia1" type="hidden" value="" required>
-                                    <input id="estrategia2" name="estrategia2" type="hidden" value="" required>
-                                    <input id="estrategia3" name="estrategia3" type="hidden" value="" required>
-                                    <p style="clear:both;"><strong>Nota:</strong> Los eventos de arrastre no son soportados por Internet Explorer 8 y anteriores versiones o Safari 5.1 y anteriores versiones.</p>                
-                                </div>
-                                <div class="form-group col-md-12">
                                     <hr>
+                                
+                                <div class="form-group col-md-12">
+                                    @foreach ($lineasEstrategicas as $linea)
+                                    <div class="checkbox">
+                                        <label>
+                                        <input type="checkbox" name="lineas[]" value='{{$linea->id}}'
+                                            @if($ficha_curso->linea_estrategica_1 === $linea->id ||
+                                                $ficha_curso->linea_estrategica_2 === $linea->id ||
+                                                $ficha_curso->linea_estrategica_3 === $linea->id
+                                                )
+                                                checked
+                                            @endif
+                                        /> {{$linea->linea_estrategica}}
+                                        </label>
+                                    </div>
+                                    @endforeach 
                                 </div>
+
                                 <div class="form-group col-md-12">
                                     <div class="col-md-12">
                                         <button type="submit" class="btn btn-success">Guardar</button>
                                     </div>
                                 </div>
                             </form>    
+                        </div> 
                         </div> <!--fin bloque temática-->
 
-                        <div class="tab-pane fade" id="archivos"> <!--bloque archivos-->
-                            <form  action="{{url('nuevoRegistro')}}" method="POST" id="body" enctype="multipart/form-data">
+                        <div class="tab-pane fade" id="cartas"> <!--bloque archivos-->
+                            {!! Form::model($ficha_curso, ['action'=> 'FichaTecnicaController@store', 'files'=>true]) !!}
+                            <input type='hidden' name='seccion' value='cartas'>
+                            <input type='hidden' name='id' value='{{$ficha_curso->id}}'>
                                 {{csrf_field()}}
                                 <div class="form-group col-md-8 col-md-offset-2"><br>
                                     <h3>Descargar archivos</h3>
@@ -620,7 +601,7 @@
                                     </div>                                
                                 </div>
                                 <div class="form-group col-md-8 col-md-offset-2"><br>
-                                    <h3>Subir archivos</h3>
+                                    <h3>Subir archivos firmados</h3>
                                     <hr>
                                 </div>
                                 <div class="form-group col-md-8 col-md-offset-2">
@@ -628,21 +609,28 @@
                                         <div class="help-tip posicion">
                                             <p>- Sube la carta de autorización debidamente requisitada y firmada</p>
                                         </div>
-                                        <label for="addSignature">Carta Autorización</label><br><br>
-                                        <label class="file">
-                                            <input name="cartaAutorizacion" type="file" id="signature">
-                                            <span class="file-custom"></span>                
-                                        </label><br>
+                                        <label for="carta_autorizacion">Carta Autorización</label><br><br>
+                                            <label class="file">
+                                            <input class="form-control" name="carta_autorizacion" type="file" accept="application/pdf" id="carta_autorizacion">
+                                            </label><br>
+                                            @if(File::exists (public_path() .'/cartas/'.$ficha_curso->id.'_autorizacion.pdf'))
+                                            <a href='{{asset('cartas/'.$ficha_curso->id.'_autorizacion.pdf')}}'> <i class="fa fa-download fa-3x" aria-hidden="true"></i></a>
+                                            @endif
+                                            
+                                        
                                     </div>
                                     <div class="col-md-4 col-md-offset-2">
                                         <div class="help-tip posicion">
                                             <p>- Sube la carta conmpromiso debidamente requisitada y firmada</p>
                                         </div>
-                                        <label for="addSignature">Carta compromiso</label><br><br>
+                                        <label for="carta_compromiso">Carta compromiso</label><br><br>
                                         <label class="file">
-                                            <input name="cartaCompromiso" type="file" id="signature">
+                                            <input class="form-control" name="carta_compromiso" type="file" accept="application/pdf" id="carta_compromiso">
                                             <span class="file-custom"></span>                
                                         </label><br>
+                                            @if(File::exists (public_path() .'/cartas/'.$ficha_curso->id.'_compromiso.pdf'))
+                                            <a href='{{asset('cartas/'.$ficha_curso->id.'_compromiso.pdf')}}'> <i class="fa fa-download fa-3x" aria-hidden="true"></i> </a>
+                                            @endif
                                     </div>
                                 </div>
                                 <div class="form-group col-md-8 col-md-offset-2">
