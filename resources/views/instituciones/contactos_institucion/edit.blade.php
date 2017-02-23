@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Crear Contacto</div>
+                    <div class="panel-heading">Editar Contacto {{ $contactos_institucion->id }}</div>
                     <div class="panel-body">
 
                         @if ($errors->any())
@@ -16,9 +16,14 @@
                             </ul>
                         @endif
 
-                        {!! Form::open(['url' => '/instituciones/contactos_instit', 'class' => 'form-horizontal', 'files' => true]) !!}
+                        {!! Form::model($contactos_institucion, [
+                            'method' => 'PATCH',
+                            'url' => ['/instituciones/contactos_institucion', $contactos_institucion->id],
+                            'class' => 'form-horizontal',
+                            'files' => true
+                        ]) !!}
 
-                        @include ('instituciones.contactos_instit.form')
+                        @include ('instituciones.contactos_institucion.form', ['submitButtonText' => 'Actualizar'])
 
                         {!! Form::close() !!}
 

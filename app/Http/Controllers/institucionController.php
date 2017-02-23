@@ -17,10 +17,10 @@ class institucionController extends Controller {
      */
     public function index() {
         $super_user = session()->get('super_user');
-        $username = session()->get('nombre');
-        $institucion = institucion::paginate(25);
+        $name_user = session()->get('nombre');
+        $institucion = institucion::paginate(10);
 
-        return view('instituciones.institucion.index', compact('institucion'))->with('name_user', $username);
+        return view('instituciones.institucion.index', compact('institucion'))->with('super_user', $super_user)->with('name_user',$name_user);
     }
 
     /**
@@ -30,8 +30,8 @@ class institucionController extends Controller {
      */
     public function create() {
         $super_user = session()->get('super_user');
-        $username = session()->get('nombre');
-        return view('instituciones.institucion.create')->with('name_user', $username);
+        $name_user = session()->get('nombre');
+        return view('instituciones.institucion.create')->with('name_user', $name_user);
     }
 
     /**
@@ -61,10 +61,10 @@ class institucionController extends Controller {
      */
     public function show($id) {
         $super_user = session()->get('super_user');
-        $username = session()->get('nombre');
+        $name_user = session()->get('nombre');
         $institucion = institucion::findOrFail($id);
 
-        return view('instituciones.institucion.show', compact('institucion'))->with('name_user', $username);
+        return view('instituciones.institucion.show', compact('institucion'))->with('name_user', $name_user);
     }
 
     /**
@@ -76,10 +76,10 @@ class institucionController extends Controller {
      */
     public function edit($id) {
         $super_user = session()->get('super_user');
-        $username = session()->get('nombre');
+        $name_user = session()->get('nombre');
         $institucion = institucion::findOrFail($id);
 
-        return view('instituciones.institucion.edit', compact('institucion'))->with('name_user', $username);
+        return view('instituciones.institucion.edit', compact('institucion'))->with('name_user', $name_user);
     }
 
     /**

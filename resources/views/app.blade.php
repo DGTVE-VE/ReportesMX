@@ -69,6 +69,8 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li class="divider"></li>
                                 <li><a href="{{url ('formatos/ficha_tecnica')}}" class="bg-active">Ficha Técnica</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{-- url('instituciones/contactos_institucion/') --}}" >Crear Contacto</a><li>
                             </ul>
                         </li>                        
                         <?php
