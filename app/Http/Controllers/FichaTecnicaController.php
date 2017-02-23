@@ -15,6 +15,7 @@ use App\Model\contactos_instit;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use \Illuminate\Support\Facades\Session;
+use Mail;
 
 
 class FichaTecnicaController extends Controller {
@@ -145,9 +146,16 @@ class FichaTecnicaController extends Controller {
         $ficha = Ficha_curso::find ($idFicha);
         if (!empty ($idFicha)){
             $ficha->estado = 'revision';        
-            $ficha->edito()->save(Auth::user());
+            $user = Auth::user();
+            Log::info ("Usuario enviando a revision".$user);
+            $ficha->edito()->associate($user);
             $ficha->save();
             Session::flash ('success_message', 'Ficha enviada a revisión');
+            Mail::send('emails.ficha', ['ficha' => $ficha], function ($m) use ($ficha) {
+                $m->from('reportes@mexicox.gob.mx', 'México X');
+                $m->to('j.israel.toledo@gmail.com', 'Israel Toledo')
+                        ->subject('Una ficha técnica espera ser revisada!');
+            });
             return $this->show ($idFicha, Input::get ('seccion'));
         }
         else{

@@ -42,7 +42,7 @@ class Ficha_curso extends Model
         return $this->belongsTo('App\User', 'edito_id');
     }
     public function creo (){
-        return $this->belongsTo('App\User', 'creo_id', 'id');
+        return $this->belongsTo('App\User', 'creo_id');
     }
     public function aprobo (){
         return $this->belongsTo('App\User', 'aprobo_id');
