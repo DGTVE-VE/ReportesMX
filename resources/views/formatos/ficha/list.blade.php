@@ -53,12 +53,12 @@
                             {{$ficha->creo->name}}
                         </td>
                         <td>
-                            @if ($ficha->edito)
+                            @if (!empty($ficha->edito))
                                 {{$ficha->edito->name}}
                             @endif
                         </td>
                         <td>
-                            @if ($ficha->aprobo)
+                            @if (!empty($ficha->aprobo))
                                 {{$ficha->aprobo->name}}
                             @endif
                         </td>
