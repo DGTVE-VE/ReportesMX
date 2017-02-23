@@ -50,7 +50,9 @@
                             {{$ficha->estado }}
                         </td>
                         <td>
-                            {{$ficha->creo->name}}
+                            @if (!empty($ficha->creo))
+                                {{$ficha->creo->name}}
+                            @endif
                         </td>
                         <td>
                             @if (!empty($ficha->edito))
