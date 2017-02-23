@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use App\Model\Categorias;
 use App\Model\CourseName;
+use App\Model\Blog;
+use App\Model\Auth_user;
+use App\Model\Auth_userprofile;
 use App\Model\CursoCategorias;
 
 class MXController extends Controller {
@@ -33,10 +36,10 @@ class MXController extends Controller {
 
     $id_usuario = filter_input(INPUT_GET, 'id');
 
-    $city = DB::table('edxapp.auth_userprofile')->whereuser_id($id_usuario)->get();
+    $city = Auth_userprofile::whereuser_id($id_usuario)->get();
     //$city1 = DB::table('users_info')->whereusers_id($id_usuario)->get();
 
-    $country = DB::table('edxapp.auth_userprofile')->whereuser_id($id_usuario)->get();
+    $country = Auth_userprofile::whereuser_id($id_usuario)->get();
     //$country1 = DB::table('users_info')->whereusers_id($id_usuario)->get();
 
 
@@ -79,7 +82,7 @@ class MXController extends Controller {
         }
       }
 
-      $exito = DB::table('edxapp.auth_userprofile')->where('user_id', $id_usuario)->update(['country' => $pais, 'city' => $estado, 'mailing_address' => $cp]);
+      $exito = Auth_userprofile::where('user_id', $id_usuario)->update(['country' => $pais, 'city' => $estado, 'mailing_address' => $cp]);
 
       if ($exito == 1) {
         print_r("Exito Update");
@@ -136,7 +139,7 @@ class MXController extends Controller {
 
 public function blog(){
 
-  $entradas = DB::table('blog')->orderBy('id', 'desc')->get();
+  $entradas = Blog::orderBy('id', 'desc')->get();
 
   return view('blog.blog')->with('entradas', collect($entradas));
 
@@ -146,7 +149,7 @@ public function saveblog(Request $request){
 
   $correo = \Auth::user() -> email;
 
-  if(empty($name = DB::table('edxapp.auth_user')->whereemail($correo)->first())){
+  if(empty($name = Auth_user::whereemail($correo)->first())){
     return ("Tu correo no esta asociado a algun curso en la plataforma");
   }
 
@@ -154,7 +157,7 @@ public function saveblog(Request $request){
   {
     return $this->blog();
   }
-  $id_usuario = DB::table('edx.auth_user')->whereemail($correo)->first()->id;
+  $id_usuario = Auth_user::whereemail($correo)->first()->id;
 
   $this->validate($request, [
     'inputTitulo' => 'required|max:255',
@@ -173,11 +176,11 @@ public function saveblog(Request $request){
     $inputRef = $request->input('inputRef');
     $inputImagen = $request->file('inputImagen');
 
-if( !empty(DB::table('blog')->wheretitulo($inputTitulo)->first())){
-  return $this->viewblog(DB::table('blog')->wheretitulo($inputTitulo)->first()->id);
+if( !empty(Blog::wheretitulo($inputTitulo)->first())){
+  return $this->viewblog(Blog::wheretitulo($inputTitulo)->first()->id);
 }
 
-    $idEntrada = DB::table('blog')->insertGetId([
+    $idEntrada = Blog::insertGetId([
       'user_id' => $id_usuario,
       'titulo' => $inputTitulo,
     	'fecha' => $inputDate,
@@ -192,7 +195,7 @@ if( !empty(DB::table('blog')->wheretitulo($inputTitulo)->first())){
 
   $route1 = \Storage::disk('local_public')->put($idEntrada.'/'.$img1, File::get($inputImagen));
 
-  DB::table('blog')->where('id', $idEntrada)->update(['imagen' => $idEntrada.'/'.$img1]);
+  Blog::where('id', $idEntrada)->update(['imagen' => $idEntrada.'/'.$img1]);
 
   return $this->viewblog($idEntrada);
 
@@ -200,8 +203,8 @@ if( !empty(DB::table('blog')->wheretitulo($inputTitulo)->first())){
 
 public function viewblog($idEntrada){
 
-  $entradas = DB::table('blog')->get();
-  $entrada = DB::table('blog')->whereid($idEntrada)->get();
+  $entradas = Blog::get();
+  $entrada = Blog::whereid($idEntrada)->get();
 
   return view('blog.viewblog')->with('entradas', collect($entradas))->with('entrada', collect($entrada));
 
@@ -219,7 +222,7 @@ public function adminblog(){
 
   $correo = \Auth::user() -> email;
 
-  if(empty($name = DB::table('edxapp.auth_user')->whereemail($correo)->first())){
+  if(empty($name = Auth_user::whereemail($correo)->first())){
     return ("Tu correo no esta asociado a algun curso en la plataforma");
   }
 
