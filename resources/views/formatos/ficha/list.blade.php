@@ -19,9 +19,9 @@
                                 <th>Periodo Emisión</th>
                                 <th>Course ID</th>
                                 <th>Estado</th>
-                                <th>Creo</th>
-                                <th>Edito</th>
-                                <th>Aprobo</th>
+                                <th>Creó</th>
+                                <th>Editó</th>
+                                <th>Aprobó</th>
                             </tr>
                         </thead>
                     @foreach ($fichas as $ficha)
