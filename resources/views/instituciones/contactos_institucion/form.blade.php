@@ -16,35 +16,50 @@
         {!! Form::text('nombre', null, ['class' => 'form-control']) !!}
         {!! $errors->first('nombre', '<p class="help-block">:message</p>') !!}
     </div>
-</div><div class="form-group {{ $errors->has('correo') ? 'has-error' : ''}}">
-    {!! Form::label('correo', 'Correo', ['class' => 'col-md-4 control-label']) !!}
+</div><div class="form-group {{ $errors->has('nivel_academico') ? 'has-error' : ''}}">
+    {!! Form::label('nivel_academico', 'Nivel Académico', ['class' => 'col-md-4 control-label','required' => 'required','uppercase']) !!}
     <div class="col-md-6">
-        {!! Form::text('correo', null, ['class' => 'form-control','required' => 'required']) !!}
-        {!! $errors->first('correo', '<p class="help-block">:message</p>') !!}
-    </div>
-</div><div class="form-group {{ $errors->has('telefono') ? 'has-error' : ''}}">
-    {!! Form::label('telefono', 'Teléfono', ['class' => 'col-md-4 control-label']) !!}
+        {!! Form::select('nivel_academico', array('Licenciatura' => 'Licenciatura',
+                                                  'Maestría' => 'Maestría',
+                                                  'Doctorado' => 'Doctorado'
+                                                  ), ['class' => 'form-control']) !!}
+        {!! $errors->first('nivel_academico', '<p class="help-block">:message</p>') !!}
+    </div>   
+</div><div class="form-group {{ $errors->has('area_investigacion') ? 'has-error' : ''}}">
+    {!! Form::label('area_investigacion', 'Área de investigación', ['class' => 'col-md-4 control-label','required' => 'required','uppercase']) !!}
     <div class="col-md-6">
-        {!! Form::text('telefono', null, ['class' => 'form-control','required' => 'required','uppercase']) !!}
-        {!! $errors->first('telefono', '<p class="help-block">:message</p>') !!}
+        {!! Form::select('area_investigacion', $categorias, ['class' => 'form-control']) !!}
+        {!! $errors->first('area_investigacion', '<p class="help-block">:message</p>') !!}
+    </div>   
+</div><div class="form-group {{ $errors->has('biografia_breve') ? 'has-error' : ''}}">
+    {!! Form::label('biografia_breve', 'Biografía breve', ['class' => 'col-md-4 control-label','required' => 'required','uppercase']) !!}
+    <div class="col-md-6">
+        {!! Form::textarea('biografia_breve', null, ['class' => 'form-control']) !!}
+        {!! $errors->first('biografia_breve', '<p class="help-block">:message</p>') !!}
+    </div>     
+</div><div class="form-group {{ $errors->has('correo_institucional') ? 'has-error' : ''}}">
+    {!! Form::label('correo_institucional', 'Correo institucional', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::email('correo_institucional', null, ['class' => 'form-control','required' => 'required']) !!}
+        {!! $errors->first('correo_institucional', '<p class="help-block">:message</p>') !!}
     </div>
-</div><div class="form-group {{ $errors->has('cargo') ? 'has-error' : ''}}">
-    {!! Form::label('cargo', 'Cargo', ['class' => 'col-md-4 control-label']) !!}
+</div><div class="form-group {{ $errors->has('telefono_institucional') ? 'has-error' : ''}}">
+    {!! Form::label('telefono_institucional', 'Teléfono institucional', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::text('telefono_institucional', null, ['class' => 'form-control','required' => 'required','uppercase']) !!}
+        {!! $errors->first('telefono_institucional', '<p class="help-block">:message</p>') !!}
+    </div>
+</div><div class="form-group {{ $errors->has('cargo_contacto') ? 'has-error' : ''}}">
+    {!! Form::label('cargo_contacto', 'Cargo', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
         {!! Form::text('cargo_contacto', null, ['class' => 'form-control']) !!}
-        {!! $errors->first('cargo', '<p class="help-block">:message</p>') !!}
+        {!! $errors->first('cargo_contacto', '<p class="help-block">:message</p>') !!}
     </div>
 </div><div class="form-group {{ $errors->has('activo') ? 'has-error' : ''}}">
     {!! Form::label('activo', 'Activo', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::checkbox('activo',null,null, ['class' => 'form-control']) !!}        
+        {!! Form::checkbox('activo',null, ['class' => 'form-control']) !!}        
         {!! $errors->first('activo', '<p class="help-block">:message</p>') !!}
-    </div>
-</div><div class="form-group {{ $errors->has('rol') ? 'has-error' : ''}}">
-    {!! Form::label('rol', 'Rol', ['class' => 'col-md-4 control-label']) !!}
-    <div class="col-md-6">
-        {!! Form::checkbox('rol',null,null, ['class' => 'form-control']) !!}        
-        {!! $errors->first('rol', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
 

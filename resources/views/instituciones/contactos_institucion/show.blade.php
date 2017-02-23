@@ -30,11 +30,13 @@
                                     <tr><th> Id </th><td> {{ $contactos_institucion->id }} </td></tr>
                                     <tr><th> Institución </th><td> {{ $contactos_institucion->institucion_id }} </td></tr>
                                     <tr><th> Nombre </th><td> {{ $contactos_institucion->nombre }} </td></tr>
-                                    <tr><th> Correo</th><td> {{ $contactos_institucion->correo }} </td></tr>
-                                    <tr><th> Teléfono</th><td> {{ $contactos_institucion->telefono }} </td></tr>
+                                    <tr><th> Nivel Académico </th><td> {{ $contactos_institucion->nivel_academico }} </td></tr>
+                                    <tr><th> Área de Investigación </th><td> {{ $contactos_institucion->area_investigacion }} </td></tr>
+                                    <tr><th> Biografía Breve </th><td> {{ $contactos_institucion->biografia_breve }} </td></tr>
+                                    <tr><th> Correo Institucional</th><td> {{ $contactos_institucion->correo_institucional }} </td></tr>
+                                    <tr><th> Teléfono Institucional</th><td> {{ $contactos_institucion->telefono_institucional }} </td></tr>
                                     <tr><th> Cargo</th><td> {{ $contactos_institucion->cargo_contacto }} </td></tr>
                                     <tr><th> Activo</th><td> {{ $contactos_institucion->activo }} </td></tr>
-                                    <tr><th> Cargo</th><td> {{ $contactos_institucion->rol }} </td></tr>                                                                        
                                 </tbody>
                             </table>
                         </div>

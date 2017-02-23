@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Session;
 use App\Model\Auth_userprofile;
 use App\Model\institucion;
+use App\Model\Categorias;
 
 class contactos_institucionController extends Controller {
 
@@ -19,14 +20,14 @@ class contactos_institucionController extends Controller {
      */
     public function index() {        
         $super_user = session()->get('super_user');
-        $username = session()->get('nombre');
+        $name_user = session()->get('nombre');
 
         $user = \Illuminate\Support\Facades\Auth::user();
         $institucion = \App\User::where('email', $user->email)->first();
         
 //        dd($institucion->institucion_id);
         $contactos_institucion  = contactos_institucion::where('institucion_id', '=', $institucion->institucion_id)->paginate(10);
-        return view('instituciones.contactos_institucion.index', compact('contactos_institucion'))->with('name_user', $username);
+        return view('instituciones.contactos_institucion.index', compact('contactos_institucion'))->with('name_user', $name_user);
     }
 
     /**
@@ -36,8 +37,14 @@ class contactos_institucionController extends Controller {
      */
     public function create() {
         $super_user = session()->get('super_user');
-        $username = session()->get('nombre');
-        return view('instituciones.contactos_institucion.create')->with('name_user', $username);
+        $name_user = session()->get('nombre');
+        $user = \Illuminate\Support\Facades\Auth::user();
+
+        $contactos_institucion  = contactos_institucion::where('institucion_id', '=', $user->institucion_id)->get();
+
+        $categorias = Categorias::all()->pluck('categoria', 'id');
+       
+        return view('instituciones.contactos_institucion.create')->with('contactos_institucion',$contactos_institucion)->with('categorias',$categorias)->with('name_user',$name_user);
     }
 
     /**
@@ -67,12 +74,12 @@ class contactos_institucionController extends Controller {
      */
     public function show() {
         $super_user = session()->get('super_user');
-        $username = session()->get('nombre');
+        $name_user = session()->get('nombre');
         $user = \Illuminate\Support\Facades\Auth::user();
         $institucion = \App\User::where('email', $user->email)->first();        
         $contactos_institucion  = contactos_institucion::where('institucion_id', '=', $institucion->institucion_id)->paginate(10);
 //        dd($contactos_institucion);
-        return view('instituciones.contactos_institucion.show')->with('name_user', $username)->with('contactos_institucion',$contactos_institucion);
+        return view('instituciones.contactos_institucion.show')->with('name_user', $name_user)->with('contactos_institucion',$contactos_institucion);
     }
 
     /**
@@ -84,9 +91,10 @@ class contactos_institucionController extends Controller {
      */
     public function edit($id) {
         $super_user = session()->get('super_user');
-        $username = session()->get('nombre');
+        $name_user = session()->get('nombre');
+        $categorias = Categorias::all()->pluck('categoria', 'id');
         $contactos_institucion = contactos_institucion::findOrFail($id);
-        return view('instituciones.contactos_institucion.edit', compact('contactos_institucion'))->with('name_user', $username);
+        return view('instituciones.contactos_institucion.edit', compact('contactos_institucion'))->with('name_user', $name_user)->with('categorias',$categorias);
     }
 
     /**
@@ -117,10 +125,14 @@ class contactos_institucionController extends Controller {
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy($id) {
+        $contactos_ficha = \App\Model\Contactos_Ficha::where('id_contacto','=',$id)->get();
+//        dd($contactos_ficha);
+    if(!isset($contactos_ficha)) {
         contactos_institucion::destroy($id);
-
         Session::flash('flash_message', 'contactos_institucion deleted!');
-
+    } else {
+        Session::flash('alert-danger', 'No puedes eliminar un contacto relacionado con una ficha técnica!');
+    }
         return redirect('instituciones/contactos_institucion');
     }
 

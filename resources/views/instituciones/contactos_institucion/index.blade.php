@@ -18,11 +18,13 @@
                                         <th>Id</th>
                                         <th>Institución</th>
                                         <th> Nombre </th>
+<!--                                        <th> Nivel académico</th>
+                                        <th> Area de Investigacion</th>
+                                        <th> Biografía</th>-->
                                         <th> Correo </th>
                                         <th> Teléfono</th>
                                         <th> Cargo</th>
-                                        <th> Activo</th>
-                                        <th> Rol </th>                                        
+                                        <!--<th> Activo</th>-->
                                         <th> Acciones</th>
                                     </tr>
                                 </thead>
@@ -32,11 +34,13 @@
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->institucion_id }}</td>
                                         <td>{{ $item->nombre }}</td>
-                                        <td>{{ $item->correo }}</td>
-                                        <td>{{ $item->telefono}}</td>
+<!--                                        <td>{{ $item->nivel_academico}}</td>
+                                        <td>{{ $item->area_investigacion}}</td>                                        
+                                        <td>{{ $item->biografia_breve}}</td>                                        -->
+                                        <td>{{ $item->correo_institucional }}</td>
+                                        <td>{{ $item->telefono_institucional}}</td>
                                         <td>{{ $item->cargo_contacto}}</td>
-                                        <td>{{ $item->activo}}</td>
-                                        <td>{{ $item->rol}}</td>                                        
+                                        <!--<td>{{ $item->activo}}</td>-->
                                         <td>
                                             
                                             <a href="{{ url('/instituciones/contactos_institucion/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Editar Contacto"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
