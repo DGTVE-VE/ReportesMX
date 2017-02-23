@@ -120,7 +120,9 @@
         @if(Session::has ('success_message'))
         <div class='container'>
             <div id='success_message' class='col-md-8 col-md-offset-2 alert alert-success fade in alert-dismissable '>
+                <strong>
                 {{Session::get('success_message')}}
+                </strong>
             </div>
         </div>
         @endif
