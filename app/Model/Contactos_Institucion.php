@@ -27,5 +27,8 @@ class Contactos_Institucion extends Model
      */
     protected $fillable = ['id','institucion_id', 'nombre_contacto', 'correo_contacto', 'telefono', 'cargo_contacto', 'activo'];
 
-    
+    public function ficha (){
+        return $this->belongsToMany('App\Model\Ficha_curso', 'contactos_ficha', 'id_contacto', 'id_ficha')
+            ->withPivot('rol');
+    }
 }

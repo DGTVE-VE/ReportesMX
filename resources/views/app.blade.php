@@ -115,6 +115,15 @@
             </div>
         </nav>
 
+        @if(Session::has ('success_message'))
+        <div class='container'>
+            <div id='success_message' class='col-md-8 col-md-offset-2 alert alert-success fade in alert-dismissable '>
+                <strong>
+                {{Session::get('success_message')}}
+                </strong>
+            </div>
+        </div>
+        @endif
         @yield('content')
 
         <!-- Scripts -->
@@ -122,6 +131,13 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
         <!--        //code.jquery.com/jquery-1.12.4.js-->
+        <script>
+            $(document).ready(function () {
+                $("#success_message").fadeTo(2000, 500).slideUp(500, function(){
+                    $("#success_message").slideUp(500);
+                });
+            });
+        </script>
         @yield('scripts')
     </body>
 </html>
