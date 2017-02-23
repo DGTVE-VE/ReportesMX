@@ -56,7 +56,7 @@ class FichaTecnicaController extends Controller {
         
         //$instituciones = \App\Model\institucion::all()->pluck ('nombre_institucion', 'id')->all();
         $tipo_curso = \App\Model\TipoCurso::all()->pluck ('tipo_curso', 'id')->all();
-        $institucion = \App\Model\institucion::find (Auth::user()->institucion_id);
+        $institucion = \App\Model\Institucion::find (Auth::user()->institucion_id);
         return view('instituciones/registroCurso')
                 ->with('name_user', $username)
                 ->with('contactos', $contactos)
