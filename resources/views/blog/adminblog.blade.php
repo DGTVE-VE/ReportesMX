@@ -1,32 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('app')
 
-  <title>Administración Blog</title>
-
+@section('content')
   <link rel="icon" href="{{ URL::asset('favicon.ico') }}" type="image/x-icon">
   <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-  <script>tinymce.init({ selector:'textarea' });</script></script>
-
-</head>
-<body>
-  <nav class="navbar navbar-default">
-
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="http://mx.televisioneducativa.gob.mx/" target="Ir a MéxicoX">
-          <img src="{{asset('logo_large.png')}}" alt="imagen" width= "85px">
-        </a>
-      </div>
-    </div>
-  </nav>
-
-<br>
 <center><h3>Crear entrada en el Blog de MéxicoX</h3></center>
 <br>
 
@@ -123,5 +101,13 @@
     <br><br>
 
 </form>
-</body>
-</html>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+    tinymce.init({ selector:'textarea' });
+    var $j = jQuery.noConflict();
+    $j( "#inputDate" ).datepicker({dateFormat: "yy-mm-dd"});
+  </script>
+@endsection

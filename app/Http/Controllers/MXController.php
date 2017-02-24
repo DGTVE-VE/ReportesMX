@@ -140,8 +140,8 @@ class MXController extends Controller {
 public function blog(){
 
   $entradas = Blog::orderBy('id', 'desc')->get();
-
-  return view('blog.blog')->with('entradas', collect($entradas));
+  $usuario = session()->get('nombre');
+  return view('blog.blog')->with('entradas', collect($entradas))->with('name_user',$usuario);
 
 }
 
@@ -230,8 +230,8 @@ public function adminblog(){
   {
     return $this->blog();
   }
-
-  return view('blog.adminblog');
+  $usuario = session()->get('nombre');
+  return view('blog.adminblog')->with('name_user',$usuario);
 
 }
 
