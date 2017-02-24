@@ -140,7 +140,7 @@ class FichaTecnicaController extends Controller {
         $ficha = Ficha_curso::find ($idFicha);
         if (!empty ($idFicha)){
             $ficha->estado = 'aprobada';        
-            $ficha->aprobo()->save(Auth::user());
+            $ficha->aprobo()->associate (Auth::user());
             $ficha->save();
             Session::flash ('success_message', 'Ficha aprobada');
             $mensaje = "Ficha aprobada: ";
