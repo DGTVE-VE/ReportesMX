@@ -78,10 +78,12 @@ class FichaTecnicaController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
+    public function store(Request $request) {        
         Log::info ("Usuario modificando:".Auth::user()->id);
         Log::info ('metodo store...');
         Log::info ('Input::get("seccion")'. Input::get('seccion'));
+        
+        Ficha_curso::find (Input::get('id'))->edito()->associate (Auth::user());
         if (Input::get('seccion') === 'info_basica' ){
             Log::info ('Guardando info_basica');
             return $this->storeInfoBasica ($request);            
@@ -130,7 +132,7 @@ class FichaTecnicaController extends Controller {
             Log::info ('Guardando cartas');            
             return $this->aprobar ($request); 
         }
-        Ficha_curso::find (Input::get('id'))->edito()->associate (Auth::user());
+        
     }
     
     public function aprobar (Request $request){
