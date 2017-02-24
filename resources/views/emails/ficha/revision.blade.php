@@ -8,7 +8,9 @@
         {{$mensaje}}
         <a href="http://reportes.mexicox.gob.mx/formatos/ficha_tecnica/{{$ficha->id}}">
             <button> Revisar la ficha </button>
-        </a>      
+        </a>
+        <hr>
+        <br>
         @if(!empty ($ficha->aprobo()))        
             Ficha aprobada por: {{$ficha->aprobo->name}}
         @endif
