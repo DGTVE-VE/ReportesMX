@@ -77,7 +77,7 @@ Seguimos trabajando para ofrecerte más y nuevos MOOCS. </b>
         </td>
       </tr>
       <tr>
-        <td  colspan="3" style="height=70px; padding: 15px; text-align: right;">
+        <td  colspan="3" style="height: 70px; padding: 15px; text-align: right;">
           <a href='http://www.facebook.com/TvEducativaMx'>
             <img class="redes" src='https://s3-us-west-2.amazonaws.com/imagenes-mexicox/mail_20161215/fb.png' class='img-rounded'>
           </a>

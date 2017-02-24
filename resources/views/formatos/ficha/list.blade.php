@@ -50,15 +50,17 @@
                             {{$ficha->estado }}
                         </td>
                         <td>
-                            {{$ficha->creo->name}}
+                            @if (!empty($ficha->creo))
+                                {{$ficha->creo->name}}
+                            @endif
                         </td>
                         <td>
-                            @if ($ficha->edito)
+                            @if (!empty($ficha->edito))
                                 {{$ficha->edito->name}}
                             @endif
                         </td>
                         <td>
-                            @if ($ficha->aprobo)
+                            @if (!empty($ficha->aprobo))
                                 {{$ficha->aprobo->name}}
                             @endif
                         </td>
