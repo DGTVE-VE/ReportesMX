@@ -20,11 +20,11 @@ use Mail;
 
 class FichaTecnicaController extends Controller {
 
-//    public $mailRecipients = [  'griselda.velazquez@mexicox.gob.mx', 
-//                                'norman.sanchez@mexicox.gob.mx', 
-//                                'lily.sacal@mexicox.gob.mx',
-//                                'roberto.pina@mexicox.gob.mx'];
-    public $mailRecipients = ['israel.toledo@mexicox.gob.mx'];
+    public $mailRecipients = [  'griselda.velazquez@mexicox.gob.mx', 
+                                'norman.sanchez@mexicox.gob.mx', 
+                                'lily.sacal@mexicox.gob.mx',
+                                'roberto.pina@mexicox.gob.mx'];
+//    public $mailRecipients = ['israel.toledo@mexicox.gob.mx'];
             
     public function __construct() {
 
@@ -38,10 +38,11 @@ class FichaTecnicaController extends Controller {
      */
     public function index() {         
         $username = Auth::user()->name;
-        if (Auth::user()->is_superuser)
+        if (Auth::user()->is_superuser){
             $fichas = Ficha_curso::all();
-        else
+        }else{
             $fichas = Ficha_curso::where ('id_institucion', Auth::user()->institucion_id)->get ();
+        }
         return view('formatos/ficha/list')
             ->with('name_user', $username)
             ->with('fichas', $fichas);
