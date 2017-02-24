@@ -10,7 +10,7 @@
             <button> Revisar la ficha </button>
         </a>      
         @if(!empty ($ficha->aprobo()))        
-            Ficha aprobada por: {{$ficha->aprobo()->name}}
+            Ficha aprobada por: {{$ficha->aprobo->name}}
         @endif
     </body>
 </html>
