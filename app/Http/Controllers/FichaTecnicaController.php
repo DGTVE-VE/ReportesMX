@@ -179,7 +179,7 @@ class FichaTecnicaController extends Controller {
             Mail::send('emails.ficha.revision', ['ficha' => $ficha, 'mensaje'=> $mensaje], 
                     function ($m) use ($ficha) {
                         $m->from($this->fromMail, 'México X');
-                        $m->to($this->ccMail)
+                        $m->to($this->toMail)->cc($this->ccMail)
                                 ->subject('Una ficha técnica espera ser revisada.'
                                         .$ficha->nombre_curso);
                     });
