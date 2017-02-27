@@ -25,6 +25,9 @@
                             </tr>
                         </thead>
                     @foreach ($fichas as $ficha)
+                    @if ($ficha->estado == 'compromiso')
+                    <tr class='info'>
+                    @endif
                     @if ($ficha->estado == 'aprobada')
                     <tr class='success'>
                     @endif

@@ -1,4 +1,5 @@
 <div class="tab-pane fade" id="revision"> <!--bloque archivos-->
+    @if ($ficha_curso->estado == 'edicion')
     {!! Form::model($ficha_curso, ['action'=> 'FichaTecnicaController@store', 'files'=>true]) !!}
     <input type='hidden' name='seccion' value='revision'>
     <input type='hidden' name='id' value='{{$ficha_curso->id}}'>
@@ -15,15 +16,18 @@
         </div>
     </div>
     </form>
+    @endif
     
-@if (Auth::user()->is_superuser)
-    <div class="row">
+@if (Auth::user()->is_superuser)    
+    
+        <div class="row">
+        @if ($ficha_curso->estado == 'compromiso')
+        <div class="row">
         <div class="form-group col-md-4 col-md-offset-2"><br>
-            <h3>Aprobar</h3>            
+            <h3>Aprobar carta compromiso</h3>            
         </div>
         <hr>
     </div>
-        <div class="row">
         <div class="form-group col-md-4 col-md-offset-2">
             {!! Form::model($ficha_curso, ['action'=> 'FichaTecnicaController@store', 'files'=>true]) !!}
                 <input type='hidden' name='seccion' value='aprobar'>
@@ -34,11 +38,19 @@
                 </div>
             </form>
         </div>
+        @endif
 <!--        <div class="form-group col-md-4 col-md-offset-2"><br>
             <h3>Aprobar para apertura</h3>
             <hr>
         </div>-->
-        <div class="form-group col-md-4">
+        @if ($ficha_curso->estado == 'revision')
+        <div class="row">
+            <div class="form-group col-md-4 col-md-offset-2"><br>
+                <h3>Aprobar curso para apertura</h3>            
+            </div>
+            <hr>
+        </div>
+        <div class="form-group col-md-4  col-md-offset-2">
             {!! Form::model($ficha_curso, ['action'=> 'FichaTecnicaController@store', 'files'=>true]) !!}
                 <input type='hidden' name='seccion' value='aprobar'>
                 <input type='hidden' name='que_aprueba' value='curso'>
@@ -48,7 +60,8 @@
                 </div>
             </form>
         </div>
-        </div>    
+        @endif
+    </div>    
 @endif
 
 </div>
