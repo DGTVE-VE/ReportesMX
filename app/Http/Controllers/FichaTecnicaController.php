@@ -71,7 +71,7 @@ class FichaTecnicaController extends Controller {
         //$instituciones = \App\Model\Institucion::all()->pluck ('nombre_institucion', 'id')->all();
         $tipo_curso = \App\Model\TipoCurso::all()->pluck ('tipo_curso', 'id')->all();
         $institucion = \App\Model\Institucion::find (Auth::user()->institucion_id);
-        return view('instituciones/registroCurso')
+        return view('formatos/ficha/create')
                 ->with('name_user', $username)
                 ->with('contactos', $contactos)
                 ->with('ficha_curso', $ficha)
@@ -136,14 +136,41 @@ class FichaTecnicaController extends Controller {
             Log::info ('Guardando cartas');            
             return $this->enviarRevision ($request); 
         }
-        if (Input::get('seccion') === 'aprobar' ){
-            Log::info ('Guardando cartas');            
-            return $this->aprobar ($request); 
+        if (Input::get('seccion') === 'aprobar' ){                     
+            if (Input::get('que_aprueba') === 'curso') {
+                return $this->aprobarCurso($request);
+            }
+            if (Input::get('que_aprueba') === 'carta') {
+                return $this->aprobarCarta($request);
+            }
         }
         
     }
     
-    public function aprobar (Request $request){
+    public function aprobarCarta (Request $request){
+        $idFicha = Input::get('id');
+        $ficha = Ficha_curso::find ($idFicha);
+        if (!empty ($idFicha)){
+            $ficha->estado = 'edicion';        
+            $ficha->aprobo()->associate (Auth::user());
+            $ficha->save();
+            Session::flash ('success_message', 'Carta compromiso aprobada');
+            $mensaje = "Carta compromiso aprobada:";
+            Mail::send('emails.ficha.revision', ['ficha' => $ficha, 'mensaje'=> $mensaje], 
+                    function ($m) use ($ficha) {
+                        $m->from($this->fromMail, 'México X');
+                        $m->to($this->toMail)->cc ($this->ccMail)
+                                ->subject('La carta compromiso fue aprobada: '.$ficha->nombre_curso);
+                    });
+            Log::debug (Mail::failures());
+            return $this->show ($idFicha, Input::get ('seccion'));
+        }
+        else{
+            abort (500, "El formulario no pertenece a ninguna ficha.");
+        }   
+    }
+    
+    public function aprobarCurso (Request $request){
         $idFicha = Input::get('id');
         $ficha = Ficha_curso::find ($idFicha);
         if (!empty ($idFicha)){
@@ -208,7 +235,7 @@ class FichaTecnicaController extends Controller {
         $categorias = \App\Model\Categorias::all();
         $lineasEstrategicas = \App\Model\LineasEstrategicas::all();
         $institucion = \App\Model\Institucion::find (Auth::user()->institucion_id);
-        return view('instituciones/registroCurso')
+        return view('formatos/ficha/create')
                 ->with('name_user', $username)
                 ->with('contactos', $contactos)
                 ->with('ficha_curso', $ficha)
@@ -258,11 +285,13 @@ class FichaTecnicaController extends Controller {
             $ficha->update(Input::all());
         } else{
             Log::info('Guardando nueva ficha');
-            $ficha = Ficha_curso::create (Input::all());            
-            $ficha->save();
+            $ficha = Ficha_curso::create (Input::all());                        
+            $ficha->save();            
             $ficha->creo()->associate(Auth::user());
         }
         if ($request->hasFile ('carta_compromiso')){            
+            $ficha->estado = 'compromiso';
+            $ficha->save();
             Log::info ('carta_compromiso recibida');
             $path = $request->carta_compromiso->move('cartas/', $ficha->id.'_compromiso.pdf');
             $mensaje = "Una institución ha subido una carta compromiso: ";
