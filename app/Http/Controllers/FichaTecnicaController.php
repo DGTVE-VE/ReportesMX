@@ -28,7 +28,8 @@ class FichaTecnicaController extends Controller {
                         'lily.sacal@mexicox.gob.mx',
                         'roberto.pina@mexicox.gob.mx',
                         'israel.toledo@mexicox.gob.mx',
-                        'veronica.sanchez@mexicox.gob.mx'
+                        'veronica.sanchez@mexicox.gob.mx',
+                        'sonia.martinez@mexicox.gob.mx'
                     ];
 //    public $mailRecipients = ['israel.toledo@mexicox.gob.mx'];
             
@@ -150,7 +151,7 @@ class FichaTecnicaController extends Controller {
             $ficha->aprobo()->associate (Auth::user());
             $ficha->save();
             Session::flash ('success_message', 'Ficha aprobada');
-            $mensaje = "Ficha aprobada por: ".$ficha->aprobo->name;
+            $mensaje = "Ficha aprobada:";
             Mail::send('emails.ficha.revision', ['ficha' => $ficha, 'mensaje'=> $mensaje], 
                     function ($m) use ($ficha) {
                         $m->from($this->fromMail, 'México X');
@@ -180,7 +181,7 @@ class FichaTecnicaController extends Controller {
                     function ($m) use ($ficha) {
                         $m->from($this->fromMail, 'México X');
                         $m->to($this->toMail)->cc($this->ccMail)
-                                ->subject('Una ficha técnica espera ser revisada.'
+                                ->subject('Una ficha técnica espera ser revisada: '
                                         .$ficha->nombre_curso);
                     });
                     

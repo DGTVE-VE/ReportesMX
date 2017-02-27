@@ -93,7 +93,7 @@
                                         <label for="carta_compromiso">Carta compromiso</label>
                                         <a href="{{asset('download/carta_com.docx')}}"> (Formato para Carta Compromiso) </a>
                                         <label class="file">
-                                            <input class="form-control" name="carta_compromiso" type="file" accept="application/pdf" id="carta_compromiso">
+                                            <input class="form-control" name="carta_compromiso" type="file" accept="application/pdf" id="carta_compromiso" required>
                                             <span class="file-custom"></span>                
                                         </label>
                                         <div class="help-tip posicion">
