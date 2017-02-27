@@ -102,7 +102,7 @@
                                     </div>
                                 <div class="col-md-2">
                                     @if(File::exists (public_path() .'/cartas/'.$ficha_curso->id.'_compromiso.pdf'))
-                                            <a href='{{asset('cartas/'.$ficha_curso->id.'_compromiso.pdf')}}'> <i class="fa fa-download fa-3x" aria-hidden="true"></i> </a>
+                                            <a href='{{asset('cartas/'.$ficha_curso->id.'_compromiso.pdf?'.time())}}'> <i class="fa fa-download fa-3x" aria-hidden="true"></i> </a>
                                             @endif
                                 </div>
                                 @if (!empty ($ficha_curso->id))
@@ -625,7 +625,7 @@
                                             <input class="form-control" name="carta_autorizacion" type="file" accept="application/pdf" id="carta_autorizacion">
                                             </label><br>
                                             @if(File::exists (public_path() .'/cartas/'.$ficha_curso->id.'_autorizacion.pdf'))
-                                            <a href='{{asset('cartas/'.$ficha_curso->id.'_autorizacion.pdf')}}'> <i class="fa fa-download fa-3x" aria-hidden="true"></i></a>
+                                            <a href='{{asset('cartas/'.$ficha_curso->id.'_autorizacion.pdf?'.time())}}'> <i class="fa fa-download fa-3x" aria-hidden="true"></i></a>
                                             @endif
                                             
                                         

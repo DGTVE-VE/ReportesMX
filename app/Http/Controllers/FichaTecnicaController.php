@@ -20,13 +20,16 @@ use Mail;
 
 class FichaTecnicaController extends Controller {
 
-    public $mailRecipients = [  'griselda.velazquez@mexicox.gob.mx', 
-                                'norman.sanchez@mexicox.gob.mx', 
-                                'lily.sacal@mexicox.gob.mx',
-                                'roberto.pina@mexicox.gob.mx',
-                                'israel.toledo@mexicox.gob.mx',
-                                'veronica.sanchez@mexicox.gob.mx'
-                            ];
+    public $fromMail = 'admin@mexicox.gob.mx';
+    //Correo para añadir tareas en asana.
+    public $toMail = 'x+39992588211520@mail.asana.com';
+    public $ccMail = [  'griselda.velazquez@mexicox.gob.mx', 
+                        'norman.sanchez@mexicox.gob.mx', 
+                        'lily.sacal@mexicox.gob.mx',
+                        'roberto.pina@mexicox.gob.mx',
+                        'israel.toledo@mexicox.gob.mx',
+                        'veronica.sanchez@mexicox.gob.mx'
+                    ];
 //    public $mailRecipients = ['israel.toledo@mexicox.gob.mx'];
             
     public function __construct() {
@@ -147,12 +150,12 @@ class FichaTecnicaController extends Controller {
             $ficha->aprobo()->associate (Auth::user());
             $ficha->save();
             Session::flash ('success_message', 'Ficha aprobada');
-            $mensaje = "Ficha aprobada: ";
+            $mensaje = "Ficha aprobada por: ".$ficha->aprobo->name;
             Mail::send('emails.ficha.revision', ['ficha' => $ficha, 'mensaje'=> $mensaje], 
                     function ($m) use ($ficha) {
-                        $m->from('reportes@mexicox.gob.mx', 'México X');
-                        $m->to($this->mailRecipients)
-                                ->subject('Una ficha técnica fue aprobada.');
+                        $m->from($this->fromMail, 'México X');
+                        $m->to($this->toMail)->cc ($this->ccMail)
+                                ->subject('Una ficha técnica fue aprobada:'.$ficha->nombre_curso);
                     });
             Log::debug (Mail::failures());
             return $this->show ($idFicha, Input::get ('seccion'));
@@ -175,9 +178,10 @@ class FichaTecnicaController extends Controller {
             $mensaje = "Ha enviado una ficha para revisión: ";
             Mail::send('emails.ficha.revision', ['ficha' => $ficha, 'mensaje'=> $mensaje], 
                     function ($m) use ($ficha) {
-                        $m->from('reportes@mexicox.gob.mx', 'México X');
-                        $m->to($this->mailRecipients)
-                                ->subject('Una ficha técnica espera ser revisada.');
+                        $m->from($this->fromMail, 'México X');
+                        $m->to($this->ccMail)
+                                ->subject('Una ficha técnica espera ser revisada.'
+                                        .$ficha->nombre_curso);
                     });
                     
             Log::debug (Mail::failures());
@@ -263,9 +267,9 @@ class FichaTecnicaController extends Controller {
             $mensaje = "Una institución ha subido una carta compromiso: ";
             Mail::send('emails.ficha.revision', ['ficha' => $ficha, 'mensaje'=> $mensaje], 
                     function ($m) use ($ficha) {
-                        $m->from('reportes@mexicox.gob.mx', 'México X');
-                        $m->to('DGTVE@mail.asana.com')
-                                ->cc ($this->mailRecipients)
+                        $m->from($this->fromMail, 'México X');
+                        $m->to($this->toMail)
+                                ->cc ($this->ccMail)
                                 ->subject('Carta compromiso recibida: '.$ficha->institucion->nombre_institucion.
                                         ' Curso: '.$ficha->nombre_curso );
                     });
