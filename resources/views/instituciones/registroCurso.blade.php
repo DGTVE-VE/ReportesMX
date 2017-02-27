@@ -19,8 +19,8 @@
                         <li><a href="#staff" data-toggle="tab">Staff</a></li>
                         <li><a href="#asesores" data-toggle="tab">Asesores</a></li>
                         <li><a href="#temario" data-toggle="tab">Contenido</a></li>
-                        <li><a href="#areas" data-toggle="tab">Areás</a></li>
-                        <li><a href="#cartas" data-toggle="tab">Cartas</a></li>
+                        <li><a href="#areas" data-toggle="tab">Áreas</a></li>
+                        <li><a href="#cartas" data-toggle="tab">Carta Autorización</a></li>
                         <li><a href="#revision" data-toggle="tab">Revision</a></li>
                         @endif
                     </ul>
@@ -28,7 +28,7 @@
                 <div class="panel-body">
                     <div class="tab-content">
                         <div class="tab-pane fade in active" id="info_basica"> <!--bloque información inicial-->
-                            {!! Form::model($ficha_curso, ['action'=> 'FichaTecnicaController@store']) !!}
+                            {!! Form::model($ficha_curso, ['action'=> 'FichaTecnicaController@store', 'files'=>true]) !!}
                             <input type='hidden' name='seccion' value='info_basica'>
                                 {{csrf_field()}}                                  
                                 <div class="form-group col-md-8 col-md-offset-2"><br>
@@ -88,7 +88,23 @@
                                     <input type='text'  class="text-success text-uppercase form-control"  id='codigo_curso' 
                                            value='{{$ficha_curso->codigo_curso}}'
                                            name='codigo_curso'  readonly>
-                                </div>                                        
+                                </div>  
+                                <div class="col-md-6 col-md-offset-2">                                        
+                                        <label for="carta_compromiso">Carta compromiso</label>
+                                        <a href="{{asset('download/carta_com.docx')}}"> (Formato para Carta Compromiso) </a>
+                                        <label class="file">
+                                            <input class="form-control" name="carta_compromiso" type="file" accept="application/pdf" id="carta_compromiso">
+                                            <span class="file-custom"></span>                
+                                        </label>
+                                        <div class="help-tip posicion">
+                                            <p>- Sube la carta conmpromiso debidamente requisitada y firmada</p>
+                                        </div>                                                                                    
+                                    </div>
+                                <div class="col-md-2">
+                                    @if(File::exists (public_path() .'/cartas/'.$ficha_curso->id.'_compromiso.pdf'))
+                                            <a href='{{asset('cartas/'.$ficha_curso->id.'_compromiso.pdf')}}'> <i class="fa fa-download fa-3x" aria-hidden="true"></i> </a>
+                                            @endif
+                                </div>
                                 @if (!empty ($ficha_curso->id))
                                 <input type="hidden" name='id' id='id' value='{{$ficha_curso->id}}'>
                                 @endif
@@ -593,13 +609,7 @@
                                             <p>- Descarga la carta de autorización para la emisión del Curso en la plataforma MéxicoX</p>
                                         </div>
                                         <a href="{{asset('download/carta_aut.docx')}}"><button type="button" class="btn btn-primary btn-md">Carta Autorización</button></a>
-                                    </div>
-                                    <div class="col-md-5 col-md-offset-1">
-                                        <div class="help-tip posicion">
-                                            <p>- Descarga la carta compromiso para ser socio estratégico de la Plataforma MéxicoX</p>
-                                        </div>
-                                        <a href="{{asset('download/carta_com.docx')}}"><button type="button" class="btn btn-primary btn-md">Carta Compromiso</button></a>
-                                    </div>                                
+                                    </div>                                    
                                 </div>
                                 <div class="form-group col-md-8 col-md-offset-2"><br>
                                     <h3>Subir archivos firmados</h3>
@@ -620,19 +630,7 @@
                                             
                                         
                                     </div>
-                                    <div class="col-md-4 col-md-offset-2">
-                                        <div class="help-tip posicion">
-                                            <p>- Sube la carta conmpromiso debidamente requisitada y firmada</p>
-                                        </div>
-                                        <label for="carta_compromiso">Carta compromiso</label><br><br>
-                                        <label class="file">
-                                            <input class="form-control" name="carta_compromiso" type="file" accept="application/pdf" id="carta_compromiso">
-                                            <span class="file-custom"></span>                
-                                        </label><br>
-                                            @if(File::exists (public_path() .'/cartas/'.$ficha_curso->id.'_compromiso.pdf'))
-                                            <a href='{{asset('cartas/'.$ficha_curso->id.'_compromiso.pdf')}}'> <i class="fa fa-download fa-3x" aria-hidden="true"></i> </a>
-                                            @endif
-                                    </div>
+                                    
                                 </div>
                                 <div class="form-group col-md-8 col-md-offset-2">
                                     <hr>

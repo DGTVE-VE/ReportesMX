@@ -23,7 +23,10 @@ class FichaTecnicaController extends Controller {
     public $mailRecipients = [  'griselda.velazquez@mexicox.gob.mx', 
                                 'norman.sanchez@mexicox.gob.mx', 
                                 'lily.sacal@mexicox.gob.mx',
-                                'roberto.pina@mexicox.gob.mx'];
+                                'roberto.pina@mexicox.gob.mx',
+                                'israel.toledo@mexicox.gob.mx',
+                                'veronica.sanchez@mexicox.gob.mx'
+                            ];
 //    public $mailRecipients = ['israel.toledo@mexicox.gob.mx'];
             
     public function __construct() {
@@ -254,6 +257,19 @@ class FichaTecnicaController extends Controller {
             $ficha->save();
             $ficha->creo()->associate(Auth::user());
         }
+        if ($request->hasFile ('carta_compromiso')){            
+            Log::info ('carta_compromiso recibida');
+            $path = $request->carta_compromiso->move('cartas/', $ficha->id.'_compromiso.pdf');
+            $mensaje = "Una institución ha subido una carta compromiso: ";
+            Mail::send('emails.ficha.revision', ['ficha' => $ficha, 'mensaje'=> $mensaje], 
+                    function ($m) use ($ficha) {
+                        $m->from('reportes@mexicox.gob.mx', 'México X');
+                        $m->to('DGTVE@mail.asana.com')
+                                ->cc ($this->mailRecipients)
+                                ->subject('Carta compromiso recibida: '.$ficha->institucion->nombre_institucion.
+                                        ' Curso: '.$ficha->nombre_curso );
+                    });
+        }
         Session::flash ('success_message', 'Información básica guardada');
         Log::info('Ficha guardada:'.$ficha);
         return $this->show ($ficha->id, 'info_basica');  
@@ -370,10 +386,7 @@ class FichaTecnicaController extends Controller {
             Log::info ('carta_autorizacion recibida');
             $path = $request->carta_autorizacion->move('cartas/', $idFicha.'_autorizacion.pdf');            
         }
-        if ($request->hasFile ('carta_compromiso')){            
-            Log::info ('carta_compromiso recibida');
-            $path = $request->carta_compromiso->move('cartas/', $idFicha.'_compromiso.pdf');
-        }
+        
         Session::flash ('success_message', 'Contactos guardados');
         return $this->show ($ficha->id, 'graficos'); 
     }
