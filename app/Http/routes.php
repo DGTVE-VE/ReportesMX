@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+use App\Helpers\GoogleApi;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -10,6 +12,16 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get ('google_api/oauth2callback', function (Request $request){
+    if ($request->has(GOOGLE_CODE)) {
+        $code = $request->input(GOOGLE_CODE);
+        $googleApi = new GoogleApi ([Google_Service_Calendar::CALENDAR]); 
+        $googleApi->authenticate ($code);                
+        $redirect_uri = $request->session()->get (REDIRECT_URI, '/');
+        return Redirect::to($redirect_uri);
+    }
+});
+Route::resource ('google_api/calendar', 'GoogleCalendarApiController');
 //rutas para registro de un nuevo curso
 Route::resource ('formatos/ficha_tecnica', 'FichaTecnicaController');
 //Route::post ('formatos/ficha_tecnica', 'FichaTecnicaController');
