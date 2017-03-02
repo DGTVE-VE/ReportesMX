@@ -4,6 +4,7 @@ namespace App\Helpers;
 use Google_Client;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Redirect;
 
 class GoogleApi {
     
@@ -35,6 +36,11 @@ class GoogleApi {
             }            
         }         
     }    
+    
+    public function goLogin (){
+        Session::put(REDIRECT_URI, \Illuminate\Support\Facades\Request::fullUrl());
+        return Redirect::to($this->getAuthUrl());
+    }
     
     public function isLoggedIn (){
         return ! is_null ($this->access_token);

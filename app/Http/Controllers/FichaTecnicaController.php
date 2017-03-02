@@ -15,11 +15,14 @@ use App\Model\contactos_instit;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use \Illuminate\Support\Facades\Session;
+use Google_Service_Calendar;
+use Google_Service_Calendar_Event;
 use Mail;
 
 
 class FichaTecnicaController extends Controller {
 
+    public $calendarId = 'mexicox.gob.mx_eus964uf8l2lbbjns0g9m8n4hc@group.calendar.google.com';
     public $fromMail = 'admin@mexicox.gob.mx';
     //Correo para añadir tareas en asana.
     public $toMail = 'x+39992588211520@mail.asana.com';
@@ -154,20 +157,58 @@ class FichaTecnicaController extends Controller {
             $ficha->estado = 'edicion';        
             $ficha->aprobo()->associate (Auth::user());
             $ficha->save();
+            
             Session::flash ('success_message', 'Carta compromiso aprobada');
             $mensaje = "Carta compromiso aprobada:";
-            Mail::send('emails.ficha.revision', ['ficha' => $ficha, 'mensaje'=> $mensaje], 
-                    function ($m) use ($ficha) {
-                        $m->from($this->fromMail, 'México X');
-                        $m->to($this->toMail)->cc ($this->ccMail)
-                                ->subject('La carta compromiso fue aprobada: '.$ficha->nombre_curso);
-                    });
-            Log::debug (Mail::failures());
+            
+            $this->enviaMail($ficha, $mensaje, 'Carta compromiso aprobada');
+            
             return $this->show ($idFicha, Input::get ('seccion'));
         }
         else{
             abort (500, "El formulario no pertenece a ninguna ficha.");
         }   
+    }
+    
+    private function publicaFechas ($ficha){
+        Log::info ("Publicando fechas");
+        $googleApi = new \App\Helpers\GoogleApi ([Google_Service_Calendar::CALENDAR]);
+        $service = new Google_Service_Calendar($googleApi->getClient());
+        
+        $inicio = $this->getEvent("Inicia: ", $ficha, $ficha->fecha_inicio);
+        $r = $service->events->insert($this->calendarId, $inicio);        
+        Log::info ("Evento inicio: ".$r->htmlLink);
+        
+        $fin = $this->getEvent("Termina: ", $ficha, $ficha->fecha_fin);
+        $r = $service->events->insert($this->calendarId, $fin);                                 
+        Log::info ("Evento fin: ".$r->htmlLink);
+        
+        return $this->show ($ficha->id, Input::get ('seccion'));
+    }
+    
+    private function getEvent ($title, $ficha, $fecha){
+        $event = new Google_Service_Calendar_Event(array(
+            'summary' => $title.$ficha->nombre_curso . "(" . $ficha->institucion->siglas . ")" ,                        
+            'start' => array(
+                'date' => $fecha,
+                'timeZone' => 'America/Mexico_City',
+            ),
+            'end' => array(
+                'date' => $fecha,
+                'timeZone' => 'America/Mexico_City',
+            ),            
+        ));
+        return $event;
+    }
+    
+    private function enviaMail ($ficha, $mensaje, $subject){
+        Mail::send('emails.ficha.revision', ['ficha' => $ficha, 'mensaje'=> $mensaje], 
+            function ($m) use ($ficha, $subject) {
+                $m->from($this->fromMail, 'México X');
+                $m->to($this->toMail)->cc ($this->ccMail)
+                        ->subject($subject.$ficha->nombre_curso);
+            });
+        Log::debug (Mail::failures());
     }
     
     public function aprobarCurso (Request $request){
@@ -179,14 +220,9 @@ class FichaTecnicaController extends Controller {
             $ficha->save();
             Session::flash ('success_message', 'Ficha aprobada');
             $mensaje = "Ficha aprobada:";
-            Mail::send('emails.ficha.revision', ['ficha' => $ficha, 'mensaje'=> $mensaje], 
-                    function ($m) use ($ficha) {
-                        $m->from($this->fromMail, 'México X');
-                        $m->to($this->toMail)->cc ($this->ccMail)
-                                ->subject('Una ficha técnica fue aprobada:'.$ficha->nombre_curso);
-                    });
-            Log::debug (Mail::failures());
-            return $this->show ($idFicha, Input::get ('seccion'));
+            //$this->enviaMail($ficha, $mensaje, 'Ficha aprobada ');            
+            return $this->publicaFechas($ficha);
+            //return $this->show ($idFicha, Input::get ('seccion'));
         }
         else{
             abort (500, "El formulario no pertenece a ninguna ficha.");
@@ -227,6 +263,13 @@ class FichaTecnicaController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id, $seccion = 'info_basica') {
+        //Permisos para editar el calendario
+        if (Auth::user()->is_superuser){
+            $googleApi = new \App\Helpers\GoogleApi ([Google_Service_Calendar::CALENDAR]); 
+            if ( ! $googleApi->isLoggedIn() ){            
+                return $googleApi->goLogin();
+            }
+        }
         $ficha = Ficha_curso::find ($id);
         $super_user = session()->get('super_user');
         $username = session()->get('nombre');

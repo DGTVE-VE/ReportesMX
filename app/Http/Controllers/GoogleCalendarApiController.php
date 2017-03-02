@@ -81,11 +81,11 @@ class GoogleCalendarApiController extends Controller {
             'location' => '800 Howard St., San Francisco, CA 94103',
             'description' => 'A chance to hear more about Google\'s developer products.',
             'start' => array(
-                'dateTime' => '2017-02-28T09:00:00-07:00',
+                'dateTime' => '2017-03-04T09:00:00-07:00',
                 'timeZone' => 'America/Mexico_City',
             ),
             'end' => array(
-                'dateTime' => '2017-02-28T17:00:00-07:00',
+                'dateTime' => '2017-03-04T17:00:00-07:00',
                 'timeZone' => 'America/Mexico_City',
             ),
             'recurrence' => array(
