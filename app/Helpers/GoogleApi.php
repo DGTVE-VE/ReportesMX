@@ -36,6 +36,10 @@ class GoogleApi {
         }         
     }    
     
+    public function isLoggedIn (){
+        return ! is_null ($this->access_token);
+    }
+    
     public function authenticate ($code){
         $this->client->authenticate($code);        
         $this->setAccessToken( $this->client->getAccessToken() );
