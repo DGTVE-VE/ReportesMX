@@ -27,7 +27,9 @@ class UseController extends Controller {
 			session()->put('super_user', '1');
 			$id = DB::table('edxapp.auth_user')->whereemail($correo)->whereis_superuser('1')->get()[0]->id;
 
-			$course_name = Course_overviews::whereBetween('end',array(20160000, 20990000))->whereBetween('enrollment_start',array(20160000, date("Ymd")))->lists('display_name','id');
+			$course_name = Course_overviews::whereBetween('end',array(20160000, 20990000))
+                                ->whereBetween('enrollment_start',array(20160000, date("Ymd")))
+                                ->lists('display_name','id');
 			return $this->index($course_name);
 		}
 
@@ -36,10 +38,20 @@ class UseController extends Controller {
 
 			$id = DB::table('edxapp.auth_user')->whereemail($correo)->whereis_active('1')->get()[0]->id;
 
-			if( sizeof(DB::table('edxapp.student_courseaccessrole')->whereuser_id($id)->whererole("instructor")->where('course_id', 'like', 'course%')->get()) > 1 ){
-					$course_id = DB::table('edxapp.student_courseaccessrole')->whereuser_id($id)->whererole("instructor")->where('course_id', 'like', 'course%')->get();
+			if( sizeof(DB::table('edxapp.student_courseaccessrole')
+                                ->whereuser_id($id)
+                                ->whererole("instructor")
+                                ->where('course_id', 'like', 'course%')->get()) > 1 ){
+					$course_id = DB::table('edxapp.student_courseaccessrole')
+                                                ->whereuser_id($id)
+                                                ->whererole("instructor")
+                                                ->where('course_id', 'like', 'course%')
+                                                ->get();
 			}else {
-				$course_id = DB::table('edxapp.student_courseaccessrole')->whereuser_id($id)->whererole("instructor")->get();
+				$course_id = DB::table('edxapp.student_courseaccessrole')
+                                        ->whereuser_id($id)
+                                        ->whererole("instructor")
+                                        ->get();
 			}
 
 
