@@ -9,9 +9,15 @@ use App\Model\Course_name;
 use Illuminate\Http\Request;
 use Session;
 use App\Model\Auth_userprofile;
+use App\Model\Institucion;
 
 class Course_nameController extends Controller
 {
+    
+    public function __construct() {
+
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -24,21 +30,9 @@ class Course_nameController extends Controller
     {
          $super_user = session()->get('super_user');
         $username = session()->get('nombre');
-        $course_name = Course_name::paginate(25);
+        $course_name = Course_name::paginate(7);
 
         return view('admin.course_name.index', compact('course_name'))->with('name_user', $username);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function create()
-    {
-                 $super_user = session()->get('super_user');
-        $username = session()->get('nombre');
-        return view('admin.course_name.create')->with('name_user', $username);
     }
 
     /**
@@ -69,7 +63,7 @@ class Course_nameController extends Controller
      */
     public function show($id)
     {
-                     $super_user = session()->get('super_user');
+        $super_user = session()->get('super_user');
         $username = session()->get('nombre');
         $course_name = Course_name::findOrFail($id);
 
@@ -88,8 +82,19 @@ class Course_nameController extends Controller
          $super_user = session()->get('super_user');
         $username = session()->get('nombre');
         $course_name = Course_name::findOrFail($id);
-
-        return view('admin.course_name.edit', compact('course_name'))->with('name_user', $username);
+        $siglas_institucion = \App\Model\Institucion::all()->pluck('siglas','siglas')->all();
+        $nombre_institucion = \App\Model\Institucion::all()->pluck('nombre_institucion','nombre_institucion')->all();
+        $institucion = $course_name->institucion;
+        $nombre = $course_name->nombre_institucion;
+        return view('admin.course_name.edit', compact('course_name'))
+                  ->with('name_user', $username)
+                  ->with('siglas_institucion',$siglas_institucion)
+                  ->with('nombre_institucion',$nombre_institucion)
+                  ->with('nombre',$nombre)
+                  ->with('institucion',$institucion);
+//        dd($siglas_institucion);
+//        dd($course_name->nombre_institucion);
+//          dd($nombre_institucion);        
     }
 
     /**
@@ -122,9 +127,11 @@ class Course_nameController extends Controller
      */
     public function destroy($id)
     {
-        Course_name::destroy($id);
+        $course_name = Course_name::find($id);
+        $course_name->activo = 0;
+        $course_name->save();            
 
-        Session::flash('flash_message', 'Course_name deleted!');
+        Session::flash('flash_message', 'Curso Inactivo!');
 
         return redirect('admin/course_name');
     }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Model\institucion;
+use App\Model\Institucion;
 use Illuminate\Http\Request;
 use Session;
 
