@@ -7,4 +7,6 @@ Homestead.json
 nbproject/
 public/download/*.csv
 public/download/*
-
+public/download
+/public/download
+/public/download/
