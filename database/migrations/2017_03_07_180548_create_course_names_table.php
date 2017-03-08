@@ -16,15 +16,11 @@ class CreateCourseNamesTable extends Migration
             $table->increments('id');
             $table->integer('id');
             $table->string('course_id');
-            $table->string('course_name');
-            $table->date('inicio');
-            $table->date('fin');
-            $table->date('inicio_inscripcion');
-            $table->date('fin_inscripcion');
-            $table->text('descripcion');
-            $table->string('thumbnail');
             $table->string('institucion');
+            $table->string('nombre_institucion');
             $table->integer('activo');
+            $table->integer('constancias');
+            $table->string('reedicion');
             $table->timestamps();
         });
     }

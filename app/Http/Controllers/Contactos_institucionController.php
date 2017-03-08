@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Model\Course_name;
+use App\Model\Contactos_institucion;
 use Illuminate\Http\Request;
 use Session;
 
-class Course_nameController extends Controller
+class Contactos_institucionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,10 +19,10 @@ class Course_nameController extends Controller
     public function index()
     {
         $super_user = session()->get('super_user');
-        $name_user = session()->get('nombre');
-        $course_name = Course_name::paginate(10);
+        $name_user = session()->get('nombre');        
+        $contactos_institucion = Contactos_institucion::paginate(25);
 
-        return view('admin.course_name.index', compact('course_name'))->with('super_user', $super_user)->with('name_user',$name_user);
+        return view('instituciones.contactos_institucion.index', compact('contactos_institucion'))->with('super_user', $super_user)->with('name_user',$name_user);
     }
 
     /**
@@ -34,7 +34,7 @@ class Course_nameController extends Controller
     {
         $super_user = session()->get('super_user');
         $name_user = session()->get('nombre');        
-        return view('admin.course_name.create')->with('super_user', $super_user)->with('name_user',$name_user);
+        return view('instituciones.contactos_institucion.create')->with('super_user', $super_user)->with('name_user',$name_user);
     }
 
     /**
@@ -49,11 +49,11 @@ class Course_nameController extends Controller
         
         $requestData = $request->all();
         
-        Course_name::create($requestData);
+        Contactos_institucion::create($requestData);
 
-        Session::flash('flash_message', 'Course_name added!');
+        Session::flash('flash_message', 'Contactos_institucion added!');
 
-        return redirect('admin/course_name');
+        return redirect('instituciones/contactos_institucion');
     }
 
     /**
@@ -67,9 +67,9 @@ class Course_nameController extends Controller
     {
         $super_user = session()->get('super_user');
         $name_user = session()->get('nombre');        
-        $course_name = Course_name::findOrFail($id);
+        $contactos_institucion = Contactos_institucion::findOrFail($id);
 
-        return view('admin.course_name.show', compact('course_name'))->with('super_user', $super_user)->with('name_user',$name_user);
+        return view('instituciones.contactos_institucion.show', compact('contactos_institucion'))->with('super_user', $super_user)->with('name_user',$name_user);
     }
 
     /**
@@ -82,10 +82,10 @@ class Course_nameController extends Controller
     public function edit($id)
     {
         $super_user = session()->get('super_user');
-        $name_user = session()->get('nombre');      
-        $course_name = Course_name::findOrFail($id);
+        $name_user = session()->get('nombre');        
+        $contactos_institucion = Contactos_institucion::findOrFail($id);
 
-        return view('admin.course_name.edit', compact('course_name'))->with('super_user', $super_user)->with('name_user',$name_user);
+        return view('instituciones.contactos_institucion.edit', compact('contactos_institucion'))->with('super_user', $super_user)->with('name_user',$name_user);
     }
 
     /**
@@ -101,12 +101,12 @@ class Course_nameController extends Controller
         
         $requestData = $request->all();
         
-        $course_name = Course_name::findOrFail($id);
-        $course_name->update($requestData);
+        $contactos_institucion = Contactos_institucion::findOrFail($id);
+        $contactos_institucion->update($requestData);
 
-        Session::flash('flash_message', 'Course_name updated!');
+        Session::flash('flash_message', 'Contactos_institucion updated!');
 
-        return redirect('admin/course_name');
+        return redirect('instituciones/contactos_institucion');
     }
 
     /**
@@ -118,10 +118,10 @@ class Course_nameController extends Controller
      */
     public function destroy($id)
     {
-        Course_name::destroy($id);
+        Contactos_institucion::destroy($id);
 
-        Session::flash('flash_message', 'Course_name deleted!');
+        Session::flash('flash_message', 'Contactos_institucion deleted!');
 
-        return redirect('admin/course_name');
+        return redirect('instituciones/contactos_institucion');
     }
 }

@@ -121,7 +121,9 @@ Route::get('asociaCategoria', 'categoriaController@categoria');
 Route::post('asignaCategoria', 'categoriaController@guardaCategoria');
 Route::post('consultaCurso', 'categoriaController@consultaCurso');
 
-Route::resource('instituciones/contactos_institucion', 'contactos_institucionController');
+
 Route::resource('instituciones/contactos', 'contactos_institucionController@contactos');
 
 Route::resource('instituciones/institucion', 'institucionController');
+Route::resource('admin/course_name', 'Course_nameController');
+Route::resource('instituciones/contactos_institucion', 'Contactos_institucionController');

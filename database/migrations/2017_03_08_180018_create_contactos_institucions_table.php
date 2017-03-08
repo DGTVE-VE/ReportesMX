@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateContactosInstitsTable extends Migration
+class CreateContactosInstitucionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,16 @@ class CreateContactosInstitsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contactos_instits', function(Blueprint $table) {
+        Schema::create('contactos_institucions', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('id');
             $table->integer('institucion_id');
-            $table->string('nombre_contacto');
-            $table->string('correo_contacto');
-            $table->string('telefono');
+            $table->string('nombre');
+            $table->string('nivel_academico');
+            $table->string('area_investigacion');
+            $table->text('biografia_breve');
+            $table->string('correo_institucional');
+            $table->string('telefono_institucional');
             $table->string('cargo_contacto');
             $table->integer('activo');
             $table->timestamps();
@@ -32,6 +35,6 @@ class CreateContactosInstitsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('contactos_instit');
+        Schema::drop('contactos_institucions');
     }
 }

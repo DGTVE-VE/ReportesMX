@@ -7,31 +7,35 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Course_name</div>
                     <div class="panel-body">
+
+                        <a href="{{ url('/admin/course_name/create') }}" class="btn btn-primary btn-xs" title="Agregar nuevo Course_name"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a>
+                        <br/>
+                        <br/>
                         <div class="table-responsive">
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th> Id </th><th> Course Id </th><th> Institución </th><th>Nombre de Institución </th><th> Activo </th><th> Constancias </th><th>Acciones</th>
+                                        <th>ID</th><th> Course Id </th><th> Siglas </th><th>Nombre de la Institución</th><th>Activo</th><th>Constancias</th><th>Reedición</th><th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($course_name as $item)
                                     <tr>
-                                        <td>{{ $item->id }}</td>
-                                        <td>{{ $item->course_id }}</td><td>{{ $item->institucion }}</td><td>{{ $item->nombre_institucion }}</td><td>{{ $item->activo }}</td><td>{{ $item->constancias }}</td>
+                                        <!--<td>{{ $item->id }}</td>-->
+                                        <td>{{ $item->id }}</td><td>{{ $item->course_id }}</td><td>{{ $item->institucion }}</td><td>{{ $item->nombre_institucion }}</td><td>{{ $item->activo }}</td><td>{{ $item->constancias }}</td><td>{{ $item->reedicion }}</td>
                                         <td>
-                                            <a href="{{ url('/admin/course_name/' . $item->id) }}" class="btn btn-success btn-xs" title="Ver Curso"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
-                                            <a href="{{ url('/admin/course_name/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Editar Curso"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                                            <a href="{{ url('/admin/course_name/' . $item->id) }}" class="btn btn-success btn-xs" title="Ver Course_name"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+                                            <a href="{{ url('/admin/course_name/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Editar Course_name"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
                                             {!! Form::open([
                                                 'method'=>'DELETE',
                                                 'url' => ['/admin/course_name', $item->id],
                                                 'style' => 'display:inline'
                                             ]) !!}
-                                                {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Inactivar Curso" />', array(
+                                                {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Borrar Course_name" />', array(
                                                         'type' => 'submit',
                                                         'class' => 'btn btn-danger btn-xs',
-                                                        'title' => 'Inactivar Curso',
-                                                        'onclick'=>'return confirm("¿Confirma Inactivar Curso?")'
+                                                        'title' => 'Eliminar Course_name',
+                                                        'onclick'=>'return confirm("Confirm delete?")'
                                                 )) !!}
                                             {!! Form::close() !!}
                                         </td>
