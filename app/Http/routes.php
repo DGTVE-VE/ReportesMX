@@ -21,16 +21,7 @@ Route::get ('google_api/oauth2callback', function (Request $request){
         return Redirect::to($redirect_uri);
     }
 });
-Route::resource ('google_api/calendar', 'GoogleCalendarApiController');
-//rutas para registro de un nuevo curso
 Route::resource ('formatos/ficha_tecnica', 'FichaTecnicaController');
-//Route::post ('formatos/ficha_tecnica', 'FichaTecnicaController');
-
-//Route::get('formatos/ficha_tecnica', 'FichaTecnicaController@ficha_tecnica');
-//Route::get('formatos/ficha_tecnica/{id}', 'FichaTecnicaController@ficha_tecnica');
-//
-//Route::post('nuevoRegistro','FichaTecnicaController@registroNuevo');
-//Route::get('descarga','FichaTecnicaController@downloadFile');
 
 Route::get('/', ['middleware' => 'auth', 'uses' => 'UseController@correoacurso']);
 Route::any('home', ['middleware' => 'auth', 'uses' => 'UseController@inscritos']);
