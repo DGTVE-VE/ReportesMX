@@ -69,8 +69,6 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li class="divider"></li>
                                 <li><a href="{{url ('formatos/ficha_tecnica')}}" class="bg-active">Ficha Técnica</a></li>
-                                <li class="divider"></li>
-                                <li><a href="{{ url('instituciones/contactos_institucion/') }}" >Crear Contacto Institucional</a><li>
                             </ul>
                         </li>                        
                         <?php
@@ -95,9 +93,12 @@
                                             </a></li>
                                         <li class="divider"></li>
                                         <li><a href="{{url ('admin/course_name')}}" class="bg-close" title="Agregar Cursos">
-                                                Agregar Cursos</a></li>
+                                                Cursos</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="{{url ('instituciones/institucion')}}" class="bg-active">Institución</a></li>
+                                        <li><a href="{{url ('instituciones/institucion')}}" class="bg-active">Instituciones</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="{{ url('instituciones/contactos_institucion/') }}" >Contactos Institucionales</a><li>
+
                                     </ul>
                                 </li>
 
@@ -121,7 +122,7 @@
         <div class='container'>
             <div id='success_message' class='col-md-8 col-md-offset-2 alert alert-success fade in alert-dismissable '>
                 <strong>
-                {{Session::get('success_message')}}
+                    {{Session::get('success_message')}}
                 </strong>
             </div>
         </div>
@@ -134,11 +135,11 @@
 
         <!--        //code.jquery.com/jquery-1.12.4.js-->
         <script>
-            $(document).ready(function () {
-                $("#success_message").fadeTo(2000, 500).slideUp(500, function(){
-                    $("#success_message").slideUp(500);
-                });
-            });
+$(document).ready(function () {
+    $("#success_message").fadeTo(2000, 500).slideUp(500, function () {
+        $("#success_message").slideUp(500);
+    });
+});
         </script>
         @yield('scripts')
     </body>
