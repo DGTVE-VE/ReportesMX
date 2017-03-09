@@ -23,7 +23,7 @@
                             'files' => true
                         ]) !!}
 
-                        @include ('admin.banner_principal.form', ['submitButtonText' => 'Actualizar'])
+                        @include ('admin.banner_principal.formEditar', ['submitButtonText' => 'Actualizar'])
 
                         {!! Form::close() !!}
 
