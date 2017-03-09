@@ -118,3 +118,4 @@ Route::resource('instituciones/contactos', 'contactos_institucionController@cont
 Route::resource('instituciones/institucion', 'institucionController');
 Route::resource('admin/course_name', 'Course_nameController');
 Route::resource('instituciones/contactos_institucion', 'Contactos_institucionController');
+Route::resource('admin/banner_principal', 'banner_principalController');

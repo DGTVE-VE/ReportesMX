@@ -88,8 +88,12 @@
                                         <li><a href="{{url ('adminblog')}}" class="bg-close" title="Blog">
                                                 Blog</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="{{url ('asociaCategoria')}}" class="bg-close" title="Blog">
+                                        <li><a href="{{url ('asociaCategoria')}}" class="bg-close" title="Categorias">
                                                 Asocia curso a categorias
+                                            </a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="{{url ('admin/banner_principal')}}" class="bg-close" title="Banner">
+                                                Administrar Banners
                                             </a></li>
                                         <li class="divider"></li>
                                         <li><a href="{{url ('admin/course_name')}}" class="bg-close" title="Agregar Cursos">
