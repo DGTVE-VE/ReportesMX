@@ -1,13 +1,9 @@
-<div class="form-group {{ $errors->has('id') ? 'has-error' : ''}}">
-    {!! Form::label('id', 'Id', ['class' => 'col-md-4 control-label']) !!}
+
+<div class="form-group {{ $errors->has('institucion_id') ? 'has-error' : ''}}">
+    {!! Form::label('institucion_id', 'Institución', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::number('id', null, ['class' => 'form-control','disabled']) !!}
-        {!! $errors->first('id', '<p class="help-block">:message</p>') !!}
-    </div>
-</div><div class="form-group {{ $errors->has('institucion_id') ? 'has-error' : ''}}">
-    {!! Form::label('institucion_id', 'Institución Id', ['class' => 'col-md-4 control-label']) !!}
-    <div class="col-md-6">
-        {!! Form::number('institucion_id', null, ['class' => 'form-control']) !!}
+        <input type="hidden" name="institucion_id" value="{{Auth::user ()->institucion_id}}">
+        <input type="text" value="{{Auth::user ()->institucion->siglas}}" readonly="readonly">
         {!! $errors->first('institucion_id', '<p class="help-block">:message</p>') !!}
     </div>
 </div><div class="form-group {{ $errors->has('nombre') ? 'has-error' : ''}}">
@@ -53,10 +49,11 @@
         {!! $errors->first('cargo_contacto', '<p class="help-block">:message</p>') !!}
     </div>
 </div><div class="form-group {{ $errors->has('activo') ? 'has-error' : ''}}">
-    {!! Form::label('activo', 'Activo', ['class' => 'col-md-4 control-label']) !!}
-    <div class="col-md-6">
-        {!! Form::number('activo', 1, ['class' => 'form-control']) !!}
-        {!! $errors->first('activo', '<p class="help-block">:message</p>') !!}
+    <div class="col-md-offset-4 col-md-6">
+    <select name="activo" class="form-control">        
+        <option value="1" @if($contactos_institucion->activo) selected @endif>Activo</option>        
+        <option value="0" @if(!$contactos_institucion->activo) selected @endif>Inactivo</option>
+    </select>
     </div>
 </div>
 
@@ -64,4 +61,5 @@
     <div class="col-md-offset-4 col-md-4">
         {!! Form::submit(isset($submitButtonText) ? $submitButtonText : 'Crear Contacto', ['class' => 'btn btn-primary']) !!}
     </div>
+    
 </div>

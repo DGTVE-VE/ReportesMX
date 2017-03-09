@@ -65,8 +65,10 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Formatos de llenado<span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                Administración <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{url ('instituciones/contactos_institucion')}}" class="bg-active">Personal</a></li>
                                 <li class="divider"></li>
                                 <li><a href="{{url ('formatos/ficha_tecnica')}}" class="bg-active">Ficha Técnica</a></li>
                             </ul>
@@ -79,7 +81,8 @@
                             if ($auth_user->is_superuser == 1) {
                                 ?>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administración <span class="caret"></span></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                        Acciones de Superusuario<span class="caret"></span></a>
                                     <ul class="dropdown-menu" role="menu">
                                         <li><a href="{{url ('mail/compose')}}" class="bg-close" title="Envío de correos">
                                                 Envío de Correo
@@ -99,9 +102,7 @@
                                         <li><a href="{{url ('admin/course_name')}}" class="bg-close" title="Agregar Cursos">
                                                 Cursos</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="{{url ('instituciones/institucion')}}" class="bg-active">Instituciones</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="{{ url('instituciones/contactos_institucion/') }}" >Contactos Institucionales</a><li>
+                                        <li><a href="{{url ('instituciones/institucion')}}" class="bg-active">Instituciones</a></li>                                        
 
                                     </ul>
                                 </li>

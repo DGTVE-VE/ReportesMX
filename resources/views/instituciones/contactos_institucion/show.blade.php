@@ -26,16 +26,9 @@
 
                         <div class="table-responsive">
                             <table class="table table-borderless">
-                                <tbody>
-                                    <tr>
-                                        <th>ID</th><td>{{ $contactos_institucion->id }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th> Id </th>
-                                        <td> {{ $contactos_institucion->id }} </td>
-                                    </tr>
-                                    <tr><th> Institucion Id </th>
-                                        <td> {{ $contactos_institucion->institucion_id }} </td>
+                                <tbody>                                                
+                                    <tr><th> Institucion </th>
+                                        <td> {{ $contactos_institucion->institucion->siglas }} </td>
                                     </tr>
                                     <tr><th> Nombre </th>
                                         <td> {{ $contactos_institucion->nombre }} </td>
@@ -59,7 +52,10 @@
                                         <td> {{ $contactos_institucion->cargo_contacto }} </td>
                                     </tr>                                    
                                     <tr><th> Activo </th>
-                                        <td> {{ $contactos_institucion->activo }} </td>
+                                        <td>@if ( $contactos_institucion->activo ) <i class="fa fa-check" aria-hidden="true"></i>                                            
+                                            @else <i class="fa fa-times" aria-hidden="true"></i>
+                                            @endif 
+                                        </td>
                                     </tr>                                    
                                 </tbody>
                             </table>

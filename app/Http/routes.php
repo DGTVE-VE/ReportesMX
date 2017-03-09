@@ -12,6 +12,11 @@ use App\Helpers\GoogleApi;
 | and give it the controller to call when that URI is requested.
 |
 */
+
+/*
+ * Ruta callback a donde regresa después de hacer el login en google para 
+ * usar las APIS.
+ */
 Route::get ('google_api/oauth2callback', function (Request $request){
     if ($request->has(GOOGLE_CODE)) {
         $code = $request->input(GOOGLE_CODE);

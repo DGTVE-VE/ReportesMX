@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Model\Contactos_institucion;
 use Illuminate\Http\Request;
 use Session;
-
+use Illuminate\Support\Facades\Auth;
 class Contactos_institucionController extends Controller
 {
     /**
@@ -20,9 +20,14 @@ class Contactos_institucionController extends Controller
     {
         $super_user = session()->get('super_user');
         $name_user = session()->get('nombre');        
-        $contactos_institucion = Contactos_institucion::paginate(25);
+        $institucion_id = Auth::user ()->institucion_id;
+        $contactos_institucion = Contactos_institucion::
+                where("institucion_id", $institucion_id)
+                ->paginate(25);
 
-        return view('instituciones.contactos_institucion.index', compact('contactos_institucion'))->with('super_user', $super_user)->with('name_user',$name_user);
+        return view('instituciones.contactos_institucion.index', compact('contactos_institucion'))
+                ->with('super_user', $super_user)
+                ->with('name_user',$name_user);
     }
 
     /**
