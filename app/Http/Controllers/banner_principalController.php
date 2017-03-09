@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\model\banner_principal;
 use Illuminate\Http\Request;
 use Session;
+
+use App\Model\banner_principal;
 
 class banner_principalController extends Controller
 {
