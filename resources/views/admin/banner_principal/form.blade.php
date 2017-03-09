@@ -1,7 +1,7 @@
 <div class="form-group {{ $errors->has('url_imagen') ? 'has-error' : ''}}">
     {!! Form::label('url_imagen', 'Url Imagen', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::text('url_imagen', null, ['class' => 'form-control']) !!}
+        {!! Form::input('file','url_imagen', null) !!}
         {!! $errors->first('url_imagen', '<p class="help-block">:message</p>') !!}
     </div>
 </div><div class="form-group {{ $errors->has('activo') ? 'has-error' : ''}}">

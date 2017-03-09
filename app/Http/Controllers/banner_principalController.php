@@ -94,11 +94,23 @@ class banner_principalController extends Controller
      */
     public function update($id, Request $request)
     {
-        
-        $requestData = $request->all();
+        if ($_FILES['url_imagen']["error"] > 0){
+            echo "Error: " . $_FILES['url_imagen']['error'] . "<br>";
+        }
+        else{
+            echo "Nombre: " . $_FILES['url_imagen']['name'] . "<br>";
+            echo "Tipo: " . $_FILES['url_imagen']['type'] . "<br>";
+            echo "Tamaño: " . ($_FILES["url_imagen"]["size"] / 1024) . " kB<br>";
+            echo "Carpeta temporal: " . $_FILES['url_imagen']['tmp_name'];
+            move_uploaded_file($_FILES['url_imagen']['tmp_name'],
+            "imagenes/banner/" . $_FILES['url_imagen']['name']);
+            $requestData = $request->all();
+        }
         
         $banner_principal = banner_principal::findOrFail($id);
         $banner_principal->update($requestData);
+        $banner_principal->url_imagen = "imagenes/banner/" . $_FILES['url_imagen']['name'];
+        $banner_principal->save();
 
         Session::flash('flash_message', 'banner_principal updated!');
         $usuario = session()->get('nombre');
