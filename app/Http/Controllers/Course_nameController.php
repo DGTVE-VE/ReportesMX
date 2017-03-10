@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Model\Course_name;
+use App\Model\Course_overviews;
 use Illuminate\Http\Request;
 use Session;
 use DB;
@@ -47,10 +48,21 @@ class Course_nameController extends Controller
      */
     public function store(Request $request)
     {
-        
+            /*  Agregar nuevo registro a tabla con datos recabados  */
         $requestData = $request->all();
-        
-        Course_name::create($requestData);
+        $buscaCurso = Course_name::create($requestData);
+            /* busqueda de nombre de curso por id*/
+        $idCurso = $request->course_id;
+        $curso = Course_overviews::where('id',$idCurso)->get();
+            /*  Armar clave de reedición    */
+        $nombreCurso = $curso[0]->display_name;
+        $institucion = $request->institucion;
+        $cveReedicion = $institucion.'_'.$nombreCurso;
+            /*  Actualizar course_name, cursos con misma clave reedicion  */
+        Course_name::where('reedicion', $cveReedicion)->update(['activo'=>0]);
+            /*  Actualizar clave reedición en curso agregado recientemente  */
+        $buscaCurso->reedicion = $cveReedicion;
+        $buscaCurso->save();
 
         Session::flash('flash_message', 'Course_name added!');
 
