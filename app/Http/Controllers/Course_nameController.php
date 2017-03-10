@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Model\Course_name;
 use Illuminate\Http\Request;
 use Session;
+use DB;
+use App\Model\Institucion;
 
 class Course_nameController extends Controller
 {
@@ -21,7 +23,6 @@ class Course_nameController extends Controller
         $super_user = session()->get('super_user');
         $name_user = session()->get('nombre');
         $course_name = Course_name::paginate(10);
-
         return view('admin.course_name.index', compact('course_name'))->with('super_user', $super_user)->with('name_user',$name_user);
     }
 
@@ -84,8 +85,11 @@ class Course_nameController extends Controller
         $super_user = session()->get('super_user');
         $name_user = session()->get('nombre');      
         $course_name = Course_name::findOrFail($id);
+        $institucion = Institucion::all()->pluck('siglas','id');
+        $institucion_nombre = Institucion::all()->pluck('nombre_institucion','id');
+//        dd($institucion);        
 
-        return view('admin.course_name.edit', compact('course_name'))->with('super_user', $super_user)->with('name_user',$name_user);
+        return view('admin.course_name.edit', compact('course_name'))->with('super_user', $super_user)->with('name_user',$name_user)->with('institucion',$institucion)->with('institucion_nombre',$institucion_nombre);
     }
 
     /**
@@ -104,7 +108,7 @@ class Course_nameController extends Controller
         $course_name = Course_name::findOrFail($id);
         $course_name->update($requestData);
 
-        Session::flash('flash_message', 'Course_name updated!');
+//       Log::info('Curso Agregado');
 
         return redirect('admin/course_name');
     }

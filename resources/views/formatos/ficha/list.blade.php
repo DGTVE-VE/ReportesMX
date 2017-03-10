@@ -14,7 +14,7 @@
                     <table class='table table-responsive table-striped'>
                         <thead>
                             <tr>
-                                <th>Institucion</th>
+                                <th>Institución</th>
                                 <th>Nombre</th>
                                 <th>Periodo Emisión</th>
                                 <th>Course ID</th>

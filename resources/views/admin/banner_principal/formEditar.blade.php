@@ -5,11 +5,14 @@
         {!! $errors->first('url_imagen', '<p class="help-block">:message</p>') !!}
     </div>
 </div><div class="form-group {{ $errors->has('activo') ? 'has-error' : ''}}">
-    {!! Form::label('activo', 'Activo', ['class' => 'col-md-4 control-label']) !!}
-    <div class="col-md-6">
-        {!! Form::number('activo', null, ['class' => 'form-control']) !!}
-        {!! $errors->first('activo', '<p class="help-block">:message</p>') !!}
+    <div class="col-md-4 text-right"><strong>Activo</strong></div>
+    <div class="col-md-2 text-right">
+    <select name="activo" class="form-control">        
+        <option value="1" @if($banner_principal->activo) selected @endif>Activo</option>        
+        <option value="0" @if(!$banner_principal->activo) selected @endif>Inactivo</option>
+    </select>
     </div>
+
 </div>
 
 <div class="form-group">

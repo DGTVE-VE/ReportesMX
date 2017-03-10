@@ -13,7 +13,7 @@
 </div><div class="form-group {{ $errors->has('institucion') ? 'has-error' : ''}}">
     {!! Form::label('institucion', 'Institución', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::text('institucion', null, ['class' => 'form-control']) !!}
+        {!! Form::select('institucion', $institucion, $course_name->institucion, ['class' => 'form-control']) !!}        
         {!! $errors->first('institucion', '<p class="help-block">:message</p>') !!}
     </div>
 </div><div class="form-group {{ $errors->has('nombre_institucion') ? 'has-error' : ''}}">
@@ -22,11 +22,13 @@
         {!! Form::text('nombre_institucion', null, ['class' => 'form-control']) !!}
         {!! $errors->first('nombre_institucion', '<p class="help-block">:message</p>') !!}
     </div>
-</div><div class="form-group {{ $errors->has('activo') ? 'has-error' : ''}}">
-    {!! Form::label('activo', 'Activo', ['class' => 'col-md-4 control-label']) !!}
-    <div class="col-md-6">
-        {!! Form::number('activo', null, ['class' => 'form-control']) !!}
-        {!! $errors->first('activo', '<p class="help-block">:message</p>') !!}
+</div><div class="form-group {{ $errors->has('activo') ? 'has-error' : ''}}">    
+    <div class="col-md-4 text-right"><strong>Activo</strong></div>
+    <div class="col-md-2 text-right">
+    <select name="activo" class="form-control">        
+        <option value="1" @if($course_name->activo) selected @endif>Activo</option>        
+        <option value="0" @if(!$course_name->activo) selected @endif>Inactivo</option>
+    </select>
     </div>
 </div><div class="form-group {{ $errors->has('constancias') ? 'has-error' : ''}}">
     {!! Form::label('constancias', 'Constancias', ['class' => 'col-md-4 control-label']) !!}
