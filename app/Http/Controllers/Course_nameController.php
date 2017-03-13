@@ -36,15 +36,15 @@ class Course_nameController extends Controller
     {
         $super_user = session()->get('super_user');
         $name_user = session()->get('nombre');        
-        $institucion = Institucion::all()->pluck('siglas','siglas');
-        $institucion_nombre = Institucion::all()->pluck('nombre_institucion','nombre_institucion');
+        $institucion = Institucion::all()->pluck('siglas','siglas')->all();
+        $nombre_institucion = Institucion::all()->pluck('nombre_institucion','nombre_institucion')->all();
         $course_name = Course_name::orderBy('id', 'desc')->first();
         return view('admin.course_name.create')
             ->with('super_user', $super_user)
             ->with('name_user',$name_user)
             ->with('institucion',$institucion)
             ->with('course_name',$course_name)
-            ->with('institucion_nombre',$institucion_nombre);
+            ->with('nombre_institucion',$nombre_institucion);
     }
 
     /**
@@ -105,14 +105,14 @@ class Course_nameController extends Controller
         $super_user = session()->get('super_user');
         $name_user = session()->get('nombre');      
         $course_name = Course_name::findOrFail($id);
-        $institucion = Institucion::all()->pluck('siglas','siglas');
-        $institucion_nombre = Institucion::all()->pluck('nombre_institucion','siglas');
+        $institucion = Institucion::all()->pluck('siglas','siglas')->all();
+        $nombre_institucion = Institucion::all()->pluck('nombre_institucion','nombre_institucion')->all();
 
         return view('admin.course_name.edit', compact('course_name'))
             ->with('super_user', $super_user)
             ->with('name_user',$name_user)
             ->with('institucion',$institucion)
-            ->with('institucion_nombre',$institucion_nombre);
+            ->with('nombre_institucion',$nombre_institucion);
     }
 
     /**
