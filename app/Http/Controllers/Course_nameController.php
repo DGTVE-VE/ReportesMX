@@ -134,7 +134,15 @@ class Course_nameController extends Controller
      */
     public function destroy($id)
     {
+        $curso = Course_name::findOrFail($id);
+        $cveReedicion = $curso->reedicion;
+        $cursoActivo = $curso->activo;
+
         Course_name::destroy($id);
+        
+        if($cursoActivo == 1){
+            Course_name::where('reedicion', $cveReedicion)->update(['activo'=>1]);
+        }
 
         Session::flash('flash_message', 'Course_name deleted!');
 
