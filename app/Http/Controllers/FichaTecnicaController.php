@@ -67,7 +67,7 @@ class FichaTecnicaController extends Controller {
         $super_user = session()->get('super_user');
         $username = session()->get('nombre');
         
-        $contactos = \App\Model\Contactos_Institucion::all ();
+        $contactos = \App\Model\Contactos_institucion::all ();
         
         $ficha = new Ficha_curso();
         
