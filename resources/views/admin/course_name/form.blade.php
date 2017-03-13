@@ -10,7 +10,7 @@
         {!! Form::text('course_id', null, ['class' => 'form-control']) !!}
         {!! $errors->first('course_id', '<p class="help-block">:message</p>') !!}
     </div>
-</div><!div class="form-group {{ $errors->has('institucion') ? 'has-error' : ''}}">
+</div><div class="form-group {{ $errors->has('institucion') ? 'has-error' : ''}}">
     {!! Form::label('institucion', 'Institución', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
         {!! Form::select('institucion', $institucion, $course_name->institucion, ['class' => 'form-control']) !!}        
@@ -19,7 +19,7 @@
 </div><div class="form-group {{ $errors->has('nombre_institucion') ? 'has-error' : ''}}">
     {!! Form::label('nombre_institucion', 'Nombre Institución', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::text('nombre_institucion', null, ['class' => 'form-control']) !!}
+        {!! Form::select('nombre_institucion', $nombre_institucion,$course_name->nombre_institucion, ['class' => 'form-control']) !!}
         {!! $errors->first('nombre_institucion', '<p class="help-block">:message</p>') !!}
     </div>
 </div><div class="form-group {{ $errors->has('activo') ? 'has-error' : ''}}">    
@@ -35,14 +35,14 @@
     <div class="col-md-6">
         {!! Form::number('constancias', null, ['class' => 'form-control']) !!}
         {!! $errors->first('constancias', '<p class="help-block">:message</p>') !!}
-    </div>
-</div><div class="form-group {{ $errors->has('reedicion') ? 'has-error' : ''}}">
+    </div><br><br>
+<!--</div><div class="form-group {{ $errors->has('reedicion') ? 'has-error' : ''}}">
     {!! Form::label('reedicion', 'Reedición', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
         {!! Form::text('reedicion', null, ['class' => 'form-control']) !!}
         {!! $errors->first('reedicion', '<p class="help-block">:message</p>') !!}
     </div>
-</div>
+</div>-->
 
 <div class="form-group">
     <div class="col-md-offset-4 col-md-4">
