@@ -36,7 +36,15 @@ class Course_nameController extends Controller
     {
         $super_user = session()->get('super_user');
         $name_user = session()->get('nombre');        
-        return view('admin.course_name.create')->with('super_user', $super_user)->with('name_user',$name_user);
+        $institucion = Institucion::all()->pluck('siglas','siglas')->all();
+        $nombre_institucion = Institucion::all()->pluck('nombre_institucion','nombre_institucion')->all();
+        $course_name = Course_name::orderBy('id', 'desc')->first();
+        return view('admin.course_name.create')
+            ->with('super_user', $super_user)
+            ->with('name_user',$name_user)
+            ->with('institucion',$institucion)
+            ->with('course_name',$course_name)
+            ->with('nombre_institucion',$nombre_institucion);
     }
 
     /**
@@ -97,11 +105,14 @@ class Course_nameController extends Controller
         $super_user = session()->get('super_user');
         $name_user = session()->get('nombre');      
         $course_name = Course_name::findOrFail($id);
-        $institucion = Institucion::all()->pluck('siglas','id');
-        $institucion_nombre = Institucion::all()->pluck('nombre_institucion','id');
-//        dd($institucion);        
+        $institucion = Institucion::all()->pluck('siglas','siglas')->all();
+        $nombre_institucion = Institucion::all()->pluck('nombre_institucion','nombre_institucion')->all();
 
-        return view('admin.course_name.edit', compact('course_name'))->with('super_user', $super_user)->with('name_user',$name_user)->with('institucion',$institucion)->with('institucion_nombre',$institucion_nombre);
+        return view('admin.course_name.edit', compact('course_name'))
+            ->with('super_user', $super_user)
+            ->with('name_user',$name_user)
+            ->with('institucion',$institucion)
+            ->with('nombre_institucion',$nombre_institucion);
     }
 
     /**
@@ -134,7 +145,15 @@ class Course_nameController extends Controller
      */
     public function destroy($id)
     {
+        $curso = Course_name::findOrFail($id);
+        $cveReedicion = $curso->reedicion;
+        $cursoActivo = $curso->activo;
+
         Course_name::destroy($id);
+        
+        if($cursoActivo == 1){
+            Course_name::where('reedicion', $cveReedicion)->update(['activo'=>1]);
+        }
 
         Session::flash('flash_message', 'Course_name deleted!');
 

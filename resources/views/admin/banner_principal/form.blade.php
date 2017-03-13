@@ -4,7 +4,15 @@
         {!! Form::input('file','url_imagen', null) !!}
         {!! $errors->first('url_imagen', '<p class="help-block">:message</p>') !!}
     </div>
-</div><div class="form-group {{ $errors->has('activo') ? 'has-error' : ''}}">
+</div>
+<div class="form-group {{ $errors->has('url_imagen') ? 'has-error' : ''}}">
+    {!! Form::label('ligaHref', 'Liga', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::text('ligaHref', null, ['class' => 'form-control']) !!}
+        {!! $errors->first('ligaHref', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+<div class="form-group {{ $errors->has('activo') ? 'has-error' : ''}}">
     <div class="col-md-4 text-right"><strong>Activo</strong></div>
     <div class="col-md-2 text-right">
     <select name="activo" class="form-control">        

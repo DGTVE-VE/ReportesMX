@@ -27,7 +27,7 @@
                         <div class="table-responsive">
                             <table class="table table-borderless">
                                 <tbody>
-                                    <tr><th> Id </th><td> {{ $banner_principal->id }} </td></tr><tr><th> Url Imagen </th><td> {{ $banner_principal->url_imagen }} </td></tr><tr><th> Activo </th><td> {{ $banner_principal->activo }} </td></tr>
+                                    <tr><th> Id </th><td> {{ $banner_principal->id }} </td></tr><tr><th> Url Imagen </th><td> {{ $banner_principal->url_imagen }} </td></tr><tr><th> Liga </th><td> {{ $banner_principal->ligaHref }} </td></tr><tr><th> Activo </th><td> {{ $banner_principal->activo }} </td></tr>
                                 </tbody>
                             </table>
                         </div>
