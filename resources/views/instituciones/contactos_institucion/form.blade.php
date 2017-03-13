@@ -15,13 +15,13 @@
 </div><div class="form-group {{ $errors->has('nivel_academico') ? 'has-error' : ''}}">
     {!! Form::label('nivel_academico', 'Nivel Académico', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::text('nivel_academico', null, ['class' => 'form-control']) !!}
+        {!! Form::select('nivel_academico', ['Doctorado'=>'Doctorado','Maestría'=>'Maestría','Licenciatura'=>'Licenciatura','Técnico Superior'=>'Técnico Superior'],$contactos_institucion->nivel_academico, ['class' => 'form-control']) !!}
         {!! $errors->first('nivel_academico', '<p class="help-block">:message</p>') !!}
     </div>
 </div><div class="form-group {{ $errors->has('area_investigacion') ? 'has-error' : ''}}">
     {!! Form::label('area_investigacion', 'Area Investigación', ['class' => 'col-md-4 control-label']) !!}
-    <div class="col-md-6">
-        {!! Form::text('area_investigacion', null, ['class' => 'form-control']) !!}
+    <div class="col-md-6">                                  
+        {!! Form::select('area_investigacion', $categorias, $contactos_institucion->area_investigacion, ['class' => 'form-control']) !!}
         {!! $errors->first('area_investigacion', '<p class="help-block">:message</p>') !!}
     </div>
 </div><div class="form-group {{ $errors->has('biografia_breve') ? 'has-error' : ''}}">
@@ -33,7 +33,7 @@
 </div><div class="form-group {{ $errors->has('correo_institucional') ? 'has-error' : ''}}">
     {!! Form::label('correo_institucional', 'Correo Institucional', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::text('correo_institucional', null, ['class' => 'form-control']) !!}
+        {!! Form::email('correo_institucional', null, ['class' => 'form-control']) !!}
         {!! $errors->first('correo_institucional', '<p class="help-block">:message</p>') !!}
     </div>
 </div><div class="form-group {{ $errors->has('telefono_institucional') ? 'has-error' : ''}}">
@@ -49,8 +49,9 @@
         {!! $errors->first('cargo_contacto', '<p class="help-block">:message</p>') !!}
     </div>
 </div><div class="form-group {{ $errors->has('activo') ? 'has-error' : ''}}">
-    <div class="col-md-offset-4 col-md-6">
-    <select name="activo" class="form-control">        
+ <div class="col-md-4 text-right"><strong>Activo</strong></div>
+    <div class="col-md-2 text-right">
+    <select name="activo" class="form-control">  
         <option value="1" @if($contactos_institucion->activo) selected @endif>Activo</option>        
         <option value="0" @if(!$contactos_institucion->activo) selected @endif>Inactivo</option>
     </select>

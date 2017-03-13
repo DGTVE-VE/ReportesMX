@@ -9,6 +9,7 @@ use App\Model\Contactos_institucion;
 use Illuminate\Http\Request;
 use Session;
 use Illuminate\Support\Facades\Auth;
+
 class Contactos_institucionController extends Controller
 {
     /**
@@ -36,10 +37,16 @@ class Contactos_institucionController extends Controller
      * @return \Illuminate\View\View
      */
     public function create()
-    {
+    {        
         $super_user = session()->get('super_user');
         $name_user = session()->get('nombre');        
-        return view('instituciones.contactos_institucion.create')->with('super_user', $super_user)->with('name_user',$name_user);
+        $categorias = \App\Model\Categorias::all()->pluck('categoria', 'categoria')->all();        
+        $contactos_institucion = Contactos_institucion::orderBy('id', 'desc')->first();
+        return view('instituciones.contactos_institucion.create')
+                ->with('contactos_institucion',$contactos_institucion)
+                ->with('super_user', $super_user)
+                ->with('name_user',$name_user)
+                ->with('categorias',$categorias);
     }
 
     /**
@@ -89,8 +96,12 @@ class Contactos_institucionController extends Controller
         $super_user = session()->get('super_user');
         $name_user = session()->get('nombre');        
         $contactos_institucion = Contactos_institucion::findOrFail($id);
-
-        return view('instituciones.contactos_institucion.edit', compact('contactos_institucion'))->with('super_user', $super_user)->with('name_user',$name_user);
+        $categorias = \App\Model\Categorias::all()->pluck('categoria', 'categoria')->all();
+        
+        return view('instituciones.contactos_institucion.edit', compact('contactos_institucion'))
+            ->with('super_user', $super_user)
+            ->with('name_user',$name_user)
+            ->with('categorias',$categorias);
     }
 
     /**

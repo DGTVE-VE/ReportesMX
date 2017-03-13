@@ -36,13 +36,13 @@
         {!! Form::number('constancias', null, ['class' => 'form-control']) !!}
         {!! $errors->first('constancias', '<p class="help-block">:message</p>') !!}
     </div>
-</div><div class="form-group {{ $errors->has('reedicion') ? 'has-error' : ''}}">
+<!--</div><div class="form-group {{ $errors->has('reedicion') ? 'has-error' : ''}}">
     {!! Form::label('reedicion', 'Reedición', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
         {!! Form::text('reedicion', null, ['class' => 'form-control']) !!}
         {!! $errors->first('reedicion', '<p class="help-block">:message</p>') !!}
     </div>
-</div>
+</div>-->
 
 <div class="form-group">
     <div class="col-md-offset-4 col-md-4">

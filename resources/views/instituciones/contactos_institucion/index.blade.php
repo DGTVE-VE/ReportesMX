@@ -16,7 +16,7 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th> Institución </th><th> Nombre </th><th>Correo</th><th>Teléfono</th><th>Cargo</th><th>Activo</th><th>Acciones</th>
+                                        <th> Institución </th><th> Nombre </th><th>Nivel</th><th>Área</th><th>Correo</th><th>Teléfono</th><th>Cargo</th><th>Activo</th><th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -25,6 +25,8 @@
                                         
                                         <td>{{ $item->institucion->siglas }}</td>
                                         <td>{{ $item->nombre }}</td>
+                                        <td>{{ $item->nivel_academico}}</td>
+                                        <td>{{ $item->area_investigacion}}</td>
                                         <td>{{ $item->correo_institucional }}</td>
                                         <td>{{ $item->telefono_institucional }}</td>
                                         <td>{{ $item->cargo_contacto }}</td>
