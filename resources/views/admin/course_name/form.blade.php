@@ -10,13 +10,13 @@
         {!! Form::text('course_id', null, ['class' => 'form-control']) !!}
         {!! $errors->first('course_id', '<p class="help-block">:message</p>') !!}
     </div>
-</div><div class="form-group {{ $errors->has('institucion') ? 'has-error' : ''}}">
+</div><!--div class="form-group {{ $errors->has('institucion') ? 'has-error' : ''}}">
     {!! Form::label('institucion', 'Institución', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
         {!! Form::select('institucion', $institucion, $course_name->institucion, ['class' => 'form-control']) !!}        
         {!! $errors->first('institucion', '<p class="help-block">:message</p>') !!}
     </div>
-</div><div class="form-group {{ $errors->has('nombre_institucion') ? 'has-error' : ''}}">
+</div--><div class="form-group {{ $errors->has('nombre_institucion') ? 'has-error' : ''}}">
     {!! Form::label('nombre_institucion', 'Nombre Institución', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
         {!! Form::text('nombre_institucion', null, ['class' => 'form-control']) !!}

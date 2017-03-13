@@ -25,7 +25,7 @@ class banner_principal extends Model
      *
      * @var array
      */
-    protected $fillable = ['id', 'url_imagen', 'activo'];
+    protected $fillable = ['id', 'url_imagen', 'ligaHref', 'activo'];
 
     
 }

@@ -50,10 +50,6 @@ class banner_principalController extends Controller
             echo "Error: " . $_FILES['url_imagen']['error'] . "<br>";
         }
         else{
-            echo "Nombre: " . $_FILES['url_imagen']['name'] . "<br>";
-            echo "Tipo: " . $_FILES['url_imagen']['type'] . "<br>";
-            echo "Tamaño: " . ($_FILES["url_imagen"]["size"] / 1024) . " kB<br>";
-            echo "Carpeta temporal: " . $_FILES['url_imagen']['tmp_name'];
             move_uploaded_file($_FILES['url_imagen']['tmp_name'],
             "imagenes/banner/" . $_FILES['url_imagen']['name']);
             
@@ -128,6 +124,9 @@ class banner_principalController extends Controller
      */
     public function destroy($id)
     {
+        $registroBanner = banner_principal::findOrFail($id);
+        $archivo = $registroBanner->url_imagen;
+        unlink($archivo);
         banner_principal::destroy($id);
 
         Session::flash('flash_message', 'banner_principal deleted!');

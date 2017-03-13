@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-11">
                 <div class="panel panel-default">
                     <div class="panel-heading">Banner</div>
                     <div class="panel-body">
@@ -15,13 +15,13 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th> Id </th><th> Url Imagen </th><th> Activo </th><th>Acciones</th>
+                                        <th> Id </th><th> Url Imagen </th><th> Liga </th><th> Activo </th><th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($banner_principal as $item)
                                     <tr>
-                                        <td>{{ $item->id }}</td><td>{{ $item->url_imagen }}</td><td>{{ $item->activo }}</td>
+                                        <td>{{ $item->id }}</td><td>{{ $item->url_imagen }}</td><td>{{ $item->ligaHref }}</td><td>{{ $item->activo }}</td>
                                         <td>
                                             <a href="{{ url('/admin/banner_principal/' . $item->id) }}" class="btn btn-success btn-xs" title="Ver"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
                                             <a href="{{ url('/admin/banner_principal/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Modificar"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
