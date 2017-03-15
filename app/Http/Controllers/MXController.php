@@ -82,7 +82,8 @@ class MXController extends Controller {
         }
       }
 
-      $exito = Auth_userprofile::where('user_id', $id_usuario)->update(['country' => $pais, 'city' => $estado, 'mailing_address' => $cp]);
+      //$exito = Auth_userprofile::where('user_id', $id_usuario)->update(['country' => $pais, 'city' => $estado, 'mailing_address' => $cp]);
+      $exito = DB::table('edxapp.auth_userprofile')->where('user_id', $id_usuario)->update(['country' => $pais, 'city' => $estado, 'mailing_address' => $cp]);
 
       if ($exito == 1) {
         print_r("Exito Update");
