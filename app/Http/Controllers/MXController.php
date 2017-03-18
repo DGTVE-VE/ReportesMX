@@ -166,8 +166,7 @@ public function saveblog(Request $request){
     'inputCuerpo' => 'required',
     'inputDate' => 'required|date|date_format:Y-m-d',
     'inputRef' => 'required|max:1000',
-    'inputImagen' => 'required',
-
+    'inputImagen' => 'required'
   ]);
 
     $inputTitulo = $request->input('inputTitulo');

@@ -82,7 +82,7 @@
       <div class="col-md-8">
         <center>
         <label for="inputImagen">Imagen de la entrada</label>
-        <input type="file" id="inputImagen" name="inputImagen" >
+        <input type="file" id="inputImagen" name="inputImagen" accept="image/*"/>
       </center>
       </div>
       <div class="col-md-2"></div>
