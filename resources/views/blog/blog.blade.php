@@ -1,3 +1,4 @@
+
 @extends('app')
 
 @section('content')
@@ -24,23 +25,21 @@
     }
 
   </style>
-  
 <center><h2><a href="{{url('blog')}}">Blog de MéxicoX</a></h2></center>
 <br>
 
   <div class="row">
-    <div class="col-md-1"></div>
+    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 
-    <div class="col-md-6">
+    <div class="col-xs-10 col-sm-10 col-md-6 col-lg-6">
       <center class="titulo">Publicaciones recientes</center>
       <div class="col-md-12"><br></div>
-      <?php $j = 0; ?>
+      <?php $j = 1; ?>
       @foreach($entradas as $i)
-      @if($j < 3)
+      @if($j < 4)
 
-      <div class="col-md-12"><br></div>
-
-      <div class="col-md-12 recuadro">
+      <div class="col-xs-1 visible-xs"></div>
+      <div class="col-xs-10 col-sm-5 col-md-12 recuadro">
 
         <div class="col-md-4"><img src="{{asset('imagenes_entradas/'.$i->imagen)}}" class="img-responsive center-block"></div>
 
@@ -48,52 +47,61 @@
           <b>{!!$i->titulo!!}</b>
           <br>
           <br>
-        {!! (substr($i->cuerpo, 0, 150)) !!}
+            {!! (substr($i->cuerpo, 0, 150)) !!}
 
-        <a href="{{url ('getblog?id='.$i->id)}}">Seguir leyendo...</a>
+            <a href="{{url ('getblog?id='.$i->id)}}">Seguir leyendo...</a>
+        </div>
 
       </div>
-
-      </div>
-
-      <div class="col-md-12"><br></div>
+      @if($j%1==0)
+        <div class="col-sm-2 col-md-2 visible-sm visible-md"></div>
+      @endif
+      @if($j%2==0)
+        <div class="col-sm-12 visible-sm"><br></div>
+      @endif
+      <div class="col-xs-12 col-md-12 col-lg-12 hidden-sm"><br></div>
       <?php $j++; ?>
       @endif
       @endforeach
 
     </div>
+    <div class="col-xs-12 visible-xs col-sm-12 visible-sm" style="padding:10px;"></div>
+    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 
-    <div class="col-md-1"></div>
-
-    <div class="col-md-3">
+    <div class="col-xs-10 col-sm-10 col-md-3 col-lg-3">
       <center class="titulo">Todas las publicaciones</center>
 
         <div class="col-md-12"><br></div>
-
+        {{--*/$j=1/*--}}
       @foreach($entradas as $i)
+        <div class="col-xs-12 col-md-12 col-lg-12 hidden-sm hidden-xs" style="padding:10px;"></div>
+        <div class="col-xs-1 visible-xs"></div>
+        <div class="col-xs-10 col-sm-5 col-md-12 recuadro">
+            {!!$i->titulo!!}
+            <br>
+            Por: {!!$i->autor!!}
+            <br>
+            Fecha: {!!$i->fecha!!}
+            <br>
+            <a href="{{url ('getblog?id='.$i->id)}}">Ver publicación</a>
 
-      <div class="col-md-12"><br></div>
-
-      <div class="col-md-12 recuadro">
-        {!!$i->titulo!!}
-        <br>
-        Por: {!!$i->autor!!}
-        <br>
-        Fecha: {!!$i->fecha!!}
-        <br>
-        <a href="{{url ('getblog?id='.$i->id)}}">Ver publicación</a>
-
-      </div>
-
-      <div class="col-md-12"><br></div>
+        </div>
+        <div class="col-sm-2 visible-sm"></div>
+        @if($j%2 == 0)
+            <div class="col-sm-12 visible-sm" style="padding:10px;"></div>
+        @endif
+        {{--*/$j++; /*--}}
+        <div class="col-xs-12 col-md-12 col-lg-12 hidden-sm" style="padding:15px;"></div>
       @endforeach
     </div>
 
-    <div class="col-md-1"></div>
+    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
   </div>
   @if($j == 0)
-    <div class="col-md-10 col-md-offset-1">
-        <center class="titulo" style="margin-top:50px;">Aún no hay entradas de Blog</center>
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+            <center class="titulo" style="margin-top:50px;">Aún no hay entradas de Blog</center>
+        </div>
     </div>
   @endif
 @endsection
