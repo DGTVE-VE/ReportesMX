@@ -28,7 +28,7 @@ Route::get ('google_api/oauth2callback', function (Request $request){
 });
 Route::resource ('formatos/ficha_tecnica', 'FichaTecnicaController');
 
-Route::get('/', ['middleware' => 'auth', 'uses' => 'UseController@correoacurso']);
+Route::get('/', ['middleware' => 'auth', 'uses' => 'MXController@blog']);
 Route::any('home', ['middleware' => 'auth', 'uses' => 'UseController@inscritos']);
 
 Route::get('cursos', ['middleware' => 'auth', 'uses' => 'UseController@cursos']);
