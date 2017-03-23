@@ -94,10 +94,8 @@ class FichaTecnicaController extends Controller {
         Log::info ('metodo store...');
         Log::info ('Input::get("seccion")'. Input::get('seccion'));
         $ficha = Ficha_curso::find (Input::get('id'));
-        if (count($ficha->edito)){
-            $ficha->edito()->associate (Auth::user());
-        }else{
-            $ficha->edito()->save (Auth::user());
+        if ($ficha != null){
+            $ficha->edito()->associate (Auth::user());        
         }
         if (Input::get('seccion') === 'info_basica' ){
             Log::info ('Guardando info_basica');
@@ -335,6 +333,7 @@ class FichaTecnicaController extends Controller {
             $ficha = Ficha_curso::create (Input::all());                        
             $ficha->save();            
             $ficha->creo()->associate(Auth::user());
+            $ficha->edito()->associate(Auth::user());
         }
         if ($request->hasFile ('carta_compromiso')){            
             $ficha->estado = 'compromiso';
