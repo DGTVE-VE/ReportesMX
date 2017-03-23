@@ -29,8 +29,11 @@ class UseController extends Controller {
 
 			$course_name = Course_overviews::whereBetween('end',array(20160000, 20990000))
                                 ->whereBetween('enrollment_start',array(20160000, date("Ymd")))
-                                ->lists('display_name','id');
-			return $this->index($course_name);
+                                ->lists('display_name');
+			$cursoid = Course_overviews::whereBetween('end',array(20160000, 20990000))
+			                          ->whereBetween('enrollment_start',array(20160000, date("Ymd")))
+			                          ->lists('id');
+			return $this->index($course_name,$cursoid);
 		}
 
 		else if($name[0]->is_active == true)
@@ -71,7 +74,7 @@ class UseController extends Controller {
 			}
 			else{
 				session()->put('courses_names', $course_name);
-				return $this->index($course_name);
+				return $this->index($course_name, $cursoid);
 			}
 		}
 		else{
@@ -79,24 +82,25 @@ class UseController extends Controller {
 		}
 	}
 
-	public function index($course_name)
-	{
+	public function index($course_name, $cursoid){
+
 		$username = session()->get('nombre');
 
-		return view('menu')->with('course_name', collect($course_name))->with('name_user', $username );
+		return view('menu')->with('course_name', collect($course_name))->with('name_user', $username )->with('cursoid', collect($cursoid));
 	}
 
 	public function inscritos()
 	{
 		$username = session()->get('nombre');
-		$course_name = filter_input (INPUT_POST, 'course_name');
+		$c_id = filter_input (INPUT_POST, 'course_id');
 
 		if($username == NULL)
 			return $this->correoacurso();
 
-		if($course_name){
+		if($c_id){
 
-			$course_id = Course_overviews::wheredisplay_name($course_name)->get()[0]->id;
+			$course_id = Course_overviews::whereid($c_id)->get()[0]->id;
+			$course_name = Course_overviews::whereid($c_id)->get()[0]->display_name;
 			session()->put('course_id', $course_id);
 			session()->put('course_name', $course_name);
 		}
