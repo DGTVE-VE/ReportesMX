@@ -34,9 +34,9 @@
     <div class="col-xs-10 col-sm-10 col-md-6 col-lg-6">
       <center class="titulo">Publicaciones recientes</center>
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><br></div>
-      <?php $j = 1; ?>
+      <?php $j = 0; ?>
       @foreach($entradas as $i)
-      @if($j < 4)
+      @if($j < 3)
 
       <div class="col-xs-1 visible-xs"></div>
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 recuadro">
