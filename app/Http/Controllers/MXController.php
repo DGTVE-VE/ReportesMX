@@ -82,7 +82,8 @@ class MXController extends Controller {
         }
       }
 
-      $exito = Auth_userprofile::where('user_id', $id_usuario)->update(['country' => $pais, 'city' => $estado, 'mailing_address' => $cp]);
+      //$exito = Auth_userprofile::where('user_id', $id_usuario)->update(['country' => $pais, 'city' => $estado, 'mailing_address' => $cp]);
+      $exito = DB::table('edxapp.auth_userprofile')->where('user_id', $id_usuario)->update(['country' => $pais, 'city' => $estado, 'mailing_address' => $cp]);
 
       if ($exito == 1) {
         print_r("Exito Update");
@@ -138,10 +139,17 @@ class MXController extends Controller {
 }
 
 public function blog(){
+    $correo = \Auth::user() -> email;
 
-  $entradas = Blog::orderBy('id', 'desc')->get();
-  $usuario = session()->get('nombre');
-  return view('blog.blog')->with('entradas', collect($entradas))->with('name_user',$usuario);
+    if(empty($name = DB::table('edxapp.auth_user')->whereemail($correo)->get())){
+        return ("Tu correo no esta asociado a algun curso en la plataforma");
+    }
+
+    $username = $name[0]->username;
+    session()->put('nombre', $username);
+    
+    $entradas = Blog::where('publico', 0)->orderBy('id', 'desc')->get();
+  return view('blog.blog')->with('entradas', collect($entradas))->with('name_user',$username);
 
 }
 
@@ -163,30 +171,32 @@ public function saveblog(Request $request){
     'inputTitulo' => 'required|max:255',
     'inputAutor' => 'required|max:150',
     'inputCuerpo' => 'required',
-    'inputDate' => 'required|date|date_format:Y-m-d',
+    //'inputDate' => 'required|date|date_format:Y-m-d',
+    'inputPublico' => 'required',
     'inputRef' => 'required|max:1000',
-    'inputImagen' => 'required',
-
+    'inputImagen' => 'required'
   ]);
 
     $inputTitulo = $request->input('inputTitulo');
-    $inputDate = $request->input('inputDate');
+    //$inputDate = $request->input('inputDate');
     $inputCuerpo = $request->input('inputCuerpo');
     $inputAutor = $request->input('inputAutor');
+    $inputPublico = $request->input('inputPublico');
     $inputRef = $request->input('inputRef');
     $inputImagen = $request->file('inputImagen');
 
 if( !empty(Blog::wheretitulo($inputTitulo)->first())){
   return $this->viewblog(Blog::wheretitulo($inputTitulo)->first()->id);
 }
-
+    $inputDate = date('Y-m-d');
     $idEntrada = Blog::insertGetId([
-      'user_id' => $id_usuario,
-      'titulo' => $inputTitulo,
-    	'fecha' => $inputDate,
-    	'cuerpo' => $inputCuerpo,
-      'autor' => $inputAutor,
-    	'referencias' => $inputRef
+        'user_id' => $id_usuario,
+        'titulo' => $inputTitulo,
+        'fecha' => $inputDate,
+        'cuerpo' => $inputCuerpo,
+        'publico' => $inputPublico,
+        'autor' => $inputAutor,
+        'referencias' => $inputRef
     ]);
 
   \Storage::disk('local_public')->MakeDirectory($idEntrada);
@@ -203,10 +213,10 @@ if( !empty(Blog::wheretitulo($inputTitulo)->first())){
 
 public function viewblog($idEntrada){
 
-  $entradas = Blog::get();
+  $entradas = Blog::where('publico', '0')->get();
   $entrada = Blog::whereid($idEntrada)->get();
-
-  return view('blog.viewblog')->with('entradas', collect($entradas))->with('entrada', collect($entrada));
+  $usuario = session()->get('nombre');
+  return view('blog.viewblog')->with('entradas', collect($entradas))->with('entrada', collect($entrada))->with('name_user',$usuario);
 
 }
 

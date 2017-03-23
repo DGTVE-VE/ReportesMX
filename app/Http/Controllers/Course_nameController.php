@@ -130,7 +130,17 @@ class Course_nameController extends Controller
         
         $course_name = Course_name::findOrFail($id);
         $course_name->update($requestData);
-
+            /* busqueda de nombre de curso por id*/
+        $idCurso = $request->course_id;
+        $curso = Course_overviews::where('id',$idCurso)->get();
+            /*  Armar clave de reedición    */
+        $nombreCurso = $curso[0]->display_name;
+        $institucion = $request->institucion;
+        $cveReedicion = $institucion.'_'.$nombreCurso;
+            /*  Actualizar clave reedición en curso agregado recientemente  */
+        $course_name->reedicion = $cveReedicion;
+        $course_name->save();
+        
 //       Log::info('Curso Agregado');
 
         return redirect('admin/course_name');

@@ -44,7 +44,7 @@
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav col-md-10">
-                        <li><a href="{{url ('/')}}" class="bg-active" title="Selección de un curso">
+                        <li><a href="{{url ('/')}}" class="bg-active" title="Inicio">
                                 <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
                             </a></li>
                         <li class="dropdown">
@@ -71,6 +71,8 @@
                                 <li><a href="{{url ('instituciones/contactos_institucion')}}" class="bg-active">Personal</a></li>
                                 <li class="divider"></li>
                                 <li><a href="{{url ('formatos/ficha_tecnica')}}" class="bg-active">Ficha Técnica</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{url ('adminblog')}}" class="bg-close" title="Blog">Entrada de Blog</a></li>
                             </ul>
                         </li>                        
                         <?php
@@ -87,9 +89,6 @@
                                         <li><a href="{{url ('mail/compose')}}" class="bg-close" title="Envío de correos">
                                                 Envío de Correo
                                             </a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="{{url ('adminblog')}}" class="bg-close" title="Blog">
-                                                Blog</a></li>
                                         <li class="divider"></li>
                                         <li><a href="{{url ('asociaCategoria')}}" class="bg-close" title="Categorias">
                                                 Asocia curso a categorias
