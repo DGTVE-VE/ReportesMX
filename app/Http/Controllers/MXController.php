@@ -139,10 +139,17 @@ class MXController extends Controller {
 }
 
 public function blog(){
+    $correo = \Auth::user() -> email;
 
-  $entradas = Blog::where('publico', 0)->orderBy('id', 'desc')->get();
-  $usuario = session()->get('nombre');
-  return view('blog.blog')->with('entradas', collect($entradas))->with('name_user',$usuario);
+    if(empty($name = DB::table('edxapp.auth_user')->whereemail($correo)->get())){
+        return ("Tu correo no esta asociado a algun curso en la plataforma");
+    }
+
+    $username = $name[0]->username;
+    session()->put('nombre', $username);
+    
+    $entradas = Blog::where('publico', 0)->orderBy('id', 'desc')->get();
+  return view('blog.blog')->with('entradas', collect($entradas))->with('name_user',$username);
 
 }
 
