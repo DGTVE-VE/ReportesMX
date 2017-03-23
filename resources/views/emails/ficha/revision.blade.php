@@ -10,9 +10,6 @@
             <button> Revisar la ficha </button>
         </a>
         <hr>
-        <br>
-        @if(!empty ($ficha->aprobo()))        
-            Ficha aprobada por: {{$ficha->aprobo->name}}
-        @endif
+        <br>        
     </body>
 </html>
