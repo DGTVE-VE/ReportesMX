@@ -62,27 +62,28 @@
     <div class="col-xs-12 col-xs-offset-0 col-sm-10 col-md-3 col-md-offset-0 col-lg-3 col-lg-offset-0">
           <center class="titulo">Todas las publicaciones</center>
 
-            <div class="col-md-12"><br></div>
-            {{--*/$j=1/*--}}
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><br></div>
           @foreach($entradas as $i)
-            <div class="col-xs-12 col-md-12 col-lg-12 hidden-sm hidden-xs" style="padding:10px;"></div>
+            <div class="col-md-12 col-lg-12 hidden-sm hidden-xs" style="padding:10px;"></div>
             <div class="col-xs-1 visible-xs"></div>
-            <div class="col-xs-10 col-sm-5 col-md-12 recuadro">
-                {!!$i->titulo!!}
-                <br>
-                Por: {!!$i->autor!!}
-                <br>
-                Fecha: {!!$i->fecha!!}
-                <br>
-                <a href="{{url ('getblog?id='.$i->id)}}">Ver publicación</a>
-
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 recuadro">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    {!!$i->titulo!!}
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+                    Por: {!!$i->autor!!}
+                </div>
+                <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+                    <a href="{{url ('getblog?id='.$i->id)}}">Ver publicación</a>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    Fecha: {!!$i->fecha!!}
+                </div>
             </div>
             <div class="col-sm-2 visible-sm"></div>
-            @if($j%2 == 0)
-                <div class="col-sm-12 visible-sm" style="padding:10px;"></div>
-            @endif
-            {{--*/$j++; /*--}}
-            <div class="col-xs-12 col-md-12 col-lg-12 hidden-sm" style="padding:15px;"></div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding:15px;"></div>
           @endforeach
     </div>
 
