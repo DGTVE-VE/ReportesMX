@@ -93,8 +93,12 @@ class FichaTecnicaController extends Controller {
         Log::info ("Usuario modificando:".Auth::user()->id);
         Log::info ('metodo store...');
         Log::info ('Input::get("seccion")'. Input::get('seccion'));
-        
-        Ficha_curso::find (Input::get('id'))->edito()->associate (Auth::user());
+        $ficha = Ficha_curso::find (Input::get('id'));
+        if (count($ficha->edito)){
+            $ficha->edito()->associate (Auth::user());
+        }else{
+            $ficha->edito()->save (Auth::user());
+        }
         if (Input::get('seccion') === 'info_basica' ){
             Log::info ('Guardando info_basica');
             return $this->storeInfoBasica ($request);            
