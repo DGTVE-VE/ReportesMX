@@ -21,17 +21,17 @@ class Ficha_curso extends Model
     }
 
     public function contactos (){
-        return $this->belongsToMany('App\Model\Contactos_Institucion', 'contactos_ficha', 'id_ficha', 'id_contacto')
+        return $this->belongsToMany('App\Model\Contactos_institucion', 'contactos_ficha', 'id_ficha', 'id_contacto')
                 ->withPivot('rol')
                 ->wherePivot('rol', 'contacto');
     }
     public function staff (){
-        return $this->belongsToMany('App\Model\Contactos_Institucion', 'contactos_ficha', 'id_ficha', 'id_contacto')
+        return $this->belongsToMany('App\Model\Contactos_institucion', 'contactos_ficha', 'id_ficha', 'id_contacto')
                 ->withPivot('rol')
                 ->wherePivot('rol', 'staff');
     }
     public function asesores (){
-        return $this->belongsToMany('App\Model\Contactos_Institucion', 'contactos_ficha', 'id_ficha', 'id_contacto')
+        return $this->belongsToMany('App\Model\Contactos_institucion', 'contactos_ficha', 'id_ficha', 'id_contacto')
                 ->withPivot('rol')
                 ->wherePivot('rol', 'asesor');
     }
