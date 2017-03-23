@@ -275,7 +275,7 @@ class FichaTecnicaController extends Controller {
         $ficha = Ficha_curso::find ($id);
         $super_user = session()->get('super_user');
         $username = session()->get('nombre');
-        $contactos = \App\Model\Contactos_Institucion::where ('institucion_id', Auth::user()->institucion_id)->get();
+        $contactos = \App\Model\Contactos_institucion::where ('institucion_id', Auth::user()->institucion_id)->get();
         $tipo_curso = \App\Model\TipoCurso::all()->pluck ('tipo_curso', 'id')->all();
         $categorias = \App\Model\Categorias::all();
         $lineasEstrategicas = \App\Model\LineasEstrategicas::all();
