@@ -12,14 +12,13 @@
 
 <form action="{{url('home')}}" method="POST" class="text-center">
 {!! csrf_field() !!}
-  <select id="select_curso" name="course_name">
+<?php $j = 0; ?>
+  <select id="select_curso" name="course_id">
         <option value="0">Seleccione un curso</option>
-
-      @foreach($course_name as $i){
-          <option value="{{$i}}">{{$i}}</option>
-      }
-       @endforeach
-
+      @foreach($course_name as $i)
+        <option value="{{$cursoid[$j]}}">{{$i}}</option>
+        <?php $j++; ?>
+      @endforeach
     </select>
     <input type="submit">
 </form>
