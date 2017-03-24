@@ -70,7 +70,6 @@ class UseController extends Controller {
 			}
 			if($n < 1){
 				return view('accescourse')-> with('name_user', $username);
-
 			}
 			else{
 				session()->put('courses_names', $course_name);
@@ -94,7 +93,7 @@ class UseController extends Controller {
 		$username = session()->get('nombre');
 		$c_id = filter_input (INPUT_POST, 'course_id');
 
-		if($username == NULL)
+		if($username == NULL || $c_id == NULL)
 			return $this->correoacurso();
 
 		if($c_id){
@@ -107,7 +106,7 @@ class UseController extends Controller {
 
 		$super_user = session()->get('super_user');
 
-		if(($super_user == "1") && (session()->get('course_name') == 0)){
+		if(($super_user == "1") && (session()->get('course_id') == 0)){
 
 			$inscritos = DB::table('vm_inscritos_x_curso')->get();
 			$cn = "Puedes ver estadísticas de los siguientes cursos:";
@@ -175,7 +174,7 @@ class UseController extends Controller {
 			return view('home')->with ('inscritos', collect($inscritos))-> with('name_user', $username )-> with('course_name', $course_name);
 		}
 		else
-		return view('accescourse')-> with('name_user', $username);
+			return view('accescourse')-> with('name_user', $username);
 
 	}
 
@@ -192,7 +191,7 @@ class UseController extends Controller {
 		$super_user = session()->get('super_user');
 		$username = session()->get('nombre');
 
-		if($username == NULL)
+		if($username == NULL || $super_user == NULL)
 			return $this->correoacurso();
 
 		if($super_user == '1'){
@@ -239,7 +238,7 @@ class UseController extends Controller {
 		$super_user = session()->get('super_user');
 		$username = session()->get('nombre');
 
-		if($username == NULL)
+		if($username == NULL || $super_user == NULL)
 			return $this->correoacurso();
 
 		if($super_user == '1'){
@@ -288,7 +287,7 @@ class UseController extends Controller {
 		$super_user = session()->get('super_user');
 		$username = session()->get('nombre');
 
-		if($username == NULL)
+		if($username == NULL || $super_user == NULL)
 			return $this->correoacurso();
 
 		if($super_user == '1'){
@@ -337,7 +336,7 @@ class UseController extends Controller {
 		$username = session()->get('nombre');
 		$super_user = session()->get('super_user');
 
-		if($username == NULL)
+		if($username == NULL || $super_user == NULL)
 			return $this->correoacurso();
 
 		if(($super_user == '1') && (session()->get('course_id') == null)){
@@ -649,7 +648,7 @@ class UseController extends Controller {
 
 		}
 		else
-		return view('accescourse')-> with('name_user', $username);
+			return view('accescourse')-> with('name_user', $username);
 	}
 
 	public function infocurso(){
@@ -659,7 +658,7 @@ class UseController extends Controller {
 		$course_id = session()->get('course_id');
 		$username = session()->get('nombre');
 
-		if($username == NULL)
+		if($username == NULL || $super_user == NULL)
 			return $this->correoacurso();
 
 		if( session()->get('course_name') == NULL){
@@ -827,7 +826,7 @@ class UseController extends Controller {
 		$username = session()->get('nombre');
 		$super_user = session()->get('super_user');
 
-		if($username == NULL)
+		if($username == NULL || $super_user == NULL)
 			return $this->correoacurso();
 
 		if(($super_user == '1')){
@@ -1010,7 +1009,7 @@ class UseController extends Controller {
 		$course_id = session()->get('course_id');
 		$username = session()->get('nombre');
 
-		if($username == NULL)
+		if($username == NULL || $super_user == NULL)
 			return $this->correoacurso();
 
 		if(($super_user == '1') && (session()->get('course_name') == null))
@@ -1100,7 +1099,7 @@ class UseController extends Controller {
 
 		}
 		else
-		return view('accescourse')-> with('name_user', $username);
+			return view('accescourse')-> with('name_user', $username);
 
 	}
 
@@ -1111,7 +1110,7 @@ class UseController extends Controller {
 		$course_id = session()->get('course_id');
 		$username = session()->get('nombre');
 
-		if($username == NULL)
+		if($username == NULL || $super_user == NULL)
 			return $this->correoacurso();
 
 		if( session()->get('course_name') == NULL){
