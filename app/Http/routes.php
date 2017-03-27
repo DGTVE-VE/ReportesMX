@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use App\Helpers\GoogleApi;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -17,7 +20,7 @@ use App\Helpers\GoogleApi;
  * Ruta callback a donde regresa después de hacer el login en google para 
  * usar las APIS.
  */
-Route::get ('formatos/ficha_tecnica/publica/{id}');
+Route::get ('formatos/ficha_tecnica/publica/{id}', 'FichaTecnicaController@publicaFechas');
 Route::get ('google_api/oauth2callback', function (Request $request){
     $client = new Google_Client();
     $client->setAuthConfigFile(config_path() . '/client_secret.json');
