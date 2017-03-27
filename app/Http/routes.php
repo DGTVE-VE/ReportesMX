@@ -30,9 +30,8 @@ Route::get ('google_api/oauth2callback', function (Request $request){
     if (Input::has('code')) {
         $client->authenticate(Input::get('code'));
         Session::put ('access_token', $client->getAccessToken());        
-        $path = url('formatos/ficha_tecnica/publica/'.Session::get('id_ficha'));
-        dd($path);
-//        return Redirect::to($path);
+        $path = url('formatos/ficha_tecnica/publica/'.Session::get('id_ficha'));        
+        return Redirect::to($path);
     } else {        
         return Redirect::to($client->createAuthUrl());       
     }

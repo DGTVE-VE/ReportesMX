@@ -235,7 +235,7 @@ class FichaTecnicaController extends Controller {
             Session::flash ('success_message', 'Ficha aprobada');
             $mensaje = "Ficha aprobada:";
             $this->enviaMail($ficha, $mensaje, 'Ficha aprobada ');            
-            return $this->publicaFechas($ficha);
+            return $this->publicaFechas($idFicha);
             //return $this->show ($idFicha, Input::get ('seccion'));
         }
         else{
