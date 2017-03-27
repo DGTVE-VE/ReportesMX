@@ -39,7 +39,7 @@ class FichaTecnicaController extends Controller {
     public function __construct() {
 
         $this->middleware('auth');
-        $this->middleware('web');
+        
     }
 
     /**
@@ -223,7 +223,7 @@ class FichaTecnicaController extends Controller {
             $ficha->save();
             Session::flash ('success_message', 'Ficha aprobada');
             $mensaje = "Ficha aprobada:";
-            //$this->enviaMail($ficha, $mensaje, 'Ficha aprobada ');            
+            $this->enviaMail($ficha, $mensaje, 'Ficha aprobada ');            
             return $this->publicaFechas($ficha);
             //return $this->show ($idFicha, Input::get ('seccion'));
         }
