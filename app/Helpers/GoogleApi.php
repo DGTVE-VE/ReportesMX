@@ -31,6 +31,7 @@ class GoogleApi {
             Log::info ('Refreshing Token ...');
             $token = json_decode ( Session::get(GOOGLE_ACCESS_TOKEN) ); 
             if ( !is_null($token) ) {
+                dd ($this->client);
                 $this->client->refreshToken ($token->refresh_token);
                 $this->setAccessToken($this->client->getAccessToken());
             }            
