@@ -27,14 +27,14 @@ class GoogleApi {
         $this->client->setRedirectUri(url('google_api/oauth2callback'));
         $this->auth_url = $this->client->createAuthUrl();
         $this->access_token = NULL;
-//        if (Session::has(GOOGLE_ACCESS_TOKEN)){
-//            Log::info ('Refreshing Token ...');
-//            $token = json_decode ( Session::get(GOOGLE_ACCESS_TOKEN) ); 
-//            if ( !is_null($token) ) {
-//                $this->client->refreshToken ($token->refresh_token);
-//                $this->setAccessToken($this->client->getAccessToken());
-//            }            
-//        }         
+        if (Session::has(GOOGLE_ACCESS_TOKEN)){
+            Log::info ('Refreshing Token ...');
+            $token = json_decode ( Session::get(GOOGLE_ACCESS_TOKEN) ); 
+            if ( !is_null($token) ) {
+                $this->client->refreshToken ($token->refresh_token);
+                $this->setAccessToken($this->client->getAccessToken());
+            }            
+        }         
     }    
     
     public function goLogin (){
