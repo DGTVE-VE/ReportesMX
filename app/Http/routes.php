@@ -23,7 +23,7 @@ Route::get ('google_api/oauth2callback', function (Request $request){
         $googleApi = new GoogleApi ([Google_Service_Calendar::CALENDAR]); 
         $googleApi->authenticate ($code);                
 //        $redirect_uri = $request->session()->get (REDIRECT_URI, '/');
-        return Redirect::to('formatos/ficha_tecnica');
+        return Redirect::to(Session::get('ruta'));
     }
 });
 Route::resource ('formatos/ficha_tecnica', 'FichaTecnicaController');

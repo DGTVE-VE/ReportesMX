@@ -232,6 +232,8 @@ class FichaTecnicaController extends Controller {
     }
     
     public function enviarRevision (Request $request){
+        //Permisos para editar el calendario
+        
         $idFicha = Input::get('id');
         $ficha = Ficha_curso::find ($idFicha);
         if (!empty ($idFicha)){
@@ -265,10 +267,10 @@ class FichaTecnicaController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id, $seccion = 'info_basica') {
-        //Permisos para editar el calendario
         if (Auth::user()->is_superuser){
             $googleApi = new \App\Helpers\GoogleApi ([Google_Service_Calendar::CALENDAR]); 
-            if ( ! $googleApi->isLoggedIn() ){            
+            if ( ! $googleApi->isLoggedIn() ){       
+                Session::put ('ruta', 'formatos/ficha_tecnica/'.$id);
                 return $googleApi->goLogin();
             }
         }
