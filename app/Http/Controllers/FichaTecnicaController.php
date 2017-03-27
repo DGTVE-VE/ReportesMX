@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Auth;
 use \Illuminate\Support\Facades\Session;
 use Google_Service_Calendar;
 use Google_Service_Calendar_Event;
+use Google_Client;
 use Mail;
 
 
@@ -185,7 +186,6 @@ class FichaTecnicaController extends Controller {
         }
         $ficha = Ficha_curso::find ($id);
         Log::info ("Publicando fechas");
-//        $googleApi = new \App\Helpers\GoogleApi ([Google_Service_Calendar::CALENDAR]);
         $service = new Google_Service_Calendar($client);
         
         $inicio = $this->getEvent("Inicia: ", $ficha, $ficha->fecha_inicio);
