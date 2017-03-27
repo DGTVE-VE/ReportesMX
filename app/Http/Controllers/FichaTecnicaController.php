@@ -18,6 +18,7 @@ use \Illuminate\Support\Facades\Session;
 use Google_Service_Calendar;
 use Google_Service_Calendar_Event;
 use Google_Client;
+use Illuminate\Support\Facades\Redirect;
 use Mail;
 
 
