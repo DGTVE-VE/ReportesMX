@@ -173,10 +173,20 @@ class FichaTecnicaController extends Controller {
         }   
     }
     
-    private function publicaFechas ($ficha){
+    public function publicaFechas ($id){        
+        Session::put('id_ficha', $id);
+        $client = new Google_Client();
+        $client->setAuthConfig(config_path() . '/client_secret.json');
+        $client->addScope(Google_Service_Calendar::CALENDAR);
+        if (Session::has('access_token')) {
+          $client->setAccessToken(Session::get('access_token'));              
+        } else {
+            return Redirect::to($client->createAuthUrl());              
+        }
+        $ficha = Ficha_curso::find ($id);
         Log::info ("Publicando fechas");
-        $googleApi = new \App\Helpers\GoogleApi ([Google_Service_Calendar::CALENDAR]);
-        $service = new Google_Service_Calendar($googleApi->getClient());
+//        $googleApi = new \App\Helpers\GoogleApi ([Google_Service_Calendar::CALENDAR]);
+        $service = new Google_Service_Calendar($client);
         
         $inicio = $this->getEvent("Inicia: ", $ficha, $ficha->fecha_inicio);
         $r = $service->events->insert($this->calendarId, $inicio);        
@@ -268,13 +278,7 @@ class FichaTecnicaController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id, $seccion = 'info_basica') {
-        if (Auth::user()->is_superuser){
-            $googleApi = new \App\Helpers\GoogleApi ([Google_Service_Calendar::CALENDAR]); 
-            if ( ! $googleApi->isLoggedIn() ){       
-                Session::put ('ruta', 'formatos/ficha_tecnica/'.$id);
-                return $googleApi->goLogin();
-            }
-        }
+        
         $ficha = Ficha_curso::find ($id);
         $super_user = session()->get('super_user');
         $username = session()->get('nombre');

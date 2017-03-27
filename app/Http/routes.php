@@ -17,14 +17,27 @@ use App\Helpers\GoogleApi;
  * Ruta callback a donde regresa después de hacer el login en google para 
  * usar las APIS.
  */
+Route::get ('formatos/ficha_tecnica/publica/{id}');
 Route::get ('google_api/oauth2callback', function (Request $request){
-    if ($request->has(GOOGLE_CODE)) {
-        $code = $request->input(GOOGLE_CODE);
-        $googleApi = new GoogleApi ([Google_Service_Calendar::CALENDAR]); 
-        $googleApi->authenticate ($code);                
-//        $redirect_uri = $request->session()->get (REDIRECT_URI, '/');
-        return Redirect::to(Session::get('ruta'));
+    $client = new Google_Client();
+    $client->setAuthConfigFile(config_path() . '/client_secret.json');
+    $client->setRedirectUri(url('google_api/oauth2callback'));
+    $client->addScope(Google_Service_Calendar::CALENDAR);
+
+    if (Input::has('code')) {
+        $client->authenticate(Input::get('code'));
+        Session::put ('access_token', $client->getAccessToken());        
+        return Redirect::to(url('formatos/ficha_tecnica/publica/'.Session::get('id_ficha')));
+    } else {        
+        return Redirect::to($client->createAuthUrl());       
     }
+//    if ($request->has(GOOGLE_CODE)) {
+//        $code = $request->input(GOOGLE_CODE);
+//        $googleApi = new GoogleApi ([Google_Service_Calendar::CALENDAR]); 
+//        $googleApi->authenticate ($code);                
+//        $redirect_uri = $request->session()->get (REDIRECT_URI, '/');
+//        return Redirect::to(Session::get('ruta'));
+//    }
 });
 Route::resource ('formatos/ficha_tecnica', 'FichaTecnicaController');
 
