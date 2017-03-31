@@ -188,6 +188,13 @@ class FichaTecnicaController extends Controller {
         $ficha = Ficha_curso::find ($id);
         Log::info ("Publicando fechas");
         $service = new Google_Service_Calendar($client);        
+        
+        $inicioInscripciones = $this->getEvent("Inicia inscripciones: ", 
+                                               $ficha, 
+                                               $ficha->fecha_inicio_inscripcion);
+        $r = $service->events->insert($this->calendarId, $inicioInscripciones);        
+        Log::info ("Evento inicio inscripciones: ".$r->htmlLink);
+        
         $inicio = $this->getEvent("Inicia: ", $ficha, $ficha->fecha_inicio);
         $r = $service->events->insert($this->calendarId, $inicio);        
         Log::info ("Evento inicio: ".$r->htmlLink);
