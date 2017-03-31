@@ -71,8 +71,6 @@
                                 <li><a href="{{url ('instituciones/contactos_institucion')}}" class="bg-active">Personal</a></li>
                                 <li class="divider"></li>
                                 <li><a href="{{url ('formatos/ficha_tecnica')}}" class="bg-active">Ficha Técnica</a></li>
-                                <li class="divider"></li>
-                                <li><a href="{{url ('adminblog')}}" class="bg-close" title="Blog">Entrada de Blog</a></li>
                             </ul>
                         </li>                        
                         <?php
@@ -101,7 +99,9 @@
                                         <li><a href="{{url ('admin/course_name')}}" class="bg-close" title="Agregar Cursos">
                                                 Cursos</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="{{url ('instituciones/institucion')}}" class="bg-active">Instituciones</a></li>                                        
+                                        <li><a href="{{url ('instituciones/institucion')}}" class="bg-active">Instituciones</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="{{url ('adminblog')}}" class="bg-close" title="Blog">Entrada de Blog</a></li>
 
                                     </ul>
                                 </li>
