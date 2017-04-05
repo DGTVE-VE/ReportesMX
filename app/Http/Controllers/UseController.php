@@ -16,7 +16,7 @@ class UseController extends Controller {
 		$correo = \Auth::user() -> email;
 
 		if(empty($name = DB::table('edxapp.auth_user')->whereemail($correo)->get())){
-			return ("Tu correo no esta asociado a algun curso en la plataforma");
+			return view('no_asociado_curso');
 		}
 
 		$username = $name[0]->username;
@@ -91,13 +91,15 @@ class UseController extends Controller {
 	public function inscritos()
 	{
 		$username = session()->get('nombre');
-		$c_id = filter_input (INPUT_POST, 'course_id');
-
-		if($username == NULL || $c_id == NULL)
-			return $this->correoacurso();
-
+                $c_id = session()->get('course_id');
+                
+		if($c_id == "" || $c_id == NULL){
+                    $c_id = filter_input (INPUT_POST, 'course_id'); 
+                    if($username == NULL || $c_id == "" || $c_id == NULL)
+                        return $this->correoacurso();
+                }
+                   
 		if($c_id){
-
 			$course_id = Course_overviews::whereid($c_id)->get()[0]->id;
 			$course_name = Course_overviews::whereid($c_id)->get()[0]->display_name;
 			session()->put('course_id', $course_id);
@@ -107,9 +109,11 @@ class UseController extends Controller {
 		$super_user = session()->get('super_user');
 
 		if(($super_user == "1") && (session()->get('course_id') == 0)){
-
-			$inscritos = DB::table('vm_inscritos_x_curso')->get();
-			$cn = "Puedes ver estadísticas de los siguientes cursos:";
+                    
+			$inscritos = DB::table('vm_inscritos_x_curso')->leftJoin('course_name','vm_inscritos_x_curso.course_id','=','course_name.course_id')->select('vm_inscritos_x_curso.id','vm_inscritos_x_curso.course_name','vm_inscritos_x_curso.course_id','vm_inscritos_x_curso.inscritos','course_name.constancias')->orderBy('id')->paginate(10);
+			$totalesi = DB::table('vm_inscritos_x_curso')->leftJoin('course_name','vm_inscritos_x_curso.course_id','=','course_name.course_id')->select('vm_inscritos_x_curso.id','vm_inscritos_x_curso.course_name','vm_inscritos_x_curso.course_id','vm_inscritos_x_curso.inscritos','course_name.constancias')->get();                        
+                        
+                        $cn = "Puedes ver estadísticas de los siguientes cursos:";
 
 			$fp = fopen ('download/totales.csv', 'w');
 			$listaid = array();
@@ -117,18 +121,28 @@ class UseController extends Controller {
 			$listaid[0][1] = 'id curso';
 			$listaid[0][2] = 'nombre del curso';
 			$listaid[0][3] = 'inscritos';
+                        $listaid[0][4] = 'constancias emitidas';
+                        $listaid[0][5] = 'eficiencia';
 
 			$i = 1;
 
-			foreach ($inscritos as $key => $value) {
+			foreach ($totalesi  as $key => $value) {
 
 				$listaid[$i][0] = ($value->id);
 				$listaid[$i][1] = ($value->course_id);
 				$listaid[$i][2] = ($value->course_name);
 				$listaid[$i][3] = ($value->inscritos);
+                                $listaid[$i][4] = ($value->constancias);
+                                $listaid[$i][5]=  (round(($value->eficiencia=$value->constancias/($value->inscritos)*100),2)); 
 
 				$i++;
 			}
+	                
+                        foreach ($inscritos as $key => $value) {
+                                          
+                        $value->eficiencia=$value->constancias/($value->inscritos)*100; 
+                        
+                        }  
 
 			foreach ($listaid as $value) {
 				fputcsv($fp, $value );
@@ -137,33 +151,43 @@ class UseController extends Controller {
 			fclose($fp);
 
 
-			return view('home')->with ('inscritos', collect($inscritos)) -> with('name_user', $username )-> with('course_name', $cn);
+			return view('home')->with('totalesi',($totalesi))->with('inscritos',($inscritos)) -> with('name_user', $username )-> with('course_name', $cn);
 
 		}
 		elseif( (session()->get('accescourse') > 0) || ($super_user == "1")) {
 			$course_id = session()->get('course_id');
 			$course_name = session()->get('course_name');
 
-			$inscritos = DB::table('vm_inscritos_x_curso')->wherecourse_id($course_id)->get();
-
-			$fp = fopen ('download/totales.csv', 'w');
+			$inscritos = DB::table('vm_inscritos_x_curso')->leftJoin('course_name','vm_inscritos_x_curso.course_id','=','course_name.course_id')->select('vm_inscritos_x_curso.id','vm_inscritos_x_curso.course_name','vm_inscritos_x_curso.course_id','vm_inscritos_x_curso.inscritos','course_name.constancias')->orderBy('id')->paginate(10);
+                        $totalesi = DB::table('vm_inscritos_x_curso')->leftJoin('course_name','vm_inscritos_x_curso.course_id','=','course_name.course_id')->select('vm_inscritos_x_curso.id','vm_inscritos_x_curso.course_name','vm_inscritos_x_curso.course_id','vm_inscritos_x_curso.inscritos','course_name.constancias')->get();
+			
+                        $fp = fopen ('download/totales.csv', 'w');
 			$listaid = array();
 			$listaid[0][0] = 'id';
 			$listaid[0][1] = 'id curso';
 			$listaid[0][2] = 'nombre del curso';
 			$listaid[0][3] = 'inscritos';
+                        $listaid[0][4] = 'constancias emitidas';
+                        $listaid[0][5] = 'eficiencia';
+
 
 			$i = 1;
 
-			foreach ($inscritos as $key => $value) {
+			foreach ($totalesi as $key => $value) {
 
 				$listaid[$i][0] = ($value->id);
 				$listaid[$i][1] = ($value->course_id);
 				$listaid[$i][2] = ($value->course_name);
 				$listaid[$i][3] = ($value->inscritos);
+                                $listaid[$i][4] = ($value->constancias);
+                                $listaid[$i][5]=  (round(($value->eficiencia=$value->constancias/($value->inscritos)*100),2)); 
 
 				$i++;
 			}
+                        foreach ($inscritos as $key => $value) {
+                                          
+                        $value->eficiencia=$value->constancias/($value->inscritos)*100; 
+                        }
 
 			foreach ($listaid as $value) {
 				fputcsv($fp, $value );
@@ -171,7 +195,7 @@ class UseController extends Controller {
 
 			fclose($fp);
 
-			return view('home')->with ('inscritos', collect($inscritos))-> with('name_user', $username )-> with('course_name', $course_name);
+			return view('home')->with ('inscritos',($inscritos))-> with('name_user', $username )-> with('course_name', $course_name);
 		}
 		else
 			return view('accescourse')-> with('name_user', $username);
@@ -196,8 +220,10 @@ class UseController extends Controller {
 
 		if($super_user == '1'){
 
-			$activos = Course_overviews::where('end', '>=', DB::raw('curdate()'))->where('enrollment_start', '<=', DB::raw('curdate()'))->orderBy('end', 'desc')->get();
-			$cn = "Puedes ver estadísticas de los siguientes cursos:";
+			$activos = Course_overviews::where('end', '>=', DB::raw('curdate()'))->where('enrollment_start', '<=', DB::raw('curdate()'))->orderBy('end', 'desc')->paginate(10);
+                        $totalesa = Course_overviews::where('end', '>=', DB::raw('curdate()'))->where('enrollment_start', '<=', DB::raw('curdate()'))->orderBy('end', 'desc')->get();
+			
+                        $cn = "Puedes ver estadísticas de los siguientes cursos:";
 
 			$fp = fopen ('download/cursoa.csv', 'w');
 			$listaid = array();
@@ -209,7 +235,7 @@ class UseController extends Controller {
 			$listaid[0][5] = 'inicio de inscripcion';
 			$listaid[0][6] = 'fin de inscripcion';
 			$i = 1;
-			foreach ($activos as $key => $value) {
+			foreach ($totalesa as $key => $value) {
 
 				$listaid[$i][0] = ($value->display_name);
 				$listaid[$i][1] = ($value->id);
@@ -220,14 +246,15 @@ class UseController extends Controller {
 				$listaid[$i][6] = ($value->enrollment_end);
 				$i++;
 			}
-
+                        foreach ($activos as $key => $value) {
+                        }
 			foreach ($listaid as $value) {
 				fputcsv($fp, $value );
 			}
 
 			fclose($fp);
 
-			return view('cursoa') -> with ('activos', collect($activos))-> with('name_user', $username )-> with('course_name', $cn);
+			return view('cursoa')-> with ('totalesa',($totalesa))-> with ('activos',($activos))-> with('name_user', $username )-> with('course_name', $cn);
 		}
 		else
 		return view('private')-> with('name_user', $username);
@@ -243,8 +270,9 @@ class UseController extends Controller {
 
 		if($super_user == '1'){
 
-			$no_activos = Course_overviews::where(DB::raw('curdate()'), '<', 'start')->orderBy('enrollment_start', 'desc')->get();
-
+			$no_activos = Course_overviews::where(DB::raw('curdate()'), '<', 'start')->orderBy('enrollment_start', 'desc')->paginate(10);
+                        $totalesna = Course_overviews::where(DB::raw('curdate()'), '<', 'start')->orderBy('enrollment_start', 'desc')->get();
+                        
 			$cn = "Puedes ver estadísticas de los siguientes cursos:";
 
 			$fp = fopen ('download/no_activos.csv', 'w');
@@ -257,7 +285,7 @@ class UseController extends Controller {
 			$listaid[0][5] = 'inicio de inscripcion';
 			$listaid[0][6] = 'fin de inscripcion';
 			$i = 1;
-			foreach ($no_activos as $key => $value) {
+			foreach ($totalesna  as $key => $value) {
 
 				$listaid[$i][0] = ($value->display_name);
 				$listaid[$i][1] = ($value->id);
@@ -268,14 +296,15 @@ class UseController extends Controller {
 				$listaid[$i][6] = ($value->enrollment_end);
 				$i++;
 			}
-
+                        foreach ($no_activos as $key => $value) {
+                        }
 			foreach ($listaid as $value) {
 				fputcsv($fp, $value );
 			}
 
 			fclose($fp);
 
-			return view('curson') -> with ('no_activos', collect($no_activos))-> with('name_user', $username )-> with('course_name', $cn);
+			return view('curson') -> with ('totalesna', ($totalesna))-> with ('no_activos', ($no_activos))-> with('name_user', $username )-> with('course_name', $cn);
 
 		}
 		else
@@ -292,7 +321,8 @@ class UseController extends Controller {
 
 		if($super_user == '1'){
 
-			$concluido = Course_overviews::where('end', '<', DB::raw('now()'))->orderBy('end', 'desc')->get();
+			$concluido = Course_overviews::where('end', '<', DB::raw('now()'))->orderBy('end', 'desc')->paginate(10);
+                        $totalesc = Course_overviews::where('end', '<', DB::raw('now()'))->orderBy('end', 'desc')->get();
 			$cn = "Puedes ver estadísticas de los siguientes cursos:";
 
 			$fp = fopen ('download/cursoc.csv', 'w');
@@ -305,7 +335,7 @@ class UseController extends Controller {
 			$listaid[0][5] = 'inicio de inscripcion';
 			$listaid[0][6] = 'fin de inscripcion';
 			$i = 1;
-			foreach ($concluido as $key => $value) {
+			foreach ($totalesc  as $key => $value) {
 
 				$listaid[$i][0] = ($value->display_name);
 				$listaid[$i][1] = ($value->id);
@@ -317,15 +347,13 @@ class UseController extends Controller {
 
 				$i++;
 			}
-
+                        foreach ($concluido as $key => $value) {
+                        }
 			foreach ($listaid as $value) {
 				fputcsv($fp, $value );
 			}
-
-			fclose($fp);
-
-			return view('cursoc') -> with ('concluido', collect($concluido))-> with('name_user', $username )-> with('course_name', $cn);
-
+      			fclose($fp);
+			return view('cursoc')-> with ('totalesc',($concluido))-> with ('concluido',($concluido))-> with('name_user', $username )-> with('course_name', $cn);
 		}
 		else
 		return view('private')-> with('name_user', $username);

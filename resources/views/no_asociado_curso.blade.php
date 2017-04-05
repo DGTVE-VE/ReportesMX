@@ -1,5 +1,5 @@
 <head>
-        <title>Error 503</title>
+        <title>No Asociado a Curso</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
@@ -45,7 +45,6 @@
              
 	}
 
-
        </style>
     </head>
     <body>
@@ -53,16 +52,26 @@
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                    <div class="content">
-                        <img src="logo_large.png" border=0>
+                       
+                       <img src="logo_large.png" border=0>
                        <br><br>
-                       <div class="title" ><br><br>Por el momento el servidor no se encuentra disponible. Error 503.<br><br>
-                <br><br>
-                   Intente actualizar la página más tarde y si el problema persiste<br><br>
-                <br><br>
-                Póngase en contacto con el administrador del sistema.<br><br></div>
-                                <br><br>        
-         </div>
+                       
+                       <div class="title" ><br><br>Tu correo no está asociado con algún curso en la platafarma.<br><br></div>
+                                <br><br>
+                           
+                <form action="{{url('logout')}}" class="form-horizontal">
+                    {!! csrf_field() !!}
+                    
+                <div class="form-group">
+                 </form>  
+                <div
+                    <b class="col-sm-offset-2 col-sm-10">
+                    
+                    <button type="submit" class="btn btn-info" href="{{url('logout')}}">Salir</button>
+                  </div>
+                     </div>
+                
+                     </div>
         </div>
     </body>
 </html>
-

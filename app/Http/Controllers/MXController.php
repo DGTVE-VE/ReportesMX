@@ -142,7 +142,7 @@ public function blog(){
     $correo = \Auth::user() -> email;
 
     if(empty($name = DB::table('edxapp.auth_user')->whereemail($correo)->get())){
-        return ("Tu correo no esta asociado a algun curso en la plataforma");
+        return view("no_asociado_curso");
     }
 
     $username = $name[0]->username;
@@ -158,7 +158,7 @@ public function saveblog(Request $request){
   $correo = \Auth::user() -> email;
 
   if(empty($name = Auth_user::whereemail($correo)->first())){
-    return ("Tu correo no esta asociado a algun curso en la plataforma");
+    return view("no_asociado_curso");
   }
 
   if($name->is_superuser != 1)
@@ -233,7 +233,7 @@ public function adminblog(){
   $correo = \Auth::user() -> email;
 
   if(empty($name = Auth_user::whereemail($correo)->first())){
-    return ("Tu correo no esta asociado a algun curso en la plataforma");
+    return view("no_asociado_curso");
   }
 
   if($name->is_superuser != 1)
