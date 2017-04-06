@@ -93,6 +93,7 @@ class UseController extends Controller {
 		$username = session()->get('nombre');
                 $c_id = session()->get('course_id');
                 
+                
 		if($c_id == "" || $c_id == NULL){
                     $c_id = filter_input (INPUT_POST, 'course_id'); 
                     if($username == NULL || $c_id == "" || $c_id == NULL)
@@ -952,41 +953,15 @@ class UseController extends Controller {
 			fclose($us);
 
 			////////////////////////////////////////////////////////////////////////////
-
-			$efi = fopen ('download/eficiencia_cursos.csv', 'w');
-
 			$constancias = DB::table('mexicox.constancias')->count('id');
-			$lista_constancias = array();
+			
 			$lista_constancias = DB::select(DB::raw('select count(curso) as constancias , course_id as nombre_curso from mexicox.constancias group by course_id'));
 			$r = 0;
-
-			$eficiencia = array('Id del curso', 'Constancias emitidas', 'Inscritos', 'Eficiencia en porcentaje');
-			fputcsv($efi, $eficiencia);
 
 			foreach ($lista_constancias as $key){
 
 			$inscrito_curso[$r] = DB::table('vm_inscritos_x_curso')->wherecourse_id($key->nombre_curso)->get();
-
-			if($inscrito_curso[$r] == NULL){
-						$eficiencia = array ($lista_constancias[$r]->nombre_curso, $key->constancias, '0000', '0' );
-			}
-			else if($inscrito_curso[$r][0]->course_name){
-						$eficiencia = array ($inscrito_curso[$r][0]->course_name , $key->constancias, $inscrito_curso[$r][0]->inscritos, ($key->constancias/($inscrito_curso[$r][0]->inscritos)*100));
-			}
-			else if($lista_constancias[$r]->nombre_curso){
-						$eficiencia = array ($lista_constancias[$r]->nombre_curso , $key->constancias, $inscrito_curso[$r][0]->inscritos, ($key->constancias/($inscrito_curso[$r][0]->inscritos)*100));
-			}
-
-
-			fputcsv($efi, $eficiencia);
-
-			$r++;
-			}
-
-			fclose($efi);
-
-			///////////////////////////////////////////////////////////////////////////
-
+			//////////////////////////////////////////////////////////////////////////
 			$ncursos_constancia = DB::select(DB::raw('SELECT count(correo) as n FROM mexicox.constancias group by correo order by n asc'));
 
 			$usc = fopen ('download/usuarios_curso_constancia.csv', 'w');
@@ -1010,7 +985,6 @@ class UseController extends Controller {
 					$nn[$j] = $n->n;
 					$inscritos_nc[$b] = 1;
 					$j++;
-
 				 }
 			}
 			$registroc = array ($b ,$inscritos_nc[$b]);
@@ -1022,7 +996,7 @@ class UseController extends Controller {
 
 
 			return view('usuarios/inscritost')-> with('mes1', collect($mes))-> with('mes2', collect($cur))-> with('name_user', $username)->with('users_course', collect($users_course))->with('constancias', $constancias)->with('lista_constancias', $lista_constancias)->with('inscrito_curso', $inscrito_curso)->with('inscritos_nc', $inscritos_nc)->with('nn', $nn)->with('n_instructores', $n_instructores);
-
+                        }
 		}
 		else
 		return view('private')-> with('name_user', $username);

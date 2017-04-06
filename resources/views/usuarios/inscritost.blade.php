@@ -151,49 +151,7 @@
       </table></div>
       <br>
       <center><h4>Constancias emitidas en la plataforma:  {{$constancias}}</h4></center>
-      <br>
-      <div><table class="table table-hover table-bordered" style="font-size: small">
-        <tr class="danger" style="font-size: small">
-          <td>#</td>
-          <td>ID Curso</td>
-          <td>Constancias emitidas</td>
-          <td>Inscritos en curso</td>
-          <td>Eficiencia en porcentaje</td>
-        </tr>
-        <?php $var = 0; ?>
-        <?php for( $k = 0 ; $k < sizeof($lista_constancias) ; $k++){ ?>
-          <tr>
-            <td><?php print_r($k+1); ?></td>
-            <td><?php if($inscrito_curso[$k]==NULL || $inscrito_curso[$k][0]->course_name == ""){
-                        print_r($lista_constancias[$k]->nombre_curso);
-                      }else {
-                        print_r($inscrito_curso[$k][0]->course_name);
-                      } ?></td>
-            <td><?php print_r($lista_constancias[$k]->constancias); ?></td>
-            <td><?php if($inscrito_curso[$k]==NULL)
-                         print_r('0000');
-                        else {
-                          print_r($inscrito_curso[$k][0]->inscritos);
-                        }?></td>
-            <td><?php if($inscrito_curso[$k] != NULL){
-                          $var = ($lista_constancias[$k]->constancias/($inscrito_curso[$k][0]->inscritos)*100) + $var;
-                          print_r(round(($lista_constancias[$k]->constancias/($inscrito_curso[$k][0]->inscritos)*100),2));
-
-                        }?></td>
-          </tr>
-        <?php } ?>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>Promedio eficiencia total</td>
-          <td>{{$var/sizeof($lista_constancias)}}</td>
-        </tr>
-      </table>
-      <a class="btn btn-default" href="{{url ('/download/eficiencia_cursos.csv')}}" role="button">Descargar archivo eficiencia_cursos.csv</a>
-    </div>
-
-
+      </br>
       <h4>Usuarios que se registran a N cursos.</h4>
       <table class="table table-hover table-bordered">
         <td><div id="line_top"></div></td>

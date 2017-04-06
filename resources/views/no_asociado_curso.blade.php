@@ -41,9 +41,7 @@
                 font-family: Georgia, serif;
                 line-height: 70%;
                 letter-spacing: 4px;
-               
-             
-	}
+          	}
 
        </style>
     </head>
@@ -56,7 +54,7 @@
                        <img src="logo_large.png" border=0>
                        <br><br>
                        
-                       <div class="title" ><br><br>Tu correo no está asociado con algún curso en la platafarma.<br><br></div>
+                       <div class="title" ><br><br>Tu correo no está asociado con algún curso en la plataforma.<br><br></div>
                                 <br><br>
                            
                 <form action="{{url('logout')}}" class="form-horizontal">
