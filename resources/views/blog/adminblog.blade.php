@@ -132,13 +132,11 @@
         height: 230,
         plugins: 'link image code',
         relative_urls: false,
+        entity_encoding: "raw",
         content_css: [
           '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
           '//www.tinymce.com/css/codepen.min.css'
         ]
     });
-    //tinymce.init({ selector:'textarea' });
-    /*var $j = jQuery.noConflict();
-    $j( "#inputDate" ).datepicker({dateFormat: "yy-mm-dd"});*/
   </script>
 @endsection
