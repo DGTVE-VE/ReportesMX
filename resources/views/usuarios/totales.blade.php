@@ -139,10 +139,12 @@ function drawChart() {
               <td>{{$course_name2}}</td>
               <td>{{$info[1]}}</td>
             </tr>
+            @if($course_name !="MéxicoX")
             <tr class="desinscritos">
               <td>{{$course_name3}}</td>
               <td>{{$info[3]}}</td>
             </tr>
+            @endif
           </tbody>
         </table>
 
