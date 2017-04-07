@@ -127,7 +127,17 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script-->
   <script>
-    tinymce.init({ selector:'textarea' });
+    tinymce.init({
+        selector: 'textarea',
+        height: 230,
+        plugins: 'link image code',
+        relative_urls: false,
+        content_css: [
+          '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
+          '//www.tinymce.com/css/codepen.min.css'
+        ]
+    });
+    //tinymce.init({ selector:'textarea' });
     /*var $j = jQuery.noConflict();
     $j( "#inputDate" ).datepicker({dateFormat: "yy-mm-dd"});*/
   </script>
