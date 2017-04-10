@@ -51,6 +51,12 @@ class FichaTecnicaController extends Controller {
      */
     public function index() {         
         $username = Auth::user()->name;
+        if (empty (Auth::user()->institucion_id)){
+            $instituciones = \App\Model\Institucion::all()->pluck ('nombre_institucion', 'id')->all();
+            return view ('formatos/asocia_institucion')
+                        ->with('instituciones', $instituciones)
+                        ->with('name_user', $username);
+        }        
         if (Auth::user()->is_superuser){
             $fichas = Ficha_curso::all();
         }else{

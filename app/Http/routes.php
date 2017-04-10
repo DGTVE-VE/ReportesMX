@@ -21,6 +21,16 @@ use Illuminate\Support\Facades\Session;
  * usar las APIS.
  */
 Route::get ('formatos/ficha_tecnica/publica/{id}', 'FichaTecnicaController@publicaFechas');
+Route::post ('usuario/asocia/institucion', function (){
+    if (Input::has ('institucion_id')){
+        $user = Auth::user ();
+        $user->institucion_id = Input::get ('institucion_id');
+        $user->save ();
+        return Redirect::to(url('formatos/ficha_tecnica'));
+    }else{
+        abort (404, 'Página no encontrada');
+    }
+});
 Route::get ('google_api/oauth2callback', function (Request $request){
     $client = new Google_Client();
     $client->setAuthConfigFile(config_path() . '/client_secret.json');
