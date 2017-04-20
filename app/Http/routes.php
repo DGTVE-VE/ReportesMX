@@ -151,3 +151,5 @@ Route::resource('instituciones/institucion', 'institucionController');
 Route::resource('admin/course_name', 'Course_nameController');
 Route::resource('instituciones/contactos_institucion', 'Contactos_institucionController');
 Route::resource('admin/banner_principal', 'banner_principalController');
+/*Búsqueda de course_id en el catalogo de Course_name*/
+Route::match(array('GET','POST'),'curso/busqueda/{curso?}', array('uses'=>'Course_nameController@busquedaCursos'));
