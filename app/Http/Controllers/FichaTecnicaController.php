@@ -172,7 +172,7 @@ class FichaTecnicaController extends Controller {
             Session::flash ('success_message', 'Carta compromiso aprobada');
             $mensaje = "Carta compromiso aprobada:";
             
-            $this->enviaMail($ficha, $mensaje, 'Carta compromiso aprobada');
+            $this->enviaMail($ficha, $mensaje, 'Carta compromiso aprobada: abrir espacio en la verde '.$ficha->nombre_curso);
             
             return $this->show ($idFicha, Input::get ('seccion'));
         }
