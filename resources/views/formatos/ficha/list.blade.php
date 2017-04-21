@@ -18,6 +18,7 @@
                                 <th>Nombre</th>
                                 <th>Periodo Emisión</th>
                                 <th>Course ID</th>
+                                <th>Carta Compromiso</th>
                                 <th>Estado</th>
                                 <th>Creó</th>
                                 <th>Editó</th>
@@ -48,6 +49,13 @@
                         </td>
                         <td>
                             {{$ficha->codigo_curso }}
+                        </td>
+                        <td>
+                            @if(File::exists (public_path() .'/cartas/'.$ficha_curso->id.'_compromiso.pdf'))
+                            <a href='{{asset('cartas/'.$ficha_curso->id.'_compromiso.pdf?'.time())}}'> <i class="fa fa-download" aria-hidden="true"></i> </a>
+                            @else
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                            @endif
                         </td>
                         <td>
                             {{$ficha->estado }}
