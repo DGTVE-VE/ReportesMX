@@ -51,8 +51,8 @@
                             {{$ficha->codigo_curso }}
                         </td>
                         <td>
-                            @if(File::exists (public_path() .'/cartas/'.$ficha_curso->id.'_compromiso.pdf'))
-                            <a href='{{asset('cartas/'.$ficha_curso->id.'_compromiso.pdf?'.time())}}'> <i class="fa fa-download" aria-hidden="true"></i> </a>
+                            @if(File::exists (public_path() .'/cartas/'.$ficha->id.'_compromiso.pdf'))
+                            <a href='{{asset('cartas/'.$ficha->id.'_compromiso.pdf?'.time())}}'> <i class="fa fa-download" aria-hidden="true"></i> </a>
                             @else
                             <i class="fa fa-times" aria-hidden="true"></i>
                             @endif
