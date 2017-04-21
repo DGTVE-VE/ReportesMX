@@ -364,13 +364,13 @@ class FichaTecnicaController extends Controller {
             Mail::send('emails.ficha.revision', ['ficha' => $ficha, 'mensaje'=> $mensaje], 
                     function ($m) use ($ficha) {
                         $m->from($this->fromMail, 'México X');
-                        $m->to($this->toMail)
+                        $m->to('lily.sacal@mexicox.gob.mx')
                                 ->cc ($this->ccMail)
                                 ->subject('Carta compromiso recibida: '.$ficha->institucion->nombre_institucion.
                                         ' Curso: '.$ficha->nombre_curso );
                     });
         }
-        Session::flash ('success_message', 'Información básica guardada');
+        Session::flash ('success_message', 'Información básica guardada, puedes continuar llenando la ficha');
         Log::info('Ficha guardada:'.$ficha);
         return $this->show ($ficha->id, 'info_basica');  
     }
