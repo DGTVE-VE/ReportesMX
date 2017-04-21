@@ -7,7 +7,7 @@
                 {{ csrf_field() }}
                 <div class="input-group">
                     <input type="text" class="form-control" name="curso"
-                           placeholder="Buscar cursos"> 
+                           placeholder="Buscar course_id"> 
                     <span class="input-group-btn">
                         <button type="submit" class="btn btn-default">
                             <span class="glyphicon glyphicon-search"></span>

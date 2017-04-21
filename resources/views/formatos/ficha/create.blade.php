@@ -4,8 +4,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="form-group col-md-12">
-                <h2 class="text-center">Registro de Curso para MéxicoX</h2>
+            <div><a href="{{url('/formatos/ficha_tecnica')}}"><i class="fa fa-arrow-circle-o-left" style="font-size: 30px;" aria-hidden="true"></i></a></div>
+            <div class="form-group col-md-12">                
+                <h2 class="text-center">Registro de Curso para MéxicoX</h2>                
             </div>
             <div class="panel with-nav-tabs panel-info">
                 <div class="panel-heading">
