@@ -157,7 +157,7 @@
         $('#periodo_emision').val (fecha);
         @endif
         
-        @if ($ficha_curso->estado != 'edicion' && ! Auth::user()->is_superuser)
+        @if ($ficha_curso->estado == 'aprobada')
             $(':button').prop('disabled', true); 
         @endif
 //        inst = 1;
