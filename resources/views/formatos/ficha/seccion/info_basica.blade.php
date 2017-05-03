@@ -13,8 +13,13 @@
                placeholder="Escribe el nombre completo de la institución" 
                value='{{$institucion->nombre_institucion}}'
                readonly>
+        
+        @if (!empty ($ficha_curso->id_institucion))
+        <input type='hidden' name='id_institucion' value="{{$ficha_curso->id_institucion}}">
+        @else
         <input type='hidden' name='id_institucion' value="{{Auth::user()->institucion_id}}">
-
+        @endif
+        
     </div>
     <div class="form-group col-md-8 col-md-offset-2">
         <label for="nombre_curso">Nombre del curso</label>
@@ -50,7 +55,7 @@
         <label for="periodo_emision">Periodo de emisión</label>
         <!--<input name="periodoEmi" type="text" class="form-control" placeholder="Escribe el periodo de emisión" required>-->
         <input name='periodo_emision' id='periodo_emision' type="month" onchange='updateCodigoCurso()' class="form-control"
-               value='{{$ficha_curso->periodo_emision}}'>
+               value='{{$ficha_curso->periodo_emision}}' required="required">
         <div class="help-tip posicion">
             <p>- Mes de inicio del curso </p>
         </div>
@@ -65,7 +70,10 @@
         <label for="carta_compromiso">Carta compromiso</label>
         <a href="{{asset('download/carta_com.docx')}}"> (Formato para Carta Compromiso) </a>
         <label class="file">
-            <input class="form-control" name="carta_compromiso" type="file" accept="application/pdf" id="carta_compromiso" required>
+            <input class="form-control" name="carta_compromiso" type="file" accept="application/pdf" id="carta_compromiso" 
+                   @if(!File::exists (public_path() .'/cartas/'.$ficha_curso->id.'_compromiso.pdf'))
+                   required
+                   @endif >
             <span class="file-custom"></span>                
         </label>
         <div class="help-tip posicion">

@@ -58,9 +58,12 @@ class FichaTecnicaController extends Controller {
                         ->with('name_user', $username);
         }        
         if (Auth::user()->is_superuser){
-            $fichas = Ficha_curso::all();
+            $fichas = Ficha_curso::orderBy('updated_at', 'desc')->paginate (10);
+            
         }else{
-            $fichas = Ficha_curso::where ('id_institucion', Auth::user()->institucion_id)->get ();
+            $fichas = Ficha_curso::where ('id_institucion', Auth::user()->institucion_id)
+                    ->orderBy ('updated_at', 'desc')
+                    ->paginate (10);            
         }
         return view('formatos/ficha/list')
             ->with('name_user', $username)
@@ -75,9 +78,8 @@ class FichaTecnicaController extends Controller {
     public function create() {
         $super_user = session()->get('super_user');
         $username = session()->get('nombre');
-        
-        $contactos = \App\Model\Contactos_institucion::all ();
-        
+                
+        $contactos = \App\Model\Contactos_institucion::where ('institucion_id', Auth::user()->institucion_id)->get();
         $ficha = new Ficha_curso();
         
         //$instituciones = \App\Model\Institucion::all()->pluck ('nombre_institucion', 'id')->all();
@@ -295,7 +297,7 @@ class FichaTecnicaController extends Controller {
         $ficha = Ficha_curso::find ($id);
         $super_user = session()->get('super_user');
         $username = session()->get('nombre');
-        $contactos = \App\Model\Contactos_institucion::where ('institucion_id', Auth::user()->institucion_id)->get();
+        $contactos = \App\Model\Contactos_institucion::where ('institucion_id', $ficha->id_institucion)->get();
         $tipo_curso = \App\Model\TipoCurso::all()->pluck ('tipo_curso', 'id')->all();
         $categorias = \App\Model\Categorias::all();
         $lineasEstrategicas = \App\Model\LineasEstrategicas::all();

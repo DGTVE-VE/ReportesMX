@@ -1,5 +1,7 @@
+
+
 <div class="tab-pane fade" id="revision"> <!--bloque archivos-->
-    @if ($ficha_curso->estado == 'edicion')
+    @if ($ficha_curso->estado == 'edicion' && Auth::user()->institucion_id == $ficha_curso->id_institucion)
     {!! Form::model($ficha_curso, ['action'=> 'FichaTecnicaController@store', 'files'=>true]) !!}
     <input type='hidden' name='seccion' value='revision'>
     <input type='hidden' name='id' value='{{$ficha_curso->id}}'>
@@ -38,7 +40,7 @@
                 </div>
             </form>
         </div>
-        @endif
+@endif
 <!--        <div class="form-group col-md-4 col-md-offset-2"><br>
             <h3>Aprobar para apertura</h3>
             <hr>
