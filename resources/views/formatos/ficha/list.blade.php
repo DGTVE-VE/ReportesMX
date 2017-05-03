@@ -18,7 +18,7 @@
                                 @if (Auth::user()->is_superuser)
                                 <th>ID</th>
                                 @endif
-                                <th>Creada</th>
+                                <th>Actualizada</th>
                                 <th>Institución</th>
                                 <th>Nombre</th>
                                 <th>Periodo Emisión</th>
@@ -47,7 +47,7 @@
                                 <td>{{$ficha->id}}</td>
                             @endif
                             <td>
-                                {{date_format ($ficha->created_at, "d/m/Y") }}  
+                                {{date_format ($ficha->updated_at, "d/m/Y") }}  
                             </td>
                             <td>
                                 @if (!empty($ficha->institucion))

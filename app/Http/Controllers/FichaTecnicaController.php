@@ -62,7 +62,7 @@ class FichaTecnicaController extends Controller {
             
         }else{
             $fichas = Ficha_curso::where ('id_institucion', Auth::user()->institucion_id)
-                    ->orderBy ('created_at', 'desc')
+                    ->orderBy ('updated_at', 'desc')
                     ->paginate (10);            
         }
         return view('formatos/ficha/list')
