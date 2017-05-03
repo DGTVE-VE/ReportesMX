@@ -58,9 +58,12 @@ class FichaTecnicaController extends Controller {
                         ->with('name_user', $username);
         }        
         if (Auth::user()->is_superuser){
-            $fichas = Ficha_curso::all();
+            $fichas = Ficha_curso::orderBy('created_at', 'desc')->paginate (10);
+            
         }else{
-            $fichas = Ficha_curso::where ('id_institucion', Auth::user()->institucion_id)->get ();
+            $fichas = Ficha_curso::where ('id_institucion', Auth::user()->institucion_id)
+                    ->orderBy ('created_at', 'desc')
+                    ->paginate (10);            
         }
         return view('formatos/ficha/list')
             ->with('name_user', $username)
