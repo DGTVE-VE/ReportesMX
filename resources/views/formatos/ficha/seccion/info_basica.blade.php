@@ -13,8 +13,13 @@
                placeholder="Escribe el nombre completo de la institución" 
                value='{{$institucion->nombre_institucion}}'
                readonly>
+        
+        @if (!empty ($ficha_curso->id_institucion))
+        <input type='hidden' name='id_institucion' value="{{$ficha_curso->id_institucion}}">
+        @else
         <input type='hidden' name='id_institucion' value="{{Auth::user()->institucion_id}}">
-
+        @endif
+        
     </div>
     <div class="form-group col-md-8 col-md-offset-2">
         <label for="nombre_curso">Nombre del curso</label>
