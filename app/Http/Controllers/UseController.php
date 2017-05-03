@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
 use App\Model\Course_overviews;
+use App\Model\Auth_userprofile;
 
 class UseController extends Controller {
 
@@ -92,14 +93,14 @@ class UseController extends Controller {
 	{
 		$username = session()->get('nombre');
                 $c_id = session()->get('course_id');
-                
-                
+
+
 		if($c_id == "" || $c_id == NULL){
-                    $c_id = filter_input (INPUT_POST, 'course_id'); 
+                    $c_id = filter_input (INPUT_POST, 'course_id');
                     if($username == NULL || $c_id == "" || $c_id == NULL)
                         return $this->correoacurso();
                 }
-                   
+
 		if($c_id){
 			$course_id = Course_overviews::whereid($c_id)->get()[0]->id;
 			$course_name = Course_overviews::whereid($c_id)->get()[0]->display_name;
@@ -110,10 +111,10 @@ class UseController extends Controller {
 		$super_user = session()->get('super_user');
 
 		if(($super_user == "1") && (session()->get('course_id') == 0)){
-                    
+
 			$inscritos = DB::table('vm_inscritos_x_curso')->leftJoin('course_name','vm_inscritos_x_curso.course_id','=','course_name.course_id')->select('vm_inscritos_x_curso.id','vm_inscritos_x_curso.course_name','vm_inscritos_x_curso.course_id','vm_inscritos_x_curso.inscritos','course_name.constancias')->orderBy('id')->paginate(10);
-			$totalesi = DB::table('vm_inscritos_x_curso')->leftJoin('course_name','vm_inscritos_x_curso.course_id','=','course_name.course_id')->select('vm_inscritos_x_curso.id','vm_inscritos_x_curso.course_name','vm_inscritos_x_curso.course_id','vm_inscritos_x_curso.inscritos','course_name.constancias')->get();                        
-                        
+			$totalesi = DB::table('vm_inscritos_x_curso')->leftJoin('course_name','vm_inscritos_x_curso.course_id','=','course_name.course_id')->select('vm_inscritos_x_curso.id','vm_inscritos_x_curso.course_name','vm_inscritos_x_curso.course_id','vm_inscritos_x_curso.inscritos','course_name.constancias')->get();
+
                         $cn = "Puedes ver estadísticas de los siguientes cursos:";
 
 			$fp = fopen ('download/totales.csv', 'w');
@@ -134,16 +135,16 @@ class UseController extends Controller {
 				$listaid[$i][2] = ($value->course_name);
 				$listaid[$i][3] = ($value->inscritos);
                                 $listaid[$i][4] = ($value->constancias);
-                                $listaid[$i][5]=  (round(($value->eficiencia=$value->constancias/($value->inscritos)*100),2)); 
+                                $listaid[$i][5]=  (round(($value->eficiencia=$value->constancias/($value->inscritos)*100),2));
 
 				$i++;
 			}
-	                
+
                         foreach ($inscritos as $key => $value) {
-                                          
-                        $value->eficiencia=$value->constancias/($value->inscritos)*100; 
-                        
-                        }  
+
+                        $value->eficiencia=$value->constancias/($value->inscritos)*100;
+
+                        }
 
 			foreach ($listaid as $value) {
 				fputcsv($fp, $value );
@@ -161,7 +162,7 @@ class UseController extends Controller {
 
 			$inscritos = DB::table('vm_inscritos_x_curso')->leftJoin('course_name','vm_inscritos_x_curso.course_id','=','course_name.course_id')->select('vm_inscritos_x_curso.id','vm_inscritos_x_curso.course_name','vm_inscritos_x_curso.course_id','vm_inscritos_x_curso.inscritos','course_name.constancias')->orderBy('id')->paginate(10);
                         $totalesi = DB::table('vm_inscritos_x_curso')->leftJoin('course_name','vm_inscritos_x_curso.course_id','=','course_name.course_id')->select('vm_inscritos_x_curso.id','vm_inscritos_x_curso.course_name','vm_inscritos_x_curso.course_id','vm_inscritos_x_curso.inscritos','course_name.constancias')->get();
-			
+
                         $fp = fopen ('download/totales.csv', 'w');
 			$listaid = array();
 			$listaid[0][0] = 'id';
@@ -181,13 +182,13 @@ class UseController extends Controller {
 				$listaid[$i][2] = ($value->course_name);
 				$listaid[$i][3] = ($value->inscritos);
                                 $listaid[$i][4] = ($value->constancias);
-                                $listaid[$i][5]=  (round(($value->eficiencia=$value->constancias/($value->inscritos)*100),2)); 
+                                $listaid[$i][5]=  (round(($value->eficiencia=$value->constancias/($value->inscritos)*100),2));
 
 				$i++;
 			}
                         foreach ($inscritos as $key => $value) {
-                                          
-                        $value->eficiencia=$value->constancias/($value->inscritos)*100; 
+
+                        $value->eficiencia=$value->constancias/($value->inscritos)*100;
                         }
 
 			foreach ($listaid as $value) {
@@ -223,7 +224,7 @@ class UseController extends Controller {
 
 			$activos = Course_overviews::where('end', '>=', DB::raw('curdate()'))->where('enrollment_start', '<=', DB::raw('curdate()'))->orderBy('end', 'desc')->paginate(10);
                         $totalesa = Course_overviews::where('end', '>=', DB::raw('curdate()'))->where('enrollment_start', '<=', DB::raw('curdate()'))->orderBy('end', 'desc')->get();
-			
+
                         $cn = "Puedes ver estadísticas de los siguientes cursos:";
 
 			$fp = fopen ('download/cursoa.csv', 'w');
@@ -273,7 +274,7 @@ class UseController extends Controller {
 
 			$no_activos = Course_overviews::where(DB::raw('curdate()'), '<', 'start')->orderBy('enrollment_start', 'desc')->paginate(10);
                         $totalesna = Course_overviews::where(DB::raw('curdate()'), '<', 'start')->orderBy('enrollment_start', 'desc')->get();
-                        
+
 			$cn = "Puedes ver estadísticas de los siguientes cursos:";
 
 			$fp = fopen ('download/no_activos.csv', 'w');
@@ -954,7 +955,7 @@ class UseController extends Controller {
 
 			////////////////////////////////////////////////////////////////////////////
 			$constancias = DB::table('mexicox.constancias')->count('id');
-			
+
 			$lista_constancias = DB::select(DB::raw('select count(curso) as constancias , course_id as nombre_curso from mexicox.constancias group by course_id'));
 			$r = 0;
 
@@ -1016,88 +1017,50 @@ class UseController extends Controller {
 
 		if(($super_user == '1') && (session()->get('course_name') == null))
 		{
+			$country = DB::select(DB::raw('SELECT country, count(country) as cc from edxapp.auth_userprofile group by country order by cc desc'));
 
-			$AG = DB::table('edxapp.auth_userprofile')->wherecountry('AG')->select('id')->count();
-			$BC = DB::table('edxapp.auth_userprofile')->wherecountry('BC')->select('id')->count();
-			$BS = DB::table('edxapp.auth_userprofile')->wherecountry('BS')->select('id')->count();
-			$CC = DB::table('edxapp.auth_userprofile')->wherecountry('CC')->select('id')->count();
-			$CS = DB::table('edxapp.auth_userprofile')->wherecountry('CS')->select('id')->count();
-			$CH = DB::table('edxapp.auth_userprofile')->wherecountry('CH')->select('id')->count();
-			$CL = DB::table('edxapp.auth_userprofile')->wherecountry('CL')->select('id')->count();
-			$CM = DB::table('edxapp.auth_userprofile')->wherecountry('CM')->select('id')->count();
-			$DF = DB::table('edxapp.auth_userprofile')->wherecountry('DF')->select('id')->count();
-			$DG = DB::table('edxapp.auth_userprofile')->wherecountry('DG')->select('id')->count();
-			$GT = DB::table('edxapp.auth_userprofile')->wherecountry('GT')->select('id')->count();
-			$GR = DB::table('edxapp.auth_userprofile')->wherecountry('GR')->select('id')->count();
-			$HG = DB::table('edxapp.auth_userprofile')->wherecountry('HG')->select('id')->count();
-			$JC = DB::table('edxapp.auth_userprofile')->wherecountry('JC')->select('id')->count();
-			$MC = DB::table('edxapp.auth_userprofile')->wherecountry('MC')->select('id')->count();
-			$MN = DB::table('edxapp.auth_userprofile')->wherecountry('MN')->select('id')->count();
-			$MS = DB::table('edxapp.auth_userprofile')->wherecountry('MS')->select('id')->count();
-			$NT = DB::table('edxapp.auth_userprofile')->wherecountry('NT')->select('id')->count();
-			$NL = DB::table('edxapp.auth_userprofile')->wherecountry('NL')->select('id')->count();
-			$OC = DB::table('edxapp.auth_userprofile')->wherecountry('OC')->select('id')->count();
-			$PL = DB::table('edxapp.auth_userprofile')->wherecountry('PL')->select('id')->count();
-			$QT = DB::table('edxapp.auth_userprofile')->wherecountry('QT')->select('id')->count();
-			$QR = DB::table('edxapp.auth_userprofile')->wherecountry('QR')->select('id')->count();
-			$SP = DB::table('edxapp.auth_userprofile')->wherecountry('SP')->select('id')->count();
-			$SL = DB::table('edxapp.auth_userprofile')->wherecountry('SL')->select('id')->count();
-			$SR = DB::table('edxapp.auth_userprofile')->wherecountry('SR')->select('id')->count();
-			$TC = DB::table('edxapp.auth_userprofile')->wherecountry('TC')->select('id')->count();
-			$TS = DB::table('edxapp.auth_userprofile')->wherecountry('TS')->select('id')->count();
-			$TL = DB::table('edxapp.auth_userprofile')->wherecountry('TL')->select('id')->count();
-			$VZ = DB::table('edxapp.auth_userprofile')->wherecountry('VZ')->select('id')->count();
-			$YN = DB::table('edxapp.auth_userprofile')->wherecountry('YN')->select('id')->count();
-			$ZS = DB::table('edxapp.auth_userprofile')->wherecountry('ZS')->select('id')->count();
-			$EX = DB::table('edxapp.auth_userprofile')->wherecountry('EX')->select('id')->count();
+			$state = DB::select(DB::raw('SELECT c.Estado as state, count(c.Estado) as cs from edxapp.auth_userprofile a
+								inner join mexicox.codigospostales c on c.CodigoPostal = a.user_id group by c.Estado order by cs desc'));
 
-			$total = $AG + $BC + $BS + $CC + $CS + $CH + $CL + $CM + $DF + $DG + $GT + $GR + $HG + $JC + $MC + $MN + $MS + $NT + $NL + $OC + $PL + $QT + $QR + $SP + $SL + $SR + $TC + $TS + $TL + $VZ + $YN + $ZS + $EX;
-			$geo = array($AG, $BC, $BS, $CC, $CS, $CH, $CL, $CM, $DF, $DG, $GT, $GR, $HG, $JC, $MC, $MN, $MS, $NT, $NL, $OC, $PL, $QT, $QR, $SP, $SL, $SR, $TC, $TS, $TL, $VZ, $YN, $ZS, $EX, $total);
+			$usuarios_pais = fopen ('download/usuarios_pais.csv', 'w');
+			$usuarios_estado = fopen ('download/usuarios_estado.csv', 'w');
+
+			foreach ($country as $key => $value) {
+				fputcsv($usuarios_pais, [$value->country, $value->cc]);
+			}
+
+			foreach ($state as $key => $value) {
+				fputcsv($usuarios_estado, [$value->state, $value->cs]);# code...
+			}
+			
+			fclose($usuarios_pais);
+			fclose($usuarios_estado);
+
 
 			$cn = "Estadísticas todos los cursos:";
 
-			return view('usuarios/geo') -> with('geo', collect($geo))-> with('name_user', $username )-> with('course_name', $cn);
+			return view('usuarios/geo')
+			->with('country', collect($country))
+			->with('state', collect($state))
+			->with('name_user', $username )
+			->with('course_name', $cn);
 
 		}elseif((session()->get('accescourse') > 0) || ($super_user == "1")) {
 
-			$AG = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('AG')->select('id')->count();
-			$BC = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('BC')->select('id')->count();
-			$BS = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('BS')->select('id')->count();
-			$CC = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('CC')->select('id')->count();
-			$CS = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('CS')->select('id')->count();
-			$CH = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('CH')->select('id')->count();
-			$CL = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('CL')->select('id')->count();
-			$CM = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('CM')->select('id')->count();
-			$DF = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('DF')->select('id')->count();
-			$DG = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('DG')->select('id')->count();
-			$GT = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('GT')->select('id')->count();
-			$GR = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('GR')->select('id')->count();
-			$HG = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('HG')->select('id')->count();
-			$JC = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('JC')->select('id')->count();
-			$MC = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('MC')->select('id')->count();
-			$MN = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('MN')->select('id')->count();
-			$MS = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('MS')->select('id')->count();
-			$NT = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('NT')->select('id')->count();
-			$NL = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('NL')->select('id')->count();
-			$OC = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('OC')->select('id')->count();
-			$PL = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('PL')->select('id')->count();
-			$QT = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('QT')->select('id')->count();
-			$QR = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('QR')->select('id')->count();
-			$SP = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('SP')->select('id')->count();
-			$SL = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('SL')->select('id')->count();
-			$SR = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('SR')->select('id')->count();
-			$TC = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('TC')->select('id')->count();
-			$TS = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('TS')->select('id')->count();
-			$TL = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('TL')->select('id')->count();
-			$VZ = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('VZ')->select('id')->count();
-			$YN = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('YN')->select('id')->count();
-			$ZS = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('ZS')->select('id')->count();
-			$EX = DB::table('edxapp.auth_userprofile')->join('edxapp.student_courseenrollment', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wherecountry('EX')->select('id')->count();
+			$country = DB::select(DB::raw('SELECT a.country, count(a.country) as cc from edxapp.auth_userprofile a
+								inner join edxapp.student_courseenrollment s on a.user_id = s.user_id
+								where s.course_id = "'.$course_id.'" group by a.country order by cc desc'));
 
-			$total = $AG + $BC + $BS + $CC + $CS + $CH + $CL + $CM + $DF + $DG + $GT + $GR + $HG + $JC + $MC + $MN + $MS + $NT + $NL + $OC + $PL + $QT + $QR + $SP + $SL + $SR + $TC + $TS + $TL + $VZ + $YN + $ZS + $EX;
-			$geo = array($AG, $BC, $BS, $CC, $CS, $CH, $CL, $CM, $DF, $DG, $GT, $GR, $HG, $JC, $MC, $MN, $MS, $NT, $NL, $OC, $PL, $QT, $QR, $SP, $SL, $SR, $TC, $TS, $TL, $VZ, $YN, $ZS, $EX, $total);
+			$state = DB::select(DB::raw('SELECT c.Estado as state, count(c.Estado) as cs from edxapp.auth_userprofile a
+								inner join mexicox.codigospostales c on c.CodigoPostal = a.user_id
+								inner join edxapp.student_courseenrollment s on a.user_id = s.user_id
+								where s.course_id = "'.$course_id.'" group by c.Estado order by cs desc'));
 
-			return view('usuarios/geo') -> with('geo', collect($geo))->with('name_user', $username )-> with('course_name', $course_name);
+			return view('usuarios/geo')
+			->with('country', collect($country))
+			->with('state', collect($state))
+			->with('name_user', $username )
+			-> with('course_name', $course_name);
 
 		}
 		else
