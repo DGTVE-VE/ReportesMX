@@ -68,7 +68,7 @@
             <input class="form-control" name="carta_compromiso" type="file" accept="application/pdf" id="carta_compromiso" 
                    @if(!File::exists (public_path() .'/cartas/'.$ficha_curso->id.'_compromiso.pdf'))
                    required
-                   endif>
+                   @endif >
             <span class="file-custom"></span>                
         </label>
         <div class="help-tip posicion">
