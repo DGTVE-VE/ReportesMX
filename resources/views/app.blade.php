@@ -58,6 +58,8 @@
                                 <li class="divider"></li>
                                 <li><a href="{{url('inscritost')}}" class="bg-active">Inscritos a cursos</a><li>
                                 <li class="divider"></li>
+                                <li><a href="{{url ('geo')}}" class="bg-active">Información Geográfica</a></li>
+                                <li class="divider"></li>
                                 <li><a href="{{url ('videos')}}" class="bg-active">Videos</a></li>
                                 <li class="divider"></li>
                                 <li><a href="{{url ('constancias')}}" class="bg-active">Buscar Folio</a></li>
@@ -72,7 +74,7 @@
                                 <li class="divider"></li>
                                 <li><a href="{{url ('formatos/ficha_tecnica')}}" class="bg-active">Ficha Técnica</a></li>
                             </ul>
-                        </li>                        
+                        </li>
                         <?php
                         $user = \Illuminate\Support\Facades\Auth::user();
                         $auth_user = \App\Model\Auth_user::where('email', $user->email)->first();
