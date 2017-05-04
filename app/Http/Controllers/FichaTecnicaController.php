@@ -183,6 +183,25 @@ class FichaTecnicaController extends Controller {
         }   
     }
     
+        public function aprobarCurso (Request $request){
+        $idFicha = Input::get('id');
+        $ficha = Ficha_curso::find ($idFicha);
+        if (!empty ($idFicha)){
+            $ficha->estado = 'aprobada';        
+            $ficha->aprobo()->associate (Auth::user());
+            $ficha->save();
+            Session::flash ('success_message', 'Ficha aprobada');
+            $mensaje = "Ficha aprobada:";
+            $this->enviaMail($ficha, $mensaje, 'Ficha aprobada (Abrir curso en la morada): '.$ficha->nombre_curso);            
+            return $this->publicaFechas($idFicha);
+            //return $this->show ($idFicha, Input::get ('seccion'));
+        }
+        else{
+            abort (500, "El formulario no pertenece a ninguna ficha.");
+        }   
+    }
+
+    
     public function publicaFechas ($id){        
         Session::put('id_ficha', $id);
         $client = new Google_Client();
@@ -234,28 +253,11 @@ class FichaTecnicaController extends Controller {
             function ($m) use ($ficha, $subject) {
                 $m->from($this->fromMail, 'México X');
                 $m->to($this->toMail)->cc ($this->ccMail)
-                        ->subject($subject.$ficha->nombre_curso);
+                        ->subject($subject);
             });
         Log::debug (Mail::failures());
     }
     
-    public function aprobarCurso (Request $request){
-        $idFicha = Input::get('id');
-        $ficha = Ficha_curso::find ($idFicha);
-        if (!empty ($idFicha)){
-            $ficha->estado = 'aprobada';        
-            $ficha->aprobo()->associate (Auth::user());
-            $ficha->save();
-            Session::flash ('success_message', 'Ficha aprobada');
-            $mensaje = "Ficha aprobada:";
-            $this->enviaMail($ficha, $mensaje, 'Ficha aprobada ');            
-            return $this->publicaFechas($idFicha);
-            //return $this->show ($idFicha, Input::get ('seccion'));
-        }
-        else{
-            abort (500, "El formulario no pertenece a ninguna ficha.");
-        }   
-    }
     
     public function enviarRevision (Request $request){
         //Permisos para editar el calendario
