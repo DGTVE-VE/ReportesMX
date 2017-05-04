@@ -112,6 +112,7 @@
     
     function getIniciales (){
         var nombre = $('#nombre_curso').val ();
+        nombre = nombre.replace(/[^\w]/g,'');;
         var palabras = nombre.split (' ');
         console.log (palabras.length);
         if (palabras.length === 1){
