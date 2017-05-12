@@ -53,26 +53,15 @@
   function drawLineColors() {
 
       var data2 = new google.visualization.DataTable();
-      var data3 = new google.visualization.DataTable();
 
       data2.addColumn('number', 'Número de cursos' );
       data2.addColumn('number', 'Alumnos registrados');
-      data3.addColumn('number', 'Número de cursos' );
-      data3.addColumn('number', 'Alumnos registrados');
 
       @foreach($users_course as $key)
       data2.addRows([
         [{{$key->n}},  {{$key->users}}],
       ]);
       @endforeach
-
-      <?php for($k = 0; $k < sizeof($nn) ; $k++){?>
-
-          data3.addRows([
-            [{{$nn[$k]}}, {{$inscritos_nc[$nn[$k]]}}],
-            ]);
-
-      <?php } ?>
 
       var options2 = {
         chart: {
@@ -83,21 +72,9 @@
         colors: ['orange']
       };
 
-      var options3 = {
-        chart: {
-          title: 'Alumnos inscritos en N cursos y que obtubieron constancia',
-        },
-        width: 750,
-        height: 400,
-        colors: ['red']
-      };
-
       var chart2 = new google.visualization.LineChart(document.getElementById('chart_div2'));
-      var chart3 = new google.visualization.LineChart(document.getElementById('chart_div3'));
 
       chart2.draw(data2, options2);
-      chart3.draw(data3, options3);
-
   }
     </script>
 </head>
@@ -144,35 +121,6 @@
         </tr>
       </table>
       <a class="btn btn-default" href="{{url ('/download/usuarios_curso.csv')}}" role="button">Descargar archivo usuarios_curso.csv</a>
-    </div></td>
-  </table>
-
-  <h4>Usuarios que se registran a N cursos y que obtubieron constancia.</h4>
-  <table class="table table-hover table-bordered">
-    <td><div id="chart_div3" style="width: 700px; height: 500px;"></div></td>
-    <td><div><table class="table table-hover table-bordered" style="font-size: small">
-      <tr class="danger" style="font-size: small">
-        <td>Número de cursos</td>
-        <td>Alumnos registrados</td>
-      </tr>
-
-      <?php for($k = 0; $k < 10 ; $k++){?>
-        <tr>
-          <td>
-            {{$nn[$k]}}
-          </td>
-          <td>
-            {{$inscritos_nc[$nn[$k]]}}
-          </td>
-        </tr>
-        <?php } ?>
-        <tr>
-          <td>...</td>
-          <td>...</td>
-        </tr>
-
-      </table>
-      <a class="btn btn-default" href="{{url ('/download/usuarios_curso_constancia.csv')}}" role="button">Descargar archivo usuarios_curso.csv</a>
     </div></td>
   </table>
 

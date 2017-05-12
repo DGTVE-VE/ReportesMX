@@ -877,7 +877,7 @@ class UseController extends Controller {
 
 		if($username == NULL || $super_user == NULL)
 			return $this->correoacurso();
-
+		else{
 		if(($super_user == '1')){
 
 			$mes = DB::select(DB::raw('SELECT MONTH(date_joined) as month, YEAR(date_joined) as year, count(id) as c FROM edxapp.auth_user where is_active = "1" GROUP BY YEAR(date_joined), MONTH(date_joined)'));
@@ -931,42 +931,6 @@ class UseController extends Controller {
 
 			////////////////////////////////////////////////////////////////////////////
 
-			$lista_constancias = DB::select(DB::raw('select count(curso) as constancias , course_id as nombre_curso from mexicox.constancias group by course_id'));
-			$r = 0;
-
-			foreach ($lista_constancias as $key){
-
-			$inscrito_curso[$r] = DB::table('vm_inscritos_x_curso')->wherecourse_id($key->nombre_curso)->get();
-			//////////////////////////////////////////////////////////////////////////
-			$ncursos_constancia = DB::select(DB::raw('SELECT count(correo) as n FROM mexicox.constancias group by correo order by n asc'));
-
-			$usc = fopen ('download/usuarios_curso_constancia.csv', 'w');
-
-			$b = 1;
-			$inscritos_nc[0] = 0;
-			$inscritos_nc[1] = 1;
-			$nn[0] = $ncursos_constancia[0]->n;
-			$j = 1;
-			$registroc = array();
-
-			foreach($ncursos_constancia as $n){
-				 if($n->n == $b){
-				 	$inscritos_nc[$b]++;
-				 }
-				 else {
-					$registroc = array ($b ,$inscritos_nc[$b]);
-					fputcsv($usc, $registroc);
-				 	$b = $n->n;
-					$nn[$j] = $n->n;
-					$inscritos_nc[$b] = 1;
-					$j++;
-				 }
-			}
-			$registroc = array ($b ,$inscritos_nc[$b]);
-			fputcsv($usc, $registroc);
-
-			fclose($usc);
-
 			$n_instructores = DB::select(DB::raw('SELECT count(*) as n FROM edxapp.student_courseaccessrole where role = "instructor"'))[0]->n;
 
 			$cn ="MéxicoX";
@@ -976,17 +940,13 @@ class UseController extends Controller {
 			-> with('cur', collect($cur))
 			-> with('name_user', $username)
 			-> with('users_course', collect($users_course))
-			-> with('lista_constancias', $lista_constancias)
-			-> with('inscrito_curso', $inscrito_curso)
-			-> with('inscritos_nc', $inscritos_nc)
-			-> with('nn', $nn)
 			-> with('course_name', $cn)
 			-> with('n_instructores', $n_instructores);
-                        }
-		}
-		else
+
+		}else
 		return view('private')-> with('name_user', $username);
 	}
+}
 
 
 
