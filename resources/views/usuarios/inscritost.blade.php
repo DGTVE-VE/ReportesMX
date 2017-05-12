@@ -128,21 +128,19 @@
           <td>Número de cursos</td>
           <td>Alumnos registrados</td>
         </tr>
-        <?php $i = 0; $j = 0; foreach ($users_course as $m): ?>
+        <?php $j = 0; ?>
+        @foreach($users_course as $m)
           @if($j < 10)
           <tr>
-            <td><?php print_r($m->n); ?></td>
-            <td><?php print_r($m->users); $i = $i + $m->users; $j++;?></td>
+            <td>{{$m->n}}</td>
+            <td>{{$m->users}}</td>
+            <?php $j++; ?>
           </tr>
           @endif
-        <?php endforeach; ?>
+        @endforeach
         <tr>
           <td>...</td>
           <td>...</td>
-        </tr>
-        <tr>
-          <td>Total</td>
-          <td>{{$i}}</td>
         </tr>
       </table>
       <a class="btn btn-default" href="{{url ('/download/usuarios_curso.csv')}}" role="button">Descargar archivo usuarios_curso.csv</a>

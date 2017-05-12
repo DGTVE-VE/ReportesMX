@@ -880,9 +880,9 @@ class UseController extends Controller {
 
 		if(($super_user == '1')){
 
-			$mes = DB::select(DB::raw('SELECT MONTH(date_joined) as month, YEAR(date_joined) as year, count(id) as c FROM edxapp.auth_user GROUP BY YEAR(date_joined), MONTH(date_joined)'));
+			$mes = DB::select(DB::raw('SELECT MONTH(date_joined) as month, YEAR(date_joined) as year, count(id) as c FROM edxapp.auth_user where is_active = "1" GROUP BY YEAR(date_joined), MONTH(date_joined)'));
 
-			$cur = DB::select(DB::raw('SELECT MONTH(created) as month, YEAR(created) as year, count(id) as c FROM edxapp.student_courseenrollment group by YEAR(created), MONTH(created)'));
+			$cur = DB::select(DB::raw('SELECT MONTH(created) as month, YEAR(created) as year, count(id) as c FROM edxapp.student_courseenrollment where is_active = "1" group by YEAR(created), MONTH(created)'));
 
 /////////////////////////////////////////////////
 
