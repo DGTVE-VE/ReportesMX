@@ -112,6 +112,13 @@
                             }
                         }
                         ?>
+                        @if(isset($course_name))
+                          <li>
+                            <a href="{{url('other_course')}}" role="button" title="Seleccionar otro curso">
+                              <span class="glyphicon glyphicon-retweet"></span>
+                            </a>
+                          </li>
+                        @endif
                         <li class="pull-right"><a href="{{url ('logout')}}" class="bg-close" title="Salir">
                                 <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
                             </a>

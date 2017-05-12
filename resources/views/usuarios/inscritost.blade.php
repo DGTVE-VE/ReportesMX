@@ -2,170 +2,144 @@
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
 
-  var mes1 = {!!$mes1!!};
-  var mes2 = {!!$mes2!!};
-
-  google.charts.load('current', {'packages':['line']});
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.load('current', {packages: ['corechart', 'line']});
   google.charts.setOnLoadCallback(drawChart);
+  google.charts.setOnLoadCallback(drawLineColors);
 
   function drawChart() {
 
-    var data1 = new google.visualization.DataTable();
-    var data2 = new google.visualization.DataTable();
-    var data0 = new google.visualization.DataTable();
-    var data3 = new google.visualization.DataTable();
-
-    data1.addColumn('number', 'Mes (Desde Febrero del 2015)' );
-    data2.addColumn('number', 'Mes (Desde Febrero del 2015)' );
-    data1.addColumn('number', 'Por mes en plataforma');
-    data2.addColumn('number', 'Por mes en plataforma');
-    data3.addColumn('number', 'Número de cursos' );
-    data3.addColumn('number', 'Alumnos registrados');
-
-    data0.addColumn('number', 'Número de cursos' );
-    data0.addColumn('number', 'Alumnos registrados');
-
-
-
-    <?php foreach ($users_course as $key): ?>
-    data0.addRows([
-      [{{$key->n}},  {{$key->users}}],
+    var data0 = google.visualization.arrayToDataTable([
+      ['Mes', 'Inscritos'],
+      @foreach($mes as $m)
+        @if($m->month == 1)
+          [{{$m->year}}, 'Año'], ['{{$m->month}}',  {{$m->c}} ],
+        @else
+          ['{{$m->month}}',  {{$m->c}} ],
+        @endif
+      @endforeach
     ]);
-    <?php endforeach; ?>
+
+    var options0 = {
+      title: 'Historico anual inscritos en MéxicoX',
+      hAxis: {title: 'Mes/Año',  titleTextStyle: {color: '#333'}},
+      vAxis: {minValue: 0}
+    };
+    var chart0 = new google.visualization.AreaChart(document.getElementById('chart_div0'));
+    chart0.draw(data0, options0);
 
 
-    <?php for($k = 0; $k < sizeof($nn) ; $k++){?>
-
-        data3.addRows([
-          [{{$nn[$k]}}, {{$inscritos_nc[$nn[$k]]}}],
-          ]);
-
-    <?php } ?>
-
-
-    for (var i = 0 ; i <= mes1.length ; i++){
-      if(mes1[i]){
-        data1.addRows([
-          [i,  parseInt(mes1[i])],
-        ]);
-      }else{
-        data1.addRows([
-          [i,  0],
-        ]);
-      }
-      if(mes2[i]){
-        data2.addRows([
-          [i,  parseInt(mes2[i])],
-        ]);
-      }else{
-        data2.addRows([
-          [i,  0],
-        ]);
-      }
-
-    }
+    var data1 = google.visualization.arrayToDataTable([
+      ['Mes', 'Inscritos'],
+      @foreach($cur as $c)
+        @if($c->month == 1)
+          [{{$c->year}}, 'Año'], ['{{$c->month}}',  {{$c->c}} ],
+        @else
+          ['{{$c->month}}', {{$c->c}} ],
+        @endif
+      @endforeach
+    ]);
 
     var options1 = {
-
-      chart: {
-
-        title: 'Cantidad de usuarios registrados',
-        subtitle: 'Por mes en MÃ©xicoX'
-      },
-      width: 900,
-      height: 400,
-
-      axes: {
-        x: {
-          0: {side: 'top'}
-        }
-      },
-      colors: ['blue']
-    };
-    var options2 = {
-
-      chart: {
-
-        title: 'Usuarios inscritos en algún curso',
-        subtitle: 'Por mes'
-      },
-      width: 900,
-      height: 400,
+      title: 'Historico anual, inscritos a cursos',
+      hAxis: {title: 'Mes/año',  titleTextStyle: {color: '#333'}},
+      vAxis: {minValue: 0},
       colors: ['green']
     };
-    var options0 = {
-
-      chart: {
-
-        title: 'Alumnos inscritos en N cursos',
-      },
-      width: 900,
-      height: 400,
-      colors: ['orange']
-    };
-
-    var options3 = {
-
-      chart: {
-
-        title: 'Alumnos inscritos en N cursos y que obtubieron constancia',
-      },
-      width: 900,
-      height: 400,
-      colors: ['red']
-    };
-
-    var chart1 = new google.charts.Line(document.getElementById('line_top_x'));
-    var chart2 = new google.charts.Line(document.getElementById('line_top_y'));
-    var chart0 = new google.charts.Line(document.getElementById('line_top'));
-    var chart3 = new google.charts.Line(document.getElementById('line_top_z'));
-
-
+    var chart1 = new google.visualization.AreaChart(document.getElementById('chart_div1'));
     chart1.draw(data1, options1);
-    chart2.draw(data2, options2);
-    chart0.draw(data0, options0);
-    chart3.draw(data3, options3);
+  }
 
+  function drawLineColors() {
+
+      var data2 = new google.visualization.DataTable();
+      var data3 = new google.visualization.DataTable();
+
+      data2.addColumn('number', 'Número de cursos' );
+      data2.addColumn('number', 'Alumnos registrados');
+      data3.addColumn('number', 'Número de cursos' );
+      data3.addColumn('number', 'Alumnos registrados');
+
+      @foreach($users_course as $key)
+      data2.addRows([
+        [{{$key->n}},  {{$key->users}}],
+      ]);
+      @endforeach
+
+      <?php for($k = 0; $k < sizeof($nn) ; $k++){?>
+
+          data3.addRows([
+            [{{$nn[$k]}}, {{$inscritos_nc[$nn[$k]]}}],
+            ]);
+
+      <?php } ?>
+
+      var options2 = {
+        chart: {
+          title: 'Alumnos inscritos en N cursos',
+        },
+        width: 750,
+        height: 400,
+        colors: ['orange']
+      };
+
+      var options3 = {
+        chart: {
+          title: 'Alumnos inscritos en N cursos y que obtubieron constancia',
+        },
+        width: 750,
+        height: 400,
+        colors: ['red']
+      };
+
+      var chart2 = new google.visualization.LineChart(document.getElementById('chart_div2'));
+      var chart3 = new google.visualization.LineChart(document.getElementById('chart_div3'));
+
+      chart2.draw(data2, options2);
+      chart3.draw(data3, options3);
 
   }
-  </script>
+    </script>
 </head>
 <body>
   @extends('app') @section('content')
 
-  <center> <h4>Información de todos los cursos de MéxicoX</h4></center>
+  <center> <h4>Información de "{{$course_name}}"</h4></center>
   <br>
-
   <div class="container">
     <div class="row">
       <br>
       <div><table class="table table-hover table-bordered" style="font-size: small">
-        <tr class="info">
+        <tr class="primary">
           <td>
-            Número de instructores en la plataforma
+            <h5>Número de instructores en la plataforma</h5>
           </td>
           <td>
-            {{$n_instructores}}
+            <h5>{{$n_instructores}}</h5>
           </td>
         </tr>
       </table></div>
-      <br>
-      <center><h4>Constancias emitidas en la plataforma:  {{$constancias}}</h4></center>
-      </br>
-      <h4>Usuarios que se registran a N cursos.</h4>
-      <table class="table table-hover table-bordered">
-        <td><div id="line_top"></div></td>
+    </br>
+    <h4>Usuarios que se registran a N cursos.</h4>
+    <table class="table table-hover table-bordered">
+      <td><div id="chart_div2" style="width: 700px; height: 500px;"></div></td>
       <td><div><table class="table table-hover table-bordered" style="font-size: small">
-        <tr class="active" style="font-size: small">
+        <tr class="warning" style="font-size: small">
           <td>Número de cursos</td>
           <td>Alumnos registrados</td>
         </tr>
-        <?php $i = 0; foreach ($users_course as $m): ?>
+        <?php $i = 0; $j = 0; foreach ($users_course as $m): ?>
+          @if($j < 10)
           <tr>
             <td><?php print_r($m->n); ?></td>
-            <td><?php print_r($m->users); $i = $i + $m->users;?></td>
+            <td><?php print_r($m->users); $i = $i + $m->users; $j++;?></td>
           </tr>
+          @endif
         <?php endforeach; ?>
+        <tr>
+          <td>...</td>
+          <td>...</td>
+        </tr>
         <tr>
           <td>Total</td>
           <td>{{$i}}</td>
@@ -177,76 +151,82 @@
 
   <h4>Usuarios que se registran a N cursos y que obtubieron constancia.</h4>
   <table class="table table-hover table-bordered">
-    <td><div id="line_top_z"></div></td>
-  <td><div><table class="table table-hover table-bordered" style="font-size: small">
-    <tr class="danger" style="font-size: small">
-      <td>Número de cursos</td>
-      <td>Alumnos registrados</td>
-    </tr>
-
-    <?php for($k = 0; $k < sizeof($nn) ; $k++){?>
-      <tr>
-        <td>
-          {{$nn[$k]}}
-        </td>
-        <td>
-          {{$inscritos_nc[$nn[$k]]}}
-        </td>
+    <td><div id="chart_div3" style="width: 700px; height: 500px;"></div></td>
+    <td><div><table class="table table-hover table-bordered" style="font-size: small">
+      <tr class="danger" style="font-size: small">
+        <td>Número de cursos</td>
+        <td>Alumnos registrados</td>
       </tr>
-    <?php } ?>
 
+      <?php for($k = 0; $k < 10 ; $k++){?>
+        <tr>
+          <td>
+            {{$nn[$k]}}
+          </td>
+          <td>
+            {{$inscritos_nc[$nn[$k]]}}
+          </td>
+        </tr>
+        <?php } ?>
+        <tr>
+          <td>...</td>
+          <td>...</td>
+        </tr>
+
+      </table>
+      <a class="btn btn-default" href="{{url ('/download/usuarios_curso_constancia.csv')}}" role="button">Descargar archivo usuarios_curso.csv</a>
+    </div></td>
   </table>
-   <a class="btn btn-default" href="{{url ('/download/usuarios_curso_constancia.csv')}}" role="button">Descargar archivo usuarios_curso.csv</a>
-  </div></td>
-  </table>
 
-      <h4>Grafica que muestra las estadísticas mes a mes desde febrero del 2015, de todos los usuarios que se registran en MéxicoX</h4>
+  <h4>Historico mensual de todos los usuarios que se registran en MéxicoX</h4>
 
-      <table class="table table-hover table-bordered">
-        <td><div id="line_top_x"></div></td>
-
-        <td><div><table class="table table-hover table-bordered">
-          <tr class="info" style="font-size: medium">
-            <td>Mes</td>
-            <td>Registrados</td>
-          </tr>
-          <?php $i = 1; foreach ($mes1 as $m): ?>
-            <tr>
-              <td><?php print_r($i); ?></td>
-              <td><?php print_r($m); $i++;?></td>
-            </tr>
-          <?php endforeach; ?>
-        </table>
-        <a class="btn btn-default" href="{{url ('/download/inscritos.csv')}}" role="button">Descargar archivo inscritos.csv</a>
-      </div></td>
-    </table>
-    <br>
-    <h4>Grafica que muestra las estadísticas mes a mes desde marzo del 2015, de todos los usuarios que se inscriben en algún curso de MéxicoX</h4>
-    <table class="table table-hover table-bordered">
-      <td><div id="line_top_y"></div></td>
+  <table class="table table-hover table-bordered">
+    <td><div id="chart_div0" style="width: 700px; height: 500px;"></td>
 
       <td><div><table class="table table-hover table-bordered">
-        <tr class="success" style="font-size: medium">
+        <tr class="info" style="font-size: medium">
+          <td>Año</td>
           <td>Mes</td>
           <td>Registrados</td>
         </tr>
-        <?php $i = 1; foreach ($mes2 as $m): ?>
+        @foreach($mes as $m)
+          @if($m->year != "" && $m->month < 11 && $m->year < 2016)
           <tr>
-            <td><?php print_r($i); ?></td>
-            <td><?php print_r($m); $i++;?></td>
+            <td>{{$m->year}}</td>
+            <td>{{$m->month}}</td>
+            <td>{{$m->c}}</td>
           </tr>
-        <?php endforeach; ?>
+          @endif
+        @endforeach
+      </table>
+      <a class="btn btn-default" href="{{url ('/download/inscritos.csv')}}" role="button">Descargar archivo inscritos.csv</a>
+    </div></td>
+  </table>
+  <br>
+  <h4>Historico mensual de todos los usuarios que se inscriben en algún curso de MéxicoX</h4>
+  <table class="table table-hover table-bordered">
+    <td><div id="chart_div1" style="width: 700px; height: 500px;"></td>
+      <td><div><table class="table table-hover table-bordered">
+        <tr class="success" style="font-size: medium">
+          <td>Año</td>
+          <td>Mes</td>
+          <td>Registrados</td>
+        </tr>
+        @foreach($cur as $c)
+          @if($c->year != "" && $c->month < 11 && $c->year < 2016)
+          <tr>
+            <td>{{$c->year}}</td>
+            <td>{{$c->month}}</td>
+            <td>{{$c->c}}</td>
+          </tr>
+          @endif
+        @endforeach
       </table>
       <a class="btn btn-default" href="{{url ('/download/registrados.csv')}}" role="button">Descargar archivo registrados.csv</a>
     </div></td>
-
   </table>
-
 </table>
-
 </div>
 </div>
-
-
 </body>
 @endsection

@@ -1,35 +1,30 @@
 "nombre del curso","id curso",organizacion,"fecha inicio","fecha fin","inicio de inscripcion","fin de inscripcion"
 "De México al mundo, los ingredientes. ",course-v1:UCSJ+G01+2015G01,UCSJ,"2030-09-21 00:00:00",,"2030-09-11 00:00:00",
+"Curso de Prueba RPG",course-v1:EscuelaX+CP2RPG+2017,EscuelaX,"2030-01-01 00:00:00",,"2030-01-01 00:00:00",
 "Curso Prueba",course-v1:UniversidadX+CP01+2016,UniversidadX,"2030-01-01 00:00:00",,"2030-01-01 00:00:00",
 "Resolución de problemas matemáticos y el uso de tecnologías digitales",course-v1:CINVESTAV+RPMUTDX02+2017_S1,CINVESTAV,"2030-01-01 00:00:00",,"2030-01-01 00:00:00",
 "Edición de documentos para el aula de clases con Microsoft Word",course-v1:Microsoft+MSW01+MSW01,Microsoft,"2030-10-01 00:00:00",,"2029-01-01 00:00:00",
 "Prevención del conflicto derivado del acto médico",course-v1:CONAMED+PCDAM02+2016_S2,CONAMED,"2030-01-01 00:00:00",,"2029-01-01 00:00:00",
-"Test Self-paced",course-v1:MiOrg+MOTEST+2017_01,MiOrg,"2020-01-01 00:00:00","2020-05-31 00:00:00","2019-12-12 00:00:00","2020-01-01 00:00:00"
-"Aprender a Aprender, alternativas para una mejor calidad de vida",course-v1:Prepaenlinea-SEP+PELSEPAAO2x+2017_S1,Prepaenlinea-SEP,"2017-03-13 06:00:00","2017-04-16 06:00:00","2017-02-28 06:00:00","2017-03-20 06:00:00"
-"Álgebra Lineal segunda parte",course-v1:TECNM+CF090317A2x+2017_S1,TECNM,"2017-04-03 00:00:00","2017-05-14 00:00:00","2017-02-22 00:00:00","2017-04-10 23:30:00"
-"Introducción a la Educación Financiera",course-v1:BANSEFI+BANSEFIIEF02x+2017_S1,BANSEFI,"2017-03-20 18:00:00","2017-04-16 23:30:00","2017-02-20 00:00:00","2017-03-27 23:30:00"
-"Ciber-acoso: la otra cara del internet",course-v1:FEM-UAE+CAOCI01x+2017_S1,FEM-UAE,"2017-05-01 00:00:00","2017-06-04 00:00:00","2017-02-15 00:00:00","2017-05-08 23:30:00"
-"La historia de la vida cotidiana",course-v1:COLMEX+CMHVC02x+2017_S1,"El Colegio de México","2017-03-20 00:00:00","2017-04-21 00:00:00","2017-02-14 00:00:00","2017-03-28 00:00:00"
+"La historia de la vida cotidiana",course-v1:COLMEX+CMHVC02x+2017_S1,"El Colegio de México","2017-03-20 00:00:00","2017-04-07 00:00:00","2017-02-14 00:00:00","2017-03-28 00:00:00"
 "Introducción al uso y representación de información geoespacial",course-v1:CENTROGEO+CGIURIG02x+2017_S1,CENTROGEO,"2017-03-30 00:00:00","2017-04-27 06:00:00","2017-02-09 00:00:00","2017-04-06 06:00:00"
-"Como entender el presupuesto",course-v1:SHCP+CEPGP005x+2017_S1,SHCP,"2017-03-15 06:00:00","2017-04-19 23:59:00","2017-02-02 00:00:00",
-" ¿Cómo son nuestras escuelas? Evaluación de Condiciones Básicas para la Enseñanza y el Aprendizaje",course-v1:INEE+INEEECEA04x+2017_S1,INEE,"2017-03-01 06:00:00","2017-04-01 06:00:00","2017-02-01 00:00:00","2017-03-09 06:00:00"
-"Cálculo Diferencial segunda parte",course-v1:TECNM+ACF090116A2x+2017_S1,TECNM,"2017-04-03 00:00:00","2017-05-14 06:00:00","2017-01-22 00:00:00","2017-04-10 06:00:00"
-"Probabilidad y estadística",course-v1:TECNM+PE022017AX+2017_S1,TECNM,"2017-02-13 06:00:00","2017-04-10 06:00:00","2017-01-01 06:00:00","2017-02-26 06:00:00"
-"La ética, el ser humano y la ciencia",course-v1:TECNM+ESHC022017AX+2017_S1,TECNM,"2017-02-13 06:00:00","2017-03-26 06:00:00","2017-01-01 06:00:00","2017-02-26 06:00:00"
+"¿Cómo entender el presupuesto? El gasto público a través de los datos",course-v1:SHCP+CEPGP005x+2017_S1,SHCP,"2017-03-15 06:00:00","2017-04-19 06:00:00","2017-02-02 00:00:00","2017-03-22 00:00:00"
+" ¿Cómo son nuestras escuelas? Evaluación de Condiciones Básicas para la Enseñanza y el Aprendizaje",course-v1:INEE+INEEECEA04x+2017_S1,INEE,"2017-03-01 00:00:00","2017-03-29 00:00:00","2017-02-01 00:00:00","2017-03-01 06:00:00"
+"Probabilidad y estadística",course-v1:TECNM+PE022017AX+2017_S1,TECNM,"2017-02-13 06:00:00","2017-03-26 06:00:00","2017-01-01 06:00:00","2017-02-20 06:00:00"
+"La ética, el ser humano y la ciencia",course-v1:TECNM+ESHC022017AX+2017_S1,TECNM,"2017-02-13 06:00:00","2017-03-26 06:00:00","2017-01-01 06:00:00","2017-02-20 06:00:00"
 "Conoce MéxicoX",course-v1:MexicoX+CMX01+2016,MexicoX,"2017-01-01 18:00:00","2017-12-30 18:00:00","2017-01-01 00:30:00","2017-12-28 00:00:00"
 "Curso de Prueba RPG",course-v1:EscuelaX+CPRPG+2017,EscuelaX,"2017-01-01 00:00:00","2017-02-02 21:30:00","2017-01-01 00:00:00",
 "Aritmética y principios de Álgebra",course-v1:TECNM+APA022017AX+2017_S1,TECNM,"2017-02-13 05:00:00","2017-03-26 05:00:00","2017-01-01 00:00:00","2017-02-20 23:59:00"
-"Entendiendo el Cálculo Integral",course-v1:TECNM+ACF010217Bx+2017_S1,TECNM,"2017-02-13 07:00:00","2017-04-23 07:00:00","2016-12-19 07:00:00","2017-02-26 23:59:00"
-"Herramientas de gestión y comunicación en la nube",course-v1:TECNM+HGCN022017+2017_S1,TECNM,"2017-02-13 06:00:00","2017-04-02 23:30:00","2016-12-19 00:00:00","2017-02-28 23:30:00"
-"Álgebra Lineal, primera parte",course-v1:TECNM+AL1P022017AX+2017_S1,TECNM,"2017-02-13 00:00:00","2017-03-26 00:00:00","2016-12-19 00:00:00","2017-02-26 23:30:00"
-"Cálculo diferencial, primera parte",course-v1:TECNM+CD1P022017AX+2017_S1,TECNM,"2017-02-13 00:00:00","2017-03-26 06:00:00","2016-12-19 00:00:00","2017-02-26 06:00:00"
-"Desarrollo Sustentable, nuestro futuro compartido",course-v1:TECNM+DSNFC022017Bx+2017_S1,TECNM,"2017-02-13 00:00:00","2017-03-26 05:00:00","2016-12-19 00:00:00","2017-02-26 11:59:00"
-"Investigación. Descubriendo Hechos y Principios",course-v1:TecNM+IDHP02201717AX+2017_S1,TecNM,"2017-02-13 00:00:00","2017-04-09 23:59:00","2016-12-19 00:00:00","2017-02-26 23:59:00"
+"Entendiendo el Cálculo Integral",course-v1:TECNM+ACF010217Bx+2017_S1,TECNM,"2017-02-13 07:00:00","2017-04-23 07:00:00","2016-12-19 07:00:00","2017-02-20 23:30:00"
+"Herramientas de gestión y comunicación en la nube",course-v1:TECNM+HGCN022017+2017_S1,TECNM,"2017-02-13 06:00:00","2017-04-02 23:30:00","2016-12-19 00:00:00","2017-02-20 23:30:00"
+"Álgebra Lineal, primera parte",course-v1:TECNM+AL1P022017AX+2017_S1,TECNM,"2017-02-13 00:00:00","2017-03-26 00:00:00","2016-12-19 00:00:00","2017-02-20 23:30:00"
+"Cálculo diferencial, primera parte",course-v1:TECNM+CD1P022017AX+2017_S1,TECNM,"2017-02-13 00:00:00","2017-03-26 06:00:00","2016-12-19 00:00:00","2017-02-20 06:00:00"
+"Desarrollo Sustentable, nuestro futuro compartido",course-v1:TECNM+DSNFC022017Bx+2017_S1,TECNM,"2017-02-13 00:00:00","2017-03-26 05:00:00","2016-12-19 00:00:00","2017-02-20 00:00:00"
+"Investigación. Descubriendo Hechos y Principios",course-v1:TecNM+IDHP02201717AX+2017_S1,TecNM,"2017-02-13 00:00:00","2017-04-09 23:59:00","2016-12-19 00:00:00","2017-02-20 00:00:00"
 "Resolución de problemas matemáticos y el uso de tecnologías digitales",course-v1:CINVESTAV+RPMUTDX03+2017_S1,CINVESTAV,"2017-01-30 06:00:00","2017-03-20 06:00:00","2016-12-11 00:00:00","2017-02-06 00:00:00"
-"Resiliencia nómica",course-v1:IIIDx+IIIDRn104x+2017_S1,IIIDx,"2017-02-06 00:00:00","2017-04-24 00:00:00","2016-11-30 00:00:00","2017-03-07 00:00:00"
+"Resiliencia nómica",course-v1:IIIDx+IIIDRn104x+2017_S1,IIIDx,"2017-02-06 00:00:00","2017-04-24 00:00:00","2016-11-30 00:00:00","2017-03-15 00:00:00"
 "Diez en Planea",course-v1:INEE+DP01+2016_S2,INEE,"2016-11-14 00:00:00","2016-12-09 23:30:00","2016-11-10 00:00:00","2016-11-26 23:30:00"
 "Sistema de Evaluación del Desempeño",course-v1:SHCP-UNAM+DPbR4x+2016_S2,SHCP-UNAM,"2016-11-09 06:00:00","2016-12-07 05:30:00","2016-11-04 00:00:00","2016-11-10 00:00:00"
-"Energías convencionales, limpias y su tecnología",course-v1:Tecnologico_de_Monterrey+ECLE1I01x+2017_T1,"Tecnológico de Monterrey","2017-02-27 00:00:00","2017-04-15 05:00:00","2016-11-04 00:00:00","2017-03-10 19:00:00"
+"Energías convencionales, limpias y su tecnología",course-v1:Tecnologico_de_Monterrey+ECLE1I01x+2017_T1,"Tecnológico de Monterrey","2017-02-27 00:00:00","2017-04-15 05:00:00","2016-11-04 00:00:00","2017-02-26 19:00:00"
 "Finanzas para emprendedores",course-v1:FCPS-UNAM+UNAM0008x+2016_S2,FCPS-UNAM,"2016-10-24 00:00:00","2016-12-09 23:30:00","2016-10-24 00:00:00","2016-11-13 23:30:00"
 "Producción Multimedia de Material Didáctico",course-v1:UTPuebla+PMMDx+2016_S2,UTPuebla,"2017-02-20 00:00:00","2017-03-20 00:00:00","2016-10-20 00:00:00","2017-02-27 00:00:00"
 "Los desastres y sus efectos psicológicos",course-v1:CENAPRED+FEAP101x+2017_S1,CENAPRED,"2017-01-16 00:00:00","2017-03-16 00:00:00","2016-10-20 00:00:00","2017-01-23 00:00:00"
@@ -134,8 +129,6 @@ Demencias,course-v1:INGER+DEMENCIAS01+2016_S1,INGER,"2016-01-18 06:00:00","2016-
 "Evaluación educativa en un clic",course-v1:INEE+EEC01+2016_S2,INEE,"2016-10-18 00:00:00","2016-11-18 23:30:00",,"2016-10-26 00:00:00"
 "Salud ósea a lo largo de la vida",course-v1:INSP+osea1+2015_T2,INSP,"2015-10-12 23:00:00","2015-11-10 11:00:00",,"2015-11-08 00:00:00"
 "Servicios Turísticos",course-v1:UTC+UTCM01+2016_C3,UTC,"2016-10-24 00:00:00","2016-12-02 23:30:00",,"2016-10-31 23:30:00"
-"¿Cómo crear un MOOC en MéxicoX? ",course-v1:DGTVE+CCMOOCM01+2017,DGTVE,"2030-01-01 00:00:00",,,
-"Curso de Prueba RPG",course-v1:EscuelaX+CP2RPG+2017,EscuelaX,"2030-01-01 00:00:00","2031-01-01 00:00:00",,
 "Inducción a la corrección de estilo",course-v1:IPN-UPEV+ICE_01+2016,IPN-UPEV,"2016-07-11 00:00:00","2016-07-22 00:00:00",,
 "Prevención del conflicto derivado del acto médico",course-v1:CONAMED+PCDAM+2016_C1,CONAMED,"2030-01-01 00:00:00",,,
 "edX Demonstration Course",course-v1:edX+DemoX+Demo_Course,edX,"2013-02-05 05:00:00",,,
@@ -145,7 +138,6 @@ Demencias,course-v1:INGER+DEMENCIAS01+2016_S1,INGER,"2016-01-18 06:00:00","2016-
 "Planeación y Presupuesto Orientado a Resultados",course-v1:SHCP-UNAM+DPbR2x+2016_S2,SHCP-UNAM,"2016-09-08 06:00:00","2016-10-06 04:30:00",,
 "Metodología de Marco Lógico y Matriz de Indicadores para Resultados",course-v1:SHCP-UNAM+DPbR3x+2016_S2,SHCP-UNAM,"2016-10-10 06:00:00","2016-11-07 05:30:00",,
 "Curso básico para Defensores en el Sistema Penal Acusatorio",course-v1:SETEC-SEGOB+SETEC-DSPA+2016_T4,SETEC-SEGOB,"2016-08-22 00:00:00","2016-09-22 07:00:00",,
-"Modelo de Orientación Vocacional-Ocupacional",course-v1:Prepaenlinea-SEP+MOVOx01+2017_S1,Prepaenlinea-SEP,"2017-03-06 00:00:00","2017-04-09 00:00:00",,
 "Curso básico para Jueces en el Sistema Penal Acusatorio",course-v1:SETEC-SEGOB+SETEC-Jueces+2016_T4,SETEC-SEGOB,"2016-08-22 00:00:00","2016-09-22 07:00:00",,
 "Curso básico para Agentes del Ministerio Público en el Sistema Penal Acusatorio",course-v1:SETEC-SEGOB+SETEC-CBAMPSPA+2016-S2,SETEC-SEGOB,"2016-05-16 00:00:00","2016-06-16 00:00:00",,
 "Curso básico para Agentes del Ministerio Público en el Sistema Penal Acusatorio",course-v1:SETEC-SEGOB+SETEC-CBAMPSPA+2016_T4,SETEC-SEGOB,"2016-08-22 00:00:00","2016-09-22 07:00:00",,

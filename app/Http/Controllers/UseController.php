@@ -153,15 +153,29 @@ class UseController extends Controller {
 			fclose($fp);
 
 
-			return view('home')->with('totalesi',($totalesi))->with('inscritos',($inscritos)) -> with('name_user', $username )-> with('course_name', $cn);
+			return view('home')
+			-> with('totalesi',($totalesi))
+			-> with('inscritos',($inscritos))
+			-> with('name_user', $username )
+			-> with('course_name', $cn);
 
 		}
 		elseif( (session()->get('accescourse') > 0) || ($super_user == "1")) {
 			$course_id = session()->get('course_id');
 			$course_name = session()->get('course_name');
 
-			$inscritos = DB::table('vm_inscritos_x_curso')->leftJoin('course_name','vm_inscritos_x_curso.course_id','=','course_name.course_id')->select('vm_inscritos_x_curso.id','vm_inscritos_x_curso.course_name','vm_inscritos_x_curso.course_id','vm_inscritos_x_curso.inscritos','course_name.constancias')->orderBy('id')->paginate(10);
-                        $totalesi = DB::table('vm_inscritos_x_curso')->leftJoin('course_name','vm_inscritos_x_curso.course_id','=','course_name.course_id')->select('vm_inscritos_x_curso.id','vm_inscritos_x_curso.course_name','vm_inscritos_x_curso.course_id','vm_inscritos_x_curso.inscritos','course_name.constancias')->get();
+			$inscritos = DB::table('vm_inscritos_x_curso')
+				->leftJoin('course_name','vm_inscritos_x_curso.course_id','=','course_name.course_id')
+				->select('vm_inscritos_x_curso.id','vm_inscritos_x_curso.course_name','vm_inscritos_x_curso.course_id','vm_inscritos_x_curso.inscritos','course_name.constancias')
+				->where('vm_inscritos_x_curso.course_id', '=', $course_id)
+				->orderBy('id')
+				->paginate(10);
+
+      $totalesi = DB::table('vm_inscritos_x_curso')
+				->leftJoin('course_name','vm_inscritos_x_curso.course_id','=','course_name.course_id')
+				->select('vm_inscritos_x_curso.id','vm_inscritos_x_curso.course_name','vm_inscritos_x_curso.course_id','vm_inscritos_x_curso.inscritos','course_name.constancias')
+				->where('vm_inscritos_x_curso.course_id', '=', $course_id)
+				->get();
 
                         $fp = fopen ('download/totales.csv', 'w');
 			$listaid = array();
@@ -197,7 +211,11 @@ class UseController extends Controller {
 
 			fclose($fp);
 
-			return view('home')->with ('inscritos',($inscritos))-> with('name_user', $username )-> with('course_name', $course_name);
+			return view('home')
+			-> with('inscritos',($inscritos))
+			-> with('name_user', $username )
+			-> with('totalesi', $totalesi)
+			-> with('course_name', $course_name);
 		}
 		else
 			return view('accescourse')-> with('name_user', $username);
@@ -499,7 +517,7 @@ class UseController extends Controller {
 			$cn0 = "Registrados en MéxicoX";
 			$cn1 = "Usuarios con cuenta activada en MéxicoX";
 			$cn2 = "Usuarios que no tienen su cuenta activada en MéxicoX";
-                        $cn3 = "Usuarios que se desinscribieron";
+      $cn3 = "Usuarios que se desinscribieron";
 
 			return view('usuarios/totales')
 			-> with ('info', collect($info))
@@ -854,6 +872,7 @@ class UseController extends Controller {
 	public function inscritost(){
 
 		$username = session()->get('nombre');
+		$course_id = session()->get('course_id');
 		$super_user = session()->get('super_user');
 
 		if($username == NULL || $super_user == NULL)
@@ -861,60 +880,21 @@ class UseController extends Controller {
 
 		if(($super_user == '1')){
 
-			$mes1 = DB::select(DB::raw('SELECT count(id) as cuenta FROM edxapp.auth_user WHERE YEAR(date_joined) = 2015 GROUP BY MONTH(date_joined)'));
+			$mes = DB::select(DB::raw('SELECT MONTH(date_joined) as month, YEAR(date_joined) as year, count(id) as c FROM edxapp.auth_user GROUP BY YEAR(date_joined), MONTH(date_joined)'));
 
-			$i = 0;
-			foreach ($mes1 as $m){
-				$mes[$i] = $m->cuenta;
-				$i++;
-			}
-			$mes2 = DB::select(DB::raw('SELECT count(id) as cuenta FROM edxapp.auth_user WHERE YEAR(date_joined) = 2016 GROUP BY MONTH(date_joined)'));
+			$cur = DB::select(DB::raw('SELECT MONTH(created) as month, YEAR(created) as year, count(id) as c FROM edxapp.student_courseenrollment group by YEAR(created), MONTH(created)'));
 
-			$i = sizeof($mes);
-			foreach ($mes2 as $m){
-				$mes[$i] = $m->cuenta;
-				$i++;
-			}
-			$mes3 = DB::select(DB::raw('SELECT count(id) as cuenta FROM edxapp.auth_user WHERE YEAR(date_joined) = 2017 GROUP BY MONTH(date_joined)'));
-
-			$i = sizeof($mes);
-			foreach ($mes3 as $m){
-				$mes[$i] = $m->cuenta;
-				$i++;
-			}
-
-			$cur1 = DB::select(DB::raw('SELECT count(id) as c FROM edxapp.student_courseenrollment where year(created) = 2015 group by month(created)'));
-			$i = 0;
-			foreach ($cur1 as $c1){
-				$cur[$i] = $c1->c;
-				$i++;
-			}
-			$cur2 = DB::select(DB::raw('SELECT count(id) as c FROM edxapp.student_courseenrollment where year(created) = 2016 group by month(created)'));
-			$i = sizeof($cur);
-			foreach ($cur2 as $c2){
-				$cur[$i] = $c2->c;
-				$i++;
-			}
-			$cur3 = DB::select(DB::raw('SELECT count(id) as c FROM edxapp.student_courseenrollment where year(created) = 2017 group by month(created)'));
-			$i = sizeof($cur);
-			foreach ($cur3 as $c3){
-				$cur[$i] = $c3->c;
-				$i++;
-			}
 /////////////////////////////////////////////////
 
 			$ins = fopen ('download/inscritos.csv', 'w');
 
-			$j=1;
-
-			$registros1 = array ('Mes', 'Registrados');
+			$registros1 = array ('Año', 'Mes', 'Registrados');
 			fputcsv($ins, $registros1);
 
 			foreach ($mes as $u){
 
-				$registros1 = array ($j, $u);
+				$registros1 = array ($u->year, $u->month, $u->c);
 				fputcsv($ins, $registros1);
-				$j++;
 			}
 
 			fclose($ins);
@@ -922,18 +902,14 @@ class UseController extends Controller {
 /////////////////////////////////////7
 			$reg = fopen ('download/registrados.csv', 'w');
 
-			$j=1;
-
-			$registros2 = array ('Mes', 'Registrados');
+			$registros2 =  array ('Año', 'Mes', 'Registrados');
 			fputcsv($reg, $registros2);
 
 			foreach ($cur as $u){
 
-				$registros2 = array ($j, $u);
+				$registros2 = array ($u->year, $u->month, $u->c);
 				fputcsv($reg, $registros2);
-				$j++;
 			}
-
 
 			fclose($reg);
 
@@ -954,7 +930,6 @@ class UseController extends Controller {
 			fclose($us);
 
 			////////////////////////////////////////////////////////////////////////////
-			$constancias = DB::table('mexicox.constancias')->count('id');
 
 			$lista_constancias = DB::select(DB::raw('select count(curso) as constancias , course_id as nombre_curso from mexicox.constancias group by course_id'));
 			$r = 0;
@@ -975,7 +950,6 @@ class UseController extends Controller {
 			$registroc = array();
 
 			foreach($ncursos_constancia as $n){
-				#print_r($n->n);
 				 if($n->n == $b){
 				 	$inscritos_nc[$b]++;
 				 }
@@ -995,8 +969,19 @@ class UseController extends Controller {
 
 			$n_instructores = DB::select(DB::raw('SELECT count(*) as n FROM edxapp.student_courseaccessrole where role = "instructor"'))[0]->n;
 
+			$cn ="MéxicoX";
 
-			return view('usuarios/inscritost')-> with('mes1', collect($mes))-> with('mes2', collect($cur))-> with('name_user', $username)->with('users_course', collect($users_course))->with('constancias', $constancias)->with('lista_constancias', $lista_constancias)->with('inscrito_curso', $inscrito_curso)->with('inscritos_nc', $inscritos_nc)->with('nn', $nn)->with('n_instructores', $n_instructores);
+			return view('usuarios/inscritost')
+			-> with('mes', collect($mes))
+			-> with('cur', collect($cur))
+			-> with('name_user', $username)
+			-> with('users_course', collect($users_course))
+			-> with('lista_constancias', $lista_constancias)
+			-> with('inscrito_curso', $inscrito_curso)
+			-> with('inscritos_nc', $inscritos_nc)
+			-> with('nn', $nn)
+			-> with('course_name', $cn)
+			-> with('n_instructores', $n_instructores);
                         }
 		}
 		else
@@ -1032,12 +1017,12 @@ class UseController extends Controller {
 			foreach ($state as $key => $value) {
 				fputcsv($usuarios_estado, [$value->state, $value->cs]);# code...
 			}
-			
+
 			fclose($usuarios_pais);
 			fclose($usuarios_estado);
 
 
-			$cn = "Estadísticas todos los cursos:";
+			$cn = "MéxicoX";
 
 			return view('usuarios/geo')
 			->with('country', collect($country))
@@ -1057,9 +1042,9 @@ class UseController extends Controller {
 								where s.course_id = "'.$course_id.'" group by c.Estado order by cs desc'));
 
 			return view('usuarios/geo')
-			->with('country', collect($country))
-			->with('state', collect($state))
-			->with('name_user', $username )
+			-> with('country', collect($country))
+			-> with('state', collect($state))
+			-> with('name_user', $username )
 			-> with('course_name', $course_name);
 
 		}
@@ -1150,5 +1135,14 @@ class UseController extends Controller {
 		session()->flush();
 
 		return view('logout');
+	}
+	public function other_course(){
+
+		session()->put('course_name', NULL);
+		session()->put('course_id', NULL);
+
+		return $this->correoacurso();
+
+
 	}
 }

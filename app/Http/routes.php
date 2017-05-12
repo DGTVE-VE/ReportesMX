@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Session;
 */
 
 /*
- * Ruta callback a donde regresa después de hacer el login en google para 
+ * Ruta callback a donde regresa después de hacer el login en google para
  * usar las APIS.
  */
 Route::get ('formatos/ficha_tecnica/publica/{id}', 'FichaTecnicaController@publicaFechas');
@@ -39,16 +39,16 @@ Route::get ('google_api/oauth2callback', function (Request $request){
 
     if (Input::has('code')) {
         $client->authenticate(Input::get('code'));
-        Session::put ('access_token', $client->getAccessToken());        
-        $path = url('formatos/ficha_tecnica/publica/'.Session::get('id_ficha'));        
+        Session::put ('access_token', $client->getAccessToken());
+        $path = url('formatos/ficha_tecnica/publica/'.Session::get('id_ficha'));
         return Redirect::to($path);
-    } else {        
-        return Redirect::to($client->createAuthUrl());       
+    } else {
+        return Redirect::to($client->createAuthUrl());
     }
 //    if ($request->has(GOOGLE_CODE)) {
 //        $code = $request->input(GOOGLE_CODE);
-//        $googleApi = new GoogleApi ([Google_Service_Calendar::CALENDAR]); 
-//        $googleApi->authenticate ($code);                
+//        $googleApi = new GoogleApi ([Google_Service_Calendar::CALENDAR]);
+//        $googleApi->authenticate ($code);
 //        $redirect_uri = $request->session()->get (REDIRECT_URI, '/');
 //        return Redirect::to(Session::get('ruta'));
 //    }
@@ -71,6 +71,8 @@ Route::get('geo', ['middleware' => 'auth', 'uses' => 'UseController@geo']);
 Route::get('videos', ['middleware' => 'auth', 'uses' => 'UseController@videos']);
 
 Route::get('mongo', ['middleware' => 'auth', 'uses' => 'UseController@mongo']);
+
+Route::get('other_course', ['middleware' => 'auth', 'uses' => 'UseController@other_course']);
 
 Route::get('logout', ['middleware' => 'auth', 'uses' => 'UseController@logout']);
 

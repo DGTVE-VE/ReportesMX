@@ -65,7 +65,7 @@
   </head>
   <body>
   <br>
-  <h3> <p style="text-align: center";>Usuarios por Entidad Federativa: </p> </h3>
+  <h3> <p style="text-align: center";>Usuarios de "{{$course_name}}" por Entidad Federativa</p> </h3>
   <div class="container">
   <div class="row table-responsive">
       <table class="table table-hover table-bordered">
@@ -90,7 +90,7 @@
   </div>
   <br>
 
-  <h3> <p style="text-align: center";>Usuarios por País: </p> </h3>
+  <h3> <p style="text-align: center";>Usuarios de "{{$course_name}}" por País</p> </h3>
   <div class="container">
   <div class="row table-responsive">
   <table class="table table-hover table-bordered">
