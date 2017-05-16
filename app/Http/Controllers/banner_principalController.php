@@ -19,7 +19,7 @@ class banner_principalController extends Controller
      */
     public function index()
     {
-        $banner_principal = banner_principal::paginate(25);
+        $banner_principal = banner_principal::paginate(10);
         $usuario = session()->get('nombre');
         return view('admin.banner_principal.index', compact('banner_principal'))->with('name_user',$usuario);
     }
