@@ -24,7 +24,7 @@ class Contactos_institucionController extends Controller
         $institucion_id = Auth::user ()->institucion_id;
         $contactos_institucion = Contactos_institucion::
                 where("institucion_id", $institucion_id)
-                ->paginate(25);
+                ->paginate(10);
 
         return view('instituciones.contactos_institucion.index', compact('contactos_institucion'))
                 ->with('super_user', $super_user)
