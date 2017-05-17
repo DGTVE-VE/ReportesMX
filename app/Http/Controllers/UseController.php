@@ -975,7 +975,7 @@ class UseController extends Controller {
 			}
 
 			foreach ($state as $key => $value) {
-				fputcsv($usuarios_estado, [$value->state, $value->cs]);# code...
+				fputcsv($usuarios_estado, [$value->state, $value->cs]);
 			}
 
 			fclose($usuarios_pais);
@@ -1000,6 +1000,22 @@ class UseController extends Controller {
 								inner join mexicox.codigospostales c on c.CodigoPostal = a.user_id
 								inner join edxapp.student_courseenrollment s on a.user_id = s.user_id
 								where s.course_id = "'.$course_id.'" group by c.Estado order by cs desc'));
+
+
+			$usuarios_pais = fopen ('download/usuarios_pais.csv', 'w');
+			$usuarios_estado = fopen ('download/usuarios_estado.csv', 'w');
+
+			foreach ($country as $key => $value) {
+				fputcsv($usuarios_pais, [$value->country, $value->cc]);
+			}
+
+			foreach ($state as $key => $value) {
+				fputcsv($usuarios_estado, [$value->state, $value->cs]);
+			}
+
+			fclose($usuarios_pais);
+			fclose($usuarios_estado);
+
 
 			return view('usuarios/geo')
 			-> with('country', collect($country))
