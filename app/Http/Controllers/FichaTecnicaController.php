@@ -36,6 +36,15 @@ class FichaTecnicaController extends Controller {
                         'veronica.sanchez@mexicox.gob.mx',
                         'sonia.martinez@mexicox.gob.mx'
                     ];
+    public $ccFichaAprobada = ['griselda.velazquez@mexicox.gob.mx', 
+                        'norman.sanchez@mexicox.gob.mx', 
+                        'lily.sacal@mexicox.gob.mx',
+                        'roberto.pina@mexicox.gob.mx',
+                        'israel.toledo@mexicox.gob.mx',
+                        'veronica.sanchez@mexicox.gob.mx',
+                        'sonia.martinez@mexicox.gob.mx',
+                        'javier.castanos@mexicox.gob.mx'
+                    ];
 //    public $mailRecipients = ['israel.toledo@mexicox.gob.mx'];
             
     public function __construct() {
@@ -174,7 +183,10 @@ class FichaTecnicaController extends Controller {
             Session::flash ('success_message', 'Carta compromiso aprobada');
             $mensaje = "Carta compromiso aprobada:";
             
-            $this->enviaMail($ficha, $mensaje, 'Carta compromiso aprobada: abrir espacio en la verde '.$ficha->nombre_curso);
+            $this->enviaMail($ficha, 
+                    $mensaje, 
+                    'Carta compromiso aprobada: abrir espacio en la verde '.$ficha->nombre_curso,
+                    $this->ccFichaAprobada);
             
             return $this->show ($idFicha, Input::get ('seccion'));
         }
@@ -248,11 +260,14 @@ class FichaTecnicaController extends Controller {
         return $event;
     }
     
-    private function enviaMail ($ficha, $mensaje, $subject){
+    private function enviaMail ($ficha, $mensaje, $subject, $cc = null){
+        if ($cc == null){
+            $cc = $this->ccMail;
+        }
         Mail::send('emails.ficha.revision', ['ficha' => $ficha, 'mensaje'=> $mensaje], 
             function ($m) use ($ficha, $subject) {
                 $m->from($this->fromMail, 'México X');
-                $m->to($this->toMail)->cc ($this->ccMail)
+                $m->to($this->toMail)->cc ($cc)
                         ->subject($subject);
             });
         Log::debug (Mail::failures());
