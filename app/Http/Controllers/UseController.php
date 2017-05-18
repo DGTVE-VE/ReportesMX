@@ -970,12 +970,12 @@ class UseController extends Controller {
 			$usuarios_pais = fopen ('download/usuarios_pais.csv', 'w');
 			$usuarios_estado = fopen ('download/usuarios_estado.csv', 'w');
 
-			foreach ($country as $key => $value) {
-				fputcsv($usuarios_pais, [$value->country, $value->cc]);
+			foreach ($country as $pais => $valor) {
+				fputcsv($usuarios_pais, [$valor->country, $valor->cc]);
 			}
 
-			foreach ($state as $key => $value) {
-				fputcsv($usuarios_estado, [$value->state, $value->cs]);
+			foreach ($state as $estado => $val) {
+				fputcsv($usuarios_estado, [$val->state, $val->cs]);
 			}
 
 			fclose($usuarios_pais);
@@ -1005,12 +1005,12 @@ class UseController extends Controller {
 			$usuarios_pais = fopen ('download/usuarios_pais.csv', 'w');
 			$usuarios_estado = fopen ('download/usuarios_estado.csv', 'w');
 
-			foreach ($country as $key => $value) {
-				fputcsv($usuarios_pais, [$value->country, $value->cc]);
+			foreach ($country as $pais => $valor) {
+				fputcsv($usuarios_pais, [$valor->country, $valor->cc]);
 			}
 
-			foreach ($state as $key => $value) {
-				fputcsv($usuarios_estado, [$value->state, $value->cs]);
+			foreach ($state as $estado => $val) {
+				fputcsv($usuarios_estado, [$val->state, $val->cs]);
 			}
 
 			fclose($usuarios_pais);
