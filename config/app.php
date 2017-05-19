@@ -132,7 +132,8 @@ return [
 
          Appzcoder\CrudGenerator\CrudGeneratorServiceProvider::class,
          Collective\Html\HtmlServiceProvider::class,
-
+        
+        'hisorange\BrowserDetect\Provider\BrowserDetectService',
        
         'AdamWathan\BootForms\BootFormsServiceProvider',
     ],
@@ -185,5 +186,6 @@ return [
         'BootForm' => 'AdamWathan\BootForms\Facades\BootForm',
         'Form' => Collective\Html\FormFacade::class,
         'HTML' => Collective\Html\HtmlFacade::class,
+        'BrowserDetect' => 'hisorange\BrowserDetect\Facade\Parser',
     ],
 ];

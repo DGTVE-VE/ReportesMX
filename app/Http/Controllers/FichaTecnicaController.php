@@ -50,6 +50,7 @@ class FichaTecnicaController extends Controller {
     public function __construct() {
 
         $this->middleware('auth');
+        $this->middleware('allowedBrowser');;
         
     }
 
@@ -59,6 +60,7 @@ class FichaTecnicaController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {         
+        
         $username = Auth::user()->name;
         if (empty (Auth::user()->institucion_id)){
             $instituciones = \App\Model\Institucion::all()->pluck ('nombre_institucion', 'id')->all();

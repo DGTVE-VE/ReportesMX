@@ -20,6 +20,19 @@ use Illuminate\Support\Facades\Session;
  * Ruta callback a donde regresa después de hacer el login en google para
  * usar las APIS.
  */
+
+Route::get ('recomendacion', function (){
+    return view('formatos.ficha.recomendarNavegador')
+            ->with ('name_user', Auth::user ()->name);
+});
+Route::get ('detectBrowser', function (){
+    
+    $browser = \hisorange\BrowserDetect\Facade\Parser::browserFamily();
+    print $browser;
+//    print BrowserDetect::browserFamily();
+    
+});
+
 Route::get ('formatos/ficha_tecnica/publica/{id}', 'FichaTecnicaController@publicaFechas');
 Route::post ('usuario/asocia/institucion', function (){
     if (Input::has ('institucion_id')){
@@ -54,6 +67,7 @@ Route::get ('google_api/oauth2callback', function (Request $request){
 //    }
 });
 Route::resource ('formatos/ficha_tecnica', 'FichaTecnicaController');
+        
 
 Route::get('/', ['middleware' => 'auth', 'uses' => 'MXController@blog']);
 Route::any('home', ['middleware' => 'auth', 'uses' => 'UseController@inscritos']);
