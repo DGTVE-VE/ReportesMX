@@ -320,7 +320,7 @@ class FichaTecnicaController extends Controller {
         $tipo_curso = \App\Model\TipoCurso::all()->pluck ('tipo_curso', 'id')->all();
         $categorias = \App\Model\Categorias::all();
         $lineasEstrategicas = \App\Model\LineasEstrategicas::all();
-        $institucion = \App\Model\Institucion::find (Auth::user()->institucion_id);
+        $institucion = \App\Model\Institucion::find ($ficha->id_institucion);
         return view('formatos/ficha/create')
                 ->with('name_user', $username)
                 ->with('contactos', $contactos)
