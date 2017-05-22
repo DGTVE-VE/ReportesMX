@@ -19,7 +19,7 @@ class AllowedBrowsersMiddleware
         $browser = \hisorange\BrowserDetect\Facade\Parser::browserFamily();
         Log::info('Browser detected: '.$browser);
 
-        if ($browser == 'Firefox' || $browser == 'Chrome'){
+        if ($browser == 'Firefox' || $browser == 'Chrome' || $browser == 'Safari'){
                 return $next($request);
             }
         return redirect('recomendacion');

@@ -25,13 +25,7 @@ Route::get ('recomendacion', function (){
     return view('formatos.ficha.recomendarNavegador')
             ->with ('name_user', Auth::user ()->name);
 });
-Route::get ('detectBrowser', function (){
-    
-    $browser = \hisorange\BrowserDetect\Facade\Parser::browserFamily();
-    print $browser;
-//    print BrowserDetect::browserFamily();
-    
-});
+
 
 Route::get ('formatos/ficha_tecnica/publica/{id}', 'FichaTecnicaController@publicaFechas');
 Route::post ('usuario/asocia/institucion', function (){
@@ -58,13 +52,7 @@ Route::get ('google_api/oauth2callback', function (Request $request){
     } else {
         return Redirect::to($client->createAuthUrl());
     }
-//    if ($request->has(GOOGLE_CODE)) {
-//        $code = $request->input(GOOGLE_CODE);
-//        $googleApi = new GoogleApi ([Google_Service_Calendar::CALENDAR]);
-//        $googleApi->authenticate ($code);
-//        $redirect_uri = $request->session()->get (REDIRECT_URI, '/');
-//        return Redirect::to(Session::get('ruta'));
-//    }
+
 });
 Route::resource ('formatos/ficha_tecnica', 'FichaTecnicaController');
         
