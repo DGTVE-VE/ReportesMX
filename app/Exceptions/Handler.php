@@ -46,7 +46,7 @@ class Handler extends ExceptionHandler
             $e = new NotFoundHttpException($e->getMessage(), $e);
         }
         if ( $e instanceof \Illuminate\Session\TokenMismatchException ) {
-            return redirect()->route('auth/login');
+            return redirect()->route('login');
         }
         
 
