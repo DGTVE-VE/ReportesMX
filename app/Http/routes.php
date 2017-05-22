@@ -28,6 +28,27 @@ Route::get ('recomendacion', function (){
 
 
 Route::get ('formatos/ficha_tecnica/publica/{id}', 'FichaTecnicaController@publicaFechas');
+
+Route::get ('asociaUsuario', function (){
+    return view('asociaUsuarioInstitucion');
+})->middleware ('auth');
+
+Route::post ('asociaUsuario', function (){
+    $user = App\User::find (Input::get('usuario_id'));
+    $user->institucion_id = Input::get('institucion_id');
+    $user->save ();
+    
+    return redirect('/');
+})->middleware ('auth');
+
+Route::post ('buscaCorreo', function (){    
+    $user = App\User::where ('email', Input::get ('email'))->first();
+    return view('asociaUsuarioInstitucion')
+            ->with ('usuarioAasociar', $user)
+            ->with ('instituciones', \App\Model\Institucion::all()
+                    ->pluck ('nombre_institucion', 'id'));            
+})->middleware ('auth');
+
 Route::post ('usuario/asocia/institucion', function (){
     if (Input::has ('institucion_id')){
         $user = Auth::user ();
