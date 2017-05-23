@@ -82,7 +82,7 @@ Route::resource ('formatos/ficha_tecnica', 'FichaTecnicaController');
         
 
 Route::get('/', ['middleware' => 'auth', 'uses' => 'MXController@blog']);
-Route::any('home', ['middleware' => 'auth', 'uses' => 'UseController@inscritos']);
+Route::any('home', ['middleware' => 'auth', 'uses' => 'MXController@blog']);
 
 Route::get('cursos', ['middleware' => 'auth', 'uses' => 'UseController@cursos']);
 Route::get('cursoa', ['middleware' => 'auth', 'uses' => 'UseController@cursoa']);
