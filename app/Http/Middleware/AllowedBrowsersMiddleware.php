@@ -16,7 +16,7 @@ class AllowedBrowsersMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $agent = new Jenssegers\Agent\Agent;
+        $agent = new \Jenssegers\Agent\Agent;
         $browser = $agent->browser();
         Log::info('Browser detected: '.$browser);
 
