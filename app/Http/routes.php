@@ -27,7 +27,9 @@ Route::get ('recomendacion', function (){
 });
 
 Route::get ('whichBrowser', function (){
-    $browser = \hisorange\BrowserDetect\Facade\Parser::browserFamily();
+//    $browser = \hisorange\BrowserDetect\Facade\Parser::browserFamily();
+    $agent = new Jenssegers\Agent\Agent;
+    $browser = $agent->browser();
     print $browser;
 });
 

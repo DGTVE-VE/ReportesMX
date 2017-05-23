@@ -136,6 +136,7 @@ return [
         'hisorange\BrowserDetect\Provider\BrowserDetectService',
        
         'AdamWathan\BootForms\BootFormsServiceProvider',
+        Jenssegers\Agent\AgentServiceProvider::class,
     ],
     /*
       |--------------------------------------------------------------------------
@@ -187,5 +188,6 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'HTML' => Collective\Html\HtmlFacade::class,
         'BrowserDetect' => 'hisorange\BrowserDetect\Facade\Parser',
+        'Agent' => Jenssegers\Agent\Facades\Agent::class,
     ],
 ];
