@@ -26,9 +26,10 @@ Route::get ('recomendacion', function (){
             ->with ('name_user', Auth::user ()->name);
 });
 
-Route::get ('notInstructor', function (){
-    
-})->name('notInstructor');
+Route::get ('whichBrowser', function (){
+    $browser = \hisorange\BrowserDetect\Facade\Parser::browserFamily();
+    print $browser;
+});
 
 Route::get ('formatos/ficha_tecnica/publica/{id}', 'FichaTecnicaController@publicaFechas');
 
