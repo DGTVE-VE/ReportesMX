@@ -267,9 +267,10 @@ class FichaTecnicaController extends Controller {
             $cc = $this->ccMail;
         }
         Mail::send('emails.ficha.revision', ['ficha' => $ficha, 'mensaje'=> $mensaje], 
-            function ($m) use ($ficha, $subject) {
+            function ($m) use ($ficha, $subject, $cc) {
                 $m->from($this->fromMail, 'México X');
-                $m->to($this->toMail)->cc ($cc)
+                $m->to($this->toMail)
+                        ->cc ($cc)
                         ->subject($subject);
             });
         Log::debug (Mail::failures());
