@@ -25,15 +25,36 @@ Route::get ('recomendacion', function (){
     return view('formatos.ficha.recomendarNavegador')
             ->with ('name_user', Auth::user ()->name);
 });
-Route::get ('detectBrowser', function (){
-    
-    $browser = \hisorange\BrowserDetect\Facade\Parser::browserFamily();
+
+Route::get ('whichBrowser', function (){
+//    $browser = \hisorange\BrowserDetect\Facade\Parser::browserFamily();
+    $agent = new Jenssegers\Agent\Agent;
+    $browser = $agent->browser();
     print $browser;
-//    print BrowserDetect::browserFamily();
-    
 });
 
 Route::get ('formatos/ficha_tecnica/publica/{id}', 'FichaTecnicaController@publicaFechas');
+
+Route::get ('asociaUsuario', function (){
+    return view('asociaUsuarioInstitucion');
+})->middleware ('auth');
+
+Route::post ('asociaUsuario', function (){
+    $user = App\User::find (Input::get('usuario_id'));
+    $user->institucion_id = Input::get('institucion_id');
+    $user->save ();
+    
+    return redirect('/');
+})->middleware ('auth');
+
+Route::post ('buscaCorreo', function (){    
+    $user = App\User::where ('email', Input::get ('email'))->first();
+    return view('asociaUsuarioInstitucion')
+            ->with ('usuarioAasociar', $user)
+            ->with ('instituciones', \App\Model\Institucion::all()
+                    ->pluck ('nombre_institucion', 'id'));            
+})->middleware ('auth');
+
 Route::post ('usuario/asocia/institucion', function (){
     if (Input::has ('institucion_id')){
         $user = Auth::user ();
@@ -58,19 +79,13 @@ Route::get ('google_api/oauth2callback', function (Request $request){
     } else {
         return Redirect::to($client->createAuthUrl());
     }
-//    if ($request->has(GOOGLE_CODE)) {
-//        $code = $request->input(GOOGLE_CODE);
-//        $googleApi = new GoogleApi ([Google_Service_Calendar::CALENDAR]);
-//        $googleApi->authenticate ($code);
-//        $redirect_uri = $request->session()->get (REDIRECT_URI, '/');
-//        return Redirect::to(Session::get('ruta'));
-//    }
+
 });
 Route::resource ('formatos/ficha_tecnica', 'FichaTecnicaController');
         
 
 Route::get('/', ['middleware' => 'auth', 'uses' => 'MXController@blog']);
-Route::any('home', ['middleware' => 'auth', 'uses' => 'UseController@inscritos']);
+Route::any('home', ['middleware' => 'auth', 'uses' => 'MXController@blog']);
 
 Route::get('cursos', ['middleware' => 'auth', 'uses' => 'UseController@cursos']);
 Route::get('cursoa', ['middleware' => 'auth', 'uses' => 'UseController@cursoa']);
@@ -111,7 +126,7 @@ Route::any('savevideo', 'MXController@savevideo');
 Route::any('success', 'MXController@success');
 
 // Authentication routes...
-Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::get('auth/login', 'Auth\AuthController@getLogin')->name('login');;
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
 

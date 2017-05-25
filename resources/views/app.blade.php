@@ -104,7 +104,10 @@
                                         <li><a href="{{url ('instituciones/institucion')}}" class="bg-active">Instituciones</a></li>
                                         <li class="divider"></li>
                                         <li><a href="{{url ('adminblog')}}" class="bg-close" title="Blog">Entrada de Blog</a></li>
-
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="{{url ('asociaUsuario')}}" class="bg-close" >Asocia usuario a institucion</a>
+                                        </li>
                                     </ul>
                                 </li>
 

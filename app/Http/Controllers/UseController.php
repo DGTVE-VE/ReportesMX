@@ -86,7 +86,10 @@ class UseController extends Controller {
 
 		$username = session()->get('nombre');
 
-		return view('menu')->with('course_name', collect($course_name))->with('name_user', $username )->with('cursoid', collect($cursoid));
+		return view('menu')
+                        ->with('course_name', collect($course_name))
+                        ->with('name_user', $username )
+                        ->with('cursoid', collect($cursoid));
 	}
 
 	public function inscritos()

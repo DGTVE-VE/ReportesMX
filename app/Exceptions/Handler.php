@@ -45,6 +45,10 @@ class Handler extends ExceptionHandler
         if ($e instanceof ModelNotFoundException) {
             $e = new NotFoundHttpException($e->getMessage(), $e);
         }
+        if ( $e instanceof \Illuminate\Session\TokenMismatchException ) {
+            return redirect()->route('login');
+        }
+        
 
         return parent::render($request, $e);
     }
