@@ -50,7 +50,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Reportes <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{url ('home')}}" class="bg-active">Listado Cursos</a></li>
+                                <li><a href="{{url ('inicioCursos')}}" class="bg-active">Listado Cursos</a></li>
                                 <li class="divider"></li>
                                 <li><a href="{{url ('totales')}}" class="bg-active">Información usuarios</a></li>
                                 <li class="divider"></li>
