@@ -110,7 +110,7 @@
                                         </li>
                                         <li class="divider"></li>
                                         <li>
-                                            <a href="{{url ('guardaPassword')}}" class="bg-close" >Guarda Passwword de Usuario</a>
+                                            <a href="{{url ('guardaPassword')}}" class="bg-close" >Guarda Password de Usuario</a>
                                         </li>
                                     </ul>
                                 </li>
