@@ -61,6 +61,7 @@ Route::post ('restauraPassword', function (){
     $password = DB::table('password_temp')->where('email', $email)->first();
     $user = \App\Model\Auth_user::where ('email', $email)->first();
     $user->password = $password->password_old;
+    $user->timestamps = false;
     $user->save();
     DB::table('password_temp')->where('email', $email)->delete ();
     return view('guardaPassword');
