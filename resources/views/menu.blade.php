@@ -10,7 +10,7 @@
 <br>
 <br>
 
-<form action="{{url('home')}}" method="POST" class="text-center">
+<form action="{{url('inicioCursos')}}" method="POST" class="text-center">
 {!! csrf_field() !!}
 <?php $j = 0; ?>
   <select id="select_curso" name="course_id">

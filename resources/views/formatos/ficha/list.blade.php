@@ -32,16 +32,16 @@
                         </thead>
                         @foreach ($fichas as $ficha)
                         @if ($ficha->estado == 'compromiso')
-                        <tr class='info'>
+                        <tr class='' style="background-color: #F2F5A9;">
                             @endif
                             @if ($ficha->estado == 'aprobada')
-                        <tr class='success'>
+                        <tr class='' style="background-color: #F5A9A9;">
                             @endif
                             @if ($ficha->estado == 'revision')
-                        <tr class='warning'>
+                        <tr class='' style="background-color: #81BEF7;">
                             @endif
                             @if ($ficha->estado == 'edicion')
-                        <tr class='active'>
+                        <tr class='' style="background-color: #81F79F;">
                             @endif
                             @if (Auth::user()->is_superuser)
                                 <td>{{$ficha->id}}</td>

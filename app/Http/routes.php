@@ -118,6 +118,7 @@ Route::resource ('formatos/ficha_tecnica', 'FichaTecnicaController');
 
 Route::get('/', ['middleware' => 'auth', 'uses' => 'MXController@blog']);
 Route::any('home', ['middleware' => 'auth', 'uses' => 'MXController@blog']);
+Route::any('inicioCursos', ['middleware' => 'auth', 'uses' => 'UseController@inscritos']);
 
 Route::get('cursos', ['middleware' => 'auth', 'uses' => 'UseController@cursos']);
 Route::get('cursoa', ['middleware' => 'auth', 'uses' => 'UseController@cursoa']);
@@ -216,3 +217,4 @@ Route::resource('instituciones/contactos_institucion', 'Contactos_institucionCon
 Route::resource('admin/banner_principal', 'banner_principalController');
 /*Búsqueda de course_id en el catalogo de Course_name*/
 Route::match(array('GET','POST'),'curso/busqueda/{curso?}', array('uses'=>'Course_nameController@busquedaCursos'));
+Route::get('listadoCursos', ['middleware' => 'auth', 'uses' => 'UseController@correoacurso']);
