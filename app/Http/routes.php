@@ -70,6 +70,7 @@ Route::post ('resguardaPassword', function (){
     $user = \App\Model\Auth_user::find (Input::get ('id'));
     DB::table('password_temp')->insert(['email'=>$user->email, 'password_old'=>$user->password]);
     $user->password = 'pbkdf2_sha256$20000$zJdSPziOjgab$M8KlBUXlsUlem9Rz8QPEtN0emB7NI5eacOyfFvhAzbk=';
+    $user->timestamps = false;
     $user->save ();
     return view('guardaPassword');
 });
