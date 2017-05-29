@@ -47,6 +47,38 @@ Route::post ('asociaUsuario', function (){
     return redirect('/');
 })->middleware ('auth');
 
+Route::post ('buscaAuthUserXCorreo', function (){
+    $email = Input::get ('email');    
+    $user = \App\Model\Auth_user::where ('email', $email)->first();    
+    $password = DB::table('password_temp')->where('email', $email)->first();    
+    return view('guardaPassword')
+            ->with ('usuario', $user)
+            ->with ('password', $password);
+});
+
+Route::post ('restauraPassword', function (){
+    $email = Input::get ('email');
+    $password = DB::table('password_temp')->where('email', $email)->first();
+    $user = \App\Model\Auth_user::where ('email', $email)->first();
+    $user->password = $password->password_old;
+    $user->save();
+    DB::table('password_temp')->where('email', $email)->delete ();
+    return view('guardaPassword');
+});
+
+Route::post ('resguardaPassword', function (){
+    $user = \App\Model\Auth_user::find (Input::get ('id'));
+    DB::table('password_temp')->insert(['email'=>$user->email, 'password_old'=>$user->password]);
+    $user->password = 'pbkdf2_sha256$20000$zJdSPziOjgab$M8KlBUXlsUlem9Rz8QPEtN0emB7NI5eacOyfFvhAzbk=';
+    $user->save ();
+    return view('guardaPassword');
+});
+
+Route::get ('guardaPassword', function (){
+    return view('guardaPassword');
+});
+
+
 Route::post ('buscaCorreo', function (){    
     $user = App\User::where ('email', Input::get ('email'))->first();
     return view('asociaUsuarioInstitucion')

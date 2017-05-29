@@ -108,6 +108,9 @@
                                         <li>
                                             <a href="{{url ('asociaUsuario')}}" class="bg-close" >Asocia usuario a institucion</a>
                                         </li>
+                                        <li>
+                                            <a href="{{url ('guardaPassword')}}" class="bg-close" >Guarda Passwword de Usuario</a>
+                                        </li>
                                     </ul>
                                 </li>
 
