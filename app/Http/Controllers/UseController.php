@@ -1124,4 +1124,84 @@ class UseController extends Controller {
 
 
 	}
+    
+    
+    /*  *****   Reporte de evaluación por pares    *****   */
+    public function EvalPares(){
+		$correo = \Auth::user() -> email;
+
+		if(empty($name = DB::table('edxapp.auth_user')->whereemail($correo)->get())){
+			return view('no_asociado_curso');
+		}
+
+		$username = $name[0]->username;
+		session()->put('nombre', $username);
+
+		if($name[0]->is_superuser == 1)
+		{
+			session()->put('super_user', '1');
+			$id = DB::table('edxapp.auth_user')->whereemail($correo)->whereis_superuser('1')->get()[0]->id;
+
+			$course_name = Course_overviews::whereBetween('end',array(20160000, 20990000))
+                                ->whereBetween('enrollment_start',array(20160000, date("Ymd")))
+                                ->lists('display_name');
+			$cursoid = Course_overviews::whereBetween('end',array(20160000, 20990000))
+			                          ->whereBetween('enrollment_start',array(20160000, date("Ymd")))
+			                          ->lists('id');
+			return $this->muestraEvalPares($course_name,$cursoid);
+		}
+
+		else if($name[0]->is_active == true)
+		{
+
+			$id = DB::table('edxapp.auth_user')->whereemail($correo)->whereis_active('1')->get()[0]->id;
+
+			if( sizeof(DB::table('edxapp.student_courseaccessrole')
+                                ->whereuser_id($id)
+                                ->whererole("instructor")
+                                ->where('course_id', 'like', 'course%')->get()) > 1 ){
+					$course_id = DB::table('edxapp.student_courseaccessrole')
+                                                ->whereuser_id($id)
+                                                ->whererole("instructor")
+                                                ->where('course_id', 'like', 'course%')
+                                                ->get();
+			}else {
+				$course_id = DB::table('edxapp.student_courseaccessrole')
+                                        ->whereuser_id($id)
+                                        ->whererole("instructor")
+                                        ->get();
+			}
+
+
+			$n = sizeof($course_id);
+
+			session()->put('accescourse', $n);
+			session()->put('super_user', '0');
+
+			for($i = 0, $j=0; $i < $n ; $i++, $j++)
+			{
+				$cursoid[$j] = $course_id[$i]->course_id;
+				$course_name[$j] = Course_overviews::whereid($cursoid[$j])->get()[0]->display_name;
+			}
+			if($n < 1){
+				return view('accescourse')-> with('name_user', $username);
+			}
+			else{
+				session()->put('courses_names', $course_name);
+				return $this->muestraEvalPares($course_name, $cursoid);
+			}
+		}
+		else{
+			return ("No tienes acceso al sistema");
+		}
+    }
+    
+    public function muestraEvalPares($course_name, $cursoid){
+        $username = session()->get('nombre');
+
+		return view('cursoEvalPares')
+                        ->with('course_name', collect($course_name))
+                        ->with('name_user', $username )
+                        ->with('cursoid', collect($cursoid));
+    }
 }
