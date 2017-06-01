@@ -221,5 +221,6 @@ Route::resource('admin/banner_principal', 'banner_principalController');
 Route::match(array('GET','POST'),'curso/busqueda/{curso?}', array('uses'=>'Course_nameController@busquedaCursos'));
 Route::get('listadoCursos', ['middleware' => 'auth', 'uses' => 'UseController@correoacurso']);
 
-/*  *****   Reporte evaluación por pares    ***** */
+                        /*  **********   Reporte evaluación por pares    ********** */
 Route::get('reporteEvalPares', ['middleware' => 'auth', 'uses' => 'UseController@EvalPares']);
+Route::any('muestraRepEvalPares', ['middleware' => 'auth', 'uses' => 'UseController@muestraReporteEP']);

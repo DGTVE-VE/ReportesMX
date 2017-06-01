@@ -1,13 +1,15 @@
 @extends('app') @section('content')
+<div class="col-md-12" style="padding:15px;"></div>
 <center>
-<h4 class="text-center">REPORTE DE EVALUACIÓN POR PARES</h4> <img src="logo_large.png" border=0>
+    <h4 class="text-center">REPORTE DE EVALUACIÓN POR PARES</h4>
+    <div class="col-md-12" style="padding:10px;"></div>
+    <img src="logo_large.png" border=0>
 </center>
-<br>
+<div class="col-md-12" style="padding:10px;"></div>
 <h4 class="text-center">Selecciona un curso para mostrarte reporte.</h4>
-<br>
-<br>
+<div class="col-md-12" style="padding:15px;"></div>
 
-<form action="{{url('inicioCursos')}}" method="POST" class="text-center">
+<form action="{{url('muestraRepEvalPares')}}" method="POST" class="text-center">
 {!! csrf_field() !!}
 <?php $j = 0; ?>
   <select id="select_curso" name="course_id">
@@ -18,7 +20,6 @@
     if (isset($auth_user->is_superuser)) {
         if ($auth_user->is_superuser == 1) {
     ?>
-          <option value="0">Todos los cursos de MéxicoX</option>
     <?php
       }
     }
