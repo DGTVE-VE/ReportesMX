@@ -1124,4 +1124,169 @@ class UseController extends Controller {
 
 
 	}
+    
+    
+/*  **********   Reporte de evaluación por pares    **********   */
+    public function EvalPares(){
+		$correo = \Auth::user() -> email;
+
+		if(empty($name = DB::table('edxapp.auth_user')->whereemail($correo)->get())){
+			return view('no_asociado_curso');
+		}
+
+		$username = $name[0]->username;
+		session()->put('nombre', $username);
+
+		if($name[0]->is_superuser == 1)
+		{
+			session()->put('super_user', '1');
+			$id = DB::table('edxapp.auth_user')->whereemail($correo)->whereis_superuser('1')->get()[0]->id;
+
+			$course_name = Course_overviews::whereBetween('end',array(20160000, 20990000))
+                                ->whereBetween('enrollment_start',array(20160000, date("Ymd")))
+                                ->lists('display_name');
+			$cursoid = Course_overviews::whereBetween('end',array(20160000, 20990000))
+			                          ->whereBetween('enrollment_start',array(20160000, date("Ymd")))
+			                          ->lists('id');
+			return $this->muestraEvalPares($course_name,$cursoid);
+		}
+
+		else if($name[0]->is_active == true)
+		{
+
+			$id = DB::table('edxapp.auth_user')->whereemail($correo)->whereis_active('1')->get()[0]->id;
+
+			if( sizeof(DB::table('edxapp.student_courseaccessrole')
+                                ->whereuser_id($id)
+                                ->whererole("instructor")
+                                ->where('course_id', 'like', 'course%')->get()) > 1 ){
+					$course_id = DB::table('edxapp.student_courseaccessrole')
+                                                ->whereuser_id($id)
+                                                ->whererole("instructor")
+                                                ->where('course_id', 'like', 'course%')
+                                                ->get();
+			}else {
+				$course_id = DB::table('edxapp.student_courseaccessrole')
+                                        ->whereuser_id($id)
+                                        ->whererole("instructor")
+                                        ->get();
+			}
+
+
+			$n = sizeof($course_id);
+
+			session()->put('accescourse', $n);
+			session()->put('super_user', '0');
+
+			for($i = 0, $j=0; $i < $n ; $i++, $j++)
+			{
+				$cursoid[$j] = $course_id[$i]->course_id;
+				$course_name[$j] = Course_overviews::whereid($cursoid[$j])->get()[0]->display_name;
+			}
+			if($n < 1){
+				return view('accescourse')-> with('name_user', $username);
+			}
+			else{
+				session()->put('courses_names', $course_name);
+				return $this->muestraEvalPares($course_name, $cursoid);
+			}
+		}
+		else{
+			return ("No tienes acceso al sistema");
+		}
+    }
+    
+    public function muestraEvalPares($course_name, $cursoid){
+        $username = session()->get('nombre');
+
+		return view('cursoEvalPares')
+                        ->with('course_name', collect($course_name))
+                        ->with('name_user', $username )
+                        ->with('cursoid', collect($cursoid));
+    }
+    
+	public function muestraReporteEP(){
+		$username = session()->get('nombre');
+        $c_id = session()->get('course_id');
+
+
+		if($c_id == "" || $c_id == NULL){
+            $c_id = filter_input (INPUT_POST, 'course_id');
+            if($username == NULL || $c_id == "" || $c_id == NULL)
+                return $this->correoacurso();
+        }
+
+		if($c_id){
+			$course_id = Course_overviews::whereid($c_id)->get()[0]->id;
+			$course_name = Course_overviews::whereid($c_id)->get()[0]->display_name;
+			session()->put('course_id', $course_id);
+			session()->put('course_name', $course_name);
+		}
+
+		$super_user = session()->get('super_user');
+
+		if($super_user == "1"){
+			$course_id = session()->get('course_id');
+			$course_name = session()->get('course_name');
+
+			$consulta1EP = DB::table('edxapp.courseware_studentmodule AS c')
+				->leftJoin('edxapp.submissions_submission AS s','s.uuid','=',DB::raw('substring(c.state, 60,36)'))
+                ->leftJoin('edxapp.submissions_score AS e','e.submission_id','=','s.id')
+                ->leftJoin('edxapp.assessment_assessment AS a','a.submission_uuid','=','s.uuid')
+                ->leftJoin('edxapp.assessment_assessmentfeedback AS f','f.submission_uuid','=','s.uuid')
+				->select('c.student_id' ,'s.raw_answer', 'e.points_earned', 'e.points_possible', 'a.feedback', 'f.feedback_text')
+				->where('c.module_id', '=', $c_id)
+                ->where(DB::raw('substring(c.state, 60,36)'), 'regexp', '^[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}$')
+				->orderBy('c.student_id', 'asc')
+				->paginate(10);
+
+            $consulta2EP = DB::table('edxapp.courseware_studentmodule AS c')
+				->leftJoin('edxapp.submissions_submission AS s','s.uuid','=',DB::raw('substring(c.state, 22,36)'))
+                ->leftJoin('edxapp.submissions_score AS e','e.submission_id','=','s.id')
+                ->leftJoin('edxapp.assessment_assessment AS a','a.submission_uuid','=','s.uuid')
+                ->leftJoin('edxapp.assessment_assessmentfeedback AS f','f.submission_uuid','=','s.uuid')
+				->select('c.student_id' ,'s.raw_answer', 'e.points_earned', 'e.points_possible', 'a.feedback', 'f.feedback_text')
+				->where('c.module_id', '=', $c_id)
+                ->where(DB::raw('substring(c.state, 22,36)'), 'regexp', '^[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}$')
+				->orderBy('c.student_id', 'asc')
+				->paginate(10);
+
+            /*$fp = fopen ('download/totales.csv', 'w');
+			$listaid = array();
+			$listaid[0][0] = 'id';
+			$listaid[0][1] = 'id curso';
+			$listaid[0][2] = 'nombre del curso';
+			$listaid[0][3] = 'inscritos';
+            $listaid[0][4] = 'constancias emitidas';
+            $listaid[0][5] = 'eficiencia';
+			$i = 1;
+
+			foreach ($totalesi as $key => $value) {
+				$listaid[$i][0] = ($value->id);
+				$listaid[$i][1] = ($value->course_id);
+				$listaid[$i][2] = ($value->course_name);
+				$listaid[$i][3] = ($value->inscritos);
+                $listaid[$i][4] = ($value->constancias);
+                $listaid[$i][5]=  (round(($value->eficiencia=$value->constancias/($value->inscritos)*100),2));
+				$i++;
+			}
+            foreach ($inscritos as $key => $value) {
+                $value->eficiencia=$value->constancias/($value->inscritos)*100;
+            }
+
+			foreach ($listaid as $value) {
+				fputcsv($fp, $value );
+			}
+
+			fclose($fp);*/
+
+			return view('reporteEvalPares')
+			-> with('consulta1EP',($consulta1EP))
+			-> with('name_user', $username )
+			-> with('consulta2EP', $consulta2EP)
+			-> with('course_name', $course_name);
+		}
+		else
+			return view('accescourse')-> with('name_user', $username);
+    }
 }

@@ -117,11 +117,11 @@ Route::get ('google_api/oauth2callback', function (Request $request){
 });
 Route::resource ('formatos/ficha_tecnica', 'FichaTecnicaController');
         
-
+/*  *****   Página inicial dirige al blog privado en reportes   *****   */
 Route::get('/', ['middleware' => 'auth', 'uses' => 'MXController@blog']);
 Route::any('home', ['middleware' => 'auth', 'uses' => 'MXController@blog']);
-Route::any('inicioCursos', ['middleware' => 'auth', 'uses' => 'UseController@inscritos']);
 
+Route::any('inicioCursos', ['middleware' => 'auth', 'uses' => 'UseController@inscritos']);
 Route::get('cursos', ['middleware' => 'auth', 'uses' => 'UseController@cursos']);
 Route::get('cursoa', ['middleware' => 'auth', 'uses' => 'UseController@cursoa']);
 Route::get('curson', ['middleware' => 'auth', 'uses' => 'UseController@curson']);
@@ -224,3 +224,7 @@ Route::resource('admin/banner_principal', 'banner_principalController');
 /*Búsqueda de course_id en el catalogo de Course_name*/
 Route::match(array('GET','POST'),'curso/busqueda/{curso?}', array('uses'=>'Course_nameController@busquedaCursos'));
 Route::get('listadoCursos', ['middleware' => 'auth', 'uses' => 'UseController@correoacurso']);
+
+                        /*  **********   Reporte evaluación por pares    ********** */
+Route::get('reporteEvalPares', ['middleware' => 'auth', 'uses' => 'UseController@EvalPares']);
+Route::any('muestraRepEvalPares', ['middleware' => 'auth', 'uses' => 'UseController@muestraReporteEP']);
