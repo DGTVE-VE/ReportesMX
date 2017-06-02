@@ -35,13 +35,13 @@
                         <tr class='' style="background-color: #F2F5A9;">
                             @endif
                             @if ($ficha->estado == 'aprobada')
-                        <tr class='' style="background-color: #F5A9A9;">
+                        <tr class='' style="background-color: #80ff80;"><!--anterior #F5A9A9 -->
                             @endif
                             @if ($ficha->estado == 'revision')
-                        <tr class='' style="background-color: #81BEF7;">
+                        <tr class='' style="background-color: #ff8080;"><!--anterior #81BEF7-->
                             @endif
                             @if ($ficha->estado == 'edicion')
-                        <tr class='' style="background-color: #81F79F;">
+                        <tr class='' style="background-color: #ffff80;"><!--anterior #81F79F-->
                             @endif
                             @if (Auth::user()->is_superuser)
                                 <td>{{$ficha->id}}</td>
