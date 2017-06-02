@@ -214,7 +214,7 @@ class FichaTecnicaController extends Controller {
                       ->subject('Monitorear ficha: '.$ficha->nombre_curso);
                 }
             );
-        Log::debug (Mail::failures());
+            Log::debug (Mail::failures());
             return $this->publicaFechas($idFicha);
             //return $this->show ($idFicha, Input::get ('seccion'));
         }
