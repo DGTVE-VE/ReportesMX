@@ -207,6 +207,14 @@ class FichaTecnicaController extends Controller {
             Session::flash ('success_message', 'Ficha aprobada');
             $mensaje = "Ficha aprobada:";
             $this->enviaMail($ficha, $mensaje, 'Ficha aprobada (Abrir curso en la morada): '.$ficha->nombre_curso);            
+            Mail::send('emails.ficha.revision', ['ficha' => $ficha, 'mensaje'=> 'Monitorear ficha'], 
+                function ($m) use ($ficha) {
+                    $m->from($this->fromMail, 'México X');
+                    $m->to([$this->toMail, 'griselda.velazquez@mexicox.gob.mx'])
+                      ->subject('Monitorear ficha: '.$ficha->nombre_curso);
+                }
+            );
+        Log::debug (Mail::failures());
             return $this->publicaFechas($idFicha);
             //return $this->show ($idFicha, Input::get ('seccion'));
         }
