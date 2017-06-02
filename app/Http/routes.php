@@ -171,6 +171,10 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 //Ruta para la Consulta de Folios en la tabla de constancias
 Route::match(array('GET','POST'),'constancias/{folio?}', array('uses'=>'ConstanciasController@constancias'));
+
+//Ruta para la generacion de los archivos de foros
+Route::get('foros/{usuario?}', ['middleware' => 'auth', 'uses' => 'ForosController@generaArchivoForos']);
+
 //ruta para el servicio Web de la tabla Auth_userprofile
 Route::match(array('GET','POST'),'webService', array('uses'=>'ConstanciasController@webService'));
 
