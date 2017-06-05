@@ -19,7 +19,7 @@ for ($i = 0; $i < $totalcursos; $i++) {
 	echo '<div style="padding-left:5em;">'.$cursos[$i]->id.'</div>';
 	$fecha = new DateTime();
 	echo '<div style="padding-left:5em;">';
-	echo "<a href='/Mi_Reportes/public/download/foros_".$cursos[$i]->display_number_with_default.".csv?".$fecha->getTimestamp()."'>Descargar archivo de foros</a>";
+	echo "<a href='/download/foros_".$cursos[$i]->display_number_with_default.".csv?".$fecha->getTimestamp()."'>Descargar archivo de foros</a>";
 	echo '</div>';
 	echo "<br />";
 	echo "<br />";
