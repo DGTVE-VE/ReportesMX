@@ -1145,9 +1145,13 @@ class UseController extends Controller {
 			$course_name = Course_overviews::whereBetween('end',array(20160000, 20990000))
                                 ->whereBetween('enrollment_start',array(20160000, date("Ymd")))
                                 ->lists('display_name');
-			$cursoid = Course_overviews::whereBetween('end',array(20160000, 20990000))
+			$cursoid = DB::table('edxapp.assessment_peerworkflow')
+                                ->groupBy('item_id')
+                                ->orderBy('course_id')
+                                ->select('course_id')->get();
+            Course_overviews::whereBetween('end',array(20160000, 20990000))
 			                          ->whereBetween('enrollment_start',array(20160000, date("Ymd")))
-			                          ->lists('id');
+			                          ->lists('course_id');
 			return $this->muestraEvalPares($course_name,$cursoid);
 		}
 
