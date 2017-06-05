@@ -96,7 +96,7 @@ class ForosController extends Controller
         $cursos = DB::table('edxapp.course_overviews_courseoverview')->whereorg($org)->get();
         $totcur = sizeof($cursos);
         for ($i = 0; $i < $totcur; $i++) {
-        exec("/usr/bin/mongoexport --host 172.31.10.135 --port 27017 --username edxapp --password password --authenticationDatabase edxapp --db cs_comments_service --collection contents --query '{ course_id: \"".$cursos[$i]->id."\" }' --csv --fields _id,comment_thread_id,parent_id,_type,thread_type,title,body,author_id,author_username,course_id,created_at,updated_at --out /var/www/reportes/public/download/foros_".$cursos[$i]->display_number_with_default.".csv");
+        exec("/usr/bin/mongoexport --host 172.31.10.135 --port 27017 --username cs_comments_service --password password --authenticationDatabase cs_comments_service --db cs_comments_service --collection contents --query '{ course_id: \"".$cursos[$i]->id."\" }' --csv --fields _id,comment_thread_id,parent_id,_type,thread_type,title,body,author_id,author_username,course_id,created_at,updated_at --out /var/www/reportes/public/download/foros_".$cursos[$i]->display_number_with_default.".csv");
         }
         return view('foros.foros_view_1')
 			->with('name_user', $username)
