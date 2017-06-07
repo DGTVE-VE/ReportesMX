@@ -63,8 +63,8 @@
                                 <li><a href="{{url ('videos')}}" class="bg-active">Videos</a></li>
                                 <li class="divider"></li>
                                 <li><a href="{{url ('constancias')}}" class="bg-active">Buscar Folio</a></li>
-								<!--<li class="divider"></li>
-								<li><a href="{{url ('foros')}}" class="bg-active">Generar archivo de foros</a></li>-->
+								<li class="divider"></li>
+								<li><a href="{{url ('foros')}}" class="bg-active">Generar archivo de foros</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
