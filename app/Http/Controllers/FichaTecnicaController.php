@@ -211,7 +211,7 @@ class FichaTecnicaController extends Controller {
                 function ($m) use ($ficha) {
                     $m->from($this->fromMail, 'México X');
                     $m->to([$this->toMail, 'griselda.velazquez@mexicox.gob.mx'])
-                      ->subject('Monitorear ficha: '.$ficha->nombre_curso);
+                      ->subject('Monitorear ficha: '.$ficha->nombre_curso.' - '.$ficha->institucion->siglas);
                 }
             );
             Log::debug (Mail::failures());
