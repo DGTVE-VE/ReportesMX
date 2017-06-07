@@ -187,7 +187,7 @@ class FichaTecnicaController extends Controller {
             
             $this->enviaMail($ficha, 
                     $mensaje, 
-                    'Carta compromiso aprobada: abrir espacio en la verde '.$ficha->nombre_curso,
+                    'Carta compromiso aprobada: abrir espacio en la verde '.$ficha->nombre_curso.' '.$ficha->institucion->siglas,
                     $this->ccFichaAprobada);
             
             return $this->show ($idFicha, Input::get ('seccion'));
