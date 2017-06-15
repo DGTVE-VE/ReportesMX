@@ -43,14 +43,14 @@ Route::post ('asociaUsuario', function (){
     $user = App\User::find (Input::get('usuario_id'));
     $user->institucion_id = Input::get('institucion_id');
     $user->save ();
-    
+
     return redirect('/');
 })->middleware ('auth');
 
 Route::post ('buscaAuthUserXCorreo', function (){
-    $email = Input::get ('email');    
-    $user = \App\Model\Auth_user::where ('email', $email)->first();    
-    $password = DB::table('password_temp')->where('email', $email)->first();    
+    $email = Input::get ('email');
+    $user = \App\Model\Auth_user::where ('email', $email)->first();
+    $password = DB::table('password_temp')->where('email', $email)->first();
     return view('guardaPassword')
             ->with ('usuario', $user)
             ->with ('password', $password);
@@ -81,12 +81,12 @@ Route::get ('guardaPassword', function (){
 });
 
 
-Route::post ('buscaCorreo', function (){    
+Route::post ('buscaCorreo', function (){
     $user = App\User::where ('email', Input::get ('email'))->first();
     return view('asociaUsuarioInstitucion')
             ->with ('usuarioAasociar', $user)
             ->with ('instituciones', \App\Model\Institucion::all()
-                    ->pluck ('nombre_institucion', 'id'));            
+                    ->pluck ('nombre_institucion', 'id'));
 })->middleware ('auth');
 
 Route::post ('usuario/asocia/institucion', function (){
@@ -116,7 +116,7 @@ Route::get ('google_api/oauth2callback', function (Request $request){
 
 });
 Route::resource ('formatos/ficha_tecnica', 'FichaTecnicaController');
-        
+
 /*  *****   Página inicial dirige al blog privado en reportes   *****   */
 Route::get('/', ['middleware' => 'auth', 'uses' => 'MXController@blog']);
 Route::any('home', ['middleware' => 'auth', 'uses' => 'MXController@blog']);
@@ -174,6 +174,9 @@ Route::match(array('GET','POST'),'constancias/{folio?}', array('uses'=>'Constanc
 
 //Ruta para la generacion de los archivos de foros
 Route::get('foros/{usuario?}', ['middleware' => 'auth', 'uses' => 'ForosController@generaArchivoForos']);
+
+//Ruta para descarga de listas de alumnos inscritos a cursos
+Route::get('listas', ['middleware' => 'auth', 'uses' => 'ListasController@listas']);
 
 //ruta para el servicio Web de la tabla Auth_userprofile
 Route::match(array('GET','POST'),'webService', array('uses'=>'ConstanciasController@webService'));

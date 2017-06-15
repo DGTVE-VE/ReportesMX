@@ -95,7 +95,7 @@ class UseController extends Controller {
 	public function inscritos()
 	{
 		$username = session()->get('nombre');
-                $c_id = session()->get('course_id');
+    $c_id = session()->get('course_id');
 
 
 		if($c_id == "" || $c_id == NULL){
@@ -1124,8 +1124,8 @@ class UseController extends Controller {
 
 
 	}
-    
-    
+
+
 /*  **********   Reporte de evaluación por pares    **********   */
     public function EvalPares(){
 		$correo = \Auth::user() -> email;
@@ -1199,7 +1199,7 @@ class UseController extends Controller {
 			return ("No tienes acceso al sistema");
 		}
     }
-    
+
     public function muestraEvalPares($course_name, $cursoid){
         $username = session()->get('nombre');
 
@@ -1208,7 +1208,7 @@ class UseController extends Controller {
                         ->with('name_user', $username )
                         ->with('cursoid', collect($cursoid));
     }
-    
+
 	public function muestraReporteEP(){
 		$username = session()->get('nombre');
         $c_id = session()->get('course_id');
