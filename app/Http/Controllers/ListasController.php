@@ -30,7 +30,7 @@ class ListasController extends Controller {
         left join edxapp.student_courseenrollment s on s.user_id = a.id
         where s.is_active = 1 and s.course_id = "'.$c_id.'"'));
 
-      $fp = fopen('download/listas.csv', 'w');
+      $fp = fopen('download/listas_'.$course_name.'.csv', 'w');
 
       $l = array('Nombre', 'Email', 'País');
         fputcsv($fp, $l);
