@@ -25,8 +25,9 @@ class ListasController extends Controller {
                           return app('App\Http\Controllers\UseController')->correoacurso();
                   }
 
-      $lista =  DB::select(DB::raw('SELECT p.name, a.email, p.country FROM edxapp.auth_userprofile p
+      $lista =  DB::select(DB::raw('SELECT p.name, a.email, m.Pais FROM edxapp.auth_userprofile p
         inner join edxapp.auth_user a on a.id = p.user_id
+        inner join mexicox.Paises m on m.Codigo = p.country
         left join edxapp.student_courseenrollment s on s.user_id = a.id
         where s.is_active = 1 and s.course_id = "'.$c_id.'"'));
 
@@ -36,7 +37,7 @@ class ListasController extends Controller {
         fputcsv($fp, $l);
 
       foreach ($lista as $key) {
-        $array = array($key->name , $key->email, $key->country);
+        $array = array($key->name , $key->email, $key->Pais);
         fputcsv($fp, $array);
       }
 
