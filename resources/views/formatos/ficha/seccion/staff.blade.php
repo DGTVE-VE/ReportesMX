@@ -4,7 +4,12 @@
     <input type='hidden' name='id' value='{{$ficha_curso->id}}'>
     {{csrf_field()}}
     <div class="form-group col-md-8 col-md-offset-2"><br><br>
+        <div class="help-tip posicion">
+            <p>- Docentes que dan el acompañamiento a los alumnos y se visiualizan en la página de About. </p>
+        </div>
+        
         <h3>STAFF del curso</h3>
+        <h5>Docentes que dan el acompañamiento a los alumnos del curso</h5>
         <hr>
     </div>
     <div class="form-group col-md-8 col-md-offset-2">

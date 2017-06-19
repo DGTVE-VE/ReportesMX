@@ -9,40 +9,39 @@
     </div>
     <div class="form-group col-md-8 col-md-offset-2">
         <div class="col-md-4">
-            <label for="fecha_inicio">Inicio del Curso</label><br>
+            <label for="fecha_inicio">Inicio del Curso:</label><br>
             <input name="fecha_inicio" id='fecha_inicio' type="date" required value="{{$ficha_curso->fecha_inicio}}">
             <div class="help-tip posicion">
-                <p>- Sugerimos empezar un día entre semana(martes, miércoles o jueves) 
-                    <br/>- Especificar si el curso es a ritmo propio (self-paced)
-                    <br/>- Evitar días feriados
+                <p>- Se sugere que la fecha de inicio sea un día entre semana (martes, miércoles o jueves).
+                     <br/>- Evitar días feriados.
                 </p>
             </div>
         </div>
         <div class="col-md-2"></div>
         <div class="col-md-4">
-            <label for="fecha_fin">Fin del Curso</label><br>
+            <label for="fecha_fin">Fin del Curso:</label><br>
             <input name="fecha_fin" id="fecha_fin" type="date" value="{{$ficha_curso->fecha_fin}}" required>
             <div class="help-tip posicion">
-                <p>- Especificar la fecha en que termina el Curso
-                    <br/>- Evitar cualquier cambio de fecha
+                <p>- Especificar la fecha en que termina el Curso.
+                    <br/>- Evitar cualquier cambio de fecha.
                 </p>
             </div>
         </div>
     </div>
     <div class="form-group col-md-8 col-md-offset-2">
-        <div class="col-md-5">
-            <label for="fecha_inicio_inscripcion">Inicio de Inscripciones</label><br>                                                    
+        <div class="col-md-4">
+            <label for="fecha_inicio_inscripcion">Inicio de Inscripciones:</label><br>                                                    
             <input name="fecha_inicio_inscripcion" id="fecha_inicio_inscripcion" type="date" value="{{$ficha_curso->fecha_inicio_inscripcion}}" required>
             <div class="help-tip posicion">
-                <p>- Se recomiendan tres meses de inscripciones como mínimo.</p>
+                <p>- Se podrá iniciar inscripciones hasta con tres meses antes de la fecha de inicio.</p>
             </div>
         </div>
-        <div class="col-md-1"></div>
-        <div class="col-md-5">
-            <label for="fecha_fin_inscripcion">Fin de inscripciones</label><br>
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <label for="fecha_fin_inscripcion">Fin de inscripciones:</label><br>
             <input name="fecha_fin_inscripcion" id="fecha_fin_inscripcion" type="date" value="{{$ficha_curso->fecha_fin_inscripcion}}" required>
             <div class="help-tip posicion">
-                <p>- Se sugiere cerrar inscripciones 8 días después de iniciado el curso.</p>
+                <p>- Se sugiere cerrar inscripciones 8 días después a la fecha de inicio.</p>
             </div>
         </div>
     </div><br>
@@ -51,8 +50,8 @@
         <hr>
     </div>
     <div class="form-group col-md-5 col-md-offset-2">
-        <div class="col-md-6">
-            <label for="idioma">Idioma del curso</label>
+        <div class="col-md-5">
+            <label for="idioma">Idioma del curso:</label>
             <select name="idioma" id="idioma">
                 <option value="español" @if($ficha_curso->idioma == 'español') selected @endif>Español</option>
                 <option value="ingles" @if($ficha_curso->idioma == 'ingles') selected @endif>Inglés</option>
@@ -65,7 +64,7 @@
             </select>
         </div>
         <div class="help-tip posicion">
-            <p>- El lenguaje aplica para el contenido, vídeo y transcripciones</p>
+            <p>- El lenguaje aplica para el contenido, vídeo y transcripciones.</p>
         </div>
     </div>
     <br>

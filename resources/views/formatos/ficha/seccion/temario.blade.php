@@ -11,7 +11,7 @@
         <textarea name="temario"  rows="10" cols="40" class="form-control" 
                   id="temario" placeholder="Escribe el temario del Curso">{{$ficha_curso->temario}}</textarea>  
         <div class="help-tip posicion">
-            <p>- Ordenar el contenido por semanas, unidades, módulos o temas.
+            <p>- Ordenar el contenido por secciones, subsecciones y unidades.
                 <br/>- Incluir introducción, desarrollo de módulos y ejercicios o evaluaciones </p>
         </div>
     </div>

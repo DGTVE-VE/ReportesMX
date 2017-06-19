@@ -4,7 +4,12 @@
     <input type='hidden' name='id' value='{{$ficha_curso->id}}'>
     {{csrf_field()}}
     <div class="form-group col-md-8 col-md-offset-2"><br><br>
-        <h3>Seleccione las personas que aparecerán en las constancias</h3>
+        <div class="help-tip posicion">
+            <p>- Seleccione las personas que aparecerán en las constancias.
+            <br/> - Pueden ser hasta 4 personas.
+            </p>
+        </div>        
+        <h3>Asesores que aparecerán en las constancias</h3>
         <h5>(Hasta 4 asesores o colaboradores del Curso)</h5>
         <hr>
     </div>
