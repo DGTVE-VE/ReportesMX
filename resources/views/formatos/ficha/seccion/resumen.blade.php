@@ -8,48 +8,48 @@
         <hr>
     </div>
     <div class="form-group col-md-8 col-md-offset-2">
-        <label for="descripcion_corta">Descripción breve del curso</label>
+        <label for="descripcion_corta">Descripción breve del curso:</label>
         <textarea name="descripcion_corta" class="form-control" 
                   id="descripcion_corta" 
                   placeholder="Escribe la descripción breve del Curso">{{$ficha_curso->descripcion_corta}}</textarea>
         <div class="help-tip posicion">
-            <p>- Objetivo específico del Curso
-                <br/>- Limitado a 160 caracteres incluyendo espacios</p>
+            <p>- Escribir el objetivo específico del Curso.
+                <br/>- Limitado a 160 caracteres incluyendo espacios.</p>
         </div>
     </div>
     <div class="form-group col-md-8 col-md-offset-2">
-        <label for="acerca_del_curso">Acerca del Curso</label>
+        <label for="acerca_del_curso">Acerca del Curso:</label>
         <textarea name="acerca_del_curso" rows="6" cols="40" class="form-control" 
                   id="acerca_del_curso" placeholder="Escribe la descripción general del Curso">{{$ficha_curso->acerca_del_curso}}</textarea>
         <div class="help-tip posicion">
             <p>- Descripción general del curso.
-                <br/>- Conforma la página de presentación del Curso (About)
-                <br/>- Se sugieren 2,000 caracteres como máximo</p>
+                <br/>- Se sugieren 2,000 caracteres como máximo.
+                <br/>- Forma parte de la página de presentación del Curso (About).</p>
         </div>
     </div>
     <div class="form-group col-md-8 col-md-offset-2">
-        <label for="conocimientos_previos">Conocimientos previos</label>
+        <label for="conocimientos_previos">Conocimientos previos:</label>
         <textarea name="conocimientos_previos" class="form-control" 
                   id="conocimientos_previos" placeholder="Especificar si se requieren conocimientos previos del tema">{{$ficha_curso->conocimientos_previos}}</textarea>
         <div class="help-tip posicion">
-            <p>- Especificar si se require de algún conocimiento previo relacionado al Curso</p>                
+            <p>- Especificar si se require de algún conocimiento previo, relacionado a la temática del Curso.</p>                
         </div>
     </div>
     <div class="form-group col-md-8 col-md-offset-2">
-        <label for="aprendizaje_esperado">Aprendizaje esperado</label>
+        <label for="aprendizaje_esperado">Aprendizaje esperado:</label>
         <textarea name="aprendizaje_esperado" rows="3" cols="40" class="form-control" 
                   id="aprendizaje_esperado" placeholder="Describe el resultado esperado al finalizar el Curso">{{$ficha_curso->aprendizaje_esperado}}</textarea>   
         <div class="help-tip posicion">
-            <p>- Respóndete a esta pregunta: ¿qué aprenderé con este curso? 
-                <br/>- Breve y conciso </p>
+            <p>- Respónde a la pregunta: ¿qué aprenderé con este curso? 
+                <br/>- Breve y conciso. </p>
         </div><br>
     </div>
     <div class="form-group col-md-6 col-md-offset-2">
-        <label for="nivel_curso">Nivel del Curso</label>
+        <label for="nivel_curso">Nivel del Curso:</label>
         <div class="help-tip posicion">
-            <p>- Básico: participantes con formación académica básica
-                <br/>- Intermedio: participantes con formación académica media superior
-                <br/>- Avanzado: participantes con formación académica universitaria</p>
+            <p>- Básico: participantes con formación académica básica.
+                <br/>- Intermedio: participantes con formación académica media superior.
+                <br/>- Avanzado: participantes con formación académica universitaria.</p>
         </div>
     </div>
     <div class="form-group col-md-8 col-md-offset-2">
@@ -72,7 +72,7 @@
                value='{{$ficha_curso->esfuerzo_horas}}'
                id="esfuerzo_horas" min="1" max="10" placeholder="Escribe el esfuerzo estimado en horas">
         <div class="help-tip posicion">
-            <p>- Número total de horas que el alumno debe dedicar al curso</p>
+            <p>- Número total de horas por semana que el alumno debe dedicar al curso.</p>
         </div>
     </div>                                
     <div class="form-group col-md-8 col-md-offset-2">
@@ -81,7 +81,7 @@
                value='{{$ficha_curso->calificacion_minima}}'
                id='calificacion_minima' placeholder="Especifica la calificación mínima aprobatoria para el Curso">   
         <div class="help-tip posicion">
-            <p>- Especificar la calificación mínima aprobatoria para obtener constancia 
+            <p>- Especificar la calificación mínima aprobatoria para obtener constancia. 
                 <br/>- El número debe ser mayor o igual a 6 y menor o igual a 10  </p>
         </div><br>
     </div>
@@ -109,6 +109,7 @@
                     <br/>- Aspecto: 1.0
                     <br/>- Calidad: VBR 5Mbps
                     <br/>- Codec de audio: AAC 44.1KHz / 192Kbps
+                    <br/>
                 </p>
             </div>
         </div>
