@@ -46,6 +46,7 @@
         @foreach ($contactos as $contacto)
             <tr>
                 <td>{{$contacto->cargo_contacto}}</td>
+                <td>{{$contacto->nivel_academico}}</td>
                 <td>{{$contacto->nombre }}</td> 
                 <td>{{$contacto->correo_institucional}}</td>
                 <td>{{$contacto->telefono_institucional}}</td>                
