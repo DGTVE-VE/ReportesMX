@@ -41,7 +41,7 @@
         
         <table class='table table-bordered'>
             <thead>
-            <th> Contacto </th><th> Correo </th><th> Teléfono </th>
+            <th> Cargo </th><th> Nivel Académico </th><th> Contacto </th><th> Correo </th><th> Teléfono </th>
             </thead>
         @foreach ($contactos as $contacto)
             <tr>
