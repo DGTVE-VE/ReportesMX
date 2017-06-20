@@ -25,6 +25,7 @@ Route::any ('instituciones/personal', function (){
     }else{
         $personal = User::where('institucion_id', $institucion_id)->get();
         $institucion = App\Model\Institucion::find ($institucion_id);
+        $contactos = \App\Model\Contactos_institucion::where ('institucion_id', $institucion_id);
     }
     
     $instituciones = App\Model\Institucion::all()->pluck ('siglas', 'id');
@@ -32,7 +33,8 @@ Route::any ('instituciones/personal', function (){
     return view ('instituciones.personal')
             ->with('personal', $personal)
             ->with ('instituciones', $instituciones)
-            ->with ('institucion', $institucion);
+            ->with ('institucion', $institucion)
+            ->with ('contactos', $contactos);
 })->middleware ('auth');
 
 

@@ -30,11 +30,24 @@
         </h1>
         <table class='table table-bordered'>
             <thead>
-            <th> Nombre </th><th> Correo</th>
+            <th> Usuario </th><th> Correo</th>
             </thead>
         @foreach ($personal as $persona)
             <tr>
                 <td>{{$persona->name }}</td> <td>{{$persona->email}}</td>
+            </tr>
+        @endforeach 
+        </table>
+        
+        <table class='table table-bordered'>
+            <thead>
+            <th> Contacto </th><th> Correo </th><th> Teléfono </th>
+            </thead>
+        @foreach ($contactos as $contacto)
+            <tr>
+                <td>{{$contacto->nombre }}</td> 
+                <td>{{$contacto->correo_institucional}}</td>
+                <td>{{$contacto->telefono_institucional}}</td>
             </tr>
         @endforeach 
         </table>
