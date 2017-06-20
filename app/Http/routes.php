@@ -22,6 +22,7 @@ Route::any ('instituciones/personal', function (){
     if (empty($institucion_id)){
         $personal = User::whereNull ('institucion_id')->get();
         $institucion = null;
+        $contactos = null;
     }else{
         $personal = User::where('institucion_id', $institucion_id)->get();
         $institucion = App\Model\Institucion::find ($institucion_id);
