@@ -115,6 +115,10 @@
                                         <li>
                                             <a href="{{url ('guardaPassword')}}" class="bg-close" >Guarda Password de Usuario</a>
                                         </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="{{url ('instituciones/personal')}}" class="bg-close" >Ver personal de institución</a>
+                                        </li>
                                     </ul>
                                 </li>
 

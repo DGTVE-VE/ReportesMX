@@ -21,9 +21,13 @@
 <hr>
 <div class="row">
     <div class="col-md-6 col-md-offset-3"> 
-        <h>
-            @if ()
-        </h>
+        <h1>
+            @if (empty ($institucion))
+                Sin institución
+            @else
+                {{$institucion->siglas}}
+            @endif
+        </h1>
         <table class='table table-bordered'>
             <thead>
             <th> Nombre </th><th> Correo</th>
