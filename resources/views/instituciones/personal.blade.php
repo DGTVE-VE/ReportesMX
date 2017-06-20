@@ -43,15 +43,17 @@
             <thead>
             <th> Cargo </th><th> Nivel Académico </th><th> Contacto </th><th> Correo </th><th> Teléfono </th>
             </thead>
-        @foreach ($contactos as $contacto)
-            <tr>
-                <td>{{$contacto->cargo_contacto}}</td>
-                <td>{{$contacto->nivel_academico}}</td>
-                <td>{{$contacto->nombre }}</td> 
-                <td>{{$contacto->correo_institucional}}</td>
-                <td>{{$contacto->telefono_institucional}}</td>                
-            </tr>
-        @endforeach 
+            @if(!empty ($contactos))
+                @foreach ($contactos as $contacto)
+                    <tr>
+                        <td>{{$contacto->cargo_contacto}}</td>
+                        <td>{{$contacto->nivel_academico}}</td>
+                        <td>{{$contacto->nombre }}</td> 
+                        <td>{{$contacto->correo_institucional}}</td>
+                        <td>{{$contacto->telefono_institucional}}</td>                
+                    </tr>
+                @endforeach 
+            @endif
         </table>
     </div>                   
 </div>
