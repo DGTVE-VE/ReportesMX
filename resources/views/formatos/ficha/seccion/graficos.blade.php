@@ -2,7 +2,7 @@
     {!! Form::model($ficha_curso, ['action'=> 'FichaTecnicaController@store', 'files'=>true]) !!}
     <input type='hidden' name='seccion' value='graficos'>
     <input type='hidden' name='id' value='{{$ficha_curso->id}}'>
-    <div class="form-group col-md-8 col-md-offset-2"><br>
+    <div class="form-group col-md-8 col-md-offset-2"><br><br>
         <div class="col-md-6">
             <label for="imagen_cuadrada">Imagen cuadrada del curso (150x150 px)</label><br><br>
             <label class="file" class='form-control'>
@@ -20,7 +20,7 @@
                 <p>- Imagen que describa el curso.
                     <br/>- La imagen debe ser diseñada expresamente para el curso o tener derechos como ( Flickr creative commons, Stock Vault, Stock XCHNG, iStock Photo)
                     <br/>- Cursos secuenciados deberán tener una sola imagen
-                    <br/>- Tamaño: 378 x 225 pixeles
+                    <br/>- Tamaño: 150 x 150 pixeles
                     <br/>- Tipo de arhivo: *.jpg</p>
             </div>
         </div>
@@ -55,16 +55,19 @@
                 </output>
             </label><br>
             <div class="help-tip posicion" style="align: left;">
-                <p>- Imagen que describa el curso.
+                <p>- Imagen para promocionar el curso.
                     <br/>- La imagen debe ser diseñada expresamente para el curso o tener derechos como ( Flickr creative commons, Stock Vault, Stock XCHNG, iStock Photo)
-                    <br/>- Cursos secuenciados deberán tener una sola imagen
-                    <br/>- Tamaño: 378 x 225 pixeles
+                    <br/>- Incluir nombre del curso y fecha de inicio.
+                    <br/>- Tamaño: 1900 x 400 pixeles
                     <br/>- Tipo de arhivo: *.jpg</p>
             </div>
         </div>
-        <button class="btn btn-primary" type="submit">
+        <div class="form-group col-md-8 col-md-offset-4"> 
+        <br/>    
+        <button class="btn btn-success" type="submit">
             Guardar
         </button>
+    </div>
     </div>
     {!! Form::close() !!}
 </div>    

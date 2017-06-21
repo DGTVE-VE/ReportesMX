@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use App\Helpers\GoogleApi;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
-
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -16,10 +16,28 @@ use Illuminate\Support\Facades\Session;
 |
 */
 
-/*
- * Ruta callback a donde regresa después de hacer el login en google para
- * usar las APIS.
- */
+
+Route::any ('instituciones/personal', function (){
+    $institucion_id = Input::get ('institucion_id');
+    if (empty($institucion_id)){
+        $personal = User::whereNull ('institucion_id')->get();
+        $institucion = null;
+        $contactos = null;
+    }else{
+        $personal = User::where('institucion_id', $institucion_id)->get();
+        $institucion = App\Model\Institucion::find ($institucion_id);
+        $contactos = \App\Model\Contactos_institucion::where ('institucion_id', $institucion_id)->get ();
+    }
+    
+    $instituciones = App\Model\Institucion::all()->pluck ('siglas', 'id');
+    
+    return view ('instituciones.personal')
+            ->with('personal', $personal)
+            ->with ('instituciones', $instituciones)
+            ->with ('institucion', $institucion)
+            ->with ('contactos', $contactos);
+})->middleware ('auth');
+
 
 Route::get ('recomendacion', function (){
     return view('formatos.ficha.recomendarNavegador')
@@ -43,14 +61,14 @@ Route::post ('asociaUsuario', function (){
     $user = App\User::find (Input::get('usuario_id'));
     $user->institucion_id = Input::get('institucion_id');
     $user->save ();
-    
+
     return redirect('/');
 })->middleware ('auth');
 
 Route::post ('buscaAuthUserXCorreo', function (){
-    $email = Input::get ('email');    
-    $user = \App\Model\Auth_user::where ('email', $email)->first();    
-    $password = DB::table('password_temp')->where('email', $email)->first();    
+    $email = Input::get ('email');
+    $user = \App\Model\Auth_user::where ('email', $email)->first();
+    $password = DB::table('password_temp')->where('email', $email)->first();
     return view('guardaPassword')
             ->with ('usuario', $user)
             ->with ('password', $password);
@@ -81,12 +99,12 @@ Route::get ('guardaPassword', function (){
 });
 
 
-Route::post ('buscaCorreo', function (){    
+Route::post ('buscaCorreo', function (){
     $user = App\User::where ('email', Input::get ('email'))->first();
     return view('asociaUsuarioInstitucion')
             ->with ('usuarioAasociar', $user)
             ->with ('instituciones', \App\Model\Institucion::all()
-                    ->pluck ('nombre_institucion', 'id'));            
+                    ->pluck ('nombre_institucion', 'id'));
 })->middleware ('auth');
 
 Route::post ('usuario/asocia/institucion', function (){
@@ -99,6 +117,11 @@ Route::post ('usuario/asocia/institucion', function (){
         abort (404, 'Página no encontrada');
     }
 });
+
+/*
+ * Ruta callback a donde regresa después de hacer el login en google para
+ * usar las APIS.
+ */
 Route::get ('google_api/oauth2callback', function (Request $request){
     $client = new Google_Client();
     $client->setAuthConfigFile(config_path() . '/client_secret.json');
@@ -116,7 +139,7 @@ Route::get ('google_api/oauth2callback', function (Request $request){
 
 });
 Route::resource ('formatos/ficha_tecnica', 'FichaTecnicaController');
-        
+
 /*  *****   Página inicial dirige al blog privado en reportes   *****   */
 Route::get('/', ['middleware' => 'auth', 'uses' => 'MXController@blog']);
 Route::any('home', ['middleware' => 'auth', 'uses' => 'MXController@blog']);
@@ -174,6 +197,9 @@ Route::match(array('GET','POST'),'constancias/{folio?}', array('uses'=>'Constanc
 
 //Ruta para la generacion de los archivos de foros
 Route::get('foros/{usuario?}', ['middleware' => 'auth', 'uses' => 'ForosController@generaArchivoForos']);
+
+//Ruta para descarga de listas de alumnos inscritos a cursos
+Route::get('listas', ['middleware' => 'auth', 'uses' => 'ListasController@listas']);
 
 //ruta para el servicio Web de la tabla Auth_userprofile
 Route::match(array('GET','POST'),'webService', array('uses'=>'ConstanciasController@webService'));

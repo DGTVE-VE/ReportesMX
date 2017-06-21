@@ -187,7 +187,7 @@ class FichaTecnicaController extends Controller {
             
             $this->enviaMail($ficha, 
                     $mensaje, 
-                    'Carta compromiso aprobada: abrir espacio en la verde '.$ficha->nombre_curso,
+                    'Carta compromiso aprobada: abrir espacio en la verde '.$ficha->nombre_curso.' - '.$ficha->institucion->siglas,
                     $this->ccFichaAprobada);
             
             return $this->show ($idFicha, Input::get ('seccion'));
@@ -206,12 +206,12 @@ class FichaTecnicaController extends Controller {
             $ficha->save();
             Session::flash ('success_message', 'Ficha aprobada');
             $mensaje = "Ficha aprobada:";
-            $this->enviaMail($ficha, $mensaje, 'Ficha aprobada (Abrir curso en la morada): '.$ficha->nombre_curso);            
+            $this->enviaMail($ficha, $mensaje, 'Ficha aprobada (Abrir curso en la morada): '.$ficha->nombre_curso.' - '.$ficha->institucion->siglas);            
             Mail::send('emails.ficha.revision', ['ficha' => $ficha, 'mensaje'=> 'Monitorear ficha'], 
                 function ($m) use ($ficha) {
                     $m->from($this->fromMail, 'México X');
                     $m->to([$this->toMail, 'griselda.velazquez@mexicox.gob.mx'])
-                      ->subject('Monitorear ficha: '.$ficha->nombre_curso);
+                      ->subject('Monitorear ficha: '.$ficha->nombre_curso.' - '.$ficha->institucion->siglas);
                 }
             );
             Log::debug (Mail::failures());
@@ -303,7 +303,7 @@ class FichaTecnicaController extends Controller {
                         $m->from($this->fromMail, 'México X');
                         $m->to($this->toMail)->cc($this->ccMail)
                                 ->subject('Una ficha técnica espera ser revisada: '
-                                        .$ficha->nombre_curso);
+                                        .$ficha->nombre_curso.' - '.$ficha->institucion->siglas);
                     });
                     
             Log::debug (Mail::failures());

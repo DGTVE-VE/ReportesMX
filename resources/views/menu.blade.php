@@ -1,6 +1,6 @@
 @extends('app') @section('content')
 <br>
-<center> <h4>Bienvenid {{$name_user}}</h4></center>
+<center> <h4>Bienvenido {{$name_user}}</h4></center>
 <br>
 <center>
 <h4 class="text-center">SISTEMA DE INFORMACIÓN DE USUARIOS</h4> <img src="logo_large.png" border=0>
