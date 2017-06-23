@@ -1,19 +1,19 @@
 @extends('app') @section('content')
-<center> <h4>Datos de evaluaciones disponibles para el curso seleccionado.</h4></center>
-<div class="container">
+<center> <h4>Respuestas a evaluaciones disponibles para el curso seleccionado.</h4></center>
+<div class="container-fluid">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
             <table class="table table-hover">
                 <thead>
                 <tr>
-                   <td class="text-primary" style="font-size: medium"><strong>status</strong></td>
-                   <td class="text-primary" style="font-size: medium"><strong>attempt_number</strong></td>
-                   <td class="text-primary" style="font-size: medium"><strong>raw_answer</strong></td>
-                   <td class="text-primary" style="font-size: medium"><strong>student_item_id</strong></td>
-                   <td class="text-primary" aling="right" style="font-size: medium"><strong>points_earned</strong></td>
-                   <td class="text-primary" aling="right" style="font-size: medium"><strong>points_possible</strong></td>
-                   <td class="text-primary" aling="right" style="font-size: medium; text-align: right;"><strong>feedback</strong></td>
-                   <td class="text-primary" aling="right" style="font-size: medium; text-align: right;"><strong>feedback_text</strong></td>
+                   <td class="text-primary" style="font-size: medium"><strong>Estado</strong></td>
+                   <td class="text-primary" style="font-size: medium"><strong>Intento</strong></td>
+                   <td class="text-primary" style="font-size: medium"><strong>Respuesta</strong></td>
+                   <td class="text-primary" style="font-size: medium"><strong>student item id</strong></td>
+                   <td class="text-primary" aling="right" style="font-size: medium"><strong>Puntos Obtenidos</strong></td>
+                   <td class="text-primary" aling="right" style="font-size: medium"><strong>Puntos posibles</strong></td>
+                   <td class="text-primary" aling="right" style="font-size: medium; text-align: right;"><strong>Retroalimentación</strong></td>
+                   <td class="text-primary" aling="right" style="font-size: medium; text-align: right;"><strong>Texto Retroalimentación</strong></td>
 
                </tr>
                </thead>
