@@ -39,7 +39,7 @@
 </div><div class="form-group {{ $errors->has('telefono_institucional') ? 'has-error' : ''}}">
     {!! Form::label('telefono_institucional', 'Teléfono Institucional', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::text('telefono_institucional', null, ['class' => 'form-control']) !!}
+        {!! Form::text('telefono_institucional', null, ['class' => 'form-control', 'required' => 'required']) !!}
         {!! $errors->first('telefono_institucional', '<p class="help-block">:message</p>') !!}
     </div>
 </div><div class="form-group {{ $errors->has('cargo_contacto') ? 'has-error' : ''}}">

@@ -6,8 +6,10 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
-                   <td class="text-primary" style="font-size: medium"><strong>student_id</strong></td>
+                   <td class="text-primary" style="font-size: medium"><strong>status</strong></td>
+                   <td class="text-primary" style="font-size: medium"><strong>attempt_number</strong></td>
                    <td class="text-primary" style="font-size: medium"><strong>raw_answer</strong></td>
+                   <td class="text-primary" style="font-size: medium"><strong>student_item_id</strong></td>
                    <td class="text-primary" aling="right" style="font-size: medium"><strong>points_earned</strong></td>
                    <td class="text-primary" aling="right" style="font-size: medium"><strong>points_possible</strong></td>
                    <td class="text-primary" aling="right" style="font-size: medium; text-align: right;"><strong>feedback</strong></td>
@@ -20,13 +22,15 @@
                 <?php $total2 = 0;?>
 
                 <?php $l = 0;?>
-                @foreach ($consulta1EP as $i)
                 <tbody>
+                @foreach ($consulta1EP as $i)
                     <tr>
-                        <td aling="right">{{$i->student_id}}</td>
+                        <td aling="right">{{$i->status}}</td>
+                        <td align="right">{{$i->attempt_number}}</td>
                         <td aling="right">{{$i->raw_answer}}</td>
+                        <td aling="right">{{$i->student_item_id}}</td>
                         <td aling="right">{{$i->points_earned}}</td>
-                        <td align="right">{{ number_format($i->points_possible)}}</td>
+                        <td aling="right">{{$i->points_possible}}</td>
                         <td align="right">{{$i->feedback}}</td>
                         <td align="right">{{$i->feedback_text}}</td>
                     </tr>

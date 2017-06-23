@@ -24,17 +24,14 @@
             <div class="help-tip posicion">
                 <p>- Sube la carta de autorización debidamente requisitada y firmada</p>
             </div>
-            <label for="carta_autorizacion">Carta Autorización</label><br><br>
+            <label for="carta_autorizacion">Carta Autorización</label><br>
             <label class="file">
                 <input class="form-control" name="carta_autorizacion" type="file" accept="application/pdf" id="carta_autorizacion">
             </label><br>
             @if(File::exists (public_path() .'/cartas/'.$ficha_curso->id.'_autorizacion.pdf'))
             <a href='{{asset('cartas/'.$ficha_curso->id.'_autorizacion.pdf?'.time())}}'> <i class="fa fa-download fa-3x" aria-hidden="true"></i></a>
             @endif
-
-
         </div>
-
     </div>
     <div class="form-group col-md-8 col-md-offset-2">
         <hr>

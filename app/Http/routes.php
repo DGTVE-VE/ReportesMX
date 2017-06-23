@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use App\Helpers\GoogleApi;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
-
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -16,10 +16,28 @@ use Illuminate\Support\Facades\Session;
 |
 */
 
-/*
- * Ruta callback a donde regresa después de hacer el login en google para
- * usar las APIS.
- */
+
+Route::any ('instituciones/personal', function (){
+    $institucion_id = Input::get ('institucion_id');
+    if (empty($institucion_id)){
+        $personal = User::whereNull ('institucion_id')->get();
+        $institucion = null;
+        $contactos = null;
+    }else{
+        $personal = User::where('institucion_id', $institucion_id)->get();
+        $institucion = App\Model\Institucion::find ($institucion_id);
+        $contactos = \App\Model\Contactos_institucion::where ('institucion_id', $institucion_id)->get ();
+    }
+    
+    $instituciones = App\Model\Institucion::all()->pluck ('siglas', 'id');
+    
+    return view ('instituciones.personal')
+            ->with('personal', $personal)
+            ->with ('instituciones', $instituciones)
+            ->with ('institucion', $institucion)
+            ->with ('contactos', $contactos);
+})->middleware ('auth');
+
 
 Route::get ('recomendacion', function (){
     return view('formatos.ficha.recomendarNavegador')
@@ -99,6 +117,11 @@ Route::post ('usuario/asocia/institucion', function (){
         abort (404, 'Página no encontrada');
     }
 });
+
+/*
+ * Ruta callback a donde regresa después de hacer el login en google para
+ * usar las APIS.
+ */
 Route::get ('google_api/oauth2callback', function (Request $request){
     $client = new Google_Client();
     $client->setAuthConfigFile(config_path() . '/client_secret.json');

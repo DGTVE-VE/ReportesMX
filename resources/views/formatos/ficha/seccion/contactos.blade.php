@@ -5,11 +5,9 @@
     {{csrf_field()}}
     <div class="form-group col-md-8 col-md-offset-2"><br><br>
         <div class="help-tip posicion">
-            <p>- Usuarios que servirán de contacto a los usuarios para soporte </p>
+            <p>- Personas que hacen la gestión con los directivos de la Plataforma MéxicoX </p>
         </div>
         <h3>Contacto de la institución</h3>
-
-
         <hr>
     </div> 
     <div class="form-group col-md-8 col-md-offset-2">

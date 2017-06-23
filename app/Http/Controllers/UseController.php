@@ -1140,59 +1140,44 @@ class UseController extends Controller {
 		if($name[0]->is_superuser == 1)
 		{
 			session()->put('super_user', '1');
-			$id = DB::table('edxapp.auth_user')->whereemail($correo)->whereis_superuser('1')->get()[0]->id;
-
-			$course_name = Course_overviews::whereBetween('end',array(20160000, 20990000))
-                                ->whereBetween('enrollment_start',array(20160000, date("Ymd")))
-                                ->lists('display_name');
-			$cursoid = DB::table('edxapp.assessment_peerworkflow')
-                                ->groupBy('item_id')
-                                ->orderBy('course_id')
-                                ->select('course_id')->get();
-            Course_overviews::whereBetween('end',array(20160000, 20990000))
-			                          ->whereBetween('enrollment_start',array(20160000, date("Ymd")))
-			                          ->lists('course_id');
-			return $this->muestraEvalPares($course_name,$cursoid);
+            $course_name = DB::table('edxapp.workflow_assessmentworkflow AS A')
+                ->join('edxapp.course_overviews_courseoverview AS B', 'A.course_id', '=', 'B.id')
+                ->groupBy('A.item_id')
+                ->orderBy('display_name')
+                ->select('A.id', 'B.display_name', 'A.course_id', 'A.item_id')->get();
+			return $this->muestraEvalPares($course_name);
 		}
-
 		else if($name[0]->is_active == true)
 		{
-
 			$id = DB::table('edxapp.auth_user')->whereemail($correo)->whereis_active('1')->get()[0]->id;
 
 			if( sizeof(DB::table('edxapp.student_courseaccessrole')
-                                ->whereuser_id($id)
-                                ->whererole("instructor")
-                                ->where('course_id', 'like', 'course%')->get()) > 1 ){
+                ->whereuser_id($id)
+                ->whererole("instructor")
+                ->where('course_id', 'like', 'course%')->get()) > 1 ){
 					$course_id = DB::table('edxapp.student_courseaccessrole')
-                                                ->whereuser_id($id)
-                                                ->whererole("instructor")
-                                                ->where('course_id', 'like', 'course%')
-                                                ->get();
-			}else {
+                        ->whereuser_id($id)
+                        ->whererole("instructor")
+                        ->where('course_id', 'like', 'course%')
+                        ->get();
+            }else {
 				$course_id = DB::table('edxapp.student_courseaccessrole')
-                                        ->whereuser_id($id)
-                                        ->whererole("instructor")
-                                        ->get();
-			}
-
+                    ->whereuser_id($id)
+                    ->whererole("instructor")
+                    ->get();
+            }
 
 			$n = sizeof($course_id);
 
 			session()->put('accescourse', $n);
 			session()->put('super_user', '0');
 
-			for($i = 0, $j=0; $i < $n ; $i++, $j++)
-			{
-				$cursoid[$j] = $course_id[$i]->course_id;
-				$course_name[$j] = Course_overviews::whereid($cursoid[$j])->get()[0]->display_name;
-			}
 			if($n < 1){
 				return view('accescourse')-> with('name_user', $username);
 			}
 			else{
 				session()->put('courses_names', $course_name);
-				return $this->muestraEvalPares($course_name, $cursoid);
+				return $this->muestraEvalPares($course_name);
 			}
 		}
 		else{
@@ -1200,25 +1185,32 @@ class UseController extends Controller {
 		}
     }
 
-    public function muestraEvalPares($course_name, $cursoid){
+    public function muestraEvalPares($course_name){
         $username = session()->get('nombre');
 
 		return view('cursoEvalPares')
-                        ->with('course_name', collect($course_name))
-                        ->with('name_user', $username )
-                        ->with('cursoid', collect($cursoid));
+                        ->with('course_name', $course_name)
+                        ->with('name_user', $username );
     }
 
 	public function muestraReporteEP(){
-		$username = session()->get('nombre');
-        $c_id = session()->get('course_id');
-
-
-		if($c_id == "" || $c_id == NULL){
-            $c_id = filter_input (INPUT_POST, 'course_id');
-            if($username == NULL || $c_id == "" || $c_id == NULL)
-                return $this->correoacurso();
+        $item_id = session()->get('item_id');
+        if($item_id){
+            $c_id = session()->get('c_id');
         }
+        else{
+            $variable = filter_input (INPUT_POST, 'course_id');
+            $arregloVar = explode("#",$variable);
+            $item_id = $arregloVar[0];
+            session()->put('item_id', $item_id);
+            $c_id = $arregloVar[1];
+            session()->put('c_id', $c_id);
+        }
+        
+		$username = session()->get('nombre');
+        
+        if($username == NULL || $c_id == "" || $c_id == NULL)
+            return $this->correoacurso();
 
 		if($c_id){
 			$course_id = Course_overviews::whereid($c_id)->get()[0]->id;
@@ -1227,70 +1219,70 @@ class UseController extends Controller {
 			session()->put('course_name', $course_name);
 		}
 
-		$super_user = session()->get('super_user');
+		//$super_user = session()->get('super_user');
 
-		if($super_user == "1"){
+		//if($super_user == "1"){
 			$course_id = session()->get('course_id');
 			$course_name = session()->get('course_name');
 
-			$consulta1EP = DB::table('edxapp.courseware_studentmodule AS c')
-				->leftJoin('edxapp.submissions_submission AS s','s.uuid','=',DB::raw('substring(c.state, 60,36)'))
-                ->leftJoin('edxapp.submissions_score AS e','e.submission_id','=','s.id')
-                ->leftJoin('edxapp.assessment_assessment AS a','a.submission_uuid','=','s.uuid')
-                ->leftJoin('edxapp.assessment_assessmentfeedback AS f','f.submission_uuid','=','s.uuid')
-				->select('c.student_id' ,'s.raw_answer', 'e.points_earned', 'e.points_possible', 'a.feedback', 'f.feedback_text')
-				->where('c.module_id', '=', $c_id)
-                ->where(DB::raw('substring(c.state, 60,36)'), 'regexp', '^[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}$')
-				->orderBy('c.student_id', 'asc')
+			$consultaPagina = DB::table('edxapp.workflow_assessmentworkflow AS A')
+				->leftJoin('edxapp.submissions_submission AS B','A.submission_uuid','=','B.uuid')
+                ->leftJoin('edxapp.submissions_score AS C','A.submission_uuid','=','C.submission_id')
+                ->leftJoin('edxapp.assessment_assessment AS D','D.submission_uuid','=','B.uuid')
+                ->leftJoin('edxapp.assessment_assessmentfeedback AS E','E.submission_uuid','=','B.uuid')
+				->select('A.status', 'B.attempt_number', 'B.raw_answer', 'B.student_item_id', 'C.points_earned', 'C.points_possible', 'D.feedback', 'E.feedback_text')
+				->where('A.item_id', '=', $item_id)
 				->paginate(10);
+                
+            $consultaArchivo = DB::table('edxapp.workflow_assessmentworkflow AS A')
+				->leftJoin('edxapp.submissions_submission AS B','A.submission_uuid','=','B.uuid')
+                ->leftJoin('edxapp.submissions_score AS C','A.submission_uuid','=','C.submission_id')
+                ->leftJoin('edxapp.assessment_assessment AS D','D.submission_uuid','=','B.uuid')
+                ->leftJoin('edxapp.assessment_assessmentfeedback AS E','E.submission_uuid','=','B.uuid')
+				->select('A.status', 'B.attempt_number', 'B.raw_answer', 'B.student_item_id', 'C.points_earned', 'C.points_possible', 'D.feedback', 'E.feedback_text')
+				->where('A.item_id', '=', $item_id)
+				->get();
 
-            $consulta2EP = DB::table('edxapp.courseware_studentmodule AS c')
-				->leftJoin('edxapp.submissions_submission AS s','s.uuid','=',DB::raw('substring(c.state, 22,36)'))
-                ->leftJoin('edxapp.submissions_score AS e','e.submission_id','=','s.id')
-                ->leftJoin('edxapp.assessment_assessment AS a','a.submission_uuid','=','s.uuid')
-                ->leftJoin('edxapp.assessment_assessmentfeedback AS f','f.submission_uuid','=','s.uuid')
-				->select('c.student_id' ,'s.raw_answer', 'e.points_earned', 'e.points_possible', 'a.feedback', 'f.feedback_text')
-				->where('c.module_id', '=', $c_id)
-                ->where(DB::raw('substring(c.state, 22,36)'), 'regexp', '^[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}$')
-				->orderBy('c.student_id', 'asc')
-				->paginate(10);
-
-            /*$fp = fopen ('download/totales.csv', 'w');
+            $fp = fopen ('download/totales.csv', 'w');
 			$listaid = array();
-			$listaid[0][0] = 'id';
-			$listaid[0][1] = 'id curso';
-			$listaid[0][2] = 'nombre del curso';
-			$listaid[0][3] = 'inscritos';
-            $listaid[0][4] = 'constancias emitidas';
-            $listaid[0][5] = 'eficiencia';
+			$listaid[0][0] = 'status';
+			$listaid[0][1] = 'attempt_number';
+			$listaid[0][2] = 'raw_answer';
+			$listaid[0][3] = 'student_item_id';
+            $listaid[0][4] = 'points_earned';
+            $listaid[0][5] = 'points_possible';
+            $listaid[0][6] = 'feedback';
+            $listaid[0][7] = 'feedback_text';
 			$i = 1;
 
-			foreach ($totalesi as $key => $value) {
-				$listaid[$i][0] = ($value->id);
-				$listaid[$i][1] = ($value->course_id);
-				$listaid[$i][2] = ($value->course_name);
-				$listaid[$i][3] = ($value->inscritos);
-                $listaid[$i][4] = ($value->constancias);
-                $listaid[$i][5]=  (round(($value->eficiencia=$value->constancias/($value->inscritos)*100),2));
+			foreach ($consultaArchivo as $key => $value) {
+				$listaid[$i][0] = ($value->status);
+				$listaid[$i][1] = ($value->attempt_number);
+				$listaid[$i][2] = ($value->raw_answer);
+				$listaid[$i][3] = ($value->student_item_id);
+                $listaid[$i][4] = ($value->points_earned);
+                $listaid[$i][5]=  ($value->points_possible);
+                $listaid[$i][6]=  ($value->feedback);
+                $listaid[$i][7]=  ($value->feedback_text);
+                
 				$i++;
 			}
-            foreach ($inscritos as $key => $value) {
+            /*foreach ($inscritos as $key => $value) {
                 $value->eficiencia=$value->constancias/($value->inscritos)*100;
-            }
+            }*/
 
 			foreach ($listaid as $value) {
 				fputcsv($fp, $value );
 			}
 
-			fclose($fp);*/
+			fclose($fp);
 
 			return view('reporteEvalPares')
-			-> with('consulta1EP',($consulta1EP))
+			-> with('consulta1EP',($consultaPagina))
 			-> with('name_user', $username )
-			-> with('consulta2EP', $consulta2EP)
 			-> with('course_name', $course_name);
-		}
+		/*}
 		else
-			return view('accescourse')-> with('name_user', $username);
+			return view('accescourse')-> with('name_user', $username);*/
     }
 }

@@ -25,10 +25,10 @@
     }
     ?>
       @foreach($course_name as $i)
-        <option value="{{$cursoid[$j]}}">{{$i}}</option>
+        <option value="{{$i->item_id}}#{{$i->course_id}}">{{$i->display_name}} - {{$i->id}}</option>
         <?php $j++; ?>
       @endforeach
-    </select>
-    <input type="submit">
+  </select>
+  <input type="submit">
 </form>
 @endsection
