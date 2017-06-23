@@ -45,7 +45,7 @@ class UseController extends Controller {
 			if( sizeof(DB::table('edxapp.student_courseaccessrole')
                                 ->whereuser_id($id)
                                 ->whererole("instructor")
-                                ->where('course_id', 'like', 'course%')->get()) > 1 ){
+                                ->where('course_id', 'like', 'course%')->get()) >= 1 ){
 					$course_id = DB::table('edxapp.student_courseaccessrole')
                                                 ->whereuser_id($id)
                                                 ->whererole("instructor")
