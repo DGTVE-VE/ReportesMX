@@ -1194,12 +1194,12 @@ class UseController extends Controller {
     }
 
 	public function muestraReporteEP(){
-        $item_id = session()->get('item_id');
-        if($item_id){
+        $variable = filter_input (INPUT_POST, 'course_id');
+        if(!$variable){
             $c_id = session()->get('c_id');
+            $item_id = session()->get('item_id');
         }
         else{
-            $variable = filter_input (INPUT_POST, 'course_id');
             $arregloVar = explode("#",$variable);
             $item_id = $arregloVar[0];
             session()->put('item_id', $item_id);
