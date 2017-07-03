@@ -1278,7 +1278,7 @@ class UseController extends Controller {
 			fclose($fp);
 
 			return view('reporteEvalPares')
-			-> with('consulta1EP',($consultaPagina))
+			-> with('consulta1EP',$consultaPagina)
 			-> with('name_user', $username )
 			-> with('course_name', $course_name);
 		/*}

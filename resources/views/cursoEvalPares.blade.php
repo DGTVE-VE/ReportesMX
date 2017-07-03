@@ -6,7 +6,7 @@
     <img src="logo_large.png" border=0>
 </center>
 <div class="col-md-12" style="padding:10px;"></div>
-<h4 class="text-center">Selecciona un curso para mostrarte reporte.</h4>
+<h4 class="text-center">Seleccione el curso del que desea obtener el reporte.</h4>
 <div class="col-md-12" style="padding:15px;"></div>
 
 <form action="{{url('muestraRepEvalPares')}}" method="POST" class="text-center">

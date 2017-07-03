@@ -28,16 +28,14 @@ class FichaTecnicaController extends Controller {
     public $fromMail = 'admin@mexicox.gob.mx';
     //Correo para añadir tareas en asana.
     public $toMail = 'x+39992588211520@mail.asana.com';
-    public $ccMail = [  'griselda.velazquez@mexicox.gob.mx', 
-                        'norman.sanchez@mexicox.gob.mx', 
+    public $ccMail = [  'norman.sanchez@mexicox.gob.mx', 
                         'lily.sacal@mexicox.gob.mx',
                         'roberto.pina@mexicox.gob.mx',
                         'israel.toledo@mexicox.gob.mx',
                         'veronica.sanchez@mexicox.gob.mx',
                         'sonia.martinez@mexicox.gob.mx'
                     ];
-    public $ccFichaAprobada = ['griselda.velazquez@mexicox.gob.mx', 
-                        'norman.sanchez@mexicox.gob.mx', 
+    public $ccFichaAprobada = ['norman.sanchez@mexicox.gob.mx', 
                         'lily.sacal@mexicox.gob.mx',
                         'roberto.pina@mexicox.gob.mx',
                         'israel.toledo@mexicox.gob.mx',
@@ -210,7 +208,8 @@ class FichaTecnicaController extends Controller {
             Mail::send('emails.ficha.revision', ['ficha' => $ficha, 'mensaje'=> 'Monitorear ficha'], 
                 function ($m) use ($ficha) {
                     $m->from($this->fromMail, 'México X');
-                    $m->to([$this->toMail, 'griselda.velazquez@mexicox.gob.mx'])
+                    $m->to([$this->toMail, 'sonia.martinez@mexicox.gob.mx'])
+                      ->cc('roberto.pina@mexicox.gob.mx')
                       ->subject('Monitorear ficha: '.$ficha->nombre_curso.' - '.$ficha->institucion->siglas);
                 }
             );
