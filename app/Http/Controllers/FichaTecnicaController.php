@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Model\Ficha_curso;
 use App\Model\Instructores;
+use App\Model\TipoCurso;
 use App\Model\Instructor_task_ficha;
 use Illuminate\Support\Facades\Input;
 //use Session;
@@ -65,7 +66,8 @@ class FichaTecnicaController extends Controller {
             return view ('formatos/asocia_institucion')
                         ->with('instituciones', $instituciones)
                         ->with('name_user', $username);
-        }        
+        }
+        $tiposCurso = \App\Model\TipoCurso::all();
         if (Auth::user()->is_superuser){
             $fichas = Ficha_curso::orderBy('updated_at', 'desc')->paginate (10);
             
@@ -76,6 +78,7 @@ class FichaTecnicaController extends Controller {
         }
         return view('formatos/ficha/list')
             ->with('name_user', $username)
+            ->with('tiposDeCurso', $tiposCurso)
             ->with('fichas', $fichas);
     }
 

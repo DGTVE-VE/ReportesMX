@@ -28,6 +28,7 @@
                                 <th>Creó</th>
                                 <th>Editó</th>
                                 <th>Aprobó</th>
+                                <th>Tipo curso</th>
                             </tr>
                         </thead>
                         @foreach ($fichas as $ficha)
@@ -88,6 +89,9 @@
                                 @if (!empty($ficha->aprobo))
                                 {{$ficha->aprobo->name}}
                                 @endif
+                            </td>
+                            <td>
+                                {{$tiposDeCurso[$ficha->tipo_curso-1]['tipo_curso'] }}
                             </td>
                         </tr>
                         @endforeach
