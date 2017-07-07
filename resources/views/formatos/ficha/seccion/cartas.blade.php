@@ -7,12 +7,26 @@
         <h3>Descargar archivos</h3>
         <hr>
     </div>
-    <div class="form-group col-md-8 col-md-offset-2">
-        <div class="col-md-5">
+    <div class="col-md-8 col-md-offset-4">
+        <h4>Carta Autorización</h4>
+    </div>
+    <div class="form-group col-md-6 col-md-offset-3" style="border-top: solid 1px #eee; border-bottom: solid 1px #eee;">
+        <div class="col-md-11">
+            <div class="col-md-12">
+                <br>
+            </div>
             <div class="help-tip posicion">
                 <p>- Descarga la carta de autorización para la emisión del Curso en la plataforma MéxicoX</p>
             </div>
-            <a href="{{asset('download/carta_aut.docx')}}"><button type="button" class="btn btn-primary btn-md">Carta Autorización</button></a>
+            <div class="col-md-6">
+                <a href="{{asset('cartas/autorizacion/aut_con_cert.docx')}}"><button type="button" class="btn btn-primary btn-md">Con Certificado INDAUTOR</button></a>
+            </div>
+            <div class="col-md-6">
+                <a href="{{asset('cartas/autorizacion/aut_sin_cert.docx')}}"><button type="button" class="btn btn-primary btn-md">Sin Certificado INDAUTOR</button></a>
+            </div>
+            <div class="col-md-12">
+                <br>
+            </div>
         </div>                                    
     </div>
     <div class="form-group col-md-8 col-md-offset-2"><br>
