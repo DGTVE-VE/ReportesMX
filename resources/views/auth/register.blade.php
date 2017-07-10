@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Información de usuarios de MéxicoX</title>
+	<title>Información de usuarios de MéxicoX</title>
 
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 
@@ -52,7 +52,7 @@
         <label for="exampleInputName2" class="col-sm-2 control-label">Nombre: </label>
         <input type="text" name="name" value="{{ old('name') }}" required>
     </div>
-
+	
     <div class="form-group">
       <label for="exampleInputName2" class="col-sm-2 control-label">Correo: </label>
         <input type="email" name="email" value="{{ old('email') }}" required>

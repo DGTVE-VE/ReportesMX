@@ -7,7 +7,7 @@
         <h3>Crear Curso</h3>
         <hr>
     </div>
-    <div class="form-group col-md-8 col-md-offset-2">
+    <div class="form-group col-md-7 col-md-offset-2">
         <label for="orgazacionName">Nombre de la Institución:</label>
         <input name="nombre_institucion" type="text" class="form-control" 
                placeholder="Escribe el nombre completo de la institución" 
@@ -21,7 +21,18 @@
         @endif
         
     </div>
-    <div class="form-group col-md-8 col-md-offset-2">
+
+    {{----------------------------- Campo de siglas -----------------------------------------}}
+    <div class="form-group col-md-2">
+        <label for="siglas_institucion">Siglas:</label>
+        <input name="siglas_institucion" type="text" class="form-control" 
+               placeholder="Siglas de la institución" 
+               value='{{$institucion->siglas}}'
+               readonly>        
+    </div>
+    {{----------------------------------------------------------------------------------------}}
+
+    <div class="form-group col-md-9 col-md-offset-2">
         <label for="nombre_curso">Nombre del curso:</label>
         <input name="nombre_curso" type="text"  max="70" class="form-control" 
                id="nombre_curso" placeholder="Escribe el nombre del Curso" 
@@ -58,7 +69,7 @@
         <input name='periodo_emision' id='periodo_emision' type="month" onchange='updateCodigoCurso()' class="form-control"
                value='{{$ficha_curso->periodo_emision}}' required="required">
         <div class="help-tip posicion">
-            <p>- Mes en que da inicio el curso.</p>
+            <p>- Año y mes en que da inicio el curso.</p>
         </div>
     </div>
     <div class="form-group col-md-4 col-md-offset-2">
