@@ -63,10 +63,12 @@
                                 <li><a href="{{url ('videos')}}" class="bg-active">Videos</a></li>
                                 <li class="divider"></li>
                                 <li><a href="{{url ('constancias')}}" class="bg-active">Buscar Folio</a></li>
-								                <li class="divider"></li>
-								                <li><a href="{{url ('foros')}}" class="bg-active">Generar archivo de foros</a></li>
-								                <li class="divider"></li>
-								                <li><a href="{{url ('listas')}}" class="bg-active">Lista de usuarios</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{url ('foros')}}" class="bg-active">Generar archivo de foros</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{url ('listas')}}" class="bg-active">Lista de usuarios</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{url ('/reporteEvalPares')}}" class="bg-close" >Evaluación por pares</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
@@ -118,10 +120,6 @@
                                         <li class="divider"></li>
                                         <li>
                                             <a href="{{url ('instituciones/personal')}}" class="bg-close" >Ver personal de institución</a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li>
-                                            <a href="{{url ('/reporteEvalPares')}}" class="bg-close" >Evaluación por pares</a>
                                         </li>
                                     </ul>
                                 </li>
