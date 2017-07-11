@@ -22,7 +22,6 @@
         
     </div>
 
-    {{----------------------------- Campo de siglas -----------------------------------------}}
     <div class="form-group col-md-2">
         <label for="siglas_institucion">Siglas:</label>
         <input name="siglas_institucion" type="text" class="form-control" 
@@ -30,8 +29,7 @@
                value='{{$institucion->siglas}}'
                readonly>        
     </div>
-    {{----------------------------------------------------------------------------------------}}
-
+   
     <div class="form-group col-md-9 col-md-offset-2">
         <label for="nombre_curso">Nombre del curso:</label>
         <input name="nombre_curso" type="text"  max="70" class="form-control" 
