@@ -15,7 +15,7 @@
 </div><div class="form-group {{ $errors->has('nivel_academico') ? 'has-error' : ''}}">
     {!! Form::label('nivel_academico', 'Nivel Académico', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::select('nivel_academico', ['Doctorado'=>'Doctorado','Maestría'=>'Maestría','Licenciatura'=>'Licenciatura','Técnico Superior'=>'Técnico Superior'],$contactos_institucion->nivel_academico, ['class' => 'form-control']) !!}
+        {!! Form::select('nivel_academico', ['Dr.'=>'Dr.','Dra.'=>'Dra.','Mtro.'=>'Mtro.','Mtra.'=>'Mtra.','Ing.'=>'Ing.','Lic.'=>'Lic.','No especificar grado'=>'No especificar grado'],$contactos_institucion->nivel_academico, ['class' => 'form-control']) !!}
         {!! $errors->first('nivel_academico', '<p class="help-block">:message</p>') !!}
     </div>
 </div><div class="form-group {{ $errors->has('area_investigacion') ? 'has-error' : ''}}">

@@ -26,6 +26,11 @@
                                         <td>{{ $item->institucion->siglas }}</td>
                                         <td>{{ $item->nombre }}</td>
                                         <td>{{ $item->nivel_academico}}</td>
+                                        <!--<pre>
+                                            <?php
+                                                print_r($item);
+                                            ?>
+                                        </pre>-->
                                         <td>{{ $item->area_investigacion}}</td>
                                         <td>{{ $item->correo_institucional }}</td>
                                         <td>{{ $item->telefono_institucional }}</td>
