@@ -6,10 +6,9 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
-                   <td class="text-primary" style="font-size: medium"><strong>Estado</strong></td>
+                   <td class="text-primary" style="font-size: medium"><strong>Etapa</strong></td>
                    <td class="text-primary" style="font-size: medium"><strong>Intento</strong></td>
                    <td class="text-primary" style="font-size: medium"><strong>Respuesta</strong></td>
-                   <td class="text-primary" style="font-size: medium"><strong>student item id</strong></td>
                    <td class="text-primary" aling="right" style="font-size: medium"><strong>Puntos Obtenidos</strong></td>
                    <td class="text-primary" aling="right" style="font-size: medium"><strong>Puntos posibles</strong></td>
                    <td class="text-primary" aling="right" style="font-size: medium; text-align: right;"><strong>Retroalimentación</strong></td>
@@ -24,11 +23,17 @@
                 <?php $l = 0;?>
                 <tbody>
                 @foreach ($consulta1EP as $i)
+                {{--*/ $textoLimpio = explode('"',$i->raw_answer) /*--}}
+                {{--*/ if($i->status == 'done'){$etapa = 'Terminado';}
+                       elseif($i->status == 'peer'){$etapa = 'Evaluación Pares';}
+                       elseif($i->status == 'self'){$etapa = 'Auto evaluación';}
+                       elseif($i->status == 'cancelled'){$etapa = 'Cancelado';}
+                       elseif($i->status == 'waiting'){$etapa = 'Esperando puntaje';}
+                       else{$etapa = $i->status;}/*--}}
                     <tr>
-                        <td aling="right">{{$i->status}}</td>
+                        <td aling="right">{{$etapa}}</td>
                         <td align="right">{{$i->attempt_number}}</td>
-                        <td aling="right">{{$i->raw_answer}}</td>
-                        <td aling="right">{{$i->student_item_id}}</td>
+                        <td aling="right">{{$textoLimpio[5]}}</td>
                         <td aling="right">{{$i->points_earned}}</td>
                         <td aling="right">{{$i->points_possible}}</td>
                         <td align="right">{{$i->feedback}}</td>
