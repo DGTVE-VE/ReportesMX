@@ -24,6 +24,8 @@
 
     </head>
     <body>
+
+        {{-- Menu clean
         <nav class="navbar navbar-default">
 
             <div class="container-fluid">
@@ -31,6 +33,126 @@
                     <a class="navbar-brand" href="http://mx.televisioneducativa.gob.mx/" target="Ir a MéxicoX">
                         <img src="{{asset('logo_large.png')}}" alt="imagen" width= "85px">
                     </a>
+                </div>
+            </div>
+        </nav> --}}
+
+         <nav class="navbar navbar-default">
+
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle Navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="http://mx.televisioneducativa.gob.mx/" target="Ir a MéxicoX">
+                        <img src="{{asset('logo_large.png')}}" alt="imagen" width= "85px">
+                    </a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav col-md-10">
+                        <li><a href="{{url ('/')}}" class="bg-active" title="Inicio">
+                                <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                            </a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Reportes <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{url ('inicioCursos')}}" class="bg-active">Listado Cursos</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{url ('totales')}}" class="bg-active">Información usuarios</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{url ('infocurso')}}" class="bg-active">Estadísticas curso</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{url('inscritost')}}" class="bg-active">Inscritos a cursos</a><li>
+                                <li class="divider"></li>
+                                <li><a href="{{url ('geo')}}" class="bg-active">Información Geográfica</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{url ('videos')}}" class="bg-active">Videos</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{url ('constancias')}}" class="bg-active">Buscar Folio</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{url ('foros')}}" class="bg-active">Generar archivo de foros</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{url ('listas')}}" class="bg-active">Lista de usuarios</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{url ('/reporteEvalPares')}}" class="bg-close" >Evaluación por pares</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                Administración <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{url ('instituciones/contactos_institucion')}}" class="bg-active">Personal</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{url ('formatos/ficha_tecnica')}}" class="bg-active">Ficha Técnica</a></li>
+                            </ul>
+                        </li>
+                        <?php
+                        $user = \Illuminate\Support\Facades\Auth::user();
+                        $auth_user = \App\Model\Auth_user::where('email', $user->email)->first();
+
+                        if (isset($auth_user->is_superuser)) {
+                            if ($auth_user->is_superuser == 1) {
+                                ?>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                        Acciones de Superusuario<span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="{{url ('mail/compose')}}" class="bg-close" title="Envío de correos">
+                                                Envío de Correo
+                                            </a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="{{url ('asociaCategoria')}}" class="bg-close" title="Categorias">
+                                                Asocia curso a categorias
+                                            </a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="{{url ('admin/banner_principal')}}" class="bg-close" title="Banner">
+                                                Administrar Banners
+                                            </a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="{{url ('admin/course_name')}}" class="bg-close" title="Agregar Cursos">
+                                                Cursos</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="{{url ('instituciones/institucion')}}" class="bg-active">Instituciones</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="{{url ('adminblog')}}" class="bg-close" title="Blog">Entrada de Blog</a></li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="{{url ('asociaUsuario')}}" class="bg-close" >Asocia usuario a institucion</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="{{url ('guardaPassword')}}" class="bg-close" >Guarda Password de Usuario</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="{{url ('instituciones/personal')}}" class="bg-close" >Ver personal de institución</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <?php
+                            }
+                        }
+                        ?>
+                        @if(isset($course_name))
+                          <li>
+                            <a href="{{url('other_course')}}" role="button" title="Seleccionar otro curso">
+                              <span class="glyphicon glyphicon-retweet"></span>
+                            </a>
+                          </li>
+                        @endif
+                        <li class="pull-right"><a href="{{url ('logout')}}" class="bg-close" title="Salir">
+                                <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                            </a>
+                        </li>
+                        {{-- <li class="pull-right"><a>Hola {{$name_user}}</a></li> --}}
+
+                    </ul>
+
                 </div>
             </div>
         </nav>
