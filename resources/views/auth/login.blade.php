@@ -39,6 +39,18 @@
 	</nav>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+	<div class='col-xs-12 col-sm-6 col-sm-offset-1'>
+		@if (count($errors) > 0)
+		<div class="alert alert-danger">
+			<ul>
+				@foreach ($errors->all() as $error)
+				<li>{{ $error }}</li>
+				@endforeach
+			</ul>
+		</div>
+		@endif
+	</div>
 <br>
   <div style="margin-left: 10%; margin-right: 50%;">
 		<center>

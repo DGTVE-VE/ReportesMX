@@ -46,6 +46,16 @@ class AuthController extends Controller
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);
+         if ($validator->fails()) {
+            return redirect('auth/register')
+            ->withErrors($validator)
+            ->withInput();
+        };
+        if ($validator->fails()) {
+            return redirect('auth/login')
+            ->withErrors($validator)
+            ->withInput();
+        };
     }
 
     /**
@@ -55,7 +65,7 @@ class AuthController extends Controller
      * @return User
      */
     protected function create(array $data)
-    {
+    {   
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
