@@ -28,9 +28,9 @@ Route::any ('instituciones/personal', function (){
         $institucion = App\Model\Institucion::find ($institucion_id);
         $contactos = \App\Model\Contactos_institucion::where ('institucion_id', $institucion_id)->get ();
     }
-    
+
     $instituciones = App\Model\Institucion::all()->pluck ('siglas', 'id');
-    
+
     return view ('instituciones.personal')
             ->with('personal', $personal)
             ->with ('instituciones', $instituciones)
@@ -143,6 +143,8 @@ Route::resource ('formatos/ficha_tecnica', 'FichaTecnicaController');
 /*  *****   Página inicial dirige al blog privado en reportes   *****   */
 Route::get('/', ['middleware' => 'auth', 'uses' => 'MXController@blog']);
 Route::any('home', ['middleware' => 'auth', 'uses' => 'MXController@blog']);
+Route::get('buscaUsuario', ['middleware' => 'auth', 'uses' => 'ActivaController@buscaUsuario']);
+Route::any('activaUsuario', ['middleware' => 'auth', 'uses' => 'ActivaController@activa']);
 
 Route::any('inicioCursos', ['middleware' => 'auth', 'uses' => 'UseController@inscritos']);
 Route::get('cursos', ['middleware' => 'auth', 'uses' => 'UseController@cursos']);

@@ -119,6 +119,10 @@
                                         </li>
                                         <li class="divider"></li>
                                         <li>
+                                            <a href="{{url ('buscaUsuario')}}" class="bg-close" >Activa Usuario</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
                                             <a href="{{url ('instituciones/personal')}}" class="bg-close" >Ver personal de institución</a>
                                         </li>
                                     </ul>
