@@ -125,6 +125,10 @@
                                         <li>
                                             <a href="{{url ('instituciones/personal')}}" class="bg-close" >Ver personal de institución</a>
                                         </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="{{url ('reporteMensual')}}" class="bg-close" >Reporte Mensual</a>
+                                        </li>
                                     </ul>
                                 </li>
 

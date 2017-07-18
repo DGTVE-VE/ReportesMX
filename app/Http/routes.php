@@ -146,6 +146,9 @@ Route::any('home', ['middleware' => 'auth', 'uses' => 'MXController@blog']);
 Route::get('buscaUsuario', ['middleware' => 'auth', 'uses' => 'ActivaController@buscaUsuario']);
 Route::any('activaUsuario', ['middleware' => 'auth', 'uses' => 'ActivaController@activa']);
 
+Route::any('reporteMensual', ['middleware' => 'auth', 'uses' => 'ReporteMensualController@reporteMensual']);
+Route::any('getReporteMensual', ['middleware' => 'auth', 'uses' => 'ReporteMensualController@getReporteMensual']);
+
 Route::any('inicioCursos', ['middleware' => 'auth', 'uses' => 'UseController@inscritos']);
 Route::get('cursos', ['middleware' => 'auth', 'uses' => 'UseController@cursos']);
 Route::get('cursoa', ['middleware' => 'auth', 'uses' => 'UseController@cursoa']);
