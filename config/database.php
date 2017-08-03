@@ -63,7 +63,7 @@ return [
             'prefix'    => '',
             'strict'    => false,
         ],
-        
+
         'edxapp' => [
             'driver'    => 'mysql',
             'host'      => env('DB_HOST_EDXAPP', 'localhost'),
@@ -78,12 +78,15 @@ return [
 
         'mongodb' => [
           'driver'   => 'mongodb',
-          'host'     => env('DB_HOST', 'localhost'),
-          // 'port'     => env('DB_PORT', 27017),
+          'host'     => 'localhost',
+          'database' => 'admin',
+          'username' => 'admin',
+          'password' => '',
           'port'     => 27017,
-          'database' => 'test',
-          'username' => 'root',
-          'password' => 'm3x1c0X',
+          'prefix'    => 'admin'
+          // 'database' => 'admin',
+          // 'username' => 'admin',
+          // 'password' => '',
           // 'options'  => [
             // 'replicaSet' => 'replicaSetName'
           // ]
