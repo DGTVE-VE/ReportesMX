@@ -435,9 +435,9 @@ class UseController extends Controller {
 			fclose($fp);
 			//////////////////////////////////////////////////////////////
 
-			$f = DB::table('edxapp.auth_userprofile')->wheregender("f")->count();
-			$m = DB::table('edxapp.auth_userprofile')->wheregender("m")->count();
-			$n = DB::table('edxapp.auth_userprofile')->wheregender("")->count();
+			$f = DB::table('edxapp.auth_userprofile')->wheregender("f")->whereis_active('1')->count();
+			$m = DB::table('edxapp.auth_userprofile')->wheregender("m")->whereis_active('1')->count();
+			$n = DB::table('edxapp.auth_userprofile')->wheregender("")->whereis_active('1')->count();
 			$infot = array($f, $m, $n);
 
 			$fp = fopen ('download/genero.csv', 'w');
@@ -593,9 +593,9 @@ class UseController extends Controller {
 			fclose($fp);
 			///////////////////////////////////////////////////////////////////////////////////////////
 
-			$m = DB::table('edxapp.student_courseenrollment')->join('edxapp.auth_userprofile', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wheregender('m')->count();
-			$f = DB::table('edxapp.student_courseenrollment')->join('edxapp.auth_userprofile', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wheregender('f')->count();
-			$n = DB::table('edxapp.student_courseenrollment')->join('edxapp.auth_userprofile', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wheregender('')->count();
+			$m = DB::table('edxapp.student_courseenrollment')->join('edxapp.auth_userprofile', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wheregender('m')->whereis_active('1')->count();
+			$f = DB::table('edxapp.student_courseenrollment')->join('edxapp.auth_userprofile', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wheregender('f')->whereis_active('1')->count();
+			$n = DB::table('edxapp.student_courseenrollment')->join('edxapp.auth_userprofile', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wheregender('')->whereis_active('1')->count();
 
 			$infot = array($f, $m, $n);
 
@@ -1206,9 +1206,9 @@ class UseController extends Controller {
             $c_id = $arregloVar[1];
             session()->put('c_id', $c_id);
         }
-        
+
 		$username = session()->get('nombre');
-        
+
         if($username == NULL || $c_id == "" || $c_id == NULL)
             return $this->correoacurso();
 
@@ -1233,7 +1233,7 @@ class UseController extends Controller {
 				->select('A.status', 'B.attempt_number', 'B.raw_answer', 'B.student_item_id', 'C.points_earned', 'C.points_possible', 'D.feedback', 'E.feedback_text')
 				->where('A.item_id', '=', $item_id)
 				->paginate(10);
-                
+
             $consultaArchivo = DB::table('edxapp.workflow_assessmentworkflow AS A')
 				->leftJoin('edxapp.submissions_submission AS B','A.submission_uuid','=','B.uuid')
                 ->leftJoin('edxapp.submissions_score AS C','A.submission_uuid','=','C.submission_id')
@@ -1264,7 +1264,7 @@ class UseController extends Controller {
                 $listaid[$i][5]=  ($value->points_possible);
                 $listaid[$i][6]=  ($value->feedback);
                 $listaid[$i][7]=  ($value->feedback_text);
-                
+
 				$i++;
 			}
             /*foreach ($inscritos as $key => $value) {
