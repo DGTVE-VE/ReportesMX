@@ -67,7 +67,9 @@
         <input name='periodo_emision' id='periodo_emision' type="month" onchange='updateCodigoCurso()' class="form-control"
                value='{{$ficha_curso->periodo_emision}}' required="required">
         <div class="help-tip posicion">
-            <p>- Año y mes en que da inicio el curso.</p>
+            <p>- Mes y año en que da inicio el curso.
+                <br/>- El componente solo se visualiza en google chrome.            
+            </p>
         </div>
     </div>
     <div class="form-group col-md-4 col-md-offset-2">
