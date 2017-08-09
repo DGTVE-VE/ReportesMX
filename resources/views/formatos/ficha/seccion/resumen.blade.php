@@ -67,7 +67,7 @@
     </div>
 
     <div class="form-group col-md-8 col-md-offset-2"><br>
-        <label for="esfuerzo_horas">Esfuerzo total en horas </label>
+        <label for="esfuerzo_horas">Esfuerzo total en horas por semana</label>
         <input name="esfuerzo_horas" type="number" class="form-control" 
                value='{{$ficha_curso->esfuerzo_horas}}'
                id="esfuerzo_horas" min="1" max="10" placeholder="Escribe el esfuerzo estimado en horas">
