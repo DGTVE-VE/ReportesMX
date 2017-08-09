@@ -435,9 +435,9 @@ class UseController extends Controller {
 			fclose($fp);
 			//////////////////////////////////////////////////////////////
 
-			$f = DB::table('edxapp.auth_userprofile')->wheregender("f")->whereis_active('1')->count();
-			$m = DB::table('edxapp.auth_userprofile')->wheregender("m")->whereis_active('1')->count();
-			$n = DB::table('edxapp.auth_userprofile')->wheregender("")->whereis_active('1')->count();
+			$f = DB::table('edxapp.auth_userprofile')->join('edxapp.auth_user', 'edxapp.auth_userprofile.user_id', '=', 'edxapp.auth_user.id')->wheregender("f")->whereis_active('1')->count();
+			$m = DB::table('edxapp.auth_userprofile')->join('edxapp.auth_user', 'edxapp.auth_userprofile.user_id', '=', 'edxapp.auth_user.id')->wheregender("m")->whereis_active('1')->count();
+			$n = DB::table('edxapp.auth_userprofile')->join('edxapp.auth_user', 'edxapp.auth_userprofile.user_id', '=', 'edxapp.auth_user.id')->wheregender("")->whereis_active('1')->count();
 			$infot = array($f, $m, $n);
 
 			$fp = fopen ('download/genero.csv', 'w');
@@ -593,9 +593,9 @@ class UseController extends Controller {
 			fclose($fp);
 			///////////////////////////////////////////////////////////////////////////////////////////
 
-			$m = DB::table('edxapp.student_courseenrollment')->join('edxapp.auth_userprofile', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wheregender('m')->whereis_active('1')->count();
-			$f = DB::table('edxapp.student_courseenrollment')->join('edxapp.auth_userprofile', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wheregender('f')->whereis_active('1')->count();
-			$n = DB::table('edxapp.student_courseenrollment')->join('edxapp.auth_userprofile', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wheregender('')->whereis_active('1')->count();
+			$m = DB::table('edxapp.student_courseenrollment')->join('edxapp.auth_userprofile', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wheregender('m')->where('student_courseenrollment.is_active', '=', '1')->count();
+			$f = DB::table('edxapp.student_courseenrollment')->join('edxapp.auth_userprofile', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wheregender('f')->where('student_courseenrollment.is_active', '=', '1')->count();
+			$n = DB::table('edxapp.student_courseenrollment')->join('edxapp.auth_userprofile', 'edxapp.student_courseenrollment.user_id', '=', 'edxapp.auth_userprofile.user_id')->wherecourse_id($course_id)->wheregender('')->where('student_courseenrollment.is_active', '=', '1')->count();
 
 			$infot = array($f, $m, $n);
 
